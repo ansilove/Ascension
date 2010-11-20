@@ -3,18 +3,18 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
 		<string key="IBDocument.SystemVersion">10H574</string>
-		<string key="IBDocument.InterfaceBuilderVersion">804</string>
+		<string key="IBDocument.InterfaceBuilderVersion">823</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">804</string>
+			<string key="NS.object.0">823</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="4"/>
-			<integer value="5"/>
 			<integer value="3"/>
 			<integer value="1"/>
+			<integer value="4"/>
+			<integer value="5"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -31,7 +31,7 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSWindowTemplate" id="1005">
-				<int key="NSWindowStyleMask">15</int>
+				<int key="NSWindowStyleMask">7</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{196, 373}, {338, 137}}</string>
 				<int key="NSWTFlags">544735232</int>
@@ -1428,13 +1428,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSUserDefaultsController" id="521577155">
-				<array class="NSMutableArray" key="NSDeclaredKeys">
-					<string>docsOpenCentered</string>
-					<string>newContentWidth</string>
-					<string>newContentHeight</string>
-					<string>autoSizeWidth</string>
-					<string>autoSizeHeight</string>
-				</array>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 			<object class="NSCustomObject" id="196403220">
