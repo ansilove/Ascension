@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Ascension' target in the 'Ascension' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

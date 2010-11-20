@@ -1,0 +1,464 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DDD582C0DA1D0D100B32029 /* MyDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58280DA1D0D100B32029 /* MyDocument.xib */; };
+		1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD582A0DA1D0D100B32029 /* MainMenu.xib */; };
+		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
+		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
+		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		F80F27791297504600209618 /* SVFileInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F27781297504600209618 /* SVFileInfoController.m */; };
+		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
+		F8835768120F24ED00D18794 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* MyDocument.m */; };
+		F8835769120F24ED00D18794 /* SVPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835765120F24ED00D18794 /* SVPrefsWindowController.m */; };
+		F883576A120F24ED00D18794 /* SVAscensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835767120F24ED00D18794 /* SVAscensionDelegate.m */; };
+		F8835777120F251F00D18794 /* Advanced.png in Resources */ = {isa = PBXBuildFile; fileRef = F8835772120F251F00D18794 /* Advanced.png */; };
+		F8835778120F251F00D18794 /* Ascension.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8835773120F251F00D18794 /* Ascension.icns */; };
+		F8835779120F251F00D18794 /* Colors.png in Resources */ = {isa = PBXBuildFile; fileRef = F8835774120F251F00D18794 /* Colors.png */; };
+		F883577A120F251F00D18794 /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = F8835775120F251F00D18794 /* General.png */; };
+		F8835785120F256900D18794 /* Terminus.dfont in Resources */ = {isa = PBXBuildFile; fileRef = F8835784120F256900D18794 /* Terminus.dfont */; };
+		F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
+		F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
+		F8D8CD54123EB2E100ABF74F /* New.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D8CD4E123EB2E100ABF74F /* New.png */; };
+		F8DC439C1257E7F4000BE289 /* Export.png in Resources */ = {isa = PBXBuildFile; fileRef = F8DC439A1257E7F4000BE289 /* Export.png */; };
+		F8DC439D1257E7F4000BE289 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = F8DC439B1257E7F4000BE289 /* Info.png */; };
+		F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1D4B21285DBA90069F262 /* duplicate.png */; };
+		F8EA140D12781D3E002A6E6E /* SVFontController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140612781D3E002A6E6E /* SVFontController.m */; };
+		F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140A12781D3E002A6E6E /* SVThemeObject.m */; };
+		F8EA141012781D3E002A6E6E /* SVPrefsController+Themes.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140C12781D3E002A6E6E /* SVPrefsController+Themes.m */; };
+		F8ECFA101295C85C00535BD9 /* SVFileInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ECFA0F1295C85C00535BD9 /* SVFileInfoWindowController.m */; };
+		F8ECFA271295CB7D00535BD9 /* FileInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8ECFA261295CB7D00535BD9 /* FileInfo.xib */; };
+		F8F14433129068C600D89311 /* SVPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F14432129068C600D89311 /* SVPrefsController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F808697411C8C56100680E85 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1DDD58290DA1D0D100B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MyDocument.xib; sourceTree = "<group>"; };
+		1DDD582B0DA1D0D100B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2564AD2C0F5327BB00F57823 /* Ascension_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ascension_Prefix.pch; sourceTree = "<group>"; };
+		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		8D15AC360486D014006FF6A4 /* Ascension-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Ascension-Info.plist"; sourceTree = "<group>"; };
+		8D15AC370486D014006FF6A4 /* Ascension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ascension.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F80F27771297504600209618 /* SVFileInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoController.h; path = Classes/SVFileInfoController.h; sourceTree = "<group>"; };
+		F80F27781297504600209618 /* SVFileInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoController.m; path = Classes/SVFileInfoController.m; sourceTree = "<group>"; };
+		F8835763120F24ED00D18794 /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDocument.h; path = Classes/MyDocument.h; sourceTree = "<group>"; };
+		F8835764120F24ED00D18794 /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDocument.m; path = Classes/MyDocument.m; sourceTree = "<group>"; };
+		F8835765120F24ED00D18794 /* SVPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPrefsWindowController.m; path = Classes/SVPrefsWindowController.m; sourceTree = "<group>"; };
+		F8835766120F24ED00D18794 /* SVAscensionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVAscensionDelegate.h; path = Classes/SVAscensionDelegate.h; sourceTree = "<group>"; };
+		F8835767120F24ED00D18794 /* SVAscensionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVAscensionDelegate.m; path = Classes/SVAscensionDelegate.m; sourceTree = "<group>"; };
+		F883576B120F250000D18794 /* SVPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVPrefsWindowController.h; path = Classes/SVPrefsWindowController.h; sourceTree = "<group>"; };
+		F8835772120F251F00D18794 /* Advanced.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Advanced.png; path = Images/Advanced.png; sourceTree = "<group>"; };
+		F8835773120F251F00D18794 /* Ascension.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Ascension.icns; path = Images/Ascension.icns; sourceTree = "<group>"; };
+		F8835774120F251F00D18794 /* Colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Colors.png; path = Images/Colors.png; sourceTree = "<group>"; };
+		F8835775120F251F00D18794 /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
+		F8835784120F256900D18794 /* Terminus.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Terminus.dfont; sourceTree = "<group>"; };
+		F8A894941208D34300871F98 /* AutoHyperlinks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoHyperlinks.framework; path = Frameworks/AutoHyperlinks.framework; sourceTree = "<group>"; };
+		F8D8CD4E123EB2E100ABF74F /* New.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = New.png; path = Images/New.png; sourceTree = "<group>"; };
+		F8DC439A1257E7F4000BE289 /* Export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Export.png; path = Images/Export.png; sourceTree = "<group>"; };
+		F8DC439B1257E7F4000BE289 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Info.png; path = Images/Info.png; sourceTree = "<group>"; };
+		F8E1D4B21285DBA90069F262 /* duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duplicate.png; path = Images/duplicate.png; sourceTree = "<group>"; };
+		F8EA140512781D3E002A6E6E /* SVFontController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFontController.h; path = Classes/SVFontController.h; sourceTree = "<group>"; };
+		F8EA140612781D3E002A6E6E /* SVFontController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFontController.m; path = Classes/SVFontController.m; sourceTree = "<group>"; };
+		F8EA140712781D3E002A6E6E /* SVPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVPrefsController.h; path = Classes/SVPrefsController.h; sourceTree = "<group>"; };
+		F8EA140912781D3E002A6E6E /* SVThemeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVThemeObject.h; path = Classes/SVThemeObject.h; sourceTree = "<group>"; };
+		F8EA140A12781D3E002A6E6E /* SVThemeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVThemeObject.m; path = Classes/SVThemeObject.m; sourceTree = "<group>"; };
+		F8EA140B12781D3E002A6E6E /* SVPrefsController+Themes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVPrefsController+Themes.h"; path = "Classes/SVPrefsController+Themes.h"; sourceTree = "<group>"; };
+		F8EA140C12781D3E002A6E6E /* SVPrefsController+Themes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SVPrefsController+Themes.m"; path = "Classes/SVPrefsController+Themes.m"; sourceTree = "<group>"; };
+		F8ECFA0E1295C85C00535BD9 /* SVFileInfoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoWindowController.h; path = Classes/SVFileInfoWindowController.h; sourceTree = "<group>"; };
+		F8ECFA0F1295C85C00535BD9 /* SVFileInfoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoWindowController.m; path = Classes/SVFileInfoWindowController.m; sourceTree = "<group>"; };
+		F8ECFA231295CB7000535BD9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FileInfo.xib; sourceTree = "<group>"; };
+		F8EEB89611C6E07900F16727 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
+		F8F14432129068C600D89311 /* SVPrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPrefsController.m; path = Classes/SVPrefsController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D15AC330486D014006FF6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+				F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+				F8A894941208D34300871F98 /* AutoHyperlinks.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
+				13E42FBA07B3F13500E4EEF1 /* CoreData.framework */,
+				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB0FE9D524F11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D15AC370486D014006FF6A4 /* Ascension.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A37F4AAFDCFA73011CA2CEA /* Ascension */ = {
+			isa = PBXGroup;
+			children = (
+				2A37F4ABFDCFA73011CA2CEA /* Classes */,
+				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
+				2A37F4B8FDCFA73011CA2CEA /* Resources */,
+				F8835773120F251F00D18794 /* Ascension.icns */,
+				F8835775120F251F00D18794 /* General.png */,
+				F8835772120F251F00D18794 /* Advanced.png */,
+				F8835774120F251F00D18794 /* Colors.png */,
+				F8D8CD4E123EB2E100ABF74F /* New.png */,
+				F8DC439A1257E7F4000BE289 /* Export.png */,
+				F8DC439B1257E7F4000BE289 /* Info.png */,
+				F8E1D4B21285DBA90069F262 /* duplicate.png */,
+				F8835783120F256900D18794 /* Fonts */,
+				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
+				19C28FB0FE9D524F11CA2CBB /* Products */,
+			);
+			name = Ascension;
+			sourceTree = "<group>";
+		};
+		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F8835763120F24ED00D18794 /* MyDocument.h */,
+				F8835764120F24ED00D18794 /* MyDocument.m */,
+				F8EA140512781D3E002A6E6E /* SVFontController.h */,
+				F8EA140612781D3E002A6E6E /* SVFontController.m */,
+				F883576B120F250000D18794 /* SVPrefsWindowController.h */,
+				F8835765120F24ED00D18794 /* SVPrefsWindowController.m */,
+				F8EA140712781D3E002A6E6E /* SVPrefsController.h */,
+				F8F14432129068C600D89311 /* SVPrefsController.m */,
+				F8EA140B12781D3E002A6E6E /* SVPrefsController+Themes.h */,
+				F8EA140C12781D3E002A6E6E /* SVPrefsController+Themes.m */,
+				F8EA140912781D3E002A6E6E /* SVThemeObject.h */,
+				F8EA140A12781D3E002A6E6E /* SVThemeObject.m */,
+				F8ECFA0E1295C85C00535BD9 /* SVFileInfoWindowController.h */,
+				F8ECFA0F1295C85C00535BD9 /* SVFileInfoWindowController.m */,
+				F80F27771297504600209618 /* SVFileInfoController.h */,
+				F80F27781297504600209618 /* SVFileInfoController.m */,
+				F8835766120F24ED00D18794 /* SVAscensionDelegate.h */,
+				F8835767120F24ED00D18794 /* SVAscensionDelegate.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2564AD2C0F5327BB00F57823 /* Ascension_Prefix.pch */,
+				2A37F4B0FDCFA73011CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
+				8D15AC360486D014006FF6A4 /* Ascension-Info.plist */,
+				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
+				1DDD582A0DA1D0D100B32029 /* MainMenu.xib */,
+				1DDD58280DA1D0D100B32029 /* MyDocument.xib */,
+				F8123D6211C7763000EABFE2 /* Preferences.xib */,
+				F8ECFA261295CB7D00535BD9 /* FileInfo.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
+				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F8835783120F256900D18794 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F8835784120F256900D18794 /* Terminus.dfont */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D15AC270486D014006FF6A4 /* Ascension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "Ascension" */;
+			buildPhases = (
+				8D15AC2B0486D014006FF6A4 /* Resources */,
+				8D15AC300486D014006FF6A4 /* Sources */,
+				8D15AC330486D014006FF6A4 /* Frameworks */,
+				F808697411C8C56100680E85 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ascension;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Ascension;
+			productReference = 8D15AC370486D014006FF6A4 /* Ascension.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "Ascension" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* Ascension */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D15AC270486D014006FF6A4 /* Ascension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D15AC2B0486D014006FF6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
+				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
+				1DDD582C0DA1D0D100B32029 /* MyDocument.xib in Resources */,
+				1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */,
+				F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */,
+				F8835777120F251F00D18794 /* Advanced.png in Resources */,
+				F8835778120F251F00D18794 /* Ascension.icns in Resources */,
+				F8835779120F251F00D18794 /* Colors.png in Resources */,
+				F883577A120F251F00D18794 /* General.png in Resources */,
+				F8835785120F256900D18794 /* Terminus.dfont in Resources */,
+				F8D8CD54123EB2E100ABF74F /* New.png in Resources */,
+				F8DC439C1257E7F4000BE289 /* Export.png in Resources */,
+				F8DC439D1257E7F4000BE289 /* Info.png in Resources */,
+				F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */,
+				F8ECFA271295CB7D00535BD9 /* FileInfo.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D15AC300486D014006FF6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC320486D014006FF6A4 /* main.m in Sources */,
+				F8835768120F24ED00D18794 /* MyDocument.m in Sources */,
+				F8835769120F24ED00D18794 /* SVPrefsWindowController.m in Sources */,
+				F883576A120F24ED00D18794 /* SVAscensionDelegate.m in Sources */,
+				F8EA140D12781D3E002A6E6E /* SVFontController.m in Sources */,
+				F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */,
+				F8EA141012781D3E002A6E6E /* SVPrefsController+Themes.m in Sources */,
+				F8F14433129068C600D89311 /* SVPrefsController.m in Sources */,
+				F8ECFA101295C85C00535BD9 /* SVFileInfoWindowController.m in Sources */,
+				F80F27791297504600209618 /* SVFileInfoController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165FFE840EACC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C1660FE840EACC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1DDD58280DA1D0D100B32029 /* MyDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD58290DA1D0D100B32029 /* English */,
+			);
+			name = MyDocument.xib;
+			sourceTree = "<group>";
+		};
+		1DDD582A0DA1D0D100B32029 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD582B0DA1D0D100B32029 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A37F4BAFDCFA73011CA2CEA /* English */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F8123D6211C7763000EABFE2 /* Preferences.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8EEB89611C6E07900F16727 /* English */,
+			);
+			name = Preferences.xib;
+			sourceTree = "<group>";
+		};
+		F8ECFA261295CB7D00535BD9 /* FileInfo.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8ECFA231295CB7000535BD9 /* English */,
+			);
+			name = FileInfo.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C05733C808A9546B00998B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Ascension_Prefix.pch;
+				INFOPLIST_FILE = "Ascension-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Ascension;
+			};
+			name = Debug;
+		};
+		C05733C908A9546B00998B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Ascension_Prefix.pch;
+				INFOPLIST_FILE = "Ascension-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Ascension;
+			};
+			name = Release;
+		};
+		C05733CC08A9546B00998B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CURRENT_PROJECT_VERSION = 15;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		C05733CD08A9546B00998B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CURRENT_PROJECT_VERSION = 15;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = NO;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "Ascension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C05733C808A9546B00998B17 /* Debug */,
+				C05733C908A9546B00998B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "Ascension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C05733CC08A9546B00998B17 /* Debug */,
+				C05733CD08A9546B00998B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+}
