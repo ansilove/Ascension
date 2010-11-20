@@ -22,7 +22,6 @@ typedef enum {
 	IBOutlet NSScrollView		  *asciiScrollView;
 	IBOutlet NSToolbar			  *appToolbar;
 	IBOutlet NSPopUpButton		  *encodingButton;
-	IBOutlet NSWindow			  *fileInfoHud;
     NSMutableAttributedString	  *contentString;
 	NSColor						  *fontColor;
 	NSColor						  *backgroundColor;
@@ -67,7 +66,6 @@ typedef enum {
 @property (retain) IBOutlet NSTextView	  *asciiTextView;
 @property (retain) IBOutlet NSScrollView  *asciiScrollView;
 @property (retain) IBOutlet NSPopUpButton *encodingButton;
-@property (retain) IBOutlet NSWindow	  *fileInfoHud;
 
 // general methods
 - (void)applyParagraphStyle;

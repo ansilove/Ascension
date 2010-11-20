@@ -22,7 +22,7 @@
 @synthesize contentString, asciiTextView, asciiScrollView, newContentHeight, newContentWidth,
 			fontColor, backgroundColor, cursorColor, linkColor, linkAttributes, selectionColor,
 			selectionAttributes, charEncoding, encodingButton, iFilePath, iCreationDate, 
-			iModDate, iFileSize, fileInfoHud;
+			iModDate, iFileSize;
 
 # pragma mark -
 # pragma mark initialization and nib
