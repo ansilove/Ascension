@@ -34,7 +34,7 @@
 	   // If there is no content string, create one.
 	   if (self.contentString == nil) {
 		   self.contentString = [[NSMutableAttributedString alloc] initWithString:@""];
-	   }
+	   }	   
 	   // Define NSNotificationCenter and NSUserDefaults.
 	   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -117,24 +117,8 @@
 	[super windowControllerDidLoadNib:aController];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
-	// Prepare the content.
-	[self applyParagraphStyle];
-	[self performLinkification];
-	
-	// Set the text color.
-	[self.asciiTextView setTextColor:self.fontColor];
-	
-	// Apply background color.
-	[self.asciiTextView setBackgroundColor:self.backgroundColor];
-	
-	// Set the cursor color.
-	[self.asciiTextView setInsertionPointColor:self.cursorColor];
-	
-	// Specify the style for all contained links.
-	[self.asciiTextView setLinkTextAttributes:self.linkAttributes];
-	
-	// Set the color for selected text.
-	[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+	// Apply the appearance attributes.
+	[self prepareContent];
 	
 	// Create a beautiful window bottom.
 	[aController.window setContentBorderThickness:20.0f forEdge:NSMinYEdge];
@@ -189,6 +173,28 @@
 
 # pragma mark -
 # pragma mark appearance
+
+- (void)prepareContent
+{
+	// Prepare the textual content.
+	[self applyParagraphStyle];
+	[self performLinkification];
+	
+	// Set the text color.
+	[self.asciiTextView setTextColor:self.fontColor];
+	
+	// Apply background color.
+	[self.asciiTextView setBackgroundColor:self.backgroundColor];
+	
+	// Set the cursor color.
+	[self.asciiTextView setInsertionPointColor:self.cursorColor];
+	
+	// Specify the style for all contained links.
+	[self.asciiTextView setLinkTextAttributes:self.linkAttributes];
+	
+	// Set the color for selected text.
+	[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+}
 
 - (void)applyParagraphStyle
 {
@@ -298,7 +304,7 @@
 # pragma mark data and encoding
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
-{	
+{
 	// Preserve tracking of unsaved changes.
 	[self.asciiTextView breakUndoCoalescing];
 	
@@ -379,6 +385,13 @@
     return readSuccess;
 }
 
+- (BOOL)revertToContentsOfURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError
+{
+	// Override NSDocument's revertToContentsOfURL to reapply our content attributes.
+	[self prepareContent];
+	return [super revertToContentsOfURL:absoluteURL ofType:typeName error:outError];
+}
+
 - (void)switchEncoding
 {
 	// Read our desired encoding from user defaults.
@@ -437,16 +450,8 @@
 		self.contentString = tempAtrStr;
 		self.charEncoding = BlockASCII;
 		
-		// Prepare the content.
-		[self applyParagraphStyle];
-		[self performLinkification];
-		
-		// Set color attributes again.
-		[self.asciiTextView setTextColor:self.fontColor];
-		[self.asciiTextView setBackgroundColor:self.backgroundColor];
-		[self.asciiTextView setInsertionPointColor:self.cursorColor];
-		[self.asciiTextView setLinkTextAttributes:self.linkAttributes];
-		[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+		// Apply the appearance attributes.
+		[self prepareContent];
 	}
 	else {
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -480,16 +485,8 @@
 		self.contentString = tempAtrStr;
 		self.charEncoding = UnicodeUTF8;
 		
-		// Prepare the content.
-		[self applyParagraphStyle];
-		[self performLinkification];
-		
-		// Set color attributes again.
-		[self.asciiTextView setTextColor:self.fontColor];
-		[self.asciiTextView setBackgroundColor:self.backgroundColor];
-		[self.asciiTextView setInsertionPointColor:self.cursorColor];
-		[self.asciiTextView setLinkTextAttributes:self.linkAttributes];
-		[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+		// Apply the appearance attributes.
+		[self prepareContent];
 	}
 	else {
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -522,16 +519,8 @@
 		self.contentString = tempAtrStr;
 		self.charEncoding = MacRomanASCII;
 		
-		// Prepare the content.
-		[self applyParagraphStyle];
-		[self performLinkification];
-		
-		// Set color attributes again.
-		[self.asciiTextView setTextColor:self.fontColor];
-		[self.asciiTextView setBackgroundColor:self.backgroundColor];
-		[self.asciiTextView setInsertionPointColor:self.cursorColor];
-		[self.asciiTextView setLinkTextAttributes:self.linkAttributes];
-		[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+		// Apply the appearance attributes.
+		[self prepareContent];
 	}
 	else {
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
