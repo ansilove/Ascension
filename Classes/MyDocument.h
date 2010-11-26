@@ -79,10 +79,12 @@ typedef enum {
 - (void)switchEncoding;
 - (void)switchEncodingButton;
 - (void)updateFileInfoValues;
+- (void)setString:(NSMutableAttributedString *)value;
 
 // objects and return values
 - (CGFloat)titlebarHeight;
 - (NSRect)screenRect;
+- (NSMutableAttributedString *)string;
 
 // actions
 - (IBAction)encodeInUnicode:(id)sender;

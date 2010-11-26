@@ -13,16 +13,16 @@
 #import "SVFileInfoWindowController.h"
 
 #define stdNSTextViewMargin 10
-#define BlockASCII CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatin1)
+#define BlockASCII CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
 #define UnicodeUTF8 NSUTF8StringEncoding
 #define MacRomanASCII NSMacOSRomanStringEncoding
 
 @implementation MyDocument
 
-@synthesize contentString, asciiTextView, asciiScrollView, newContentHeight, newContentWidth,
-			fontColor, backgroundColor, cursorColor, linkColor, linkAttributes, selectionColor,
-			selectionAttributes, charEncoding, encodingButton, iFilePath, iCreationDate, 
-			iModDate, iFileSize;
+@synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
+			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
+			charEncoding, iFilePath, iCreationDate, iModDate, iFileSize; 
+
 
 # pragma mark -
 # pragma mark initialization and nib
@@ -34,7 +34,7 @@
 	   // If there is no content string, create one.
 	   if (self.contentString == nil) {
 		   self.contentString = [[NSMutableAttributedString alloc] initWithString:@""];
-	   }	   
+	   }
 	   // Define NSNotificationCenter and NSUserDefaults.
 	   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -115,6 +115,12 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {	
 	[super windowControllerDidLoadNib:aController];
+	
+	// Assign our attributed string.
+	if ([self string] != nil) {
+		[[self.asciiTextView textStorage] setAttributedString:[self string]];
+	}
+	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
 	// Apply the appearance attributes.
@@ -301,15 +307,38 @@
 }
 
 # pragma mark -
+# pragma mark getter and setter
+
+- (NSMutableAttributedString *)string 
+{ 
+	return self.contentString; 
+}
+
+- (void)setString:(NSMutableAttributedString *)newValue {
+    if (self.contentString != newValue) {
+        self.contentString = [newValue copy];
+    }
+}
+
+# pragma mark -
+# pragma mark delegates
+
+- (void)textDidChange:(NSNotification *)notification
+{
+    [self setString:[self.asciiTextView textStorage]];
+}
+
+# pragma mark -
 # pragma mark data and encoding
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
-	// Preserve tracking of unsaved changes.
-	[self.asciiTextView breakUndoCoalescing];
-	
 	// Write data using the given encoding. 
 	NSData *data = [self.contentString.string dataUsingEncoding:self.charEncoding];
+	
+	// Enabled undo after save operations.
+	[self.asciiTextView breakUndoCoalescing];
+	
 	return data;
 }
 
@@ -374,22 +403,23 @@
 		}
 		fileContent = [[NSString alloc] initWithData:data encoding:self.charEncoding];
 	}
-	// Apply the file contents to our content string.
+	// In case the data was readable, continue here.
     if (fileContent) 
 	{
 		readSuccess = YES;
 		NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:fileContent];
-		self.contentString = importString;
+		[self setString:importString];
+		
+		// If the UI is already loaded, this must be a 'revert to saved' operation.
+		if (self.asciiTextView) 
+		{
+			// Apply the loaded data to the text storage and restyle contents.
+			[[self.asciiTextView textStorage] setAttributedString:[self string]];
+			[self prepareContent];
+		}
     }
 	[self updateFileInfoValues];
     return readSuccess;
-}
-
-- (BOOL)revertToContentsOfURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError
-{
-	// Override NSDocument's revertToContentsOfURL to reapply our content attributes.
-	[self prepareContent];
-	return [super revertToContentsOfURL:absoluteURL ofType:typeName error:outError];
 }
 
 - (void)switchEncoding
@@ -447,8 +477,9 @@
 		NSMutableAttributedString *tempAtrStr = [[NSMutableAttributedString alloc] initWithString:encodedStr];
 		
 		// Apply the new content string and set it's encoding.
-		self.contentString = tempAtrStr;
 		self.charEncoding = BlockASCII;
+		[self setString:tempAtrStr];
+		[[self.asciiTextView textStorage] setAttributedString:[self string]];
 		
 		// Apply the appearance attributes.
 		[self prepareContent];
@@ -482,8 +513,9 @@
 		NSMutableAttributedString *tempAtrStr = [[NSMutableAttributedString alloc] initWithString:encodedStr];
 		
 		// Apply the new content string and set it's encoding.
-		self.contentString = tempAtrStr;
 		self.charEncoding = UnicodeUTF8;
+		[self setString:tempAtrStr];
+		[[self.asciiTextView textStorage] setAttributedString:[self string]];
 		
 		// Apply the appearance attributes.
 		[self prepareContent];
@@ -516,8 +548,9 @@
 		NSMutableAttributedString *tempAtrStr = [[NSMutableAttributedString alloc] initWithString:encodedStr];
 		
 		// Apply the new content string and set it's encoding.
-		self.contentString = tempAtrStr;
 		self.charEncoding = MacRomanASCII;
+		[self setString:tempAtrStr];
+		[[self.asciiTextView textStorage] setAttributedString:[self string]];
 		
 		// Apply the appearance attributes.
 		[self prepareContent];
