@@ -336,7 +336,7 @@
 	// Write data using the given encoding. 
 	NSData *data = [self.contentString.string dataUsingEncoding:self.charEncoding];
 	
-	// Enabled undo after save operations.
+	// Enable undo after save operations.
 	[self.asciiTextView breakUndoCoalescing];
 	
 	return data;
