@@ -11,6 +11,8 @@
 			<array>
 				<string>nfo</string>
 			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>AFileTypeNFO.icns</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>text/plain</string>
@@ -31,6 +33,8 @@
 			<array>
 				<string>diz</string>
 			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>AFileTypeDIZ.icns</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>text/plain</string>

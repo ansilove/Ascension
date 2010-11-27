@@ -35,6 +35,8 @@
 		F8ECFA101295C85C00535BD9 /* SVFileInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ECFA0F1295C85C00535BD9 /* SVFileInfoWindowController.m */; };
 		F8ECFA271295CB7D00535BD9 /* FileInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8ECFA261295CB7D00535BD9 /* FileInfo.xib */; };
 		F8F14433129068C600D89311 /* SVPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F14432129068C600D89311 /* SVPrefsController.m */; };
+		F8F3A42912A0780100102D23 /* AFileTypeDIZ.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */; };
+		F8F3A42A12A0780100102D23 /* AFileTypeNFO.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8F3A42812A0780100102D23 /* AFileTypeNFO.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,6 +95,8 @@
 		F8ECFA231295CB7000535BD9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FileInfo.xib; sourceTree = "<group>"; };
 		F8EEB89611C6E07900F16727 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
 		F8F14432129068C600D89311 /* SVPrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPrefsController.m; path = Classes/SVPrefsController.m; sourceTree = "<group>"; };
+		F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeDIZ.icns; path = Images/AFileTypeDIZ.icns; sourceTree = "<group>"; };
+		F8F3A42812A0780100102D23 /* AFileTypeNFO.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeNFO.icns; path = Images/AFileTypeNFO.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,8 @@
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
 				F8835773120F251F00D18794 /* Ascension.icns */,
+				F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */,
+				F8F3A42812A0780100102D23 /* AFileTypeNFO.icns */,
 				F8835775120F251F00D18794 /* General.png */,
 				F8835772120F251F00D18794 /* Advanced.png */,
 				F8835774120F251F00D18794 /* Colors.png */,
@@ -284,6 +290,8 @@
 				F8DC439D1257E7F4000BE289 /* Info.png in Resources */,
 				F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */,
 				F8ECFA271295CB7D00535BD9 /* FileInfo.xib in Resources */,
+				F8F3A42912A0780100102D23 /* AFileTypeDIZ.icns in Resources */,
+				F8F3A42A12A0780100102D23 /* AFileTypeNFO.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
