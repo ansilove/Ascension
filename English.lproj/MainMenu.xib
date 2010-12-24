@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="492"/>
+			<integer value="81"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -262,7 +262,7 @@
 								</object>
 								<object class="NSMenuItem" id="117038363">
 									<reference key="NSMenu" ref="720053764"/>
-									<string key="NSTitle">Save As…</string>
+									<string key="NSTitle">Export...</string>
 									<string key="NSKeyEquiv">S</string>
 									<int key="NSKeyEquivModMask">1179648</int>
 									<int key="NSMnemonicLoc">2147483647</int>
@@ -3698,7 +3698,6 @@
 							<string>asciiScrollView</string>
 							<string>asciiTextView</string>
 							<string>encodingButton</string>
-							<string>fileInfoHud</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -3706,7 +3705,6 @@
 							<string>NSScrollView</string>
 							<string>NSTextView</string>
 							<string>NSPopUpButton</string>
-							<string>NSWindow</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -3717,7 +3715,6 @@
 							<string>asciiScrollView</string>
 							<string>asciiTextView</string>
 							<string>encodingButton</string>
-							<string>fileInfoHud</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -3736,10 +3733,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">encodingButton</string>
 								<string key="candidateClassName">NSPopUpButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">fileInfoHud</string>
-								<string key="candidateClassName">NSWindow</string>
 							</object>
 						</object>
 					</object>
