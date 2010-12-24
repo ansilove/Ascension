@@ -35,9 +35,8 @@
 	   if (self.contentString == nil) {
 		   self.contentString = [[NSMutableAttributedString alloc] initWithString:@""];
 	   }
-	   // Define NSNotificationCenter and NSUserDefaults.
+	   // Define NSNotificationCenter.
 	   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	   
 	   // Register as an observer for font color changes.
 	   [nc addObserver:self
@@ -68,26 +67,6 @@
 			  selector:@selector(performSelectionColorChange:)
 				  name:SelectionColorChangeNotification
 				object:nil];
-	   
-	   // Read font color data from user defaults.
-	   NSData *fontColorData = [defaults objectForKey:@"fontColor"];
-	   self.fontColor = [NSUnarchiver unarchiveObjectWithData:fontColorData];
-	   
-	   // Restore background color data from user defaults.
-	   NSData *bgrndColorData = [defaults objectForKey:@"backgroundColor"];
-	   self.backgroundColor = [NSUnarchiver unarchiveObjectWithData:bgrndColorData];
-	   
-	   // Load cursor color data from the user defaults.
-	   NSData *cursorColorData = [defaults objectForKey:@"cursorColor"];
-	   self.cursorColor = [NSUnarchiver unarchiveObjectWithData:cursorColorData];
-	   
-	   // Get the link color data from user defaults.
-	   NSData *linkColorData = [defaults objectForKey:@"linkColor"];
-	   self.linkColor = [NSUnarchiver unarchiveObjectWithData:linkColorData];
-	   
-	   // Restore color data for selected text from user defaults.
-	   NSData *selectionColorData = [defaults objectForKey:@"selectionColor"];
-	   self.selectionColor = [NSUnarchiver unarchiveObjectWithData:selectionColorData];
 	   
 	   [self switchEncoding];
    }
@@ -185,6 +164,7 @@
 	// Prepare the textual content.
 	[self applyParagraphStyle];
 	[self performLinkification];
+	[self applyThemeColors];
 	
 	// Set the text color.
 	[self.asciiTextView setTextColor:self.fontColor];
@@ -200,6 +180,31 @@
 	
 	// Set the color for selected text.
 	[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+}
+
+- (void)applyThemeColors
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	// Read font color data from user defaults.
+	NSData *fontColorData = [defaults objectForKey:@"fontColor"];
+	self.fontColor = [NSUnarchiver unarchiveObjectWithData:fontColorData];
+	
+	// Restore background color data from user defaults.
+	NSData *bgrndColorData = [defaults objectForKey:@"backgroundColor"];
+	self.backgroundColor = [NSUnarchiver unarchiveObjectWithData:bgrndColorData];
+	
+	// Load cursor color data from the user defaults.
+	NSData *cursorColorData = [defaults objectForKey:@"cursorColor"];
+	self.cursorColor = [NSUnarchiver unarchiveObjectWithData:cursorColorData];
+	
+	// Get the link color data from user defaults.
+	NSData *linkColorData = [defaults objectForKey:@"linkColor"];
+	self.linkColor = [NSUnarchiver unarchiveObjectWithData:linkColorData];
+	
+	// Restore color data for selected text from user defaults.
+	NSData *selectionColorData = [defaults objectForKey:@"selectionColor"];
+	self.selectionColor = [NSUnarchiver unarchiveObjectWithData:selectionColorData];
 }
 
 - (void)applyParagraphStyle

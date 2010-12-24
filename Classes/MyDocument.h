@@ -68,9 +68,10 @@ typedef enum {
 @property (retain) IBOutlet NSPopUpButton *encodingButton;
 
 // general methods
+- (void)prepareContent;
+- (void)applyThemeColors;
 - (void)applyParagraphStyle;
 - (void)performLinkification;
-- (void)prepareContent;
 - (void)performFontColorChange:(NSNotification *)note;
 - (void)performBgrndColorChange:(NSNotification *)note;
 - (void)performCursorColorChange:(NSNotification *)note;
