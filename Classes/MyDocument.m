@@ -68,6 +68,12 @@
 				  name:SelectionColorChangeNotification
 				object:nil];
 	   
+	   // Check if the user pastes content into SVTextView.
+	   [nc addObserver:self
+			  selector:@selector(handlePasteOperation:)
+				  name:@"PasteNote"
+				object:nil];
+	   
 	   [self switchEncoding];
    }
 	return self;
@@ -245,6 +251,12 @@
 	AHHyperlinkScanner *scanner = 
 	[AHHyperlinkScanner hyperlinkScannerWithAttributedString:[self.asciiTextView textStorage]];
 	[[self.asciiTextView textStorage] setAttributedString:[scanner linkifiedString]];
+}
+
+- (void)handlePasteOperation:(NSNotification *)note
+{
+	// Linkify hyperlinks in the pasted content.
+	[self performSelector:@selector(performLinkification) withObject:nil afterDelay:0.5];
 }
 
 - (CGFloat)titlebarHeight

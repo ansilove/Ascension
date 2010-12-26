@@ -9,6 +9,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <AutoHyperlinks/AutoHyperlinks.h>
+#import "SVTextView.h"
 
 typedef enum {
 	EncBlockASCII,
@@ -18,7 +19,7 @@ typedef enum {
 
 @interface MyDocument : NSDocument {
 	
-	IBOutlet NSTextView			  *asciiTextView;
+	IBOutlet SVTextView			  *asciiTextView;
 	IBOutlet NSScrollView		  *asciiScrollView;
 	IBOutlet NSToolbar			  *appToolbar;
 	IBOutlet NSPopUpButton		  *encodingButton;
@@ -63,7 +64,7 @@ typedef enum {
 @property (readwrite, assign) NSDictionary *selectionAttributes;
 
 // outlets
-@property (retain) IBOutlet NSTextView	  *asciiTextView;
+@property (retain) IBOutlet SVTextView	  *asciiTextView;
 @property (retain) IBOutlet NSScrollView  *asciiScrollView;
 @property (retain) IBOutlet NSPopUpButton *encodingButton;
 
@@ -72,6 +73,7 @@ typedef enum {
 - (void)applyThemeColors;
 - (void)applyParagraphStyle;
 - (void)performLinkification;
+- (void)handlePasteOperation:(NSNotification *)note;
 - (void)performFontColorChange:(NSNotification *)note;
 - (void)performBgrndColorChange:(NSNotification *)note;
 - (void)performCursorColorChange:(NSNotification *)note;

@@ -13,6 +13,7 @@
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		F80458F712C69447004CF340 /* SVTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F80458F612C69447004CF340 /* SVTextView.m */; };
 		F80F27791297504600209618 /* SVFileInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F27781297504600209618 /* SVFileInfoController.m */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
 		F8835768120F24ED00D18794 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* MyDocument.m */; };
@@ -65,6 +66,8 @@
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D15AC360486D014006FF6A4 /* Ascension-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Ascension-Info.plist"; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Ascension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ascension.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F80458F512C69447004CF340 /* SVTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVTextView.h; path = Classes/SVTextView.h; sourceTree = "<group>"; };
+		F80458F612C69447004CF340 /* SVTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVTextView.m; path = Classes/SVTextView.m; sourceTree = "<group>"; };
 		F80F27771297504600209618 /* SVFileInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoController.h; path = Classes/SVFileInfoController.h; sourceTree = "<group>"; };
 		F80F27781297504600209618 /* SVFileInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoController.m; path = Classes/SVFileInfoController.m; sourceTree = "<group>"; };
 		F8835763120F24ED00D18794 /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDocument.h; path = Classes/MyDocument.h; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 			children = (
 				F8835763120F24ED00D18794 /* MyDocument.h */,
 				F8835764120F24ED00D18794 /* MyDocument.m */,
+				F80458F512C69447004CF340 /* SVTextView.h */,
+				F80458F612C69447004CF340 /* SVTextView.m */,
 				F8EA140512781D3E002A6E6E /* SVFontController.h */,
 				F8EA140612781D3E002A6E6E /* SVFontController.m */,
 				F883576B120F250000D18794 /* SVPrefsWindowController.h */,
@@ -312,6 +317,7 @@
 				F8F14433129068C600D89311 /* SVPrefsController.m in Sources */,
 				F8ECFA101295C85C00535BD9 /* SVFileInfoWindowController.m in Sources */,
 				F80F27791297504600209618 /* SVFileInfoController.m in Sources */,
+				F80458F712C69447004CF340 /* SVTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
