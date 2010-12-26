@@ -11,7 +11,7 @@
 			<string key="NS.object.0">823</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="100021"/>
+			<integer value="5"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -54,9 +54,11 @@
 							<string key="NSToolbarItemPaletteLabel">Encoding</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSPopUpButton" key="NSToolbarItemView" id="119801660">
-								<nil key="NSNextResponder"/>
+								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {100, 25}}</string>
+								<reference key="NSSuperview"/>
+								<reference key="NSWindow"/>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSPopUpButtonCell" key="NSCell" id="769954097">
 									<int key="NSCellFlags">-2076049856</int>
@@ -388,9 +390,9 @@
 												<int key="NSFlags">33844995</int>
 												<int key="NSTextCheckingTypes">0</int>
 												<nil key="NSMarkedAttributes"/>
-												<object class="NSColor" key="NSBackgroundColor">
-													<int key="NSColorSpace">1</int>
-													<bytes key="NSRGB">MSAxIDEAA</bytes>
+												<object class="NSColor" key="NSBackgroundColor" id="680971456">
+													<int key="NSColorSpace">3</int>
+													<bytes key="NSWhite">MQA</bytes>
 												</object>
 												<dictionary key="NSSelectedAttributes">
 													<object class="NSColor" key="NSBackgroundColor">
@@ -723,10 +725,7 @@
 									<reference key="NSSuperview" ref="43737000"/>
 									<reference key="NSNextKeyView" ref="925785244"/>
 									<reference key="NSDocView" ref="925785244"/>
-									<object class="NSColor" key="NSBGColor">
-										<int key="NSColorSpace">3</int>
-										<bytes key="NSWhite">MQA</bytes>
-									</object>
+									<reference key="NSBGColor" ref="680971456"/>
 									<object class="NSCursor" key="NSCursor">
 										<string key="NSHotSpot">{4, -5}</string>
 										<int key="NSCursorType">1</int>
@@ -1109,6 +1108,7 @@
 				</object>
 				<string key="100022.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100023.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="100024.CustomClassName">SVTextView</string>
 				<string key="100024.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100055.IBEditorWindowLastContentRect">{{508, 865}, {616, 0}}</string>
 				<string key="100055.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1183,7 +1183,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="appToolbar">NSToolbar</string>
 						<string key="asciiScrollView">NSScrollView</string>
-						<string key="asciiTextView">NSTextView</string>
+						<string key="asciiTextView">SVTextView</string>
 						<string key="encodingButton">NSPopUpButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1197,7 +1197,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="asciiTextView">
 							<string key="name">asciiTextView</string>
-							<string key="candidateClassName">NSTextView</string>
+							<string key="candidateClassName">SVTextView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="encodingButton">
 							<string key="name">encodingButton</string>
@@ -1215,6 +1215,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/SVFontController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SVTextView</string>
+					<string key="superclassName">NSTextView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/SVTextView.h</string>
 					</object>
 				</object>
 			</array>

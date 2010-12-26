@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="81"/>
+			<integer value="205"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -3415,7 +3415,7 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{693, 495}, {254, 283}}</string>
+					<string>{{824, 518}, {254, 283}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{197, 734}, {243, 243}}</string>
@@ -3465,7 +3465,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{525, 802}, {197, 73}}</string>
-					<string>{{547, 778}, {438, 20}}</string>
+					<string>{{678, 801}, {438, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{74, 862}</string>
@@ -3628,7 +3628,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">546</int>
+			<int key="maxID">549</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3703,7 +3703,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSToolbar</string>
 							<string>NSScrollView</string>
-							<string>NSTextView</string>
+							<string>SVTextView</string>
 							<string>NSPopUpButton</string>
 						</object>
 					</object>
@@ -3728,7 +3728,7 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">asciiTextView</string>
-								<string key="candidateClassName">NSTextView</string>
+								<string key="candidateClassName">SVTextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">encodingButton</string>
@@ -3790,6 +3790,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/SVAscensionDelegate.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SVTextView</string>
+					<string key="superclassName">NSTextView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/SVTextView.h</string>
 					</object>
 				</object>
 			</object>
