@@ -11,12 +11,9 @@
 
 @interface SVAscensionDelegate : NSObject {
 	
-	NSWindow *window;
+	//NSWindow *window;
 	BOOL	 applicationHasStarted;
 }
-
-// outlets
-@property (assign) IBOutlet NSWindow *window;
 
 // integer and float values
 @property (readwrite, assign) BOOL applicationHasStarted;

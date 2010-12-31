@@ -14,7 +14,7 @@
 
 @implementation SVAscensionDelegate
 
-@synthesize window, applicationHasStarted;
+@synthesize applicationHasStarted;
 
 # pragma mark -
 # pragma mark initialization
