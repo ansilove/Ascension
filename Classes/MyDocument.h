@@ -19,6 +19,8 @@ typedef enum {
 
 @interface MyDocument : NSDocument {
 	
+	IBOutlet NSWindow			  *mainWindow;
+	IBOutlet NSView				  *attachedEncView;
 	IBOutlet SVTextView			  *asciiTextView;
 	IBOutlet NSScrollView		  *asciiScrollView;
 	IBOutlet NSToolbar			  *appToolbar;
@@ -64,11 +66,14 @@ typedef enum {
 @property (readwrite, assign) NSDictionary *selectionAttributes;
 
 // outlets
+@property (retain) IBOutlet NSWindow	  *mainWindow;
+@property (retain) IBOutlet NSView		  *attachedEncView;
 @property (retain) IBOutlet SVTextView	  *asciiTextView;
 @property (retain) IBOutlet NSScrollView  *asciiScrollView;
 @property (retain) IBOutlet NSPopUpButton *encodingButton;
 
 // general methods
+- (void)createInterface;
 - (void)prepareContent;
 - (void)applyThemeColors;
 - (void)applyParagraphStyle;

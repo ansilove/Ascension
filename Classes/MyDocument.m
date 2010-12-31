@@ -21,11 +21,11 @@
 
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
-			charEncoding, iFilePath, iCreationDate, iModDate, iFileSize; 
+			charEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, attachedEncView; 
 
 
 # pragma mark -
-# pragma mark initialization and nib
+# pragma mark initialization
 
 - (id)init
 {
@@ -79,17 +79,6 @@
 	return self;
 }
 
-- (NSString *)windowNibName
-{
-    return @"MyDocument";
-}
-
-- (void)windowDidBecomeKey:(NSNotification *)notification 
-{
-	// Update the file information interface strings.
-	[self updateFileInfoValues];
-}
-
 - (void)windowControllerWillLoadNib:(NSWindowController *)aController
 {
 	// Make sure all conditions are met.
@@ -100,6 +89,9 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {	
 	[super windowControllerDidLoadNib:aController];
+	
+	// Add our custom UI elements.
+	[self createInterface];
 	
 	// Assign our attributed string.
 	if ([self string] != nil) {
@@ -119,8 +111,8 @@
 	
 	// Apply width and height based on the specified values in the preferences.
 	if (self.contentString.length < 50) {
-			self.newContentWidth = [defaults floatForKey:@"newContentWidth"];
-			self.newContentHeight = [defaults floatForKey:@"newContentWidth"];
+		self.newContentWidth = [defaults floatForKey:@"newContentWidth"];
+		self.newContentHeight = [defaults floatForKey:@"newContentWidth"];
 	}
 	else {
 		// Calculate the new content width and height, consider the toolbar (if visible).
@@ -163,7 +155,38 @@
 }
 
 # pragma mark -
-# pragma mark appearance
+# pragma mark UI specific
+
+- (NSString *)windowNibName
+{
+    return @"MyDocument";
+}
+
+- (void)windowDidBecomeKey:(NSNotification *)notification 
+{
+	// Update the file information interface strings.
+	[self updateFileInfoValues];
+}
+
+- (void)createInterface 
+{
+	// For now, this method attaches the encoding view to the UI.
+	NSView *themeFrame = [[mainWindow contentView] superview];
+	
+	NSRect container = [themeFrame frame];
+	NSRect encV = [attachedEncView frame];
+	
+	NSRect newFrame = NSMakeRect(container.size.width - encV.size.width,
+								 container.size.height - encV.size.height,
+								 encV.size.width,
+								 encV.size.height);
+	
+	[attachedEncView setFrame:newFrame];
+	[themeFrame addSubview:attachedEncView];
+}
+
+# pragma mark -
+# pragma mark content appearance
 
 - (void)prepareContent
 {
