@@ -32,6 +32,8 @@
 		F8DC439C1257E7F4000BE289 /* Export.png in Resources */ = {isa = PBXBuildFile; fileRef = F8DC439A1257E7F4000BE289 /* Export.png */; };
 		F8DC439D1257E7F4000BE289 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = F8DC439B1257E7F4000BE289 /* Info.png */; };
 		F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1D4B21285DBA90069F262 /* duplicate.png */; };
+		F8E5B36412CF76B5004DA9B7 /* AFileTypeGEN.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8E5B36212CF76B5004DA9B7 /* AFileTypeGEN.icns */; };
+		F8E5B36512CF76B5004DA9B7 /* AFileTypeTXT.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8E5B36312CF76B5004DA9B7 /* AFileTypeTXT.icns */; };
 		F8EA140D12781D3E002A6E6E /* SVFontController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140612781D3E002A6E6E /* SVFontController.m */; };
 		F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140A12781D3E002A6E6E /* SVThemeObject.m */; };
 		F8EA141012781D3E002A6E6E /* SVPrefsController+Themes.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140C12781D3E002A6E6E /* SVPrefsController+Themes.m */; };
@@ -90,6 +92,8 @@
 		F8DC439A1257E7F4000BE289 /* Export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Export.png; path = Images/Export.png; sourceTree = "<group>"; };
 		F8DC439B1257E7F4000BE289 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Info.png; path = Images/Info.png; sourceTree = "<group>"; };
 		F8E1D4B21285DBA90069F262 /* duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duplicate.png; path = Images/duplicate.png; sourceTree = "<group>"; };
+		F8E5B36212CF76B5004DA9B7 /* AFileTypeGEN.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeGEN.icns; path = Images/AFileTypeGEN.icns; sourceTree = "<group>"; };
+		F8E5B36312CF76B5004DA9B7 /* AFileTypeTXT.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeTXT.icns; path = Images/AFileTypeTXT.icns; sourceTree = "<group>"; };
 		F8EA140512781D3E002A6E6E /* SVFontController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFontController.h; path = Classes/SVFontController.h; sourceTree = "<group>"; };
 		F8EA140612781D3E002A6E6E /* SVFontController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFontController.m; path = Classes/SVFontController.m; sourceTree = "<group>"; };
 		F8EA140712781D3E002A6E6E /* SVPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVPrefsController.h; path = Classes/SVPrefsController.h; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 				1DDD582A0DA1D0D100B32029 /* MainMenu.xib */,
 				1DDD58280DA1D0D100B32029 /* MyDocument.xib */,
 				F8123D6211C7763000EABFE2 /* Preferences.xib */,
+				F8E5B36212CF76B5004DA9B7 /* AFileTypeGEN.icns */,
+				F8E5B36312CF76B5004DA9B7 /* AFileTypeTXT.icns */,
 				F8ECFA261295CB7D00535BD9 /* FileInfo.xib */,
 			);
 			name = Resources;
@@ -305,6 +311,8 @@
 				F8F3A42A12A0780100102D23 /* AFileTypeNFO.icns in Resources */,
 				F8AD9A4B12CE2BA1004CC071 /* CP437.png in Resources */,
 				F8AD9A4C12CE2BA1004CC071 /* Customize.png in Resources */,
+				F8E5B36412CF76B5004DA9B7 /* AFileTypeGEN.icns in Resources */,
+				F8E5B36512CF76B5004DA9B7 /* AFileTypeTXT.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
