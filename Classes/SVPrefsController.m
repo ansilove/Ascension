@@ -91,11 +91,11 @@ NSString * const SelectionColorChangeNotification = @"SelectionColorChange";
 	if (![defaults valueForKey:@"fontSize"]) {
 		[defaults setFloat:14.0 forKey:@"fontSize"];
 	}
-	if (![defaults valueForKey:@"preferredEncoding"]) {
-		[defaults setInteger:0 forKey:@"preferredEncoding"];
+	if (![defaults valueForKey:@"nfoDizEncoding"]) {
+		[defaults setInteger:0 forKey:@"nfoDizEncoding"];
 	}
-	if (![defaults valueForKey:@"failEncoding"]) {
-		[defaults setInteger:2 forKey:@"failEncoding"];
+	if (![defaults valueForKey:@"txtEncoding"]) {
+		[defaults setInteger:0 forKey:@"txtEncoding"];
 	}
 	if (![defaults valueForKey:@"encNotApplicableNote"]) {
 		[defaults setBool:YES forKey:@"encNotApplicableNote"];
@@ -153,8 +153,8 @@ NSString * const SelectionColorChangeNotification = @"SelectionColorChange";
 	[defaults setInteger:0 forKey:@"startupBehavior"];
 	[defaults setObject:@"Terminus" forKey:@"fontName"];
 	[defaults setFloat:14.0 forKey:@"fontSize"];
-	[defaults setInteger:0 forKey:@"preferredEncoding"];
-	[defaults setInteger:2 forKey:@"failEncoding"];
+	[defaults setInteger:0 forKey:@"nfoDizEncoding"];
+	[defaults setInteger:0 forKey:@"txtEncoding"];
 	[defaults setBool:YES forKey:@"encNotApplicableNote"];
 	[defaults setBool:YES forKey:@"docsOpenCentered"];
 	[defaults setFloat:650 forKey:@"newContentWidth"];
