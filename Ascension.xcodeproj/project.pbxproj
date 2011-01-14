@@ -15,6 +15,7 @@
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		F80458F712C69447004CF340 /* SVTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F80458F612C69447004CF340 /* SVTextView.m */; };
 		F80F27791297504600209618 /* SVFileInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F27781297504600209618 /* SVFileInfoController.m */; };
+		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
 		F8835768120F24ED00D18794 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* MyDocument.m */; };
 		F8835769120F24ED00D18794 /* SVPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835765120F24ED00D18794 /* SVPrefsWindowController.m */; };
@@ -26,14 +27,12 @@
 		F8835785120F256900D18794 /* Terminus.dfont in Resources */ = {isa = PBXBuildFile; fileRef = F8835784120F256900D18794 /* Terminus.dfont */; };
 		F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
-		F8AD9A4B12CE2BA1004CC071 /* CP437.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD9A4912CE2BA1004CC071 /* CP437.png */; };
+		F8AD9A4B12CE2BA1004CC071 /* CodePage.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD9A4912CE2BA1004CC071 /* CodePage.png */; };
 		F8AD9A4C12CE2BA1004CC071 /* Customize.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD9A4A12CE2BA1004CC071 /* Customize.png */; };
 		F8D8CD54123EB2E100ABF74F /* New.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D8CD4E123EB2E100ABF74F /* New.png */; };
 		F8DC439C1257E7F4000BE289 /* Export.png in Resources */ = {isa = PBXBuildFile; fileRef = F8DC439A1257E7F4000BE289 /* Export.png */; };
 		F8DC439D1257E7F4000BE289 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = F8DC439B1257E7F4000BE289 /* Info.png */; };
 		F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1D4B21285DBA90069F262 /* duplicate.png */; };
-		F8E5B36412CF76B5004DA9B7 /* AFileTypeGEN.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8E5B36212CF76B5004DA9B7 /* AFileTypeGEN.icns */; };
-		F8E5B36512CF76B5004DA9B7 /* AFileTypeTXT.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8E5B36312CF76B5004DA9B7 /* AFileTypeTXT.icns */; };
 		F8EA140D12781D3E002A6E6E /* SVFontController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140612781D3E002A6E6E /* SVFontController.m */; };
 		F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140A12781D3E002A6E6E /* SVThemeObject.m */; };
 		F8EA141012781D3E002A6E6E /* SVPrefsController+Themes.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140C12781D3E002A6E6E /* SVPrefsController+Themes.m */; };
@@ -74,6 +73,7 @@
 		F80458F612C69447004CF340 /* SVTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVTextView.m; path = Classes/SVTextView.m; sourceTree = "<group>"; };
 		F80F27771297504600209618 /* SVFileInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoController.h; path = Classes/SVFileInfoController.h; sourceTree = "<group>"; };
 		F80F27781297504600209618 /* SVFileInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoController.m; path = Classes/SVFileInfoController.m; sourceTree = "<group>"; };
+		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
 		F8835763120F24ED00D18794 /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDocument.h; path = Classes/MyDocument.h; sourceTree = "<group>"; };
 		F8835764120F24ED00D18794 /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDocument.m; path = Classes/MyDocument.m; sourceTree = "<group>"; };
 		F8835765120F24ED00D18794 /* SVPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPrefsWindowController.m; path = Classes/SVPrefsWindowController.m; sourceTree = "<group>"; };
@@ -86,14 +86,12 @@
 		F8835775120F251F00D18794 /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		F8835784120F256900D18794 /* Terminus.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Terminus.dfont; sourceTree = "<group>"; };
 		F8A894941208D34300871F98 /* AutoHyperlinks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoHyperlinks.framework; path = Frameworks/AutoHyperlinks.framework; sourceTree = "<group>"; };
-		F8AD9A4912CE2BA1004CC071 /* CP437.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CP437.png; path = Images/CP437.png; sourceTree = "<group>"; };
+		F8AD9A4912CE2BA1004CC071 /* CodePage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CodePage.png; path = Images/CodePage.png; sourceTree = "<group>"; };
 		F8AD9A4A12CE2BA1004CC071 /* Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Customize.png; path = Images/Customize.png; sourceTree = "<group>"; };
 		F8D8CD4E123EB2E100ABF74F /* New.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = New.png; path = Images/New.png; sourceTree = "<group>"; };
 		F8DC439A1257E7F4000BE289 /* Export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Export.png; path = Images/Export.png; sourceTree = "<group>"; };
 		F8DC439B1257E7F4000BE289 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Info.png; path = Images/Info.png; sourceTree = "<group>"; };
 		F8E1D4B21285DBA90069F262 /* duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duplicate.png; path = Images/duplicate.png; sourceTree = "<group>"; };
-		F8E5B36212CF76B5004DA9B7 /* AFileTypeGEN.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeGEN.icns; path = Images/AFileTypeGEN.icns; sourceTree = "<group>"; };
-		F8E5B36312CF76B5004DA9B7 /* AFileTypeTXT.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeTXT.icns; path = Images/AFileTypeTXT.icns; sourceTree = "<group>"; };
 		F8EA140512781D3E002A6E6E /* SVFontController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFontController.h; path = Classes/SVFontController.h; sourceTree = "<group>"; };
 		F8EA140612781D3E002A6E6E /* SVFontController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFontController.m; path = Classes/SVFontController.m; sourceTree = "<group>"; };
 		F8EA140712781D3E002A6E6E /* SVPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVPrefsController.h; path = Classes/SVPrefsController.h; sourceTree = "<group>"; };
@@ -159,8 +157,6 @@
 				F8835773120F251F00D18794 /* Ascension.icns */,
 				F8F3A42812A0780100102D23 /* AFileTypeNFO.icns */,
 				F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */,
-				F8E5B36312CF76B5004DA9B7 /* AFileTypeTXT.icns */,
-				F8E5B36212CF76B5004DA9B7 /* AFileTypeGEN.icns */,
 				F8835775120F251F00D18794 /* General.png */,
 				F8835772120F251F00D18794 /* Advanced.png */,
 				F8835774120F251F00D18794 /* Colors.png */,
@@ -169,7 +165,8 @@
 				F8DC439B1257E7F4000BE289 /* Info.png */,
 				F8E1D4B21285DBA90069F262 /* duplicate.png */,
 				F8AD9A4A12CE2BA1004CC071 /* Customize.png */,
-				F8AD9A4912CE2BA1004CC071 /* CP437.png */,
+				F8AD9A4912CE2BA1004CC071 /* CodePage.png */,
+				F80F4B1C12D54709000731AA /* Divider.png */,
 				F8835783120F256900D18794 /* Fonts */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
@@ -309,10 +306,9 @@
 				F8ECFA271295CB7D00535BD9 /* FileInfo.xib in Resources */,
 				F8F3A42912A0780100102D23 /* AFileTypeDIZ.icns in Resources */,
 				F8F3A42A12A0780100102D23 /* AFileTypeNFO.icns in Resources */,
-				F8AD9A4B12CE2BA1004CC071 /* CP437.png in Resources */,
+				F8AD9A4B12CE2BA1004CC071 /* CodePage.png in Resources */,
 				F8AD9A4C12CE2BA1004CC071 /* Customize.png in Resources */,
-				F8E5B36412CF76B5004DA9B7 /* AFileTypeGEN.icns in Resources */,
-				F8E5B36512CF76B5004DA9B7 /* AFileTypeTXT.icns in Resources */,
+				F80F4B1D12D54709000731AA /* Divider.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +431,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 21;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
@@ -456,7 +452,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 21;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
