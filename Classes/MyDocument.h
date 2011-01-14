@@ -12,9 +12,12 @@
 #import "SVTextView.h"
 
 typedef enum {
-	EncBlockASCII,
-	EncUnicode,
-	EncMacRoman
+	EncDosCP437,
+	EncDosCP866,
+	EncUniUTF8,
+	EncUniUTF16,
+	EncMacRoman,
+	EncWinLatin
 } SVEncoding;
 
 @interface MyDocument : NSDocument {
@@ -33,22 +36,26 @@ typedef enum {
 	NSColor						  *selectionColor;
 	NSDictionary				  *linkAttributes;
 	NSDictionary				  *selectionAttributes;
-	NSStringEncoding			  charEncoding;
 	CGFloat						  newContentWidth;
 	CGFloat						  newContentHeight;
 	NSString					  *iFilePath;
 	NSString					  *iCreationDate;
 	NSString					  *iModDate;
 	NSString					  *iFileSize;
+	NSStringEncoding			  nfoDizEncoding;
+	NSStringEncoding			  txtEncoding;
+	NSStringEncoding			  exportEncoding;
 }
 
 // strings
 @property (readwrite, assign) NSMutableAttributedString *contentString;
-@property (readwrite, assign) NSStringEncoding			charEncoding;
 @property (readwrite, assign) NSString					*iFilePath;
 @property (readwrite, assign) NSString					*iFileSize;
 @property (readwrite, assign) NSString					*iCreationDate;
 @property (readwrite, assign) NSString					*iModDate;
+@property (readwrite, assign) NSStringEncoding			nfoDizEncoding;
+@property (readwrite, assign) NSStringEncoding			txtEncoding;
+@property (readwrite, assign) NSStringEncoding			exportEncoding;
 
 // integer and float values
 @property (readwrite, assign) CGFloat	newContentWidth;
@@ -84,10 +91,15 @@ typedef enum {
 - (void)performCursorColorChange:(NSNotification *)note;
 - (void)performLinkColorChange:(NSNotification *)note;
 - (void)performSelectionColorChange:(NSNotification *)note;
-- (void)switchEncoding;
-- (void)switchEncodingButton;
+- (void)switchASCIIEncoding;
+- (void)switchTextEncoding;
+- (void)setEncodingButton;
 - (void)updateFileInfoValues;
 - (void)setString:(NSMutableAttributedString *)value;
+- (NSFileWrapper *)nfoFileWrapperWithError:(NSError **)pOutError;
+- (NSFileWrapper *)txtFileWrapperWithError:(NSError **)pOutError;
+- (BOOL)nfoReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
+- (BOOL)txtReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
 
 // objects and return values
 - (CGFloat)titlebarHeight;
@@ -95,9 +107,6 @@ typedef enum {
 - (NSMutableAttributedString *)string;
 
 // actions
-- (IBAction)encodeInUnicode:(id)sender;
-- (IBAction)encodeInBlockASCII:(id)sender;
-- (IBAction)encodeInMacRoman:(id)sender;
 - (IBAction)openFileInformation:(id)sender;
 
 @end

@@ -13,15 +13,19 @@
 #import "SVFileInfoWindowController.h"
 
 #define stdNSTextViewMargin 10
-#define BlockASCII CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
+#define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
+#define CodePage866 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSRussian)
 #define UnicodeUTF8 NSUTF8StringEncoding
-#define MacRomanASCII NSMacOSRomanStringEncoding
+#define UnicodeUTF16 NSUTF16StringEncoding
+#define MacOSRoman NSMacOSRomanStringEncoding
+#define WinLatin1 NSWindowsCP1252StringEncoding
 
 @implementation MyDocument
 
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
-			charEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, attachedEncView; 
+			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
+			attachedEncView; 
 
 
 # pragma mark -
@@ -35,8 +39,9 @@
 	   if (self.contentString == nil) {
 		   self.contentString = [[NSMutableAttributedString alloc] initWithString:@""];
 	   }
-	   // Define NSNotificationCenter.
+	   // Define NSNotificationCenter and NSUserDefaults.
 	   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	   NSUserDefaults *defaults= [NSUserDefaults standardUserDefaults];
 	   
 	   // Register as an observer for font color changes.
 	   [nc addObserver:self
@@ -74,7 +79,11 @@
 				  name:@"PasteNote"
 				object:nil];
 	   
-	   [self switchEncoding];
+	   // Load preferred encodings from user defaults. 
+	   self.nfoDizEncoding = [defaults integerForKey:@"nfoDizEncoding"];
+	   self.txtEncoding = [defaults integerForKey:@"txtEncoding"];
+	   
+	   //[self switchEncoding];
    }
 	return self;
 }
@@ -124,15 +133,15 @@
 												  styleMask:aController.window.styleMask];
 			toolbarHeight = NSHeight(windowFrame) - NSHeight([[aController.window contentView] frame]);
 		}
-		if ([defaults boolForKey:@"autoSizeWidth"] == YES) 
-		{
+		// Check if the user enabled width auto-sizing.
+		if ([defaults boolForKey:@"autoSizeWidth"] == YES) {
 			self.newContentWidth = myTextSize.width + stdNSTextViewMargin + [NSScroller scrollerWidth];
 		}
 		else {
 			self.newContentWidth = [aController.window frame].size.width;
 		}
-		if ([defaults boolForKey:@"autoSizeHeight"] == YES)
-		{
+		// Determine if height auto-sizing is enabled.
+		if ([defaults boolForKey:@"autoSizeHeight"] == YES) {
 			self.newContentHeight = myTextSize.height + [self titlebarHeight] + toolbarHeight;
 		}
 		else {
@@ -142,8 +151,6 @@
 	}
 	// Resize the document window based on either the caluclation or the preferences.
 	[aController.window setContentSize:NSMakeSize(self.newContentWidth, self.newContentHeight)];
-	
-	[self switchEncodingButton];
 	
 	// Set position of the document window.
 	[NSApp activateIgnoringOtherApps:YES];
@@ -302,6 +309,7 @@
     return screenRect;
 }
 
+// The performColorChange methods are fired by notifications, invoked from the prefs.
 - (void)performFontColorChange:(NSNotification *)note
 {
 	NSColor *fontColorValue = [[note userInfo] objectForKey:@"fontColorValue"];
@@ -334,6 +342,7 @@
 
 - (NSDictionary *)linkAttributes 
 {
+	// The attributes for embedded hyperlinks.
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			[NSCursor pointingHandCursor], NSCursorAttributeName,
 			[NSNumber numberWithInt:NSUnderlineStyleSingle], NSUnderlineStyleAttributeName,
@@ -342,6 +351,7 @@
 
 - (NSDictionary *)selectionAttributes
 {
+	// Attribute dicitionary for selections.
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			self.selectionColor, NSBackgroundColorAttributeName, nil];
 }
@@ -351,10 +361,12 @@
 
 - (NSMutableAttributedString *)string 
 { 
+	// Returns the contentstring.
 	return self.contentString; 
 }
 
 - (void)setString:(NSMutableAttributedString *)newValue {
+	// Performs a copy operation.
     if (self.contentString != newValue) {
         self.contentString = [newValue copy];
     }
@@ -371,242 +383,190 @@
 # pragma mark -
 # pragma mark data and encoding
 
-- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
+- (NSFileWrapper *)fileWrapperOfType:(NSString *)pTypeName 
+							   error:(NSError **)pOutError 
+{	
+	// Launch the output file wrapper based on the document UTI.
+	if ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame) {
+		return [self nfoFileWrapperWithError:pOutError];
+	}
+	if ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame) {
+		return [self nfoFileWrapperWithError:pOutError];
+	}
+	if ([pTypeName compare:@"public.plain-text"] == NSOrderedSame) {
+ 		return [self txtFileWrapperWithError:pOutError];      
+	}
+	if ([pTypeName compare:@"public.data"] == NSOrderedSame) {
+ 		return [self txtFileWrapperWithError:pOutError];      
+	}
+	return nil;
+}
+
+- (BOOL)readFromFileWrapper:(NSFileWrapper *)pFileWrapper 
+					 ofType:(NSString *)pTypeName 
+					  error:(NSError **)pOutError
 {
-	// Write data using the given encoding. 
-	NSData *data = [self.contentString.string dataUsingEncoding:self.charEncoding];
+	// Determine file type and launch the input file wrapper.
+	if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame)) {
+		return [self nfoReadFileWrapper:pFileWrapper error:pOutError];
+	}
+	if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame)) {
+		return [self nfoReadFileWrapper:pFileWrapper error:pOutError];
+	}
+	if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"public.plain-text"] == NSOrderedSame)) {
+		return [self txtReadFileWrapper:pFileWrapper error:pOutError];
+	}
+	// In all other cases open the document using the text file wrapper.
+	else {
+		return [self txtReadFileWrapper:pFileWrapper error:pOutError];
+	}
+	return NO;
+}
+
+- (BOOL)nfoReadFileWrapper:(NSFileWrapper *)pFileWrapper 
+						   error:(NSError **)pOutError 
+{	
+	// File wrapper for reading NFO and DIZ documents.
+	NSData *cp437Data = [pFileWrapper regularFileContents];
+	if(!cp437Data) 
+	{
+		return NO;
+	}
+	NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:CodePage437];
+	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:cp437String];
+	[self setString:importString];
 	
+	//If the UI is already loaded, this must be a 'revert to saved' operation.
+	if (self.asciiTextView) 
+	{
+		// Apply the loaded data to the text storage and restyle contents.
+		[[self.asciiTextView textStorage] setAttributedString:[self string]];
+		[self prepareContent];
+	}
+	return YES;
+}
+
+- (BOOL)txtReadFileWrapper:(NSFileWrapper *)pFileWrapper 
+					 error:(NSError **)pOutError
+{
+	// File wrapper for reading all text-based documents except NFO and DIZ.
+	NSData *textData = [pFileWrapper regularFileContents];
+	if(!textData) 
+	{
+		return NO;
+	}
+	NSString *textString = [[NSString alloc]initWithData:textData encoding:UnicodeUTF8];
+	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:textString];
+	[self setString:importString];
+	
+	//If the UI is already loaded, this must be a 'revert to saved' operation.
+	if (self.asciiTextView) 
+	{
+		// Apply the loaded data to the text storage and restyle contents.
+		[[self.asciiTextView textStorage] setAttributedString:[self string]];
+		[self prepareContent];
+	}
+	return YES;
+}
+
+- (NSFileWrapper *)nfoFileWrapperWithError:(NSError **)pOutError 
+{
+	// File wrapper for writing NFO and DIZ documents.
+	NSData *nfoData = [self.contentString.string dataUsingEncoding:CodePage437];
+
+	if (!nfoData) {
+		return NULL;
+	}
 	// Enable undo after save operations.
 	[self.asciiTextView breakUndoCoalescing];
 	
-	return data;
+	NSFileWrapper * nfoFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:nfoData];
+	if (!nfoFileWrapperObj) {
+		return NULL;
+	}
+	return nfoFileWrapperObj;	
 }
 
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
+- (NSFileWrapper *)txtFileWrapperWithError:(NSError **)pOutError 
 {
-	BOOL readSuccess = NO;
+	// File wrapper for writing all text-based documents except NFO and DIZ.
+	NSData *txtData = [self.contentString.string dataUsingEncoding:UnicodeUTF8];
 	
-	// Try reading the file data using the specified encoding.
-	NSString *fileContent = 
-	[[NSString alloc] initWithData:data encoding:self.charEncoding];
-	
-	// In case the data is unreadable, do the following.
-	if (!fileContent) 
-	{
-		// Check if the user wants information about the failed encoding.
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		switch ([defaults boolForKey:@"encNotApplicableNote"]) {
-			case YES: {
-				// Report that the encoding in not applicable.
-				if (self.charEncoding == UnicodeUTF8) {
-					NSRunInformationalAlertPanel(@"Encoding not applicable", 
-												 @"This document does not contain Unicode characters.", 
-												 @"OK", nil, nil);
-				}
-				else if (self.charEncoding == MacRomanASCII) {
-					NSRunInformationalAlertPanel(@"Encoding not applicable", 
-												 @"This document does not contain Mac Roman characters.", 
-												 @"OK", nil, nil);
-				}
-				else if (self.charEncoding == BlockASCII) {
-					NSRunInformationalAlertPanel(@"Encoding not applicable", 
-												 @"This document does not contain Block ASCII characters.", 
-												 @"OK", nil, nil);
-				}
-			}
-				break;
-			case NO: {
-				break;	
-			}
-			default: {
-				break;
-			}
-		}
-		// Apply the fail encoding.
-		switch ([defaults integerForKey:@"failEncoding"]) 
-		{
-			case EncBlockASCII: {
-				self.charEncoding = BlockASCII;
-				break;
-			}
-			case EncUnicode: {
-				self.charEncoding = UnicodeUTF8;
-				break;
-			}
-			case EncMacRoman: {
-				self.charEncoding = MacRomanASCII;
-				break;
-			}
-			default: {
-				break;
-			}
-		}
-		fileContent = [[NSString alloc] initWithData:data encoding:self.charEncoding];
+	if (!txtData) {
+		return NULL;
 	}
-	// In case the data was readable, continue here.
-    if (fileContent) 
-	{
-		readSuccess = YES;
-		NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:fileContent];
-		[self setString:importString];
-		
-		// If the UI is already loaded, this must be a 'revert to saved' operation.
-		if (self.asciiTextView) 
-		{
-			// Apply the loaded data to the text storage and restyle contents.
-			[[self.asciiTextView textStorage] setAttributedString:[self string]];
-			[self prepareContent];
-		}
-    }
-	[self updateFileInfoValues];
-    return readSuccess;
-}
+	// Enable undo after save operations.
+	[self.asciiTextView breakUndoCoalescing];
+	
+	NSFileWrapper * txtFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:txtData];
+	if (!txtFileWrapperObj) {
+		return NULL;
+	}
+	return txtFileWrapperObj;	
+}	
 
-- (void)switchEncoding
+- (void)switchASCIIEncoding
 {
-	// Read our desired encoding from user defaults.
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	switch ([defaults integerForKey:@"preferredEncoding"]) 
-	{
-		case EncBlockASCII: {
-			self.charEncoding = BlockASCII;
-			break;
-		}
-		case EncUnicode: {
-			self.charEncoding = UnicodeUTF8;
-			break;
-		}
-		case EncMacRoman: {
-			self.charEncoding = MacRomanASCII;
-			break;
-		}
-		default: {
-			break;
-		}
-	}
+//	// Read our desired encoding from user defaults.
+//	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//	switch ([defaults integerForKey:@"preferredEncoding"]) 
+//	{
+//		case EncBlockASCII: {
+//			self.charEncoding = BlockASCII;
+//			break;
+//		}
+//		case EncUnicode: {
+//			self.charEncoding = UnicodeUTF8;
+//			break;
+//		}
+//		case EncMacRoman: {
+//			self.charEncoding = MacRomanASCII;
+//			break;
+//		}
+//		default: {
+//			break;
+//		}
+//	}
 }
 
-- (void)switchEncodingButton
+- (void)switchTextEncoding
 {
-	// Update encoding button to display the correct encoding.
-	if (self.charEncoding == UnicodeUTF8) 
-	{
-		[self.encodingButton selectItemAtIndex:EncUnicode];
-	}
-	else if (self.charEncoding == MacRomanASCII) 
-	{
-		[self.encodingButton selectItemAtIndex:EncMacRoman];
-	}
-	else {
-		[self.encodingButton selectItemAtIndex:EncBlockASCII];
-	}
+	//	// Read our desired encoding from user defaults.
+	//	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	//	switch ([defaults integerForKey:@"preferredEncoding"]) 
+	//	{
+	//		case EncBlockASCII: {
+	//			self.charEncoding = BlockASCII;
+	//			break;
+	//		}
+	//		case EncUnicode: {
+	//			self.charEncoding = UnicodeUTF8;
+	//			break;
+	//		}
+	//		case EncMacRoman: {
+	//			self.charEncoding = MacRomanASCII;
+	//			break;
+	//		}
+	//		default: {
+	//			break;
+	//		}
+	//	}
 }
 
-- (IBAction)encodeInBlockASCII:(id)sender
+- (void)setEncodingButton
 {
-	// In case the string is already in Block ASCII encoding, leave this place.
-	if (self.charEncoding == BlockASCII) {
-		return;
-	}
-	// Create data object from the current content string.
-	NSData *strData = [self.contentString.string dataUsingEncoding:self.charEncoding];
-	NSMutableString *encodedStr = [[NSMutableString alloc] initWithData:strData encoding:BlockASCII];
-	
-	if (encodedStr) {
-		// Init temporary attributed string with our encoded content.
-		NSMutableAttributedString *tempAtrStr = [[NSMutableAttributedString alloc] initWithString:encodedStr];
-		
-		// Apply the new content string and set it's encoding.
-		self.charEncoding = BlockASCII;
-		[self setString:tempAtrStr];
-		[[self.asciiTextView textStorage] setAttributedString:[self string]];
-		
-		// Apply the appearance attributes.
-		[self prepareContent];
-	}
-	else {
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		if ([defaults boolForKey:@"encNotApplicableNote"] == YES) 
-		{
-			// Display note that the encoding can not be applied.
-			NSRunInformationalAlertPanel(@"Encoding not applicable", 
-										 @"This document does not contain Block ASCII characters.", 
-										 @"OK", nil, nil);
-		}
-		// Switch encoding button to previous selection.
-		[self switchEncodingButton];
-	}
-}
-
-- (IBAction)encodeInUnicode:(id)sender 
-{	
-	// In case the string is already in UTF8 encoding, bye bye.
-	if (self.charEncoding == UnicodeUTF8) {
-		return;
-	}
-	// Create data object from the current content string.
-	NSData *strData = [self.contentString.string dataUsingEncoding:self.charEncoding];
-	NSMutableString *encodedStr = [[NSMutableString alloc] initWithData:strData encoding:UnicodeUTF8];
-	
-	if (encodedStr) {
-		// Init temporary attributed string with our encoded content.
-		NSMutableAttributedString *tempAtrStr = [[NSMutableAttributedString alloc] initWithString:encodedStr];
-		
-		// Apply the new content string and set it's encoding.
-		self.charEncoding = UnicodeUTF8;
-		[self setString:tempAtrStr];
-		[[self.asciiTextView textStorage] setAttributedString:[self string]];
-		
-		// Apply the appearance attributes.
-		[self prepareContent];
-	}
-	else {
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		if ([defaults boolForKey:@"encNotApplicableNote"] == YES) 
-		{
-			// Display note that the encoding can not be applied.
-			NSRunInformationalAlertPanel(@"Encoding not applicable", 
-										 @"This document does not contain Unicode characters.", 
-										 @"OK", nil, nil);
-		}
-		// Switch encoding button to previous selection.
-		[self switchEncodingButton];
-	}
-}
-
-- (IBAction)encodeInMacRoman:(id)sender 
-{
-	if (self.charEncoding == MacRomanASCII) {
-		return;
-	}
-	// Create data object from the current content string.
-	NSData *strData = [self.contentString.string dataUsingEncoding:self.charEncoding];
-	NSMutableString *encodedStr = [[NSMutableString alloc] initWithData:strData encoding:MacRomanASCII];
-	
-	if (encodedStr) {
-		// Init temporary attributed string with our encoded content.
-		NSMutableAttributedString *tempAtrStr = [[NSMutableAttributedString alloc] initWithString:encodedStr];
-		
-		// Apply the new content string and set it's encoding.
-		self.charEncoding = MacRomanASCII;
-		[self setString:tempAtrStr];
-		[[self.asciiTextView textStorage] setAttributedString:[self string]];
-		
-		// Apply the appearance attributes.
-		[self prepareContent];
-	}
-	else {
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		if ([defaults boolForKey:@"encNotApplicableNote"] == YES) 
-		{
-			// Display note that the encoding can not be applied.
-			NSRunInformationalAlertPanel(@"Encoding not applicable", 
-										 @"This document does not contain Mac Roman characters.", 
-										 @"OK", nil, nil);
-		}
-		// Switch encoding button to previous selection.
-		[self switchEncodingButton];
-	}
+//	// Update encoding button to display the correct encoding.
+//	if (self.charEncoding == UnicodeUTF8) 
+//	{
+//		[self.encodingButton selectItemAtIndex:EncUnicode];
+//	}
+//	else if (self.charEncoding == MacRomanASCII) 
+//	{
+//		[self.encodingButton selectItemAtIndex:EncMacRoman];
+//	}
+//	else {
+//		[self.encodingButton selectItemAtIndex:EncBlockASCII];
+//	}
 }
 
 # pragma mark -
