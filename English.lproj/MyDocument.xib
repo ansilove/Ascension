@@ -2,17 +2,17 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">10H574</string>
+		<string key="IBDocument.SystemVersion">10J567</string>
 		<string key="IBDocument.InterfaceBuilderVersion">823</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.HIToolboxVersion">462.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">823</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
+			<integer value="100243"/>
 			<integer value="5"/>
-			<integer value="100206"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -207,13 +207,13 @@
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">C11D9C25-B71B-4B95-B74B-25DC2B642323</characters>
 							</object>
-							<string key="NSToolbarItemLabel">CP437</string>
-							<string key="NSToolbarItemPaletteLabel">CP437</string>
+							<string key="NSToolbarItemLabel">CodePage</string>
+							<string key="NSToolbarItemPaletteLabel">CodePage</string>
 							<string key="NSToolbarItemToolTip"/>
 							<nil key="NSToolbarItemView"/>
 							<object class="NSCustomResource" key="NSToolbarItemImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">CP437</string>
+								<string key="NSResourceName">CodePage</string>
 							</object>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
@@ -1271,6 +1271,14 @@
 				<string key="100206.IBWindowTemplateEditedContentRect">{{1183, 737}, {152, 21}}</string>
 				<boolean value="NO" key="100206.NSWindowTemplate.visibleAtLaunch"/>
 				<string key="100207.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<object class="NSMutableDictionary" key="100236.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">ToolTip</string>
+					<object class="IBToolTipAttribute" key="NS.object.0">
+						<string key="name">ToolTip</string>
+						<reference key="object" ref="373763667"/>
+						<string key="toolTip">To save this file using a different encoding, select it here and hit either 'Save' or 'Export'.</string>
+					</object>
+				</object>
 				<string key="100236.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<object class="NSAffineTransform" key="100236.IBViewBoundsToFrameTransform">
 					<bytes key="NSTransformStruct">P4AAAL+AAABBYAAAwagAAA</bytes>
@@ -1315,30 +1323,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MyDocument</string>
 					<string key="superclassName">NSDocument</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="encodeInBlockASCII:">id</string>
-						<string key="encodeInMacRoman:">id</string>
-						<string key="encodeInUnicode:">id</string>
-						<string key="openFileInformation:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="encodeInBlockASCII:">
-							<string key="name">encodeInBlockASCII:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="encodeInMacRoman:">
-							<string key="name">encodeInMacRoman:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="encodeInUnicode:">
-							<string key="name">encodeInUnicode:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openFileInformation:">
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">openFileInformation:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">openFileInformation:</string>
+						<object class="IBActionInfo" key="NS.object.0">
 							<string key="name">openFileInformation:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</dictionary>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="appToolbar">NSToolbar</string>
 						<string key="asciiScrollView">NSScrollView</string>
@@ -2017,7 +2012,7 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">../Ascension.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="CP437">{32, 32}</string>
+			<string key="CodePage">{32, 32}</string>
 			<string key="Customize">{32, 32}</string>
 			<string key="Export">{32, 32}</string>
 			<string key="Info">{32, 32}</string>
