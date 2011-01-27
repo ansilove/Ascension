@@ -19,7 +19,7 @@
 
 - (id)init
 {
-	if (self = [super init]) {}
+	if (self == [super init]) {}
 	return self;
 }
 
@@ -28,7 +28,7 @@
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-	if (self = [super init])
+	if (self == [super init])
 	{
 		self.atName	= [decoder decodeObjectForKey:@"atName"];
 		self.atFontColor = [decoder decodeObjectForKey:@"atFontColor"];
