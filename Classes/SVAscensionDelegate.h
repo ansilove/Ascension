@@ -11,7 +11,6 @@
 
 @interface SVAscensionDelegate : NSObject {
 	
-	//NSWindow *window;
 	BOOL	 applicationHasStarted;
 }
 
