@@ -11,6 +11,7 @@
 #import "SVFontController.h"
 #import "SVPrefsController.h"
 #import "SVFileInfoWindowController.h"
+#import "SVControlCharStringEngine.h"
 
 #define stdNSTextViewMargin 10
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
@@ -25,7 +26,7 @@
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
 			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
-			attachedEncView; 
+			attachedEncView, encButtonIndex; 
 
 
 # pragma mark -
@@ -33,15 +34,14 @@
 
 - (id)init
 {
-   if (self = [super init]) 
+   if (self == [super init]) 
    {
 	   // If there is no content string, create one.
 	   if (self.contentString == nil) {
 		   self.contentString = [[NSMutableAttributedString alloc] initWithString:@""];
 	   }
-	   // Define NSNotificationCenter and NSUserDefaults.
+	   // Define NSNotificationCenter.
 	   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	   NSUserDefaults *defaults= [NSUserDefaults standardUserDefaults];
 	   
 	   // Register as an observer for font color changes.
 	   [nc addObserver:self
@@ -78,12 +78,6 @@
 			  selector:@selector(handlePasteOperation:)
 				  name:@"PasteNote"
 				object:nil];
-	   
-	   // Load preferred encodings from user defaults. 
-	   self.nfoDizEncoding = [defaults integerForKey:@"nfoDizEncoding"];
-	   self.txtEncoding = [defaults integerForKey:@"txtEncoding"];
-	   
-	   //[self switchEncoding];
    }
 	return self;
 }
@@ -178,18 +172,18 @@
 - (void)createInterface 
 {
 	// For now, this method attaches the encoding view to the UI.
-	NSView *themeFrame = [[mainWindow contentView] superview];
+	NSView *themeFrame = [[self.mainWindow contentView] superview];
 	
 	NSRect container = [themeFrame frame];
-	NSRect encV = [attachedEncView frame];
+	NSRect encV = [self.attachedEncView frame];
 	
 	NSRect newFrame = NSMakeRect(container.size.width - encV.size.width,
 								 container.size.height - encV.size.height,
 								 encV.size.width,
 								 encV.size.height);
 	
-	[attachedEncView setFrame:newFrame];
-	[themeFrame addSubview:attachedEncView];
+	[self.attachedEncView setFrame:newFrame];
+	[themeFrame addSubview:self.attachedEncView];
 }
 
 # pragma mark -
@@ -214,7 +208,7 @@
 	// Specify the style for all contained links.
 	[self.asciiTextView setLinkTextAttributes:self.linkAttributes];
 	
-	// Set the color for selected text.
+	// Set the color for selected and marked text.
 	[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
 }
 
@@ -262,8 +256,8 @@
 	[customParagraph setMinimumLineHeight:myFontController.fontSize];
 	[customParagraph setMaximumLineHeight:myFontController.fontSize];
 	
-	// Disable Line Wrapping.
-	[customParagraph setLineBreakMode:NSLineBreakByTruncatingTail];
+	// Line wrapping in Ascension is enabled. Left. this code commented for possible future prefs.
+	// [customParagraph setLineBreakMode:NSLineBreakByTruncatingTail];
 	
 	// Set our custom paragraph as default paragraph style.
 	[self.asciiTextView setDefaultParagraphStyle:customParagraph];
@@ -357,9 +351,58 @@
 }
 
 # pragma mark -
+# pragma mark live search
+
+- (IBAction)performLiveSearch:(id)sender
+{
+	// Search for the sender's string value and show any matching entries.
+	NSString *liveSearchString = [sender stringValue];
+	NSRange lsStringRange = [[self.asciiTextView string] rangeOfString:liveSearchString];
+	if (lsStringRange.location == NSNotFound) {
+		return;
+	}
+	else {
+		NSArray *lsStringRanges = [self lsStringRangesInDocument:liveSearchString];
+		if ([lsStringRanges count]) {
+			if ([self.asciiTextView respondsToSelector:@selector(setSelectedRanges:)]) {
+				[self.asciiTextView setSelectedRanges:lsStringRanges];
+			} 
+			else {
+				[self.asciiTextView setSelectedRange:[[lsStringRanges objectAtIndex:0] rangeValue]];
+			}
+		}
+		[self.mainWindow makeFirstResponder:self.asciiTextView];
+		[self.asciiTextView scrollRangeToVisible:lsStringRange];
+		[self.asciiTextView showFindIndicatorForRange:lsStringRange];
+	}
+}
+
+- (NSArray *)lsStringRangesInDocument:(NSString *)liveSearchString 
+{
+	// Returns an array of ranges suitable for NSTextView's setSelectedRanges method.
+    NSString *txtStorString = [[self.asciiTextView textStorage] string];
+    NSMutableArray *ranges = [NSMutableArray array];
+	
+	NSRange thisCharRange, searchCharRange;
+    searchCharRange = NSMakeRange(0, [txtStorString length]);
+    while (searchCharRange.length > 0) {
+        thisCharRange = [txtStorString rangeOfString:liveSearchString options:0 range:searchCharRange];
+        if (thisCharRange.length > 0) {
+            searchCharRange.location = NSMaxRange(thisCharRange);
+            searchCharRange.length = [txtStorString length] - NSMaxRange(thisCharRange);
+            [ranges addObject: [NSValue valueWithRange:thisCharRange]];
+        } 
+		else {
+            searchCharRange = NSMakeRange(NSNotFound, 0);
+        }
+    }
+    return ranges;
+}
+
+# pragma mark -
 # pragma mark getter and setter
 
-- (NSMutableAttributedString *)string 
+- (NSMutableAttributedString *)string
 { 
 	// Returns the contentstring.
 	return self.contentString; 
@@ -432,7 +475,11 @@
 	{
 		return NO;
 	}
-	NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:CodePage437];
+	
+	// Check and apply the NFO / DIZ encoding.
+	[self switchASCIIEncoding];
+	
+	NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
 	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:cp437String];
 	[self setString:importString];
 	
@@ -455,7 +502,11 @@
 	{
 		return NO;
 	}
-	NSString *textString = [[NSString alloc]initWithData:textData encoding:UnicodeUTF8];
+	
+	// Check and apply the text encoding.
+	[self switchTextEncoding];
+	
+	NSString *textString = [[NSString alloc]initWithData:textData encoding:self.txtEncoding];
 	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:textString];
 	[self setString:importString];
 	
@@ -472,7 +523,8 @@
 - (NSFileWrapper *)nfoFileWrapperWithError:(NSError **)pOutError 
 {
 	// File wrapper for writing NFO and DIZ documents.
-	NSData *nfoData = [self.contentString.string dataUsingEncoding:CodePage437];
+	NSData *nfoData = 
+	[self.contentString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
 
 	if (!nfoData) {
 		return NULL;
@@ -490,7 +542,8 @@
 - (NSFileWrapper *)txtFileWrapperWithError:(NSError **)pOutError 
 {
 	// File wrapper for writing all text-based documents except NFO and DIZ.
-	NSData *txtData = [self.contentString.string dataUsingEncoding:UnicodeUTF8];
+	NSData *txtData = 
+	[self.contentString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
 	
 	if (!txtData) {
 		return NULL;
@@ -507,66 +560,95 @@
 
 - (void)switchASCIIEncoding
 {
-//	// Read our desired encoding from user defaults.
-//	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//	switch ([defaults integerForKey:@"preferredEncoding"]) 
-//	{
-//		case EncBlockASCII: {
-//			self.charEncoding = BlockASCII;
-//			break;
-//		}
-//		case EncUnicode: {
-//			self.charEncoding = UnicodeUTF8;
-//			break;
-//		}
-//		case EncMacRoman: {
-//			self.charEncoding = MacRomanASCII;
-//			break;
-//		}
-//		default: {
-//			break;
-//		}
-//	}
+	// Read and apply the ASCII encoding from user defaults.
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	switch ([defaults integerForKey:@"nfoDizEncoding"]) 
+	{
+		case EncDosCP437: {
+			self.nfoDizEncoding = CodePage437;
+			self.encButtonIndex = EIndexDosCP437;
+			break;
+		}
+		case EncDosCP866: {
+			self.nfoDizEncoding = CodePage866;
+			self.encButtonIndex = EIndexDosCP866;
+			break;
+		}
+		default: {
+			break;
+		}
+	}
+	// Set the export encoding to the current NFO / DIZ encoding.
+	self.exportEncoding = self.nfoDizEncoding;
 }
 
 - (void)switchTextEncoding
 {
-	//	// Read our desired encoding from user defaults.
-	//	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	//	switch ([defaults integerForKey:@"preferredEncoding"]) 
-	//	{
-	//		case EncBlockASCII: {
-	//			self.charEncoding = BlockASCII;
-	//			break;
-	//		}
-	//		case EncUnicode: {
-	//			self.charEncoding = UnicodeUTF8;
-	//			break;
-	//		}
-	//		case EncMacRoman: {
-	//			self.charEncoding = MacRomanASCII;
-	//			break;
-	//		}
-	//		default: {
-	//			break;
-	//		}
-	//	}
+	// Read and apply the TXT encoding from user defaults.
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	switch ([defaults integerForKey:@"txtEncoding"]) 
+	{
+		case EncUniUTF8: {
+			self.txtEncoding = UnicodeUTF8;
+			self.encButtonIndex = EIndexUniUTF8;
+			break;
+		}
+		case EncUniUTF16: {
+			self.txtEncoding = UnicodeUTF16;
+			self.encButtonIndex = EIndexUniUTF16;
+			break;
+		}
+		case EncMacRoman: {
+			self.txtEncoding = MacOSRoman;
+			self.encButtonIndex = EIndexMacRoman;
+			break;
+		}
+		case EncWinLatin: {
+			self.txtEncoding = WinLatin1;
+			self.encButtonIndex = EIndexWinLatin1;
+			break;
+		}
+		default: {
+			break;
+		}
+	}
+	// Set the export encoding to the current TXT encoding.
+	self.exportEncoding = self.txtEncoding;
 }
 
-- (void)setEncodingButton
+- (IBAction)switchExportEncoding:(id)sender
 {
-//	// Update encoding button to display the correct encoding.
-//	if (self.charEncoding == UnicodeUTF8) 
-//	{
-//		[self.encodingButton selectItemAtIndex:EncUnicode];
-//	}
-//	else if (self.charEncoding == MacRomanASCII) 
-//	{
-//		[self.encodingButton selectItemAtIndex:EncMacRoman];
-//	}
-//	else {
-//		[self.encodingButton selectItemAtIndex:EncBlockASCII];
-//	}
+	// Define the export encoding based on the encoding button index.
+	switch (self.encButtonIndex) 
+	{
+		case EIndexDosCP437: {
+			self.exportEncoding = CodePage437;
+			break;
+		}
+		case EIndexDosCP866: {
+			self.exportEncoding = CodePage866;
+			break;
+		}
+		case EIndexUniUTF8: {
+			self.exportEncoding = UnicodeUTF8;
+			break;
+		}
+		case EIndexUniUTF16: {
+			self.exportEncoding = UnicodeUTF16;
+			break;
+		}
+		case EIndexMacRoman: {
+			self.exportEncoding = MacOSRoman;
+			break;
+		}
+		case EIndexWinLatin1: {
+			self.exportEncoding = WinLatin1;
+			break;
+		}
+		default: {
+			break;
+		}
+	}
 }
 
 # pragma mark -

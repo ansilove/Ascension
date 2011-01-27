@@ -13,12 +13,24 @@
 
 typedef enum {
 	EncDosCP437,
-	EncDosCP866,
+	EncDosCP866
+} SVAscensionASCIIEncoding;
+
+typedef enum {
 	EncUniUTF8,
 	EncUniUTF16,
 	EncMacRoman,
 	EncWinLatin
-} SVEncoding;
+} SVAscensionTextEncoding;
+
+typedef enum {
+	EIndexDosCP437,
+	EIndexDosCP866,
+	EIndexUniUTF8,
+	EIndexUniUTF16,
+	EIndexMacRoman,
+	EIndexWinLatin1,
+} SVEncodingButtonIndex;
 
 @interface MyDocument : NSDocument {
 	
@@ -38,6 +50,7 @@ typedef enum {
 	NSDictionary				  *selectionAttributes;
 	CGFloat						  newContentWidth;
 	CGFloat						  newContentHeight;
+	NSInteger					  encButtonIndex;
 	NSString					  *iFilePath;
 	NSString					  *iCreationDate;
 	NSString					  *iModDate;
@@ -60,6 +73,7 @@ typedef enum {
 // integer and float values
 @property (readwrite, assign) CGFloat	newContentWidth;
 @property (readwrite, assign) CGFloat   newContentHeight;
+@property (readwrite, assign) NSInteger encButtonIndex;
 
 // colors
 @property (readwrite, assign) NSColor *fontColor;
@@ -93,7 +107,6 @@ typedef enum {
 - (void)performSelectionColorChange:(NSNotification *)note;
 - (void)switchASCIIEncoding;
 - (void)switchTextEncoding;
-- (void)setEncodingButton;
 - (void)updateFileInfoValues;
 - (void)setString:(NSMutableAttributedString *)value;
 - (NSFileWrapper *)nfoFileWrapperWithError:(NSError **)pOutError;
@@ -105,8 +118,11 @@ typedef enum {
 - (CGFloat)titlebarHeight;
 - (NSRect)screenRect;
 - (NSMutableAttributedString *)string;
+- (NSArray *)lsStringRangesInDocument:(NSString *)liveSearchString;
 
 // actions
 - (IBAction)openFileInformation:(id)sender;
+- (IBAction)switchExportEncoding:(id)sender;
+- (IBAction)performLiveSearch:(id)sender;
 
 @end
