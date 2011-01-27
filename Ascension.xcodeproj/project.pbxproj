@@ -17,6 +17,7 @@
 		F80F27791297504600209618 /* SVFileInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F27781297504600209618 /* SVFileInfoController.m */; };
 		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
+		F864E6EF12ECE2B900422D1D /* Artbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F864E6F112ECE2B900422D1D /* Artbox.xib */; };
 		F8835768120F24ED00D18794 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* MyDocument.m */; };
 		F8835769120F24ED00D18794 /* SVPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835765120F24ED00D18794 /* SVPrefsWindowController.m */; };
 		F883576A120F24ED00D18794 /* SVAscensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835767120F24ED00D18794 /* SVAscensionDelegate.m */; };
@@ -39,6 +40,7 @@
 		F8ECFA101295C85C00535BD9 /* SVFileInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ECFA0F1295C85C00535BD9 /* SVFileInfoWindowController.m */; };
 		F8ECFA271295CB7D00535BD9 /* FileInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8ECFA261295CB7D00535BD9 /* FileInfo.xib */; };
 		F8F14433129068C600D89311 /* SVPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F14432129068C600D89311 /* SVPrefsController.m */; };
+		F8F1607412E8E45300B53AAB /* SVControlCharStringEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1607312E8E45300B53AAB /* SVControlCharStringEngine.m */; };
 		F8F3A42912A0780100102D23 /* AFileTypeDIZ.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */; };
 		F8F3A42A12A0780100102D23 /* AFileTypeNFO.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8F3A42812A0780100102D23 /* AFileTypeNFO.icns */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,7 @@
 		F80F27771297504600209618 /* SVFileInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoController.h; path = Classes/SVFileInfoController.h; sourceTree = "<group>"; };
 		F80F27781297504600209618 /* SVFileInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoController.m; path = Classes/SVFileInfoController.m; sourceTree = "<group>"; };
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
+		F864E6F012ECE2B900422D1D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Artbox.xib; sourceTree = "<group>"; };
 		F8835763120F24ED00D18794 /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDocument.h; path = Classes/MyDocument.h; sourceTree = "<group>"; };
 		F8835764120F24ED00D18794 /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDocument.m; path = Classes/MyDocument.m; sourceTree = "<group>"; };
 		F8835765120F24ED00D18794 /* SVPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPrefsWindowController.m; path = Classes/SVPrefsWindowController.m; sourceTree = "<group>"; };
@@ -104,6 +107,8 @@
 		F8ECFA231295CB7000535BD9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FileInfo.xib; sourceTree = "<group>"; };
 		F8EEB89611C6E07900F16727 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
 		F8F14432129068C600D89311 /* SVPrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPrefsController.m; path = Classes/SVPrefsController.m; sourceTree = "<group>"; };
+		F8F1607212E8E45300B53AAB /* SVControlCharStringEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVControlCharStringEngine.h; path = Classes/SVControlCharStringEngine.h; sourceTree = "<group>"; };
+		F8F1607312E8E45300B53AAB /* SVControlCharStringEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVControlCharStringEngine.m; path = Classes/SVControlCharStringEngine.m; sourceTree = "<group>"; };
 		F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeDIZ.icns; path = Images/AFileTypeDIZ.icns; sourceTree = "<group>"; };
 		F8F3A42812A0780100102D23 /* AFileTypeNFO.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeNFO.icns; path = Images/AFileTypeNFO.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,10 +168,10 @@
 				F8D8CD4E123EB2E100ABF74F /* New.png */,
 				F8DC439A1257E7F4000BE289 /* Export.png */,
 				F8DC439B1257E7F4000BE289 /* Info.png */,
-				F8E1D4B21285DBA90069F262 /* duplicate.png */,
 				F8AD9A4A12CE2BA1004CC071 /* Customize.png */,
 				F8AD9A4912CE2BA1004CC071 /* CodePage.png */,
 				F80F4B1C12D54709000731AA /* Divider.png */,
+				F8E1D4B21285DBA90069F262 /* duplicate.png */,
 				F8835783120F256900D18794 /* Fonts */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
@@ -181,6 +186,8 @@
 				F8835764120F24ED00D18794 /* MyDocument.m */,
 				F80458F512C69447004CF340 /* SVTextView.h */,
 				F80458F612C69447004CF340 /* SVTextView.m */,
+				F8F1607212E8E45300B53AAB /* SVControlCharStringEngine.h */,
+				F8F1607312E8E45300B53AAB /* SVControlCharStringEngine.m */,
 				F8EA140512781D3E002A6E6E /* SVFontController.h */,
 				F8EA140612781D3E002A6E6E /* SVFontController.m */,
 				F883576B120F250000D18794 /* SVPrefsWindowController.h */,
@@ -220,6 +227,7 @@
 				1DDD58280DA1D0D100B32029 /* MyDocument.xib */,
 				F8123D6211C7763000EABFE2 /* Preferences.xib */,
 				F8ECFA261295CB7D00535BD9 /* FileInfo.xib */,
+				F864E6F112ECE2B900422D1D /* Artbox.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 				F8AD9A4B12CE2BA1004CC071 /* CodePage.png in Resources */,
 				F8AD9A4C12CE2BA1004CC071 /* Customize.png in Resources */,
 				F80F4B1D12D54709000731AA /* Divider.png in Resources */,
+				F864E6EF12ECE2B900422D1D /* Artbox.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +339,7 @@
 				F8ECFA101295C85C00535BD9 /* SVFileInfoWindowController.m in Sources */,
 				F80F27791297504600209618 /* SVFileInfoController.m in Sources */,
 				F80458F712C69447004CF340 /* SVTextView.m in Sources */,
+				F8F1607412E8E45300B53AAB /* SVControlCharStringEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +384,14 @@
 				F8EEB89611C6E07900F16727 /* English */,
 			);
 			name = Preferences.xib;
+			sourceTree = "<group>";
+		};
+		F864E6F112ECE2B900422D1D /* Artbox.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F864E6F012ECE2B900422D1D /* English */,
+			);
+			name = Artbox.xib;
 			sourceTree = "<group>";
 		};
 		F8ECFA261295CB7D00535BD9 /* FileInfo.xib */ = {
