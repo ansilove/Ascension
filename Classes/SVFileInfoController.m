@@ -17,7 +17,7 @@
 
 - (id)init 
 {
-	if (self = [super init]) 
+	if (self == [super init]) 
 	{
 		// Observe and process the file information values.
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
