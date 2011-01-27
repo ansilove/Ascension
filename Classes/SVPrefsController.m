@@ -28,7 +28,7 @@ NSString * const SelectionColorChangeNotification = @"SelectionColorChange";
 
 - (id)init
 {
-    if (self = [super init]) 
+    if (self == [super init]) 
 	{
 		// Initialize the theme array.
 		self.themesArray = [[NSMutableArray alloc] init];
