@@ -17,7 +17,13 @@
 		F80F27791297504600209618 /* SVFileInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F27781297504600209618 /* SVFileInfoController.m */; };
 		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
-		F864E6EF12ECE2B900422D1D /* Artbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F864E6F112ECE2B900422D1D /* Artbox.xib */; };
+		F83AC85D12FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85712FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif */; };
+		F83AC85E12FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85812FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif */; };
+		F83AC85F12FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85912FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif */; };
+		F83AC86012FCE2BB002FF776 /* TransparentScrollerKnobRight.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85A12FCE2BB002FF776 /* TransparentScrollerKnobRight.tif */; };
+		F83AC86112FCE2BB002FF776 /* TransparentScrollerKnobTop.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85B12FCE2BB002FF776 /* TransparentScrollerKnobTop.tif */; };
+		F83AC86212FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85C12FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif */; };
+		F83AC86512FCE3EA002FF776 /* SVTransparentScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AC86412FCE3E9002FF776 /* SVTransparentScroller.m */; };
 		F8835768120F24ED00D18794 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* MyDocument.m */; };
 		F8835769120F24ED00D18794 /* SVPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835765120F24ED00D18794 /* SVPrefsWindowController.m */; };
 		F883576A120F24ED00D18794 /* SVAscensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835767120F24ED00D18794 /* SVAscensionDelegate.m */; };
@@ -76,7 +82,14 @@
 		F80F27771297504600209618 /* SVFileInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoController.h; path = Classes/SVFileInfoController.h; sourceTree = "<group>"; };
 		F80F27781297504600209618 /* SVFileInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoController.m; path = Classes/SVFileInfoController.m; sourceTree = "<group>"; };
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
-		F864E6F012ECE2B900422D1D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Artbox.xib; sourceTree = "<group>"; };
+		F83AC85712FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobBottom.tif; sourceTree = "<group>"; };
+		F83AC85812FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobHorizontalFill.tif; sourceTree = "<group>"; };
+		F83AC85912FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobLeft.tif; sourceTree = "<group>"; };
+		F83AC85A12FCE2BB002FF776 /* TransparentScrollerKnobRight.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobRight.tif; sourceTree = "<group>"; };
+		F83AC85B12FCE2BB002FF776 /* TransparentScrollerKnobTop.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobTop.tif; sourceTree = "<group>"; };
+		F83AC85C12FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobVerticalFill.tif; sourceTree = "<group>"; };
+		F83AC86312FCE3E9002FF776 /* SVTransparentScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVTransparentScroller.h; path = Classes/SVTransparentScroller.h; sourceTree = SOURCE_ROOT; };
+		F83AC86412FCE3E9002FF776 /* SVTransparentScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVTransparentScroller.m; path = Classes/SVTransparentScroller.m; sourceTree = SOURCE_ROOT; };
 		F8835763120F24ED00D18794 /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDocument.h; path = Classes/MyDocument.h; sourceTree = "<group>"; };
 		F8835764120F24ED00D18794 /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDocument.m; path = Classes/MyDocument.m; sourceTree = "<group>"; };
 		F8835765120F24ED00D18794 /* SVPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPrefsWindowController.m; path = Classes/SVPrefsWindowController.m; sourceTree = "<group>"; };
@@ -172,6 +185,7 @@
 				F8AD9A4912CE2BA1004CC071 /* CodePage.png */,
 				F80F4B1C12D54709000731AA /* Divider.png */,
 				F8E1D4B21285DBA90069F262 /* duplicate.png */,
+				F83AC85612FCE2BB002FF776 /* Controls */,
 				F8835783120F256900D18794 /* Fonts */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
@@ -202,8 +216,9 @@
 				F8ECFA0F1295C85C00535BD9 /* SVFileInfoWindowController.m */,
 				F80F27771297504600209618 /* SVFileInfoController.h */,
 				F80F27781297504600209618 /* SVFileInfoController.m */,
-				F8835766120F24ED00D18794 /* SVAscensionDelegate.h */,
 				F8835767120F24ED00D18794 /* SVAscensionDelegate.m */,
+				F8835766120F24ED00D18794 /* SVAscensionDelegate.h */,
+				F8E71E76130610980008B266 /* Forks */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -227,7 +242,6 @@
 				1DDD58280DA1D0D100B32029 /* MyDocument.xib */,
 				F8123D6211C7763000EABFE2 /* Preferences.xib */,
 				F8ECFA261295CB7D00535BD9 /* FileInfo.xib */,
-				F864E6F112ECE2B900422D1D /* Artbox.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -241,12 +255,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F83AC85612FCE2BB002FF776 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				F83AC85712FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif */,
+				F83AC85812FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif */,
+				F83AC85912FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif */,
+				F83AC85A12FCE2BB002FF776 /* TransparentScrollerKnobRight.tif */,
+				F83AC85B12FCE2BB002FF776 /* TransparentScrollerKnobTop.tif */,
+				F83AC85C12FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif */,
+			);
+			name = Controls;
+			path = Images/Controls;
+			sourceTree = "<group>";
+		};
 		F8835783120F256900D18794 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				F8835784120F256900D18794 /* Terminus.dfont */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F8E71E76130610980008B266 /* Forks */ = {
+			isa = PBXGroup;
+			children = (
+				F83AC86312FCE3E9002FF776 /* SVTransparentScroller.h */,
+				F83AC86412FCE3E9002FF776 /* SVTransparentScroller.m */,
+			);
+			name = Forks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,7 +354,12 @@
 				F8AD9A4B12CE2BA1004CC071 /* CodePage.png in Resources */,
 				F8AD9A4C12CE2BA1004CC071 /* Customize.png in Resources */,
 				F80F4B1D12D54709000731AA /* Divider.png in Resources */,
-				F864E6EF12ECE2B900422D1D /* Artbox.xib in Resources */,
+				F83AC85D12FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif in Resources */,
+				F83AC85E12FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif in Resources */,
+				F83AC85F12FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif in Resources */,
+				F83AC86012FCE2BB002FF776 /* TransparentScrollerKnobRight.tif in Resources */,
+				F83AC86112FCE2BB002FF776 /* TransparentScrollerKnobTop.tif in Resources */,
+				F83AC86212FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +382,7 @@
 				F80F27791297504600209618 /* SVFileInfoController.m in Sources */,
 				F80458F712C69447004CF340 /* SVTextView.m in Sources */,
 				F8F1607412E8E45300B53AAB /* SVControlCharStringEngine.m in Sources */,
+				F83AC86512FCE3EA002FF776 /* SVTransparentScroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,14 +427,6 @@
 				F8EEB89611C6E07900F16727 /* English */,
 			);
 			name = Preferences.xib;
-			sourceTree = "<group>";
-		};
-		F864E6F112ECE2B900422D1D /* Artbox.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F864E6F012ECE2B900422D1D /* English */,
-			);
-			name = Artbox.xib;
 			sourceTree = "<group>";
 		};
 		F8ECFA261295CB7D00535BD9 /* FileInfo.xib */ = {
@@ -449,7 +484,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
@@ -470,7 +505,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
