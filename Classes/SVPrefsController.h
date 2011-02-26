@@ -9,13 +9,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-// global variables
-extern NSString * const FontColorChangeNotification;
-extern NSString * const BgrndColorChangeNotification;
-extern NSString * const CursorColorChangeNotification;
-extern NSString * const LinkColorChangeNotification;
-extern NSString * const SelectionColorChangeNotification;
-
 @interface SVPrefsController : NSObject {
 	
 	IBOutlet NSColorWell *fontColorWell;

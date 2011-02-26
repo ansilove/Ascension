@@ -11,13 +11,6 @@
 #import "SVPrefsController+Themes.h"
 #import "SVThemeObject.h" 
 
-// Notification string definition
-NSString * const FontColorChangeNotification = @"FontColorChange";
-NSString * const BgrndColorChangeNotification = @"BgrndColorChange";
-NSString * const CursorColorChangeNotification = @"CursorColorChange";
-NSString * const LinkColorChangeNotification = @"LinkColorChange";
-NSString * const SelectionColorChangeNotification = @"SelectionColorChange";
-
 @implementation SVPrefsController
 
 @synthesize fontColorWell, bgrndColorWell, cursorColorWell, linkColorWell, selectionColorWell, 
@@ -281,7 +274,7 @@ NSString * const SelectionColorChangeNotification = @"SelectionColorChange";
 	// Send font color change notification to all instances of MyDocument.
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
 	NSDictionary *dict = [NSDictionary dictionaryWithObject:[fontColorWell color] forKey:@"fontColorValue"]; 
-	[nc postNotificationName:FontColorChangeNotification
+	[nc postNotificationName:@"FontColorChange"
 					  object:self 
 					userInfo:dict];
 }
@@ -291,7 +284,7 @@ NSString * const SelectionColorChangeNotification = @"SelectionColorChange";
 	// Send background color change notification to all instances of MyDocument.
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
 	NSDictionary *dict = [NSDictionary dictionaryWithObject:[bgrndColorWell color] forKey:@"bgrndColorValue"]; 
-	[nc postNotificationName:BgrndColorChangeNotification
+	[nc postNotificationName:@"BgrndColorChange"
 					  object:self 
 					userInfo:dict];
 }
@@ -301,7 +294,7 @@ NSString * const SelectionColorChangeNotification = @"SelectionColorChange";
 	// Send cursor color change notification to all instances of MyDocument.
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
 	NSDictionary *dict = [NSDictionary dictionaryWithObject:[cursorColorWell color] forKey:@"cursorColorValue"];
-	[nc postNotificationName:CursorColorChangeNotification
+	[nc postNotificationName:@"CursorColorChange"
 					  object:self
 					userInfo:dict];
 }
@@ -311,7 +304,7 @@ NSString * const SelectionColorChangeNotification = @"SelectionColorChange";
 	// Send link color change notification to all instances of MyDocument.
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
 	NSDictionary *dict = [NSDictionary dictionaryWithObject:[linkColorWell color] forKey:@"linkColorValue"];
-	[nc postNotificationName:LinkColorChangeNotification
+	[nc postNotificationName:@"LinkColorChange"
 					  object:self
 					userInfo:dict];
 }
@@ -321,7 +314,7 @@ NSString * const SelectionColorChangeNotification = @"SelectionColorChange";
 	// Send selection color change notification to all instances of MyDocument.
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
 	NSDictionary *dict = [NSDictionary dictionaryWithObject:[selectionColorWell color] forKey:@"selectionColorValue"];
-	[nc postNotificationName:SelectionColorChangeNotification
+	[nc postNotificationName:@"SelectionColorChange"
 					  object:self
 					userInfo:dict];
 }
