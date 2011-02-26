@@ -10,11 +10,12 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>nfo</string>
+				<string>asc</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>AFileTypeNFO.icns</string>
 			<key>CFBundleTypeName</key>
-			<string>ASCII Information (NFO)</string>
+			<string>ASCII information (.nfo)</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
@@ -36,7 +37,7 @@
 			<key>CFBundleTypeIconFile</key>
 			<string>AFileTypeDIZ.icns</string>
 			<key>CFBundleTypeName</key>
-			<string>Description in Zipfile (DIZ)</string>
+			<string>Description in zipfile (.diz)</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
@@ -51,10 +52,12 @@
 			<string>Binary</string>
 		</dict>
 		<dict>
-			<key>CFBundleTypeIconFile</key>
-			<string>AFileTypeTXT.icns</string>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>txt</string>
+			</array>
 			<key>CFBundleTypeName</key>
-			<string>Plain Text (TXT)</string>
+			<string>Plain text (.txt)</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
@@ -67,6 +70,330 @@
 			<string>MyDocument</string>
 			<key>NSPersistentStoreTypeKey</key>
 			<string>Binary</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>h</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>C header file (.h)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.c-header</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>c</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>C source code (.c)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.c-source</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>m</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Objective-C source code (.m)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.objective-c-source</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>hpp</string>
+				<string>h++</string>
+				<string>hxx</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>C++ header file (.hpp)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.c-plus-plus-header</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>cpp</string>
+				<string>cp</string>
+				<string>c++</string>
+				<string>cc</string>
+				<string>cxx</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>C++ source code (.cpp)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.c-plus-plus-source</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>mm</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Objective-C++ source code (.mm)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.objective-c-plus-​plus-source</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>s</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Assembly language code (.s)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.assembly-source</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>java</string>
+				<string>jav</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Java source code (.java)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.sun.java-source</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>sh</string>
+				<string>command</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Shell script (.sh)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.shell-script</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>csh</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>C-Shell script (.csh)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.csh-script</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>pl</string>
+				<string>pm</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Perl script (.pl)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.perl-script</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>py</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Python script (.py)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.python-script</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>rb</string>
+				<string>rbw</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Ruby script (.rb)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.ruby-script</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>applescript</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>AppleScript text (.applescript)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.applescript.text</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>scpt</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>AppleScript (.scpt)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.applescript.​script</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>js</string>
+				<string>jscript</string>
+				<string>javascript</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>JavaScript (.js)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.netscape.javascript-​source</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>php</string>
+				<string>php3</string>
+				<string>php4</string>
+				<string>php5</string>
+				<string>ph3</string>
+				<string>ph4</string>
+				<string>ph5</string>
+				<string>phtml</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>PHP script (.php)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.php-script</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>html</string>
+				<string>htm</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>HTML text (.html)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.html</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>xml</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>XML text (.xml)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.xml</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>MyDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
@@ -101,8 +428,10 @@
 	<string>1.1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array/>
 	<key>CFBundleVersion</key>
-	<string>21</string>
+	<string>23</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
@@ -114,6 +443,8 @@ All rights reserved.</string>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSServices</key>
+	<array/>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
@@ -122,7 +453,7 @@ All rights reserved.</string>
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>ASCII Information (NFO)</string>
+			<string>ASCII Information (nfo)</string>
 			<key>UTTypeIconFile</key>
 			<string>AFileTypeNFO.icns</string>
 			<key>UTTypeIdentifier</key>
@@ -132,6 +463,7 @@ All rights reserved.</string>
 				<key>public.filename-extension</key>
 				<array>
 					<string>nfo</string>
+					<string>asc</string>
 				</array>
 			</dict>
 		</dict>
@@ -141,7 +473,7 @@ All rights reserved.</string>
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Description in Zipfile (DIZ)</string>
+			<string>Description in Zipfile (diz)</string>
 			<key>UTTypeIconFile</key>
 			<string>AFileTypeDIZ.icns</string>
 			<key>UTTypeIdentifier</key>
@@ -155,5 +487,7 @@ All rights reserved.</string>
 			</dict>
 		</dict>
 	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array/>
 </dict>
 </plist>
