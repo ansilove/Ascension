@@ -7,13 +7,16 @@
 //  http://www.byteproject.net
 //
 
+// Einbauen HTML und son Kram ISO Latin, auch Win Latin in ISO Latin umbenennen :)
+
 #import "MyDocument.h"
 #import "SVFontController.h"
 #import "SVPrefsController.h"
 #import "SVFileInfoWindowController.h"
 #import "SVControlCharStringEngine.h"
+#import "SVTransparentScroller.h"
 
-#define stdNSTextViewMargin 10
+#define stdNSTextViewMargin 20
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
 #define CodePage866 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSRussian)
 #define UnicodeUTF8 NSUTF8StringEncoding
@@ -46,31 +49,31 @@
 	   // Register as an observer for font color changes.
 	   [nc addObserver:self
 			  selector:@selector(performFontColorChange:) 
-				  name:FontColorChangeNotification
+				  name:@"FontColorChange"
 				object:nil];
 	   
 	   // Become an observer for background color changes.
 	   [nc addObserver:self
 			  selector:@selector(performBgrndColorChange:) 
-				  name:BgrndColorChangeNotification
+				  name:@"BgrndColorChange"
 				object:nil];
 	   
 	   // Start observating any cursor color changes.
 	   [nc addObserver:self
 			  selector:@selector(performCursorColorChange:)
-				  name:CursorColorChangeNotification
+				  name:@"CursorColorChange"
 				object:nil];
 	   
 	   // Register as observer for link color changes.
 	   [nc addObserver:self
 			  selector:@selector(performLinkColorChange:)
-				  name:LinkColorChangeNotification
+				  name:@"LinkColorChange"
 				object:nil];
 	   
 	   // Become observer of color changes for selected text.
 	   [nc addObserver:self
 			  selector:@selector(performSelectionColorChange:)
-				  name:SelectionColorChangeNotification
+				  name:@"SelectionColorChange"
 				object:nil];
 	   
 	   // Check if the user pastes content into SVTextView.
@@ -105,8 +108,8 @@
 	
 	// Apply the appearance attributes.
 	[self prepareContent];
-	
-	// Create a beautiful window bottom.
+    
+    // Create a beautiful window bottom.
 	[aController.window setContentBorderThickness:20.0f forEdge:NSMinYEdge];
 	
 	// Value for auto-sizing the document window.
@@ -129,7 +132,7 @@
 		}
 		// Check if the user enabled width auto-sizing.
 		if ([defaults boolForKey:@"autoSizeWidth"] == YES) {
-			self.newContentWidth = myTextSize.width + stdNSTextViewMargin + [NSScroller scrollerWidth];
+			self.newContentWidth = myTextSize.width + stdNSTextViewMargin + [SVTransparentScroller scrollerWidth];
 		}
 		else {
 			self.newContentWidth = [aController.window frame].size.width;
@@ -143,6 +146,9 @@
 		}
 		
 	}
+    //
+    // Future implementation will use 'windowWillUseStandardFrame'.
+    // 
 	// Resize the document window based on either the caluclation or the preferences.
 	[aController.window setContentSize:NSMakeSize(self.newContentWidth, self.newContentHeight)];
 	
@@ -436,12 +442,9 @@
 	if ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame) {
 		return [self nfoFileWrapperWithError:pOutError];
 	}
-	if ([pTypeName compare:@"public.plain-text"] == NSOrderedSame) {
- 		return [self txtFileWrapperWithError:pOutError];      
-	}
-	if ([pTypeName compare:@"public.data"] == NSOrderedSame) {
- 		return [self txtFileWrapperWithError:pOutError];      
-	}
+    else {
+        return [self txtFileWrapperWithError:pOutError]; 
+    }
 	return nil;
 }
 
@@ -556,7 +559,7 @@
 		return NULL;
 	}
 	return txtFileWrapperObj;	
-}	
+}
 
 - (void)switchASCIIEncoding
 {
