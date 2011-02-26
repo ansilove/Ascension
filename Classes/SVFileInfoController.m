@@ -1,9 +1,10 @@
 //
-//  SVFileInfoController.m
+//  SVAscensionDelegate.h
 //  Ascension
 //
-//  Created by Stefan Vogt on 19.11.10.
-//  Copyright 2010 Stefan Vogt. All rights reserved.
+//  Coded by Stefan Vogt.
+//  Released under the FreeBSD license.
+//  http://www.byteproject.net
 //
 
 #import "SVFileInfoController.h"
