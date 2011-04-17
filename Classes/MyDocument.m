@@ -165,7 +165,7 @@
 	// Create the bottom bar.
     [self.mainWindow setContentBorderThickness:24.0 forEdge:NSMinYEdge];
     
-    // Set“ the style of Lion's overlay Scrollers.
+    // Set the style of Lion's overlay Scrollers.
     [self.hScroller setKnobStyle:NSScrollerKnobStyleLight];
     [self.vScroller setKnobStyle:NSScrollerKnobStyleLight];
 }
