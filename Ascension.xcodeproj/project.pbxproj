@@ -17,13 +17,15 @@
 		F80F27791297504600209618 /* SVFileInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F27781297504600209618 /* SVFileInfoController.m */; };
 		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
+		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
 		F83AC85D12FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85712FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif */; };
 		F83AC85E12FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85812FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif */; };
 		F83AC85F12FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85912FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif */; };
 		F83AC86012FCE2BB002FF776 /* TransparentScrollerKnobRight.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85A12FCE2BB002FF776 /* TransparentScrollerKnobRight.tif */; };
 		F83AC86112FCE2BB002FF776 /* TransparentScrollerKnobTop.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85B12FCE2BB002FF776 /* TransparentScrollerKnobTop.tif */; };
 		F83AC86212FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85C12FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif */; };
-		F83AC86512FCE3EA002FF776 /* SVTransparentScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AC86412FCE3E9002FF776 /* SVTransparentScroller.m */; };
+		F869391E135A5C6C0024BE07 /* context_info.png in Resources */ = {isa = PBXBuildFile; fileRef = F869391D135A5C6C0024BE07 /* context_info.png */; };
+		F8693920135A5C790024BE07 /* context_export.png in Resources */ = {isa = PBXBuildFile; fileRef = F869391F135A5C790024BE07 /* context_export.png */; };
 		F8835768120F24ED00D18794 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* MyDocument.m */; };
 		F8835769120F24ED00D18794 /* SVPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835765120F24ED00D18794 /* SVPrefsWindowController.m */; };
 		F883576A120F24ED00D18794 /* SVAscensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835767120F24ED00D18794 /* SVAscensionDelegate.m */; };
@@ -31,14 +33,10 @@
 		F8835778120F251F00D18794 /* Ascension.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8835773120F251F00D18794 /* Ascension.icns */; };
 		F8835779120F251F00D18794 /* Colors.png in Resources */ = {isa = PBXBuildFile; fileRef = F8835774120F251F00D18794 /* Colors.png */; };
 		F883577A120F251F00D18794 /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = F8835775120F251F00D18794 /* General.png */; };
-		F8835785120F256900D18794 /* Terminus.dfont in Resources */ = {isa = PBXBuildFile; fileRef = F8835784120F256900D18794 /* Terminus.dfont */; };
 		F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
-		F8AD9A4B12CE2BA1004CC071 /* CodePage.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD9A4912CE2BA1004CC071 /* CodePage.png */; };
 		F8AD9A4C12CE2BA1004CC071 /* Customize.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD9A4A12CE2BA1004CC071 /* Customize.png */; };
-		F8D8CD54123EB2E100ABF74F /* New.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D8CD4E123EB2E100ABF74F /* New.png */; };
-		F8DC439C1257E7F4000BE289 /* Export.png in Resources */ = {isa = PBXBuildFile; fileRef = F8DC439A1257E7F4000BE289 /* Export.png */; };
-		F8DC439D1257E7F4000BE289 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = F8DC439B1257E7F4000BE289 /* Info.png */; };
+		F8DBE75C132D5D6C00A9F868 /* Terminus.dfont in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8835784120F256900D18794 /* Terminus.dfont */; };
 		F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1D4B21285DBA90069F262 /* duplicate.png */; };
 		F8EA140D12781D3E002A6E6E /* SVFontController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140612781D3E002A6E6E /* SVFontController.m */; };
 		F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140A12781D3E002A6E6E /* SVThemeObject.m */; };
@@ -62,6 +60,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F8DBE75A132D5D3400A9F868 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				F8DBE75C132D5D6C00A9F868 /* Terminus.dfont in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -82,14 +90,16 @@
 		F80F27771297504600209618 /* SVFileInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoController.h; path = Classes/SVFileInfoController.h; sourceTree = "<group>"; };
 		F80F27781297504600209618 /* SVFileInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoController.m; path = Classes/SVFileInfoController.m; sourceTree = "<group>"; };
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
+		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
+		F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRoardactedScroller.m; path = Classes/SVRoardactedScroller.m; sourceTree = "<group>"; };
 		F83AC85712FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobBottom.tif; sourceTree = "<group>"; };
 		F83AC85812FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobHorizontalFill.tif; sourceTree = "<group>"; };
 		F83AC85912FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobLeft.tif; sourceTree = "<group>"; };
 		F83AC85A12FCE2BB002FF776 /* TransparentScrollerKnobRight.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobRight.tif; sourceTree = "<group>"; };
 		F83AC85B12FCE2BB002FF776 /* TransparentScrollerKnobTop.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobTop.tif; sourceTree = "<group>"; };
 		F83AC85C12FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobVerticalFill.tif; sourceTree = "<group>"; };
-		F83AC86312FCE3E9002FF776 /* SVTransparentScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVTransparentScroller.h; path = Classes/SVTransparentScroller.h; sourceTree = SOURCE_ROOT; };
-		F83AC86412FCE3E9002FF776 /* SVTransparentScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVTransparentScroller.m; path = Classes/SVTransparentScroller.m; sourceTree = SOURCE_ROOT; };
+		F869391D135A5C6C0024BE07 /* context_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_info.png; path = Images/context_info.png; sourceTree = "<group>"; };
+		F869391F135A5C790024BE07 /* context_export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_export.png; path = Images/context_export.png; sourceTree = "<group>"; };
 		F8835763120F24ED00D18794 /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDocument.h; path = Classes/MyDocument.h; sourceTree = "<group>"; };
 		F8835764120F24ED00D18794 /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDocument.m; path = Classes/MyDocument.m; sourceTree = "<group>"; };
 		F8835765120F24ED00D18794 /* SVPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPrefsWindowController.m; path = Classes/SVPrefsWindowController.m; sourceTree = "<group>"; };
@@ -102,11 +112,7 @@
 		F8835775120F251F00D18794 /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		F8835784120F256900D18794 /* Terminus.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Terminus.dfont; sourceTree = "<group>"; };
 		F8A894941208D34300871F98 /* AutoHyperlinks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoHyperlinks.framework; path = Frameworks/AutoHyperlinks.framework; sourceTree = "<group>"; };
-		F8AD9A4912CE2BA1004CC071 /* CodePage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CodePage.png; path = Images/CodePage.png; sourceTree = "<group>"; };
 		F8AD9A4A12CE2BA1004CC071 /* Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Customize.png; path = Images/Customize.png; sourceTree = "<group>"; };
-		F8D8CD4E123EB2E100ABF74F /* New.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = New.png; path = Images/New.png; sourceTree = "<group>"; };
-		F8DC439A1257E7F4000BE289 /* Export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Export.png; path = Images/Export.png; sourceTree = "<group>"; };
-		F8DC439B1257E7F4000BE289 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Info.png; path = Images/Info.png; sourceTree = "<group>"; };
 		F8E1D4B21285DBA90069F262 /* duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duplicate.png; path = Images/duplicate.png; sourceTree = "<group>"; };
 		F8EA140512781D3E002A6E6E /* SVFontController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFontController.h; path = Classes/SVFontController.h; sourceTree = "<group>"; };
 		F8EA140612781D3E002A6E6E /* SVFontController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFontController.m; path = Classes/SVFontController.m; sourceTree = "<group>"; };
@@ -178,13 +184,11 @@
 				F8835775120F251F00D18794 /* General.png */,
 				F8835772120F251F00D18794 /* Advanced.png */,
 				F8835774120F251F00D18794 /* Colors.png */,
-				F8D8CD4E123EB2E100ABF74F /* New.png */,
-				F8DC439A1257E7F4000BE289 /* Export.png */,
-				F8DC439B1257E7F4000BE289 /* Info.png */,
 				F8AD9A4A12CE2BA1004CC071 /* Customize.png */,
-				F8AD9A4912CE2BA1004CC071 /* CodePage.png */,
 				F80F4B1C12D54709000731AA /* Divider.png */,
 				F8E1D4B21285DBA90069F262 /* duplicate.png */,
+				F869391D135A5C6C0024BE07 /* context_info.png */,
+				F869391F135A5C790024BE07 /* context_export.png */,
 				F83AC85612FCE2BB002FF776 /* Controls */,
 				F8835783120F256900D18794 /* Fonts */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
@@ -200,6 +204,8 @@
 				F8835764120F24ED00D18794 /* MyDocument.m */,
 				F80458F512C69447004CF340 /* SVTextView.h */,
 				F80458F612C69447004CF340 /* SVTextView.m */,
+				F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */,
+				F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */,
 				F8F1607212E8E45300B53AAB /* SVControlCharStringEngine.h */,
 				F8F1607312E8E45300B53AAB /* SVControlCharStringEngine.m */,
 				F8EA140512781D3E002A6E6E /* SVFontController.h */,
@@ -216,9 +222,8 @@
 				F8ECFA0F1295C85C00535BD9 /* SVFileInfoWindowController.m */,
 				F80F27771297504600209618 /* SVFileInfoController.h */,
 				F80F27781297504600209618 /* SVFileInfoController.m */,
-				F8835767120F24ED00D18794 /* SVAscensionDelegate.m */,
 				F8835766120F24ED00D18794 /* SVAscensionDelegate.h */,
-				F8E71E76130610980008B266 /* Forks */,
+				F8835767120F24ED00D18794 /* SVAscensionDelegate.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -277,15 +282,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		F8E71E76130610980008B266 /* Forks */ = {
-			isa = PBXGroup;
-			children = (
-				F83AC86312FCE3E9002FF776 /* SVTransparentScroller.h */,
-				F83AC86412FCE3E9002FF776 /* SVTransparentScroller.m */,
-			);
-			name = Forks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,6 +290,7 @@
 			buildConfigurationList = C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "Ascension" */;
 			buildPhases = (
 				8D15AC2B0486D014006FF6A4 /* Resources */,
+				F8DBE75A132D5D3400A9F868 /* CopyFiles */,
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
 				F808697411C8C56100680E85 /* CopyFiles */,
@@ -313,6 +310,9 @@
 /* Begin PBXProject section */
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
 			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "Ascension" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -343,15 +343,10 @@
 				F8835778120F251F00D18794 /* Ascension.icns in Resources */,
 				F8835779120F251F00D18794 /* Colors.png in Resources */,
 				F883577A120F251F00D18794 /* General.png in Resources */,
-				F8835785120F256900D18794 /* Terminus.dfont in Resources */,
-				F8D8CD54123EB2E100ABF74F /* New.png in Resources */,
-				F8DC439C1257E7F4000BE289 /* Export.png in Resources */,
-				F8DC439D1257E7F4000BE289 /* Info.png in Resources */,
 				F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */,
 				F8ECFA271295CB7D00535BD9 /* FileInfo.xib in Resources */,
 				F8F3A42912A0780100102D23 /* AFileTypeDIZ.icns in Resources */,
 				F8F3A42A12A0780100102D23 /* AFileTypeNFO.icns in Resources */,
-				F8AD9A4B12CE2BA1004CC071 /* CodePage.png in Resources */,
 				F8AD9A4C12CE2BA1004CC071 /* Customize.png in Resources */,
 				F80F4B1D12D54709000731AA /* Divider.png in Resources */,
 				F83AC85D12FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif in Resources */,
@@ -360,6 +355,8 @@
 				F83AC86012FCE2BB002FF776 /* TransparentScrollerKnobRight.tif in Resources */,
 				F83AC86112FCE2BB002FF776 /* TransparentScrollerKnobTop.tif in Resources */,
 				F83AC86212FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif in Resources */,
+				F869391E135A5C6C0024BE07 /* context_info.png in Resources */,
+				F8693920135A5C790024BE07 /* context_export.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +379,7 @@
 				F80F27791297504600209618 /* SVFileInfoController.m in Sources */,
 				F80458F712C69447004CF340 /* SVTextView.m in Sources */,
 				F8F1607412E8E45300B53AAB /* SVControlCharStringEngine.m in Sources */,
-				F83AC86512FCE3EA002FF776 /* SVTransparentScroller.m in Sources */,
+				F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +447,6 @@
 					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -458,6 +454,7 @@
 				INFOPLIST_FILE = "Ascension-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Ascension;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -476,6 +473,7 @@
 				INFOPLIST_FILE = "Ascension-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Ascension;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -484,7 +482,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
@@ -492,10 +490,8 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -505,17 +501,15 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
