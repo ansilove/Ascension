@@ -18,12 +18,6 @@
 		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
 		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
-		F83AC85D12FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85712FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif */; };
-		F83AC85E12FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85812FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif */; };
-		F83AC85F12FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85912FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif */; };
-		F83AC86012FCE2BB002FF776 /* TransparentScrollerKnobRight.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85A12FCE2BB002FF776 /* TransparentScrollerKnobRight.tif */; };
-		F83AC86112FCE2BB002FF776 /* TransparentScrollerKnobTop.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85B12FCE2BB002FF776 /* TransparentScrollerKnobTop.tif */; };
-		F83AC86212FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif in Resources */ = {isa = PBXBuildFile; fileRef = F83AC85C12FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif */; };
 		F869391E135A5C6C0024BE07 /* context_info.png in Resources */ = {isa = PBXBuildFile; fileRef = F869391D135A5C6C0024BE07 /* context_info.png */; };
 		F8693920135A5C790024BE07 /* context_export.png in Resources */ = {isa = PBXBuildFile; fileRef = F869391F135A5C790024BE07 /* context_export.png */; };
 		F8835768120F24ED00D18794 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* MyDocument.m */; };
@@ -92,12 +86,6 @@
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
 		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
 		F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRoardactedScroller.m; path = Classes/SVRoardactedScroller.m; sourceTree = "<group>"; };
-		F83AC85712FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobBottom.tif; sourceTree = "<group>"; };
-		F83AC85812FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobHorizontalFill.tif; sourceTree = "<group>"; };
-		F83AC85912FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobLeft.tif; sourceTree = "<group>"; };
-		F83AC85A12FCE2BB002FF776 /* TransparentScrollerKnobRight.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobRight.tif; sourceTree = "<group>"; };
-		F83AC85B12FCE2BB002FF776 /* TransparentScrollerKnobTop.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobTop.tif; sourceTree = "<group>"; };
-		F83AC85C12FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TransparentScrollerKnobVerticalFill.tif; sourceTree = "<group>"; };
 		F869391D135A5C6C0024BE07 /* context_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_info.png; path = Images/context_info.png; sourceTree = "<group>"; };
 		F869391F135A5C790024BE07 /* context_export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_export.png; path = Images/context_export.png; sourceTree = "<group>"; };
 		F8835763120F24ED00D18794 /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDocument.h; path = Classes/MyDocument.h; sourceTree = "<group>"; };
@@ -189,7 +177,6 @@
 				F8E1D4B21285DBA90069F262 /* duplicate.png */,
 				F869391D135A5C6C0024BE07 /* context_info.png */,
 				F869391F135A5C790024BE07 /* context_export.png */,
-				F83AC85612FCE2BB002FF776 /* Controls */,
 				F8835783120F256900D18794 /* Fonts */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
@@ -258,20 +245,6 @@
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F83AC85612FCE2BB002FF776 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				F83AC85712FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif */,
-				F83AC85812FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif */,
-				F83AC85912FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif */,
-				F83AC85A12FCE2BB002FF776 /* TransparentScrollerKnobRight.tif */,
-				F83AC85B12FCE2BB002FF776 /* TransparentScrollerKnobTop.tif */,
-				F83AC85C12FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif */,
-			);
-			name = Controls;
-			path = Images/Controls;
 			sourceTree = "<group>";
 		};
 		F8835783120F256900D18794 /* Fonts */ = {
@@ -349,12 +322,6 @@
 				F8F3A42A12A0780100102D23 /* AFileTypeNFO.icns in Resources */,
 				F8AD9A4C12CE2BA1004CC071 /* Customize.png in Resources */,
 				F80F4B1D12D54709000731AA /* Divider.png in Resources */,
-				F83AC85D12FCE2BB002FF776 /* TransparentScrollerKnobBottom.tif in Resources */,
-				F83AC85E12FCE2BB002FF776 /* TransparentScrollerKnobHorizontalFill.tif in Resources */,
-				F83AC85F12FCE2BB002FF776 /* TransparentScrollerKnobLeft.tif in Resources */,
-				F83AC86012FCE2BB002FF776 /* TransparentScrollerKnobRight.tif in Resources */,
-				F83AC86112FCE2BB002FF776 /* TransparentScrollerKnobTop.tif in Resources */,
-				F83AC86212FCE2BB002FF776 /* TransparentScrollerKnobVerticalFill.tif in Resources */,
 				F869391E135A5C6C0024BE07 /* context_info.png in Resources */,
 				F8693920135A5C790024BE07 /* context_export.png in Resources */,
 			);
