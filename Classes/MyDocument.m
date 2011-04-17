@@ -7,14 +7,11 @@
 //  http://www.byteproject.net
 //
 
-// Einbauen HTML und son Kram ISO Latin, auch Win Latin in ISO Latin umbenennen :)
-
 #import "MyDocument.h"
 #import "SVFontController.h"
 #import "SVPrefsController.h"
 #import "SVFileInfoWindowController.h"
 #import "SVControlCharStringEngine.h"
-#import "SVTransparentScroller.h"
 
 #define stdNSTextViewMargin 20
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
@@ -29,7 +26,7 @@
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
 			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
-			attachedEncView, encButtonIndex; 
+			attachedEncView, encButtonIndex, vScroller, hScroller; 
 
 
 # pragma mark -
@@ -85,13 +82,6 @@
 	return self;
 }
 
-- (void)windowControllerWillLoadNib:(NSWindowController *)aController
-{
-	// Make sure all conditions are met.
-	SVFontController *myFontController = [[SVFontController alloc] init];
-	[myFontController fontCheck];
-}
-
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {	
 	[super windowControllerDidLoadNib:aController];
@@ -108,9 +98,6 @@
 	
 	// Apply the appearance attributes.
 	[self prepareContent];
-    
-    // Create a beautiful window bottom.
-	[aController.window setContentBorderThickness:20.0f forEdge:NSMinYEdge];
 	
 	// Value for auto-sizing the document window.
 	NSSize myTextSize = [self.asciiTextView textStorage].size;
@@ -132,7 +119,7 @@
 		}
 		// Check if the user enabled width auto-sizing.
 		if ([defaults boolForKey:@"autoSizeWidth"] == YES) {
-			self.newContentWidth = myTextSize.width + stdNSTextViewMargin + [SVTransparentScroller scrollerWidth];
+			self.newContentWidth = myTextSize.width + stdNSTextViewMargin;
 		}
 		else {
 			self.newContentWidth = [aController.window frame].size.width;
@@ -146,9 +133,7 @@
 		}
 		
 	}
-    //
-    // Future implementation will use 'windowWillUseStandardFrame'.
-    // 
+    // NOTE: Future implementation will use 'windowWillUseStandardFrame'!
 	// Resize the document window based on either the caluclation or the preferences.
 	[aController.window setContentSize:NSMakeSize(self.newContentWidth, self.newContentHeight)];
 	
@@ -177,19 +162,12 @@
 
 - (void)createInterface 
 {
-	// For now, this method attaches the encoding view to the UI.
-	NSView *themeFrame = [[self.mainWindow contentView] superview];
-	
-	NSRect container = [themeFrame frame];
-	NSRect encV = [self.attachedEncView frame];
-	
-	NSRect newFrame = NSMakeRect(container.size.width - encV.size.width,
-								 container.size.height - encV.size.height,
-								 encV.size.width,
-								 encV.size.height);
-	
-	[self.attachedEncView setFrame:newFrame];
-	[themeFrame addSubview:self.attachedEncView];
+	// Create the bottom bar.
+    [self.mainWindow setContentBorderThickness:24.0 forEdge:NSMinYEdge];
+    
+    // Set“ the style of Lion's overlay Scrollers.
+    [self.hScroller setKnobStyle:NSScrollerKnobStyleLight];
+    [self.vScroller setKnobStyle:NSScrollerKnobStyleLight];
 }
 
 # pragma mark -
