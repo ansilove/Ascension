@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">10J567</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1278</string>
-		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">462.00</string>
+		<int key="IBDocument.SystemTarget">1070</int>
+		<string key="IBDocument.SystemVersion">11A430e</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1545</string>
+		<string key="IBDocument.AppKitVersion">1117</string>
+		<string key="IBDocument.HIToolboxVersion">552.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1278</string>
+			<string key="NS.object.0">1545</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSTextField</string>
@@ -39,6 +39,7 @@
 				<string key="NSWindowTitle">File information</string>
 				<string key="NSWindowClass">NSPanel</string>
 				<nil key="NSViewClass"/>
+				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="602634204">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -49,6 +50,7 @@
 							<string key="NSFrame">{{17, 43}, {101, 14}}</string>
 							<reference key="NSSuperview" ref="602634204"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="723527059"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="157060491">
 								<int key="NSCellFlags">68288064</int>
@@ -81,6 +83,7 @@
 							<string key="NSFrame">{{17, 97}, {80, 14}}</string>
 							<reference key="NSSuperview" ref="602634204"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="32233807"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="696147413">
 								<int key="NSCellFlags">68288064</int>
@@ -98,6 +101,7 @@
 							<string key="NSFrame">{{17, 151}, {51, 14}}</string>
 							<reference key="NSSuperview" ref="602634204"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="868133163"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="866729051">
 								<int key="NSCellFlags">68288064</int>
@@ -115,6 +119,7 @@
 							<string key="NSFrame">{{17, 129}, {297, 14}}</string>
 							<reference key="NSSuperview" ref="602634204"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="45453653"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="236486571">
 								<int key="NSCellFlags">68288064</int>
@@ -132,6 +137,7 @@
 							<string key="NSFrame">{{17, 75}, {296, 14}}</string>
 							<reference key="NSSuperview" ref="602634204"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="835310942"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="619101213">
 								<int key="NSCellFlags">68288064</int>
@@ -149,6 +155,7 @@
 							<string key="NSFrame">{{17, 21}, {296, 14}}</string>
 							<reference key="NSSuperview" ref="602634204"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="840931668">
 								<int key="NSCellFlags">68288064</int>
@@ -164,9 +171,10 @@
 					<string key="NSFrame">{{7, 11}, {223, 185}}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
+					<reference key="NSNextKeyView" ref="441474228"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
-				<string key="NSMaxSize">{1e+13, 1e+13}</string>
+				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<string key="NSFrameAutosaveName">AscensionFileInfo</string>
 			</object>
 			<object class="NSCustomObject" id="838259761">
@@ -432,13 +440,13 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
+			<real value="1070" key="NS.object.0"/>
+		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
 			<integer value="1060" key="NS.object.0"/>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
-			<real value="3200" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
