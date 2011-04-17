@@ -10,6 +10,7 @@
 #import <Cocoa/Cocoa.h>
 #import <AutoHyperlinks/AutoHyperlinks.h>
 #import "SVTextView.h"
+#import "SVRoardactedScroller.h"
 
 typedef enum {
 	EncDosCP437,
@@ -34,13 +35,15 @@ typedef enum {
 
 @interface MyDocument : NSDocument {
 	
-	IBOutlet NSWindow			  *mainWindow;
-	IBOutlet NSView				  *attachedEncView;
-	IBOutlet SVTextView			  *asciiTextView;
-	IBOutlet NSScrollView		  *asciiScrollView;
-	IBOutlet NSToolbar			  *appToolbar;
-	IBOutlet NSPopUpButton		  *encodingButton;
-    NSMutableAttributedString	  *contentString;
+	IBOutlet NSWindow             *mainWindow;
+	IBOutlet NSView               *attachedEncView;
+	IBOutlet SVTextView           *asciiTextView;
+	IBOutlet NSScrollView         *asciiScrollView;
+	IBOutlet NSToolbar            *appToolbar;
+	IBOutlet NSPopUpButton        *encodingButton;
+    IBOutlet SVRoardactedScroller *vScroller;
+    IBOutlet SVRoardactedScroller *hScroller;
+    NSMutableAttributedString     *contentString;
 	NSColor						  *fontColor;
 	NSColor						  *backgroundColor;
 	NSColor						  *cursorColor;
@@ -92,6 +95,9 @@ typedef enum {
 @property (retain) IBOutlet SVTextView	  *asciiTextView;
 @property (retain) IBOutlet NSScrollView  *asciiScrollView;
 @property (retain) IBOutlet NSPopUpButton *encodingButton;
+@property (retain) IBOutlet NSScroller    *vScroller;
+@property (retain) IBOutlet NSScroller    *hScroller;
+
 
 // general methods
 - (void)createInterface;
