@@ -408,6 +408,14 @@
 }
 
 # pragma mark -
+# pragma mark toolbar actions
+
+- (IBAction)fireDocContextItem:(id)sender
+{
+    NSLog(@"foo!");
+}
+
+# pragma mark -
 # pragma mark data and encoding
 
 - (NSFileWrapper *)fileWrapperOfType:(NSString *)pTypeName 

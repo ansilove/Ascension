@@ -130,5 +130,6 @@ typedef enum {
 - (IBAction)openFileInformation:(id)sender;
 - (IBAction)switchExportEncoding:(id)sender;
 - (IBAction)performLiveSearch:(id)sender;
+- (IBAction)fireDocContextItem:(id)sender;
 
 @end
