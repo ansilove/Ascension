@@ -408,28 +408,6 @@
 }
 
 # pragma mark -
-# pragma mark toolbar actions
-
-- (IBAction)fireDocContextItem:(id)sender
-{
-    if ([sender isKindOfClass:[NSSegmentedControl class]]) {
-        switch ([sender selectedSegment]) {
-            case 0: {
-                NSLog(@"Popover!");
-                break;
-            }
-            case 1: {
-                [self openFileInformation:self];
-                break;
-            }
-            default: {
-                break; 
-            }
-        }
-    }
-}
-
-# pragma mark -
 # pragma mark data and encoding
 
 - (NSFileWrapper *)fileWrapperOfType:(NSString *)pTypeName 
