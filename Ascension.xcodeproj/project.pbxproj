@@ -17,6 +17,9 @@
 		F80F27791297504600209618 /* SVFileInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F27781297504600209618 /* SVFileInfoController.m */; };
 		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
+		F825F8371364430000198EA9 /* SVExportWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F825F8361364430000198EA9 /* SVExportWindowController.m */; };
+		F825F83B136443A700198EA9 /* SVExportPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = F825F839136443A700198EA9 /* SVExportPopoverController.m */; };
+		F825F83C136443A700198EA9 /* ExportPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = F825F83A136443A700198EA9 /* ExportPopover.xib */; };
 		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
 		F869391E135A5C6C0024BE07 /* context_info.png in Resources */ = {isa = PBXBuildFile; fileRef = F869391D135A5C6C0024BE07 /* context_info.png */; };
 		F8693920135A5C790024BE07 /* context_export.png in Resources */ = {isa = PBXBuildFile; fileRef = F869391F135A5C790024BE07 /* context_export.png */; };
@@ -84,6 +87,11 @@
 		F80F27771297504600209618 /* SVFileInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoController.h; path = Classes/SVFileInfoController.h; sourceTree = "<group>"; };
 		F80F27781297504600209618 /* SVFileInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoController.m; path = Classes/SVFileInfoController.m; sourceTree = "<group>"; };
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
+		F825F8351364430000198EA9 /* SVExportWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVExportWindowController.h; path = Classes/SVExportWindowController.h; sourceTree = "<group>"; };
+		F825F8361364430000198EA9 /* SVExportWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVExportWindowController.m; path = Classes/SVExportWindowController.m; sourceTree = "<group>"; };
+		F825F838136443A700198EA9 /* SVExportPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVExportPopoverController.h; path = Classes/SVExportPopoverController.h; sourceTree = "<group>"; };
+		F825F839136443A700198EA9 /* SVExportPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVExportPopoverController.m; path = Classes/SVExportPopoverController.m; sourceTree = "<group>"; };
+		F825F83A136443A700198EA9 /* ExportPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExportPopover.xib; path = Classes/ExportPopover.xib; sourceTree = "<group>"; };
 		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
 		F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRoardactedScroller.m; path = Classes/SVRoardactedScroller.m; sourceTree = "<group>"; };
 		F869391D135A5C6C0024BE07 /* context_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_info.png; path = Images/context_info.png; sourceTree = "<group>"; };
@@ -193,6 +201,10 @@
 				F80458F612C69447004CF340 /* SVTextView.m */,
 				F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */,
 				F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */,
+				F825F8351364430000198EA9 /* SVExportWindowController.h */,
+				F825F8361364430000198EA9 /* SVExportWindowController.m */,
+				F825F838136443A700198EA9 /* SVExportPopoverController.h */,
+				F825F839136443A700198EA9 /* SVExportPopoverController.m */,
 				F8F1607212E8E45300B53AAB /* SVControlCharStringEngine.h */,
 				F8F1607312E8E45300B53AAB /* SVControlCharStringEngine.m */,
 				F8EA140512781D3E002A6E6E /* SVFontController.h */,
@@ -232,6 +244,7 @@
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
 				1DDD582A0DA1D0D100B32029 /* MainMenu.xib */,
 				1DDD58280DA1D0D100B32029 /* MyDocument.xib */,
+				F825F83A136443A700198EA9 /* ExportPopover.xib */,
 				F8123D6211C7763000EABFE2 /* Preferences.xib */,
 				F8ECFA261295CB7D00535BD9 /* FileInfo.xib */,
 			);
@@ -324,6 +337,7 @@
 				F80F4B1D12D54709000731AA /* Divider.png in Resources */,
 				F869391E135A5C6C0024BE07 /* context_info.png in Resources */,
 				F8693920135A5C790024BE07 /* context_export.png in Resources */,
+				F825F83C136443A700198EA9 /* ExportPopover.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +361,8 @@
 				F80458F712C69447004CF340 /* SVTextView.m in Sources */,
 				F8F1607412E8E45300B53AAB /* SVControlCharStringEngine.m in Sources */,
 				F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */,
+				F825F8371364430000198EA9 /* SVExportWindowController.m in Sources */,
+				F825F83B136443A700198EA9 /* SVExportPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +465,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
@@ -468,7 +484,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
