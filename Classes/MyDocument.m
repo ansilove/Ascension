@@ -412,7 +412,21 @@
 
 - (IBAction)fireDocContextItem:(id)sender
 {
-    NSLog(@"foo!");
+    if ([sender isKindOfClass:[NSSegmentedControl class]]) {
+        switch ([sender selectedSegment]) {
+            case 0: {
+                NSLog(@"Popover!");
+                break;
+            }
+            case 1: {
+                [self openFileInformation:self];
+                break;
+            }
+            default: {
+                break; 
+            }
+        }
+    }
 }
 
 # pragma mark -
