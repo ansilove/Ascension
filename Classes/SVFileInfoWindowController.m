@@ -1,5 +1,5 @@
 //
-//  SVFileInfoWindowController.m
+//  SVExportWindowController.m
 //  Ascension
 //
 //  Coded by Stefan Vogt.
@@ -7,38 +7,59 @@
 //  http://www.byteproject.net
 //
 
-#import "SVFileInfoWindowController.h"
-static SVFileInfoWindowController *_sharedFileInfoWindowController = nil;
+#import "SVExportWindowController.h"
+#import "SVExportPopoverController.h"
 
-@implementation SVFileInfoWindowController
+@implementation SVExportWindowController
 
-# pragma mark -
-# pragma mark class methods
-
-+ (SVFileInfoWindowController *)sharedFileInfoWindowController
-{
-	if (!_sharedFileInfoWindowController) {
-		_sharedFileInfoWindowController = [[self alloc] initWithWindowNibName:[self nibName]];
-	}
-	return _sharedFileInfoWindowController;
-}
-
-+ (NSString *)nibName
-{
-	return @"FileInfo";
-}
-
-# pragma mark -
-# pragma mark initialization 
+@synthesize exportPopover;
 
 - (void)awakeFromNib
 {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	if ([defaults boolForKey:@"centerFileInfoHud"] == YES) 
-	{
-		[self.window center];
-		[defaults setBool:NO forKey:@"centerFileInfoHud"];
-	}
+    // Set separate copies of the view controller's view to each detached window
+    detachedWindow.contentView = detachedWindowViewController.view;
+}
+
+- (void)createPopover
+{
+    if (self.exportPopover == nil)
+    {
+        // Create and setup our popover.
+        exportPopover = [[NSPopover alloc] init];
+        
+        // Define the view controller to use.
+        self.exportPopover.contentViewController = popoverViewController;
+        
+        // We want an animated popover.
+        self.exportPopover.animates = YES;
+        
+        // Close the popover when the user interacts with a UI element outside the popover.
+        self.exportPopover.behavior = NSPopoverBehaviorTransient;
+        
+        // Let us be notified when the popover appears or closes.
+        self.exportPopover.delegate = self;
+    }
+}
+
+- (IBAction)showPopoverAction:(id)sender
+{
+    [self createPopover];
+    
+    // Configure the preferred position of the popover. Possible positions:
+    // left (NSMinXEdge),  right (NSMaxXEdge), top (NSMinYEdge), bottom (NSMaxYEdge).
+    NSRectEdge prefEdge = NSMinYEdge;
+    
+    [self.exportPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:prefEdge];
+}
+
+#pragma mark -
+#pragma mark NSPopoverDelegate
+
+- (NSWindow *)detachableWindowForPopover:(NSPopover *)popover
+{
+    // Invoked on the delegate asked for the detachable window for the popover.
+    NSWindow *window = detachedWindow;
+    return window;
 }
 
 @end
