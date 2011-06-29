@@ -9,7 +9,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-// Basic subclass of Lion's overlay NSScroller.
+// Basic subclass of the overlay NSScroller introduced in Lion.
 
 @interface SVRoardactedScroller : NSScroller {}
 
