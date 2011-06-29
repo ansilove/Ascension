@@ -1,5 +1,5 @@
 //
-//  SVFontController.m
+//  SVFontProperties.m
 //  Ascension
 //
 //  Coded by Stefan Vogt.
@@ -7,9 +7,9 @@
 //  http://www.byteproject.net
 //
 
-#import "SVFontController.h"
+#import "SVFontProperties.h"
 
-@implementation SVFontController
+@implementation SVFontProperties
 
 @synthesize fontName, fontSize;
 

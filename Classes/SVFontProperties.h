@@ -1,5 +1,5 @@
 //
-//  SVFontController.h
+//  SVFontProperties.h
 //  Ascension
 //
 //  Coded by Stefan Vogt.
@@ -9,7 +9,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVFontController : NSObject {
+@interface SVFontProperties : NSObject {
 	
 	NSString *fontName;
 	CGFloat	 fontSize;
