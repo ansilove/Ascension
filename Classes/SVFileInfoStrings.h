@@ -1,5 +1,5 @@
 //
-//  SVAscensionDelegate.h
+//  SVFileInfoStrings.h
 //  Ascension
 //
 //  Coded by Stefan Vogt.
@@ -9,7 +9,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVFileInfoController : NSObject {
+@interface SVFileInfoStrings : NSObject {
 	
 	NSString *uiFileSizeString;
 	NSString *uiCreationDateString;
@@ -20,6 +20,9 @@
 @property (readwrite, assign) NSString *uiFileSizeString;
 @property (readwrite, assign) NSString *uiCreationDateString;
 @property (readwrite, assign) NSString *uiModDateString;
+
+// singleton class method
++ (SVFileInfoStrings *)sharedFileInfoStrings;
 
 // general methods
 - (void)updateFileSizeString:(NSNotification *)note;

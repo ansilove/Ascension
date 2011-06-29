@@ -1,5 +1,5 @@
 //
-//  SVAscensionDelegate.h
+//  SVFileInfoStrings.h
 //  Ascension
 //
 //  Coded by Stefan Vogt.
@@ -7,39 +7,61 @@
 //  http://www.byteproject.net
 //
 
-#import "SVFileInfoController.h"
+#import "SVFileInfoStrings.h"
 
-@implementation SVFileInfoController
+static SVFileInfoStrings *sharedInstance = nil;
+
+@implementation SVFileInfoStrings
 
 @synthesize uiFileSizeString, uiCreationDateString, uiModDateString;
 
 # pragma mark -
 # pragma mark initialization 
 
-- (id)init 
++ (SVFileInfoStrings *)sharedFileInfoStrings
 {
-	if (self == [super init]) 
-	{
-		// Observe and process the file information values.
-		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-		
-		[nc addObserver:self 
-			   selector:@selector(updateFileSizeString:) 
-				   name:@"FileSizeNote" 
-				 object:nil];
-		
-		[nc addObserver:self 
-			   selector:@selector(updateCreationDateString:) 
-				   name:@"CreationDateNote" 
-				 object:nil];
-		
-		[nc addObserver:self 
-			   selector:@selector(updateModDateString:) 
-				   name:@"ModDateNote" 
-				 object:nil];
-	} 
-	return self;
+    if (sharedInstance == nil) 
+    {
+        sharedInstance = [[super allocWithZone:NULL] init];
+    }
+    return sharedInstance;
 }
+
+- (id)init
+{
+    if (self == [super init]) 
+    {
+        // Observe and process the file information values.
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        
+        [nc addObserver:self 
+               selector:@selector(updateFileSizeString:) 
+                   name:@"FileSizeNote" 
+                 object:nil];
+        
+        [nc addObserver:self 
+               selector:@selector(updateCreationDateString:) 
+                   name:@"CreationDateNote" 
+                 object:nil];
+        
+        [nc addObserver:self 
+               selector:@selector(updateModDateString:) 
+                   name:@"ModDateNote" 
+                 object:nil];   
+    }
+    return self;
+}
+
++ (id)allocWithZone:(NSZone *)zone
+{
+    return [[self sharedFileInfoStrings] retain];
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return self;
+}
+
 
 # pragma mark -
 # pragma mark dictionaries to properties
