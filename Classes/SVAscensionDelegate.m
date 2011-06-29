@@ -32,40 +32,6 @@
 # pragma mark -
 # pragma mark general
 
-- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender 
-{ 
-	if (!applicationHasStarted)
-    {
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		if ([defaults integerForKey:@"startupBehavior"] == 1) 
-		{
-			// Get the array of recent documents.
-			NSDocumentController *controller = [NSDocumentController sharedDocumentController];
-			NSArray *documents = [controller recentDocumentURLs];
-			
-			// Open the recent document, provided there is one.
-			if ([documents count] > 0)
-			{
-				NSError *error = nil;
-				[controller
-				 openDocumentWithContentsOfURL:[documents objectAtIndex:0]
-				 display:YES error:&error];
-				
-				// If an error occured, open an untitled document. 
-				if (error == nil)
-				{
-					return NO;
-				}
-			}
-		}
-		if ([defaults integerForKey:@"startupBehavior"] == 2) {
-			return NO;
-		}
-	}
-	// None of the above applied? So open a new document.
-	return YES;
-}
-
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
 	self.applicationHasStarted = YES;
