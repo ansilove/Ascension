@@ -90,14 +90,8 @@
 	if (![defaults valueForKey:@"txtEncoding"]) {
 		[defaults setInteger:0 forKey:@"txtEncoding"];
 	}
-	if (![defaults valueForKey:@"encNotApplicableNote"]) {
-		[defaults setBool:YES forKey:@"encNotApplicableNote"];
-	}
 	if (![defaults valueForKey:@"docsOpenCentered"]) {
 		[defaults setBool:YES forKey:@"docsOpenCentered"];
-	}
-	if (![defaults valueForKey:@"centerFileInfoHud"]) {
-		[defaults setBool:YES forKey:@"centerFileInfoHud"];
 	}
 	if (![defaults valueForKey:@"newContentWidth"]) {
 		[defaults setFloat:650 forKey:@"newContentWidth"];
@@ -148,7 +142,6 @@
 	[defaults setFloat:14.0 forKey:@"fontSize"];
 	[defaults setInteger:0 forKey:@"nfoDizEncoding"];
 	[defaults setInteger:0 forKey:@"txtEncoding"];
-	[defaults setBool:YES forKey:@"encNotApplicableNote"];
 	[defaults setBool:YES forKey:@"docsOpenCentered"];
 	[defaults setFloat:650 forKey:@"newContentWidth"];
 	[defaults setFloat:650 forKey:@"newContentHeight"];
@@ -188,6 +181,12 @@
 	// Force Shared User Defaults Controller to synchronize immediately.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults synchronize];
+}
+
+- (IBAction)changeResumeState:(id)sender
+{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc postNotificationName:@"ResumeStateChange" object:self];
 }
 
 # pragma mark -
