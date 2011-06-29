@@ -1,5 +1,5 @@
 //
-//  SVExportPopoverController.m
+//  SVFileInfoPopoverController.m
 //  Ascension
 //
 //  Coded by Stefan Vogt.
@@ -7,9 +7,9 @@
 //  http://www.byteproject.net
 //
 
-#import "SVExportPopoverController.h"
+#import "SVFileInfoPopoverController.h"
 
-@implementation SVExportPopoverController
+@implementation SVFileInfoPopoverController
 
 @synthesize encodingMatrix;
 

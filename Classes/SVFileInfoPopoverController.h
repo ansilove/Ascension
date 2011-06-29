@@ -1,5 +1,5 @@
 //
-//  SVExportPopoverController.h
+//  SVFileInfoPopoverController.h
 //  Ascension
 //
 //  Coded by Stefan Vogt.
@@ -9,8 +9,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface SVExportPopoverController : NSViewController {
+@interface SVFileInfoPopoverController : NSViewController {
     
     NSMatrix *encodingMatrix;
 }
