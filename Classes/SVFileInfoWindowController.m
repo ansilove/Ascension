@@ -1,5 +1,5 @@
 //
-//  SVExportWindowController.m
+//  SVFileInfoWindowController.m
 //  Ascension
 //
 //  Coded by Stefan Vogt.
@@ -7,12 +7,12 @@
 //  http://www.byteproject.net
 //
 
-#import "SVExportWindowController.h"
-#import "SVExportPopoverController.h"
+#import "SVFileInfoWindowController.h"
+#import "SVfileInfoPopoverController.h"
 
-@implementation SVExportWindowController
+@implementation SVFileInfoWindowController
 
-@synthesize exportPopover;
+@synthesize fileInfoPopover;
 
 - (void)awakeFromNib
 {
@@ -22,22 +22,22 @@
 
 - (void)createPopover
 {
-    if (self.exportPopover == nil)
+    if (self.fileInfoPopover == nil)
     {
         // Create and setup our popover.
-        exportPopover = [[NSPopover alloc] init];
+        fileInfoPopover = [[NSPopover alloc] init];
         
         // Define the view controller to use.
-        self.exportPopover.contentViewController = popoverViewController;
+        self.fileInfoPopover.contentViewController = popoverViewController;
         
         // We want an animated popover.
-        self.exportPopover.animates = YES;
+        self.fileInfoPopover.animates = YES;
         
         // Close the popover when the user interacts with a UI element outside the popover.
-        self.exportPopover.behavior = NSPopoverBehaviorTransient;
+        self.fileInfoPopover.behavior = NSPopoverBehaviorTransient;
         
         // Let us be notified when the popover appears or closes.
-        self.exportPopover.delegate = self;
+        self.fileInfoPopover.delegate = self;
     }
 }
 
@@ -49,7 +49,7 @@
     // left (NSMinXEdge),  right (NSMaxXEdge), top (NSMinYEdge), bottom (NSMaxYEdge).
     NSRectEdge prefEdge = NSMinYEdge;
     
-    [self.exportPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:prefEdge];
+    [self.fileInfoPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:prefEdge];
 }
 
 #pragma mark -
@@ -60,6 +60,11 @@
     // Invoked on the delegate asked for the detachable window for the popover.
     NSWindow *window = detachedWindow;
     return window;
+}
+
+- (void)popoverDidShow:(NSNotification *)notification
+{
+    // added for implementations to come
 }
 
 @end

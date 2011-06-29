@@ -1,5 +1,5 @@
 //
-//  SVExportWindowController.h
+//  SVFileInfoWindowController.h
 //  Ascension
 //
 //  Coded by Stefan Vogt.
@@ -9,25 +9,25 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SVExportPopoverController;
+@class SVFileInfoPopoverController;
 
-@interface SVExportWindowController : NSWindowController <NSPopoverDelegate> {
+@interface SVFileInfoWindowController : NSWindowController <NSPopoverDelegate> {
 
 @private
-    NSPopover *exportPopover;
+    NSPopover *fileInfoPopover;
     
-    // detached window for the popover
+    // Detached window for the popover.
     IBOutlet NSWindow *detachedWindow;
     
-    // NSViewController for the export popover
-    IBOutlet SVExportPopoverController *popoverViewController;
+    // NSViewController for the file info popover.
+    IBOutlet SVFileInfoPopoverController *popoverViewController;
     
-    // NSViewController for our detached popover window
-    IBOutlet SVExportPopoverController *detachedWindowViewController;
+    // NSViewController for our detached popover window.
+    IBOutlet SVFileInfoPopoverController *detachedWindowViewController;
 }
 
 - (IBAction)showPopoverAction:(id)sender;
 
-@property (retain) NSPopover *exportPopover;
+@property (retain) NSPopover *fileInfoPopover;
 
 @end
