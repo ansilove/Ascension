@@ -106,6 +106,7 @@ typedef enum {
 - (void)applyParagraphStyle;
 - (void)performLinkification;
 - (void)handlePasteOperation:(NSNotification *)note;
+- (void)performResumeStateChange:(NSNotification *)note;
 - (void)performFontColorChange:(NSNotification *)note;
 - (void)performBgrndColorChange:(NSNotification *)note;
 - (void)performCursorColorChange:(NSNotification *)note;
@@ -127,7 +128,6 @@ typedef enum {
 - (NSArray *)lsStringRangesInDocument:(NSString *)liveSearchString;
 
 // actions
-- (IBAction)openFileInformation:(id)sender;
 - (IBAction)switchExportEncoding:(id)sender;
 - (IBAction)performLiveSearch:(id)sender;
 
