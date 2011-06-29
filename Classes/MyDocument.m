@@ -8,9 +8,9 @@
 //
 
 #import "MyDocument.h"
-#import "SVFontController.h"
+#import "SVFontProperties.h"
 #import "SVPrefsController.h"
-#import "SVFileInfoWindowController.h"
+#import "SVFileInfoStrings.h"
 #import "SVControlCharStringEngine.h"
 
 #define stdNSTextViewMargin 20
@@ -78,6 +78,15 @@
 			  selector:@selector(handlePasteOperation:)
 				  name:@"PasteNote"
 				object:nil];
+       
+       // Check if the user enables or disables the OS X resume feature.
+       [nc addObserver:self 
+              selector:@selector(performResumeStateChange:)
+                  name:@"ResumeStateChange"
+                object:nil];
+       
+       // Init the file information values.
+       [SVFileInfoStrings sharedFileInfoStrings];
    }
 	return self;
 }
@@ -165,9 +174,35 @@
 	// Create the bottom bar.
     [self.mainWindow setContentBorderThickness:24.0 forEdge:NSMinYEdge];
     
-    // Set the style of Lion's overlay Scrollers.
+    // Should we disable the OS X window state restoration mechanism?
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults integerForKey:@"startupBehavior"] == 1) {
+        [self.mainWindow setRestorable:NO];
+    }
+    
+    // Embedded look for the encoding button.
+    [[encodingButton cell] setBackgroundStyle:NSBackgroundStyleRaised];
+    
+    // Set the style of our overlay Scrollers.
     [self.hScroller setKnobStyle:NSScrollerKnobStyleLight];
     [self.vScroller setKnobStyle:NSScrollerKnobStyleLight];
+}
+
+- (void)performResumeStateChange:(NSNotification *)note
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    switch ([defaults integerForKey:@"startupBehavior"]) {
+        case 0: {
+            [self.mainWindow setRestorable:YES];
+            break;
+        }
+        case 1: {
+            [self.mainWindow setRestorable:NO];
+        }
+        default: {
+            break;
+        }
+    }
 }
 
 # pragma mark -
@@ -185,6 +220,7 @@
 	
 	// Apply background color.
 	[self.asciiTextView setBackgroundColor:self.backgroundColor];
+    [self.asciiScrollView setBackgroundColor:self.backgroundColor];
 	
 	// Set the cursor color.
 	[self.asciiTextView setInsertionPointColor:self.cursorColor];
@@ -228,20 +264,17 @@
 	NSMutableParagraphStyle *customParagraph;
 	NSDictionary *attributes;
 	
-	// Initialize instance of SVFontController.
-	SVFontController *myFontController = [[SVFontController alloc] init];
+	// Initialize instance of SVFontProperties.
+	SVFontProperties *myFontProperty = [[SVFontProperties alloc] init];
 	
 	// Set the font.
-	asciiFont = [NSFont fontWithName:myFontController.fontName size:myFontController.fontSize];
+	asciiFont = [NSFont fontWithName:myFontProperty.fontName size:myFontProperty.fontSize];
 	
 	// Set line height identical to font size.
 	customParagraph = [[NSMutableParagraphStyle alloc] init];
 	[customParagraph setLineSpacing:0];
-	[customParagraph setMinimumLineHeight:myFontController.fontSize];
-	[customParagraph setMaximumLineHeight:myFontController.fontSize];
-	
-	// Line wrapping in Ascension is enabled. Left. this code commented for possible future prefs.
-	// [customParagraph setLineBreakMode:NSLineBreakByTruncatingTail];
+	[customParagraph setMinimumLineHeight:myFontProperty.fontSize];
+	[customParagraph setMaximumLineHeight:myFontProperty.fontSize];
 	
 	// Set our custom paragraph as default paragraph style.
 	[self.asciiTextView setDefaultParagraphStyle:customParagraph];
@@ -298,6 +331,7 @@
 {
 	NSColor *bgrndColorValue = [[note userInfo] objectForKey:@"bgrndColorValue"];
 	[self.asciiTextView setBackgroundColor:bgrndColorValue];
+    [self.asciiScrollView setBackgroundColor:bgrndColorValue];
 }
 
 - (void)performCursorColorChange:(NSNotification *)note
@@ -634,16 +668,6 @@
 
 # pragma mark -
 # pragma mark file information
-
-- (IBAction)openFileInformation:(id)sender
-{
-	// Shared instance of the file information HUD.
-	[[SVFileInfoWindowController sharedFileInfoWindowController] showWindow:nil];
-	(void)sender;
-	
-	// Update file information attribute strings.
-	[self updateFileInfoValues];
-}
 
 - (NSString *)iFilePath
 {
