@@ -44,6 +44,7 @@
 // actions
 - (IBAction)restoreUserDefaults:(id)sender;
 - (IBAction)synchronizeDefaults:(id)sender;
+- (IBAction)changeResumeState:(id)sender;
 - (IBAction)changeFontColor:(id)sender;
 - (IBAction)changeBgrndColor:(id)sender;
 - (IBAction)changeCursorColor:(id)sender;
