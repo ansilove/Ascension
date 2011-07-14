@@ -32,6 +32,11 @@
 # pragma mark -
 # pragma mark general
 
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender 
+{ 
+    return NO;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
 	self.applicationHasStarted = YES;
