@@ -78,6 +78,9 @@
 	if (![defaults valueForKey:@"startupBehavior"]) {
 		[defaults setInteger:0 forKey:@"startupBehavior"];
 	}
+    if (![defaults valueForKey:@"scrollerStyle"]) {
+		[defaults setInteger:0 forKey:@"scrollerStyle"];
+	}
 	if (![defaults stringForKey:@"fontName"]) {
 		[defaults setObject:@"Terminus" forKey:@"fontName"];
 	}
@@ -138,6 +141,7 @@
 	
 	// Restore the initial user defaults.
 	[defaults setInteger:0 forKey:@"startupBehavior"];
+    [defaults setInteger:0 forKey:@"scrollerStyle"];
 	[defaults setObject:@"Terminus" forKey:@"fontName"];
 	[defaults setFloat:14.0 forKey:@"fontSize"];
 	[defaults setInteger:0 forKey:@"nfoDizEncoding"];
@@ -185,12 +189,20 @@
 
 - (IBAction)changeResumeState:(id)sender
 {
+    [self synchronizeDefaults:self];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc postNotificationName:@"ResumeStateChange" object:self];
 }
 
 # pragma mark -
 # pragma mark user-defined colors
+
+- (IBAction)selectScrollerStyle:(id)sender
+{
+    [self synchronizeDefaults:self];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc postNotificationName:@"ScrollerStyleChange" object:self];
+}
 
 - (IBAction)changeFontColor:(id)sender
 {
