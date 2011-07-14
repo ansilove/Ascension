@@ -85,6 +85,12 @@
                   name:@"ResumeStateChange"
                 object:nil];
        
+       // Observe changes of the overlay scroller knob style.
+       [nc addObserver:self 
+              selector:@selector(performScrollerStyleChange:)
+                  name:@"ScrollerStyleChange"
+                object:nil];
+       
        // Init the file information values.
        [SVFileInfoStrings sharedFileInfoStrings];
    }
@@ -184,8 +190,14 @@
     [[encodingButton cell] setBackgroundStyle:NSBackgroundStyleRaised];
     
     // Set the style of our overlay Scrollers.
-    [self.hScroller setKnobStyle:NSScrollerKnobStyleLight];
-    [self.vScroller setKnobStyle:NSScrollerKnobStyleLight];
+    if ([defaults integerForKey:@"scrollerStyle"] == 0) {
+        [self.hScroller setKnobStyle:NSScrollerKnobStyleLight];
+        [self.vScroller setKnobStyle:NSScrollerKnobStyleLight];
+    }
+    else {
+        [self.hScroller setKnobStyle:NSScrollerKnobStyleDark];
+        [self.vScroller setKnobStyle:NSScrollerKnobStyleDark];
+    }
 }
 
 - (void)performResumeStateChange:(NSNotification *)note
@@ -198,6 +210,25 @@
         }
         case 1: {
             [self.mainWindow setRestorable:NO];
+        }
+        default: {
+            break;
+        }
+    }
+}
+
+- (void)performScrollerStyleChange:(NSNotification *)note
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    switch ([defaults integerForKey:@"scrollerStyle"]) {
+        case 0: {
+            [self.hScroller setKnobStyle:NSScrollerKnobStyleLight];
+            [self.vScroller setKnobStyle:NSScrollerKnobStyleLight];
+            break;
+        }
+        case 1: {
+            [self.hScroller setKnobStyle:NSScrollerKnobStyleDark];
+            [self.vScroller setKnobStyle:NSScrollerKnobStyleDark];
         }
         default: {
             break;
