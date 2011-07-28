@@ -732,6 +732,9 @@
 	if (dateString == nil || dateString == 0) {
 		return @"n/a";
 	}
+    if ([dateString isEqualToString:self.iCreationDate]) {
+        return @"untouched file";
+    }
 	return dateString;
 }
 
