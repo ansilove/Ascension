@@ -16,4 +16,4 @@ Visit the [Mac App Store](http://itunes.apple.com/app/ascension/id410426085?mt=1
 
 ## License
 
-Ascension is released under a modified MIT license. See the file `LICENSE` for details.
+Ascension is released under a MIT-style license. See the file `LICENSE` for details.
