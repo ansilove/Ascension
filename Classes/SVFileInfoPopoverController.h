@@ -11,13 +11,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVFileInfoPopoverController : NSViewController {
-    
-    NSMatrix *encodingMatrix;
-}
-    
-- (IBAction)encodingMatrixAction:(id)sender;
-
-@property (assign) IBOutlet NSMatrix *encodingMatrix;
+@interface SVFileInfoPopoverController : NSViewController {}
     
 @end

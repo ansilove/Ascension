@@ -13,11 +13,4 @@
 
 @implementation SVFileInfoPopoverController
 
-@synthesize encodingMatrix;
-
-- (IBAction)encodingMatrixAction:(id)sender
-{
-	// user has clicked the check box in the popover (or its detached window)
-}
-
 @end
