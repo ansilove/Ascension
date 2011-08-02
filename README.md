@@ -3,12 +3,14 @@
 Prepare yourself for a journey through time. Ready to explore ancient text files from the golden era of 8-bit computers? Ready to admire stunning type-based artworks from the good old DOS days? Ascension is a beautiful designed editor, handcrafted with love and completely dedicated to ASCII art.
 
 Supported file types: 
+
 - NFO
 - DIZ
 - ASC
 - TXT
 
 Open and convert documents in different encodings: 
+
 - Codepage 437 (US)
 - Codepage 866 (Cyrillic)
 - UTF-8
