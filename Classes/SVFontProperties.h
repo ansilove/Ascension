@@ -11,16 +11,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVFontProperties : NSObject {
-	
-	NSString *fontName;
-	CGFloat	 fontSize;
-}
+@interface SVFontProperties : NSObject
 
 // strings
-@property (readwrite, assign) NSString *fontName;
+@property (nonatomic, weak) NSString *fontName;
 
 // integer and float values
-@property (readwrite, assign) CGFloat fontSize;
+@property (nonatomic, assign) CGFloat fontSize;
 
 @end

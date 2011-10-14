@@ -11,15 +11,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVPrefsWindowController : NSWindowController <NSToolbarDelegate> {
-	
-	IBOutlet NSToolbar *prefsBar;
-	IBOutlet NSView	   *generalPreferenceView;
-	IBOutlet NSView    *colorsPreferenceView;
-	IBOutlet NSView	   *advancedPreferenceView;
-	
-	NSInteger currentViewTag;
-}
+@interface SVPrefsWindowController : NSWindowController <NSToolbarDelegate> 
+
+// outlets
+@property (nonatomic, strong) IBOutlet NSToolbar *prefsBar;
+@property (nonatomic, strong) IBOutlet NSView	 *generalPreferenceView;
+@property (nonatomic, strong) IBOutlet NSView    *colorsPreferenceView;
+@property (nonatomic, strong) IBOutlet NSView	 *advancedPreferenceView;
+
+// integer and float values
+@property (nonatomic, assign) NSInteger currentViewTag;
 
 // class methods
 + (SVPrefsWindowController *)sharedPrefsWindowController;

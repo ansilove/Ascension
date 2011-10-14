@@ -13,6 +13,6 @@
 
 // Subclass of NSTextView that overrides some of the inherited methods.
 
-@interface SVTextView : NSTextView {}
+@interface SVTextView : NSTextView
 
 @end

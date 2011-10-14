@@ -11,24 +11,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SVThemeObject : NSObject <NSCoding> {
-	
-	NSString *atName;
-	NSColor  *atFontColor;
-	NSColor  *atBackgroundColor;
-	NSColor  *atLinkColor;
-	NSColor  *atCursorColor;
-	NSColor  *atSelectionColor;
-}
+@interface SVThemeObject : NSObject <NSCoding>
 
 // strings
-@property (readwrite, assign) NSString *atName;
+@property (nonatomic, strong) NSString *atName;
 
 // colors
-@property (readwrite, assign) NSColor *atFontColor;
-@property (readwrite, assign) NSColor *atBackgroundColor;
-@property (readwrite, assign) NSColor *atLinkColor;
-@property (readwrite, assign) NSColor *atCursorColor;
-@property (readwrite, assign) NSColor *atSelectionColor;
+@property (nonatomic, strong) NSColor *atFontColor;
+@property (nonatomic, strong) NSColor *atBackgroundColor;
+@property (nonatomic, strong) NSColor *atLinkColor;
+@property (nonatomic, strong) NSColor *atCursorColor;
+@property (nonatomic, strong) NSColor *atSelectionColor;
 
 @end

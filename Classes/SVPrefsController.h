@@ -11,34 +11,24 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVPrefsController : NSObject {
-	
-	IBOutlet NSColorWell *fontColorWell;
-	IBOutlet NSColorWell *bgrndColorWell;
-	IBOutlet NSColorWell *cursorColorWell;
-	IBOutlet NSColorWell *linkColorWell;
-	IBOutlet NSColorWell *selectionColorWell;
-	IBOutlet NSTableView *themesView;
-	NSMutableArray		 *themesArray;
-	NSString		     *pathForThemeLibraryFile;
-}
+@interface SVPrefsController : NSObject
 
 // outlets
-@property (retain) IBOutlet NSColorWell *fontColorWell;
-@property (retain) IBOutlet NSColorWell *bgrndColorWell;
-@property (retain) IBOutlet NSColorWell *cursorColorWell;
-@property (retain) IBOutlet NSColorWell *linkColorWell;
-@property (retain) IBOutlet NSColorWell *selectionColorWell;
-@property (retain) IBOutlet NSTableView *themesView;
+@property (nonatomic, strong) IBOutlet NSColorWell *fontColorWell;
+@property (nonatomic, strong) IBOutlet NSColorWell *bgrndColorWell;
+@property (nonatomic, strong) IBOutlet NSColorWell *cursorColorWell;
+@property (nonatomic, strong) IBOutlet NSColorWell *linkColorWell;
+@property (nonatomic, strong) IBOutlet NSColorWell *selectionColorWell;
+@property (nonatomic, strong) IBOutlet NSTableView *themesView;
 
 // data
-@property (retain) NSMutableArray *themesArray;
+@property (nonatomic, strong) NSMutableArray *themesArray;
 
 // integer and float values
-@property (readonly) NSInteger themeIndex;
+@property (nonatomic, assign) NSInteger themeIndex;
 
 // strings
-@property (readonly) NSString *pathForThemeLibraryFile;
+@property (nonatomic, weak) NSString *pathForThemeLibraryFile;
 
 // class methods
 + (void)checkUserDefaults;
@@ -53,6 +43,12 @@
 - (IBAction)changeCursorColor:(id)sender;
 - (IBAction)changeLinkColor:(id)sender;
 - (IBAction)changeSelectionColor:(id)sender;
+- (IBAction)createCustomTheme:(id)sender;
+- (IBAction)copyExistingTheme:(id)sender;
+
+// specific theme methods
+- (void)generateStandardThemes;
+- (void)applyColorValueToTheme;
 
 // color notifications
 - (void)sendFontColorChangeNote;
@@ -60,5 +56,11 @@
 - (void)sendCursorColorChangeNote;
 - (void)sendLinkColorChangeNote;
 - (void)sendSelectionColorChangeNote;
+
+// data
+- (void)tableViewSelectionDidChange:(NSNotification *)notification;
+- (void)clearThemesArray;
+- (void)loadThemeLibraryFromDisk;
+- (void)saveThemeLibraryToDisk:(NSNotification *)notification;
 
 @end

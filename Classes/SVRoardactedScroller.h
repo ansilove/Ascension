@@ -13,6 +13,6 @@
 
 // Basic subclass of the overlay NSScroller introduced in Lion.
 
-@interface SVRoardactedScroller : NSScroller {}
+@interface SVRoardactedScroller : NSScroller
 
 @end

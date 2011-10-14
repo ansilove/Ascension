@@ -11,6 +11,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVFileInfoPopoverController : NSViewController {}
+@interface SVFileInfoPopoverController : NSViewController
     
 @end

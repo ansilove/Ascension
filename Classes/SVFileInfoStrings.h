@@ -11,17 +11,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVFileInfoStrings : NSObject {
-	
-	NSString *uiFileSizeString;
-	NSString *uiCreationDateString;
-	NSString *uiModDateString;
-}
+@interface SVFileInfoStrings : NSObject
 
 // interface strings
-@property (readwrite, assign) NSString *uiFileSizeString;
-@property (readwrite, assign) NSString *uiCreationDateString;
-@property (readwrite, assign) NSString *uiModDateString;
+@property (nonatomic, strong) NSString *uiFileSizeString;
+@property (nonatomic, strong) NSString *uiCreationDateString;
+@property (nonatomic, strong) NSString *uiModDateString;
 
 // singleton class method
 + (SVFileInfoStrings *)sharedFileInfoStrings;
