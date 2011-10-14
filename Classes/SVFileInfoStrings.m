@@ -11,8 +11,6 @@
 
 #import "SVFileInfoStrings.h"
 
-static SVFileInfoStrings *sharedInstance = nil;
-
 @implementation SVFileInfoStrings
 
 @synthesize uiFileSizeString, uiCreationDateString, uiModDateString;
@@ -22,10 +20,11 @@ static SVFileInfoStrings *sharedInstance = nil;
 
 + (SVFileInfoStrings *)sharedFileInfoStrings
 {
-    if (sharedInstance == nil) 
-    {
+    static SVFileInfoStrings *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         sharedInstance = [[super allocWithZone:NULL] init];
-    }
+    });
     return sharedInstance;
 }
 
@@ -56,7 +55,7 @@ static SVFileInfoStrings *sharedInstance = nil;
 
 + (id)allocWithZone:(NSZone *)zone
 {
-    return [[self sharedFileInfoStrings] retain];
+    return [self sharedFileInfoStrings];
 }
 
 - (id)copyWithZone:(NSZone *)zone
