@@ -10,19 +10,23 @@
 //
 
 #import "SVPrefsWindowController.h"
-static SVPrefsWindowController *_sharedPrefsWindowController = nil;
 
 @implementation SVPrefsWindowController
+
+@synthesize currentViewTag, prefsBar, generalPreferenceView, colorsPreferenceView, 
+            advancedPreferenceView;
 
 # pragma mark -
 # pragma mark class methods
 
 + (SVPrefsWindowController *)sharedPrefsWindowController
 {
-	if (!_sharedPrefsWindowController) {
-		_sharedPrefsWindowController = [[self alloc] initWithWindowNibName:[self nibName]];
-	}
-	return _sharedPrefsWindowController;
+    static SVPrefsWindowController *sharedPrefsWindowController = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedPrefsWindowController = [[self alloc] initWithWindowNibName:[self nibName]];
+    });
+    return sharedPrefsWindowController;
 }
 
 + (NSString *)nibName
