@@ -12,7 +12,6 @@
 #import "SVAscensionDelegate.h"
 #import "SVPrefsWindowController.h"
 #import "SVPrefsController.h"
-#import "SVPrefsController+Themes.h"
 
 @implementation SVAscensionDelegate
 
