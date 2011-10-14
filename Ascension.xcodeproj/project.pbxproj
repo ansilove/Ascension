@@ -36,9 +36,7 @@
 		F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1D4B21285DBA90069F262 /* duplicate.png */; };
 		F8EA140D12781D3E002A6E6E /* SVFontProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140612781D3E002A6E6E /* SVFontProperties.m */; };
 		F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140A12781D3E002A6E6E /* SVThemeObject.m */; };
-		F8EA141012781D3E002A6E6E /* SVPrefsController+Themes.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140C12781D3E002A6E6E /* SVPrefsController+Themes.m */; };
 		F8F14433129068C600D89311 /* SVPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F14432129068C600D89311 /* SVPrefsController.m */; };
-		F8F1607412E8E45300B53AAB /* SVControlCharStringEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1607312E8E45300B53AAB /* SVControlCharStringEngine.m */; };
 		F8F3A42912A0780100102D23 /* AFileTypeDIZ.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */; };
 		F8F3A42A12A0780100102D23 /* AFileTypeNFO.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8F3A42812A0780100102D23 /* AFileTypeNFO.icns */; };
 /* End PBXBuildFile section */
@@ -111,12 +109,8 @@
 		F8EA140712781D3E002A6E6E /* SVPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVPrefsController.h; path = Classes/SVPrefsController.h; sourceTree = "<group>"; };
 		F8EA140912781D3E002A6E6E /* SVThemeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVThemeObject.h; path = Classes/SVThemeObject.h; sourceTree = "<group>"; };
 		F8EA140A12781D3E002A6E6E /* SVThemeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVThemeObject.m; path = Classes/SVThemeObject.m; sourceTree = "<group>"; };
-		F8EA140B12781D3E002A6E6E /* SVPrefsController+Themes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVPrefsController+Themes.h"; path = "Classes/SVPrefsController+Themes.h"; sourceTree = "<group>"; };
-		F8EA140C12781D3E002A6E6E /* SVPrefsController+Themes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SVPrefsController+Themes.m"; path = "Classes/SVPrefsController+Themes.m"; sourceTree = "<group>"; };
 		F8EEB89611C6E07900F16727 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
 		F8F14432129068C600D89311 /* SVPrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPrefsController.m; path = Classes/SVPrefsController.m; sourceTree = "<group>"; };
-		F8F1607212E8E45300B53AAB /* SVControlCharStringEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVControlCharStringEngine.h; path = Classes/SVControlCharStringEngine.h; sourceTree = "<group>"; };
-		F8F1607312E8E45300B53AAB /* SVControlCharStringEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVControlCharStringEngine.m; path = Classes/SVControlCharStringEngine.m; sourceTree = "<group>"; };
 		F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeDIZ.icns; path = Images/AFileTypeDIZ.icns; sourceTree = "<group>"; };
 		F8F3A42812A0780100102D23 /* AFileTypeNFO.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeNFO.icns; path = Images/AFileTypeNFO.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,16 +161,6 @@
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
-				F8835773120F251F00D18794 /* Ascension.icns */,
-				F8F3A42812A0780100102D23 /* AFileTypeNFO.icns */,
-				F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */,
-				F8835775120F251F00D18794 /* General.png */,
-				F8835772120F251F00D18794 /* Advanced.png */,
-				F8835774120F251F00D18794 /* Colors.png */,
-				F8AD9A4A12CE2BA1004CC071 /* Customize.png */,
-				F80F4B1C12D54709000731AA /* Divider.png */,
-				F8E1D4B21285DBA90069F262 /* duplicate.png */,
-				F869391D135A5C6C0024BE07 /* context_info.png */,
 				F8835783120F256900D18794 /* Fonts */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
@@ -205,12 +189,8 @@
 				F8835765120F24ED00D18794 /* SVPrefsWindowController.m */,
 				F8EA140712781D3E002A6E6E /* SVPrefsController.h */,
 				F8F14432129068C600D89311 /* SVPrefsController.m */,
-				F8EA140B12781D3E002A6E6E /* SVPrefsController+Themes.h */,
-				F8EA140C12781D3E002A6E6E /* SVPrefsController+Themes.m */,
 				F8EA140912781D3E002A6E6E /* SVThemeObject.h */,
 				F8EA140A12781D3E002A6E6E /* SVThemeObject.m */,
-				F8F1607212E8E45300B53AAB /* SVControlCharStringEngine.h */,
-				F8F1607312E8E45300B53AAB /* SVControlCharStringEngine.m */,
 				F8835766120F24ED00D18794 /* SVAscensionDelegate.h */,
 				F8835767120F24ED00D18794 /* SVAscensionDelegate.m */,
 			);
@@ -236,6 +216,7 @@
 				1DDD58280DA1D0D100B32029 /* MyDocument.xib */,
 				F8123D6211C7763000EABFE2 /* Preferences.xib */,
 				F80F7A24137FF63B00C16B38 /* FileInfoPopover.xib */,
+				F8BB69FC1442045000494F4E /* Pictures and Icons */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -255,6 +236,23 @@
 				F8835784120F256900D18794 /* Terminus.dfont */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F8BB69FC1442045000494F4E /* Pictures and Icons */ = {
+			isa = PBXGroup;
+			children = (
+				F8835773120F251F00D18794 /* Ascension.icns */,
+				F8F3A42812A0780100102D23 /* AFileTypeNFO.icns */,
+				F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */,
+				F8835775120F251F00D18794 /* General.png */,
+				F8835772120F251F00D18794 /* Advanced.png */,
+				F8835774120F251F00D18794 /* Colors.png */,
+				F8AD9A4A12CE2BA1004CC071 /* Customize.png */,
+				F80F4B1C12D54709000731AA /* Divider.png */,
+				F8E1D4B21285DBA90069F262 /* duplicate.png */,
+				F869391D135A5C6C0024BE07 /* context_info.png */,
+			);
+			name = "Pictures and Icons";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +284,7 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "Ascension" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -295,6 +293,17 @@
 			knownRegions = (
 				en,
 				English,
+				Japanese,
+				Dutch,
+				French,
+				German,
+				Italian,
+				Portuguese,
+				Romanian,
+				Spanish,
+				sv,
+				ru,
+				Swedish,
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* Ascension */;
 			projectDirPath = "";
@@ -342,11 +351,9 @@
 				F883576A120F24ED00D18794 /* SVAscensionDelegate.m in Sources */,
 				F8EA140D12781D3E002A6E6E /* SVFontProperties.m in Sources */,
 				F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */,
-				F8EA141012781D3E002A6E6E /* SVPrefsController+Themes.m in Sources */,
 				F8F14433129068C600D89311 /* SVPrefsController.m in Sources */,
 				F80F27791297504600209618 /* SVFileInfoStrings.m in Sources */,
 				F80458F712C69447004CF340 /* SVTextView.m in Sources */,
-				F8F1607412E8E45300B53AAB /* SVControlCharStringEngine.m in Sources */,
 				F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */,
 				F825F8371364430000198EA9 /* SVFileInfoWindowController.m in Sources */,
 				F825F83B136443A700198EA9 /* SVFileInfoPopoverController.m in Sources */,
@@ -416,14 +423,25 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/CotEditor\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Fraise\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Kod/deps\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/TDParseKit/frameworks\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Ascension_Prefix.pch;
 				INFOPLIST_FILE = "Ascension-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks/MCPKit/MySQL/lib\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks/zlib\"",
+				);
 				PRODUCT_NAME = Ascension;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
@@ -439,12 +457,23 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/CotEditor\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Fraise\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Kod/deps\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/TDParseKit/frameworks\"",
 				);
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Ascension_Prefix.pch;
 				INFOPLIST_FILE = "Ascension-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks/MCPKit/MySQL/lib\"",
+					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks/zlib\"",
+				);
 				PRODUCT_NAME = Ascension;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
@@ -455,16 +484,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
-				CURRENT_PROJECT_VERSION = 31;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CURRENT_PROJECT_VERSION = 73;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_GC = required;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -475,15 +506,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
-				CURRENT_PROJECT_VERSION = 31;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CURRENT_PROJECT_VERSION = 73;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_GC = required;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
