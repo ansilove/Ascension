@@ -13,7 +13,6 @@
 #import "SVFontProperties.h"
 #import "SVPrefsController.h"
 #import "SVFileInfoStrings.h"
-#import "SVControlCharStringEngine.h"
 
 #define stdNSTextViewMargin 20
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
@@ -28,8 +27,7 @@
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
 			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
-			attachedEncView, encButtonIndex, vScroller, hScroller; 
-
+			encButtonIndex, vScroller, hScroller, appToolbar; 
 
 # pragma mark -
 # pragma mark initialization
@@ -484,9 +482,12 @@
 	if ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame) {
 		return [self nfoFileWrapperWithError:pOutError];
 	}
-	if ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame) {
+	else if ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame) {
 		return [self nfoFileWrapperWithError:pOutError];
 	}
+    else if ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame) {
+        return [self ansFileWrapperWithError:pOutError];
+    }
     else {
         return [self txtFileWrapperWithError:pOutError]; 
     }
@@ -501,11 +502,11 @@
 	if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame)) {
 		return [self nfoReadFileWrapper:pFileWrapper error:pOutError];
 	}
-	if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame)) {
+	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame)) {
 		return [self nfoReadFileWrapper:pFileWrapper error:pOutError];
 	}
-	if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"public.plain-text"] == NSOrderedSame)) {
-		return [self txtReadFileWrapper:pFileWrapper error:pOutError];
+	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame)) {
+		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
 	}
 	// In all other cases open the document using the text file wrapper.
 	else {
@@ -518,6 +519,33 @@
 						   error:(NSError **)pOutError 
 {	
 	// File wrapper for reading NFO and DIZ documents.
+	NSData *cp437Data = [pFileWrapper regularFileContents];
+	if(!cp437Data) 
+	{
+		return NO;
+	}
+	
+	// Check and apply the NFO / DIZ encoding.
+	[self switchASCIIEncoding];
+	
+	NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
+	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:cp437String];
+	[self setString:importString];
+	
+	//If the UI is already loaded, this must be a 'revert to saved' operation.
+	if (self.asciiTextView) 
+	{
+		// Apply the loaded data to the text storage and restyle contents.
+		[[self.asciiTextView textStorage] setAttributedString:[self string]];
+		[self prepareContent];
+	}
+	return YES;
+}
+
+- (BOOL)ansReadFileWrapper:(NSFileWrapper *)pFileWrapper 
+                     error:(NSError **)pOutError 
+{	
+	// File wrapper for reading documents containing ANSI escape sequences.
 	NSData *cp437Data = [pFileWrapper regularFileContents];
 	if(!cp437Data) 
 	{
@@ -574,6 +602,25 @@
 	NSData *nfoData = 
 	[self.contentString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
 
+	if (!nfoData) {
+		return NULL;
+	}
+	// Enable undo after save operations.
+	[self.asciiTextView breakUndoCoalescing];
+	
+	NSFileWrapper * nfoFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:nfoData];
+	if (!nfoFileWrapperObj) {
+		return NULL;
+	}
+	return nfoFileWrapperObj;	
+}
+
+- (NSFileWrapper *)ansFileWrapperWithError:(NSError **)pOutError 
+{
+	// File wrapper for writing NFO and DIZ documents.
+	NSData *nfoData = 
+	[self.contentString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
+    
 	if (!nfoData) {
 		return NULL;
 	}
@@ -751,7 +798,7 @@
 - (void)updateFileInfoValues
 {
 	// Create dictionaries for the objects we pass our shared file information instance.
-	NSDictionary *fSizeDict = [NSDictionary dictionaryWithObject:self.iFileSize forKey:@"fileSizeValue"]; 
+    NSDictionary *fSizeDict = [NSDictionary dictionaryWithObject:self.iFileSize forKey:@"fileSizeValue"]; 
 	NSDictionary *cDateDict = [NSDictionary dictionaryWithObject:self.iCreationDate forKey:@"creationDateValue"]; 
 	NSDictionary *mDateDict = [NSDictionary dictionaryWithObject:self.iModDate forKey:@"modDateValue"]; 
 	

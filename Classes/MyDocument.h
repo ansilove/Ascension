@@ -35,70 +35,42 @@ typedef enum {
 	EIndexWinLatin1,
 } SVEncodingButtonIndex;
 
-@interface MyDocument : NSDocument {
-	
-	IBOutlet NSWindow             *mainWindow;
-	IBOutlet NSView               *attachedEncView;
-	IBOutlet SVTextView           *asciiTextView;
-	IBOutlet NSScrollView         *asciiScrollView;
-	IBOutlet NSToolbar            *appToolbar;
-	IBOutlet NSPopUpButton        *encodingButton;
-    IBOutlet SVRoardactedScroller *vScroller;
-    IBOutlet SVRoardactedScroller *hScroller;
-    NSMutableAttributedString     *contentString;
-	NSColor						  *fontColor;
-	NSColor						  *backgroundColor;
-	NSColor						  *cursorColor;
-	NSColor						  *linkColor;
-	NSColor						  *selectionColor;
-	NSDictionary				  *linkAttributes;
-	NSDictionary				  *selectionAttributes;
-	CGFloat						  newContentWidth;
-	CGFloat						  newContentHeight;
-	NSInteger					  encButtonIndex;
-	NSString					  *iFilePath;
-	NSString					  *iCreationDate;
-	NSString					  *iModDate;
-	NSString					  *iFileSize;
-	NSStringEncoding			  nfoDizEncoding;
-	NSStringEncoding			  txtEncoding;
-	NSStringEncoding			  exportEncoding;
-}
+@interface MyDocument : NSDocument
 
 // strings
-@property (readwrite, assign) NSMutableAttributedString *contentString;
-@property (readwrite, assign) NSString					*iFilePath;
-@property (readwrite, assign) NSString					*iFileSize;
-@property (readwrite, assign) NSString					*iCreationDate;
-@property (readwrite, assign) NSString					*iModDate;
-@property (readwrite, assign) NSStringEncoding			nfoDizEncoding;
-@property (readwrite, assign) NSStringEncoding			txtEncoding;
-@property (readwrite, assign) NSStringEncoding			exportEncoding;
+@property (nonatomic, strong) NSMutableAttributedString *contentString;
+@property (nonatomic, weak)   NSString					*iFilePath;
+@property (nonatomic, weak)   NSString					*iFileSize;
+@property (nonatomic, weak)   NSString					*iCreationDate;
+@property (nonatomic, weak)   NSString					*iModDate;
+@property (nonatomic, assign) NSStringEncoding			nfoDizEncoding;
+@property (nonatomic, assign) NSStringEncoding			txtEncoding;
+@property (nonatomic, assign) NSStringEncoding			exportEncoding;
 
 // integer and float values
-@property (readwrite, assign) CGFloat	newContentWidth;
-@property (readwrite, assign) CGFloat   newContentHeight;
-@property (readwrite, assign) NSInteger encButtonIndex;
+@property (nonatomic, assign) CGFloat   newContentWidth;
+@property (nonatomic, assign) CGFloat   newContentHeight;
+@property (nonatomic, assign) NSInteger encButtonIndex;
 
 // colors
-@property (readwrite, assign) NSColor *fontColor;
-@property (readwrite, assign) NSColor *backgroundColor;
-@property (readwrite, assign) NSColor *cursorColor;
-@property (readwrite, assign) NSColor *linkColor;
-@property (readwrite, assign) NSColor *selectionColor;
+@property (nonatomic, weak) NSColor *fontColor;
+@property (nonatomic, weak) NSColor *backgroundColor;
+@property (nonatomic, weak) NSColor *cursorColor;
+@property (nonatomic, weak) NSColor *linkColor;
+@property (nonatomic, weak) NSColor *selectionColor;
 
 // dictionaries
-@property (readwrite, assign) NSDictionary *linkAttributes;
-@property (readwrite, assign) NSDictionary *selectionAttributes;
+@property (nonatomic, weak) NSDictionary *linkAttributes;
+@property (nonatomic, weak) NSDictionary *selectionAttributes;
 
 // outlets
-@property (retain) IBOutlet NSWindow	  *mainWindow;
-@property (retain) IBOutlet NSView		  *attachedEncView;
-@property (retain) IBOutlet SVTextView	  *asciiTextView;
-@property (retain) IBOutlet NSScrollView  *asciiScrollView;
-@property (retain) IBOutlet NSPopUpButton *encodingButton;
-@property (retain) IBOutlet NSScroller    *vScroller;
-@property (retain) IBOutlet NSScroller    *hScroller;
+@property (nonatomic, strong) IBOutlet NSWindow      *mainWindow;
+@property (nonatomic, strong) IBOutlet SVTextView	 *asciiTextView;
+@property (nonatomic, strong) IBOutlet NSScrollView  *asciiScrollView;
+@property (nonatomic, strong) IBOutlet NSToolbar     *appToolbar;
+@property (nonatomic, strong) IBOutlet NSPopUpButton *encodingButton;
+@property (nonatomic, strong) IBOutlet NSScroller    *vScroller;
+@property (nonatomic, strong) IBOutlet NSScroller    *hScroller;
 
 
 // general methods
@@ -120,8 +92,10 @@ typedef enum {
 - (void)updateFileInfoValues;
 - (void)setString:(NSMutableAttributedString *)value;
 - (NSFileWrapper *)nfoFileWrapperWithError:(NSError **)pOutError;
+- (NSFileWrapper *)ansFileWrapperWithError:(NSError **)pOutError;
 - (NSFileWrapper *)txtFileWrapperWithError:(NSError **)pOutError;
 - (BOOL)nfoReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
+- (BOOL)ansReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
 - (BOOL)txtReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
 
 // objects and return values
