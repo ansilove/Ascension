@@ -14,7 +14,7 @@
 
 @implementation SVFileInfoWindowController
 
-@synthesize fileInfoPopover;
+@synthesize fileInfoPopover, detachedWindow, popoverViewController, detachedWindowViewController;
 
 - (void)awakeFromNib
 {
