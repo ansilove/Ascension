@@ -11,13 +11,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVAscensionDelegate : NSObject {
-	
-	BOOL	 applicationHasStarted;
-}
+@interface SVAscensionDelegate : NSObject 
 
 // integer and float values
-@property (readwrite, assign) BOOL applicationHasStarted;
+@property (nonatomic, assign) BOOL applicationHasStarted;
 
 // actions
 - (IBAction)openPreferences:(id)sender;
