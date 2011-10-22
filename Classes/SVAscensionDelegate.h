@@ -11,7 +11,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVAscensionDelegate : NSObject 
+@interface SVAscensionDelegate : NSObject <NSApplicationDelegate>
 
 // integer and float values
 @property (nonatomic, assign) BOOL applicationHasStarted;
