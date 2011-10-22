@@ -10,6 +10,8 @@
 //
 
 #import "MyDocument.h"
+#import "SVTextView.h"
+#import "SVRoardactedScroller.h"
 #import "SVFontProperties.h"
 #import "SVPrefsController.h"
 #import "SVFileInfoStrings.h"
