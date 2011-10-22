@@ -33,6 +33,8 @@
 		F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8AD9A4C12CE2BA1004CC071 /* Customize.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD9A4A12CE2BA1004CC071 /* Customize.png */; };
 		F8DBE75C132D5D6C00A9F868 /* Terminus.dfont in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8835784120F256900D18794 /* Terminus.dfont */; };
+		F8E149781452BC5000D445DF /* AnsiLove.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E149771452BC5000D445DF /* AnsiLove.framework */; };
+		F8E149791452BC9600D445DF /* AnsiLove.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8E149771452BC5000D445DF /* AnsiLove.framework */; };
 		F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1D4B21285DBA90069F262 /* duplicate.png */; };
 		F8EA140D12781D3E002A6E6E /* SVFontProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140612781D3E002A6E6E /* SVFontProperties.m */; };
 		F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140A12781D3E002A6E6E /* SVThemeObject.m */; };
@@ -49,6 +51,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in CopyFiles */,
+				F8E149791452BC9600D445DF /* AnsiLove.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +106,7 @@
 		F8835784120F256900D18794 /* Terminus.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Terminus.dfont; sourceTree = "<group>"; };
 		F8A894941208D34300871F98 /* AutoHyperlinks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoHyperlinks.framework; path = Frameworks/AutoHyperlinks.framework; sourceTree = "<group>"; };
 		F8AD9A4A12CE2BA1004CC071 /* Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Customize.png; path = Images/Customize.png; sourceTree = "<group>"; };
+		F8E149771452BC5000D445DF /* AnsiLove.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AnsiLove.framework; path = Frameworks/AnsiLove.framework; sourceTree = "<group>"; };
 		F8E1D4B21285DBA90069F262 /* duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duplicate.png; path = Images/duplicate.png; sourceTree = "<group>"; };
 		F8EA140512781D3E002A6E6E /* SVFontProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFontProperties.h; path = Classes/SVFontProperties.h; sourceTree = "<group>"; };
 		F8EA140612781D3E002A6E6E /* SVFontProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFontProperties.m; path = Classes/SVFontProperties.m; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */,
+				F8E149781452BC5000D445DF /* AnsiLove.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +138,7 @@
 			children = (
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
 				F8A894941208D34300871F98 /* AutoHyperlinks.framework */,
+				F8E149771452BC5000D445DF /* AnsiLove.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
