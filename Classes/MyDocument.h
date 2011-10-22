@@ -11,8 +11,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import <AutoHyperlinks/AutoHyperlinks.h>
-#import "SVTextView.h"
-#import "SVRoardactedScroller.h"
+#import <AnsiLove/AnsiLove.h>
+
+@class SVTextView;
 
 typedef enum {
 	EncDosCP437,
