@@ -23,4 +23,10 @@
 	return [super readSelectionFromPasteboard:pboard type:type];
 }
 
+- (BOOL)importsGraphics 
+{
+    // Override this so we can import rendered ANSi images.
+    return YES;
+}
+
 @end
