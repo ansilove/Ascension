@@ -29,7 +29,7 @@
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
 			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
-			encButtonIndex, vScroller, hScroller, appToolbar; 
+			encButtonIndex, vScroller, hScroller, appToolbar, isAnsiFile, rawAnsiString; 
 
 # pragma mark -
 # pragma mark initialization
@@ -114,7 +114,7 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
 	// Apply the appearance attributes.
-	[self prepareContent];
+    [self prepareContent];
 	
 	// Value for auto-sizing the document window.
 	NSSize myTextSize = [self.asciiTextView textStorage].size;
@@ -243,10 +243,17 @@
 
 - (void)prepareContent
 {
-	// Prepare the textual content.
-	[self applyParagraphStyle];
-	[self performLinkification];
-	[self applyThemeColors];
+	// If this is no ANSi source file, prepare the textual content.
+	 if (self.isAnsiFile == NO) {
+         [self applyParagraphStyle];
+         [self performLinkification];
+     }
+     else {
+         // So this is an ANSi source file? Disable editing.
+         [self.asciiTextView setEditable:NO];
+     }
+    
+    [self applyThemeColors];
 	
 	// Set the text color.
 	[self.asciiTextView setTextColor:self.fontColor];
@@ -330,7 +337,7 @@
 - (void)handlePasteOperation:(NSNotification *)note
 {
 	// Linkify hyperlinks in the pasted content.
-	[self performSelector:@selector(performLinkification) withObject:nil afterDelay:0.5];
+	//[self performSelector:@selector(performLinkification) withObject:nil afterDelay:0.5];
 }
 
 - (CGFloat)titlebarHeight
@@ -547,27 +554,69 @@
 - (BOOL)ansReadFileWrapper:(NSFileWrapper *)pFileWrapper 
                      error:(NSError **)pOutError 
 {	
-	// File wrapper for reading documents containing ANSI escape sequences.
+    // First, we clarify this is an ANSi source file.
+    self.isAnsiFile = YES;
+    
+	// File wrapper for reading documents containing ANSi escape sequences.
 	NSData *cp437Data = [pFileWrapper regularFileContents];
 	if(!cp437Data) 
 	{
 		return NO;
 	}
-	
+    
 	// Check and apply the NFO / DIZ encoding.
 	[self switchASCIIEncoding];
 	
+    // Read the raw ANSi string, the user might want to switch between raw / rendered.
 	NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
-	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:cp437String];
-	[self setString:importString];
-	
-	//If the UI is already loaded, this must be a 'revert to saved' operation.
-	if (self.asciiTextView) 
-	{
-		// Apply the loaded data to the text storage and restyle contents.
-		[[self.asciiTextView textStorage] setAttributedString:[self string]];
-		[self prepareContent];
-	}
+    
+    // This will store the raw ANSi string for save operations and other stuff.
+	self.rawAnsiString = [[NSMutableAttributedString alloc] initWithString:cp437String];
+    
+    // Get the current file URL and convert it to an UNIX path.
+    NSURL *currentURL = [self fileURL];
+    NSString *selfURLString = [currentURL path];
+    
+    // Specify the path for the cached ANSi image and expand tilde in path.
+    NSString *outputPNGPath = @"~/Library/Application Support/Ascension/ansicache.png";
+    outputPNGPath = [outputPNGPath stringByExpandingTildeInPath];
+    
+    // Call AnsiLove and generate the rendered PNG image.
+    [ALAnsiGenerator createPNGFromAnsiSource:selfURLString 
+                                  outputFile:outputPNGPath 
+                                     columns:nil 
+                                        font:@"80x25"
+                                        bits:@"transparent"
+                                   iceColors:nil];
+    
+    // Wait a second for AnsiLove.framework to finish rendering.
+    [NSThread sleepForTimeInterval:1.0];
+    
+    // Grab the rendered image and init an NSImage instance for it.
+    NSImage *renderedAnsiPNG = [[NSImage alloc] initWithContentsOfFile:outputPNGPath];
+    
+    // To display our ANSi .png create an NSTextAttachment and corresponding cell.
+    NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:renderedAnsiPNG];
+    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+    [attachment setAttachmentCell:attachmentCell];
+    
+    // Now generate an attributed String with our .png attachment.
+    NSAttributedString *imageString = [[NSAttributedString alloc] init];
+    imageString = [NSAttributedString attributedStringWithAttachment:attachment];
+    
+    // The content string of asciiTextView is mutable, so we need a mutable copy.
+    NSMutableAttributedString *mutableImageString = [imageString mutableCopy];
+    
+    // Finally set the mutable string with our .png attachement as content string.
+    [self setString:mutableImageString];
+    
+//	//If the UI is already loaded, this must be a 'revert to saved' operation.
+//	if (self.asciiTextView) 
+//	{
+//		// Apply the loaded data to the text storage and restyle contents.
+//		[[self.asciiTextView textStorage] setAttributedString:[self string]];
+//		[self prepareContent];
+//	}
 	return YES;
 }
 
@@ -610,7 +659,7 @@
 	// Enable undo after save operations.
 	[self.asciiTextView breakUndoCoalescing];
 	
-	NSFileWrapper * nfoFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:nfoData];
+	NSFileWrapper *nfoFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:nfoData];
 	if (!nfoFileWrapperObj) {
 		return NULL;
 	}
@@ -619,21 +668,21 @@
 
 - (NSFileWrapper *)ansFileWrapperWithError:(NSError **)pOutError 
 {
-	// File wrapper for writing NFO and DIZ documents.
-	NSData *nfoData = 
-	[self.contentString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
+	// File wrapper for writing ANSi documents.
+	NSData *ansData = 
+	[self.rawAnsiString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
     
-	if (!nfoData) {
+	if (!ansData) {
 		return NULL;
 	}
 	// Enable undo after save operations.
 	[self.asciiTextView breakUndoCoalescing];
 	
-	NSFileWrapper * nfoFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:nfoData];
-	if (!nfoFileWrapperObj) {
+	NSFileWrapper *ansFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:ansData];
+	if (!ansFileWrapperObj) {
 		return NULL;
 	}
-	return nfoFileWrapperObj;	
+	return ansFileWrapperObj;	
 }
 
 - (NSFileWrapper *)txtFileWrapperWithError:(NSError **)pOutError 
@@ -648,7 +697,7 @@
 	// Enable undo after save operations.
 	[self.asciiTextView breakUndoCoalescing];
 	
-	NSFileWrapper * txtFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:txtData];
+	NSFileWrapper *txtFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:txtData];
 	if (!txtFileWrapperObj) {
 		return NULL;
 	}

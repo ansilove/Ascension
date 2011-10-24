@@ -40,6 +40,7 @@ typedef enum {
 
 // strings
 @property (nonatomic, strong) NSMutableAttributedString *contentString;
+@property (nonatomic, strong) NSMutableAttributedString *rawAnsiString;
 @property (nonatomic, weak)   NSString					*iFilePath;
 @property (nonatomic, weak)   NSString					*iFileSize;
 @property (nonatomic, weak)   NSString					*iCreationDate;
@@ -52,6 +53,7 @@ typedef enum {
 @property (nonatomic, assign) CGFloat   newContentWidth;
 @property (nonatomic, assign) CGFloat   newContentHeight;
 @property (nonatomic, assign) NSInteger encButtonIndex;
+@property (nonatomic, assign) BOOL      isAnsiFile;
 
 // colors
 @property (nonatomic, weak) NSColor *fontColor;
