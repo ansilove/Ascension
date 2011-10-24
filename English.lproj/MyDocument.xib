@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11C43</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
-		<string key="IBDocument.AppKitVersion">1138.17</string>
+		<string key="IBDocument.SystemVersion">11C73</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
+		<string key="IBDocument.AppKitVersion">1138.23</string>
 		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1617</string>
+			<string key="NS.object.0">1938</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSTextView</string>
@@ -35,7 +35,10 @@
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 		</array>
-		<dictionary class="NSMutableDictionary" key="IBDocument.Metadata"/>
+		<object class="NSMutableDictionary" key="IBDocument.Metadata">
+			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
+			<integer value="1" key="NS.object.0"/>
+		</object>
 		<array class="NSMutableArray" key="IBDocument.RootObjects" id="580458321">
 			<object class="NSCustomObject" id="512844837">
 				<string key="NSClassName">MyDocument</string>
@@ -331,7 +334,7 @@
 											<string key="NSFrameSize">{10, 14}</string>
 											<reference key="NSSuperview" ref="918874659"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="973397786"/>
+											<reference key="NSNextKeyView" ref="373763667"/>
 											<int key="NSViewLayerContentsRedrawPolicy">2</int>
 											<object class="NSTextContainer" key="NSTextContainer" id="644506264">
 												<object class="NSLayoutManager" key="NSLayoutManager">
@@ -682,7 +685,7 @@
 											</array>
 										</object>
 									</array>
-									<string key="NSFrame">{{0.04296875, 0}, {650, 605}}</string>
+									<string key="NSFrameSize">{650, 605}</string>
 									<reference key="NSSuperview" ref="43737000"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="925785244"/>
@@ -747,7 +750,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string key="NSFrame">{{0, 24}, {650, 605}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="918874659"/>
+							<reference key="NSNextKeyView" ref="973397786"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<int key="NSsFlags">133648</int>
 							<reference key="NSVScroller" ref="973397786"/>
@@ -760,6 +763,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string key="NSFrame">{{499, 1}, {150, 22}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="1010913848">
 								<int key="NSCellFlags">-2080244160</int>
@@ -867,7 +871,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="43737000"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1050}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMinSize">{94, 141}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<string key="NSFrameAutosaveName">AscensionPosition</string>
@@ -884,13 +888,12 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="418523350">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrameSize">{198, 187}</string>
-					<reference key="NSSuperview"/>
 					<string key="NSReuseIdentifierKey">_NS:2797</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1050}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -913,14 +916,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 			<array class="NSMutableArray" key="connectionRecords">
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="275939982"/>
-						<reference key="destination" ref="512844837"/>
-					</object>
-					<int key="connectionID">17</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">asciiTextView</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="925785244"/>
@@ -937,52 +932,11 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="925785244"/>
-						<reference key="destination" ref="512844837"/>
-					</object>
-					<int key="connectionID">100054</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">appToolbar</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="869086432"/>
 					</object>
 					<int key="connectionID">100089</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">fontName: fontName</string>
-						<reference key="source" ref="925785244"/>
-						<reference key="destination" ref="727003790"/>
-						<object class="NSNibBindingConnector" key="connector" id="851834392">
-							<reference key="NSSource" ref="925785244"/>
-							<reference key="NSDestination" ref="727003790"/>
-							<string key="NSLabel">fontName: fontName</string>
-							<string key="NSBinding">fontName</string>
-							<string key="NSKeyPath">fontName</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">100179</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">fontSize: fontSize</string>
-						<reference key="source" ref="925785244"/>
-						<reference key="destination" ref="727003790"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="925785244"/>
-							<reference key="NSDestination" ref="727003790"/>
-							<string key="NSLabel">fontSize: fontSize</string>
-							<string key="NSBinding">fontSize</string>
-							<string key="NSKeyPath">fontSize</string>
-							<reference key="NSPreviousConnector" ref="851834392"/>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">100181</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1001,36 +955,12 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<int key="connectionID">100246</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">runToolbarCustomizationPalette:</string>
-						<reference key="source" ref="613418571"/>
-						<reference key="destination" ref="510257675"/>
-					</object>
-					<int key="connectionID">100255</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">encodingButton</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="373763667"/>
 					</object>
 					<int key="connectionID">100258</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">selectedIndex: encButtonIndex</string>
-						<reference key="source" ref="373763667"/>
-						<reference key="destination" ref="512844837"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="373763667"/>
-							<reference key="NSDestination" ref="512844837"/>
-							<string key="NSLabel">selectedIndex: encButtonIndex</string>
-							<string key="NSBinding">selectedIndex</string>
-							<string key="NSKeyPath">encButtonIndex</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">100265</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -1063,6 +993,79 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="destination" ref="973397786"/>
 					</object>
 					<int key="connectionID">100280</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">runToolbarCustomizationPalette:</string>
+						<reference key="source" ref="613418571"/>
+						<reference key="destination" ref="510257675"/>
+					</object>
+					<int key="connectionID">100255</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="275939982"/>
+						<reference key="destination" ref="512844837"/>
+					</object>
+					<int key="connectionID">17</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="925785244"/>
+						<reference key="destination" ref="512844837"/>
+					</object>
+					<int key="connectionID">100054</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">fontSize: fontSize</string>
+						<reference key="source" ref="925785244"/>
+						<reference key="destination" ref="727003790"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="925785244"/>
+							<reference key="NSDestination" ref="727003790"/>
+							<string key="NSLabel">fontSize: fontSize</string>
+							<string key="NSBinding">fontSize</string>
+							<string key="NSKeyPath">fontSize</string>
+							<reference key="NSPreviousConnector" ref="851834392"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100181</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">fontName: fontName</string>
+						<reference key="source" ref="925785244"/>
+						<reference key="destination" ref="727003790"/>
+						<object class="NSNibBindingConnector" key="connector" id="851834392">
+							<reference key="NSSource" ref="925785244"/>
+							<reference key="NSDestination" ref="727003790"/>
+							<string key="NSLabel">fontName: fontName</string>
+							<string key="NSBinding">fontName</string>
+							<string key="NSKeyPath">fontName</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100179</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">selectedIndex: encButtonIndex</string>
+						<reference key="source" ref="373763667"/>
+						<reference key="destination" ref="512844837"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="373763667"/>
+							<reference key="NSDestination" ref="512844837"/>
+							<string key="NSLabel">selectedIndex: encButtonIndex</string>
+							<string key="NSBinding">selectedIndex</string>
+							<string key="NSKeyPath">encButtonIndex</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100265</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1401,7 +1404,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">100417</int>
+			<int key="maxID">100418</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1426,7 +1429,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<string key="appToolbar">NSToolbar</string>
 						<string key="asciiScrollView">NSScrollView</string>
 						<string key="asciiTextView">SVTextView</string>
-						<string key="attachedEncView">NSView</string>
 						<string key="encodingButton">NSPopUpButton</string>
 						<string key="hScroller">NSScroller</string>
 						<string key="mainWindow">NSWindow</string>
@@ -1444,10 +1446,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<object class="IBToOneOutletInfo" key="asciiTextView">
 							<string key="name">asciiTextView</string>
 							<string key="candidateClassName">SVTextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="attachedEncView">
-							<string key="name">attachedEncView</string>
-							<string key="candidateClassName">NSView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="encodingButton">
 							<string key="name">encodingButton</string>
@@ -1589,10 +1587,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
 			<real value="1070" key="NS.object.0"/>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<integer value="1060" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
