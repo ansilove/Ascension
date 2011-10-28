@@ -578,7 +578,7 @@
 	// Check and apply the NFO / DIZ encoding.
 	[self switchASCIIEncoding];
 	
-    // Read the raw ANSi string, the user might want to switch between raw / rendered.
+    // Read the raw ANSi string.
 	NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
     
     // This will store the raw ANSi string for save operations and other stuff.
@@ -627,13 +627,6 @@
     // Finally set the mutable string with our .png attachement as content string.
     [self setString:mutableImageString];
     
-//	//If the UI is already loaded, this must be a 'revert to saved' operation.
-//	if (self.asciiTextView) 
-//	{
-//		// Apply the loaded data to the text storage and restyle contents.
-//		[[self.asciiTextView textStorage] setAttributedString:[self string]];
-//		[self prepareContent];
-//	}
 	return YES;
 }
 
