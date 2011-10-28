@@ -7,19 +7,8 @@
 /* Created:      2003/07/17                                                  */
 /* Last Updated: 2011/07/08                                                  */
 /*                                                                           */
-/* This program is free software; you can redistribute it and/or modify      */
-/* it under the terms of the GNU General Public License as published by      */
-/* the Free Software Foundation; either version 2 of the License, or         */
-/* (at your option) any later version.                                       */
-/*                                                                           */
-/* This program is distributed in the hope that it will be useful,           */
-/* but WITHOUT ANY WARRANTY; without even the implied warranty of            */
-/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             */
-/* GNU General Public License for more details.                              */
-/*                                                                           */
-/* You should have received a copy of the GNU General Public License         */
-/* along with this program; if not, write to the Free Software               */
-/* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA */
+/* Ansilove is released under a MIT-style license.                           */
+/* See LICENSE file for details.                                             */
 /*                                                                           */
 /*****************************************************************************/
 
@@ -251,6 +240,12 @@ function load_ansi($input,$output,$font,$bits,$icecolors)
 
    case 'russian':
       $font_file='ansilove_font_pc_russian.png';
+      $font_size_x=9;
+      $font_size_y=16;
+      break;
+
+   case 'terminus':
+      $font_file='ansilove_font_pc_terminus.png';
       $font_size_x=9;
       $font_size_y=16;
       break;
