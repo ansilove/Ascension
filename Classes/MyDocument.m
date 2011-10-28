@@ -29,7 +29,7 @@
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
 			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
-			encButtonIndex, vScroller, hScroller, appToolbar, isAnsiFile, rawAnsiString; 
+			encButtonIndex, vScroller, hScroller, appToolbar, isAnsiFile, rawAnsiString, ansiCacheFile; 
 
 # pragma mark -
 # pragma mark initialization
@@ -234,6 +234,17 @@
         }
         default: {
             break;
+        }
+    }
+}
+
+- (void)windowWillClose:(NSNotification *)notification
+{
+    // In case this is an ANSi file, delete the cached PNG when the window closes.
+    if (self.isAnsiFile == YES) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if ([fileManager fileExistsAtPath:self.ansiCacheFile]) {
+            [fileManager removeItemAtPath:self.ansiCacheFile error:nil];
         }
     }
 }
@@ -577,15 +588,21 @@
     NSURL *currentURL = [self fileURL];
     NSString *selfURLString = [currentURL path];
     
-    // Specify the path for the cached ANSi image and expand tilde in path.
-    NSString *outputPNGPath = @"~/Library/Application Support/Ascension/ansicache.png";
-    outputPNGPath = [outputPNGPath stringByExpandingTildeInPath];
+    // Get the currrent file name without any path informations.
+    NSString *pureFileName = [selfURLString lastPathComponent];
+    
+    // Generate output file name and path.
+    self.ansiCacheFile = [NSString stringWithFormat:
+                          @"~/Library/Application Support/Ascension/%@.png", pureFileName];
+    
+    // Expand tilde in output path.
+    self.ansiCacheFile = [self.ansiCacheFile stringByExpandingTildeInPath];
     
     // Call AnsiLove and generate the rendered PNG image.
     [ALAnsiGenerator createPNGFromAnsiSource:selfURLString 
-                                  outputFile:outputPNGPath 
+                                  outputFile:self.ansiCacheFile 
                                      columns:nil 
-                                        font:@"80x25"
+                                        font:@"terminus"
                                         bits:@"transparent"
                                    iceColors:nil];
     
@@ -593,7 +610,7 @@
     [NSThread sleepForTimeInterval:1.0];
     
     // Grab the rendered image and init an NSImage instance for it.
-    NSImage *renderedAnsiPNG = [[NSImage alloc] initWithContentsOfFile:outputPNGPath];
+    NSImage *renderedAnsiPNG = [[NSImage alloc] initWithContentsOfFile:self.ansiCacheFile];
     
     // To display our ANSi .png create an NSTextAttachment and corresponding cell.
     NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:renderedAnsiPNG];
