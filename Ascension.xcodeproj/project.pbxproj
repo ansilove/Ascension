@@ -18,9 +18,22 @@
 		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
 		F80F7A26137FF63B00C16B38 /* FileInfoPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = F80F7A24137FF63B00C16B38 /* FileInfoPopover.xib */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
+		F82310391457EA10007E1BE6 /* custom_about.png in Resources */ = {isa = PBXBuildFile; fileRef = F82310381457EA10007E1BE6 /* custom_about.png */; };
 		F825F8371364430000198EA9 /* SVFileInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F825F8361364430000198EA9 /* SVFileInfoWindowController.m */; };
 		F825F83B136443A700198EA9 /* SVFileInfoPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = F825F839136443A700198EA9 /* SVFileInfoPopoverController.m */; };
 		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
+		F84066F6145AA121006F25F7 /* atarcc.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E0145A8FDD006F25F7 /* atarcc.ttf */; };
+		F84066F7145AA121006F25F7 /* atarcs.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E1145A8FDD006F25F7 /* atarcs.ttf */; };
+		F84066F8145AA122006F25F7 /* CommodoreServer.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E2145A8FDD006F25F7 /* CommodoreServer.ttf */; };
+		F84066F9145AA122006F25F7 /* dos437.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F823103A1457F451007E1BE6 /* dos437.ttf */; };
+		F84066FA145AA122006F25F7 /* MicroKnight_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E3145A8FDD006F25F7 /* MicroKnight_v1.0.ttf */; };
+		F84066FB145AA122006F25F7 /* MicroKnightPlus_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E4145A8FDD006F25F7 /* MicroKnightPlus_v1.0.ttf */; };
+		F84066FC145AA122006F25F7 /* mO'sOul_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E5145A8FDD006F25F7 /* mO'sOul_v1.0.ttf */; };
+		F84066FD145AA122006F25F7 /* P0T-NOoDLE_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E6145A8FDD006F25F7 /* P0T-NOoDLE_v1.0.ttf */; };
+		F84066FE145AA122006F25F7 /* Topaz_a500_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E7145A8FDD006F25F7 /* Topaz_a500_v1.0.ttf */; };
+		F84066FF145AA122006F25F7 /* Topaz_a1200_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E8145A8FDD006F25F7 /* Topaz_a1200_v1.0.ttf */; };
+		F8406700145AA122006F25F7 /* TopazPlus_a500_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E9145A8FDD006F25F7 /* TopazPlus_a500_v1.0.ttf */; };
+		F8406701145AA122006F25F7 /* TopazPlus_a1200_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066EA145A8FDD006F25F7 /* TopazPlus_a1200_v1.0.ttf */; };
 		F869391E135A5C6C0024BE07 /* context_info.png in Resources */ = {isa = PBXBuildFile; fileRef = F869391D135A5C6C0024BE07 /* context_info.png */; };
 		F8835768120F24ED00D18794 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* MyDocument.m */; };
 		F8835769120F24ED00D18794 /* SVPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835765120F24ED00D18794 /* SVPrefsWindowController.m */; };
@@ -61,6 +74,18 @@
 			dstPath = Fonts;
 			dstSubfolderSpec = 7;
 			files = (
+				F84066F6145AA121006F25F7 /* atarcc.ttf in CopyFiles */,
+				F84066F7145AA121006F25F7 /* atarcs.ttf in CopyFiles */,
+				F84066F8145AA122006F25F7 /* CommodoreServer.ttf in CopyFiles */,
+				F84066F9145AA122006F25F7 /* dos437.ttf in CopyFiles */,
+				F84066FA145AA122006F25F7 /* MicroKnight_v1.0.ttf in CopyFiles */,
+				F84066FB145AA122006F25F7 /* MicroKnightPlus_v1.0.ttf in CopyFiles */,
+				F84066FC145AA122006F25F7 /* mO'sOul_v1.0.ttf in CopyFiles */,
+				F84066FD145AA122006F25F7 /* P0T-NOoDLE_v1.0.ttf in CopyFiles */,
+				F84066FE145AA122006F25F7 /* Topaz_a500_v1.0.ttf in CopyFiles */,
+				F84066FF145AA122006F25F7 /* Topaz_a1200_v1.0.ttf in CopyFiles */,
+				F8406700145AA122006F25F7 /* TopazPlus_a500_v1.0.ttf in CopyFiles */,
+				F8406701145AA122006F25F7 /* TopazPlus_a1200_v1.0.ttf in CopyFiles */,
 				F8DBE75C132D5D6C00A9F868 /* Terminus.dfont in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,12 +111,25 @@
 		F80F27781297504600209618 /* SVFileInfoStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoStrings.m; path = Classes/SVFileInfoStrings.m; sourceTree = "<group>"; };
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
 		F80F7A25137FF63B00C16B38 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FileInfoPopover.xib; sourceTree = "<group>"; };
+		F82310381457EA10007E1BE6 /* custom_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = custom_about.png; path = Images/custom_about.png; sourceTree = "<group>"; };
+		F823103A1457F451007E1BE6 /* dos437.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dos437.ttf; sourceTree = "<group>"; };
 		F825F8351364430000198EA9 /* SVFileInfoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoWindowController.h; path = Classes/SVFileInfoWindowController.h; sourceTree = "<group>"; };
 		F825F8361364430000198EA9 /* SVFileInfoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoWindowController.m; path = Classes/SVFileInfoWindowController.m; sourceTree = "<group>"; };
 		F825F838136443A700198EA9 /* SVFileInfoPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoPopoverController.h; path = Classes/SVFileInfoPopoverController.h; sourceTree = "<group>"; };
 		F825F839136443A700198EA9 /* SVFileInfoPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoPopoverController.m; path = Classes/SVFileInfoPopoverController.m; sourceTree = "<group>"; };
 		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
 		F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRoardactedScroller.m; path = Classes/SVRoardactedScroller.m; sourceTree = "<group>"; };
+		F84066E0145A8FDD006F25F7 /* atarcc.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = atarcc.ttf; sourceTree = "<group>"; };
+		F84066E1145A8FDD006F25F7 /* atarcs.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = atarcs.ttf; sourceTree = "<group>"; };
+		F84066E2145A8FDD006F25F7 /* CommodoreServer.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CommodoreServer.ttf; sourceTree = "<group>"; };
+		F84066E3145A8FDD006F25F7 /* MicroKnight_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MicroKnight_v1.0.ttf; sourceTree = "<group>"; };
+		F84066E4145A8FDD006F25F7 /* MicroKnightPlus_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MicroKnightPlus_v1.0.ttf; sourceTree = "<group>"; };
+		F84066E5145A8FDD006F25F7 /* mO'sOul_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mO'sOul_v1.0.ttf"; sourceTree = "<group>"; };
+		F84066E6145A8FDD006F25F7 /* P0T-NOoDLE_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "P0T-NOoDLE_v1.0.ttf"; sourceTree = "<group>"; };
+		F84066E7145A8FDD006F25F7 /* Topaz_a500_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Topaz_a500_v1.0.ttf; sourceTree = "<group>"; };
+		F84066E8145A8FDD006F25F7 /* Topaz_a1200_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Topaz_a1200_v1.0.ttf; sourceTree = "<group>"; };
+		F84066E9145A8FDD006F25F7 /* TopazPlus_a500_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TopazPlus_a500_v1.0.ttf; sourceTree = "<group>"; };
+		F84066EA145A8FDD006F25F7 /* TopazPlus_a1200_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TopazPlus_a1200_v1.0.ttf; sourceTree = "<group>"; };
 		F869391D135A5C6C0024BE07 /* context_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_info.png; path = Images/context_info.png; sourceTree = "<group>"; };
 		F8835763120F24ED00D18794 /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDocument.h; path = Classes/MyDocument.h; sourceTree = "<group>"; };
 		F8835764120F24ED00D18794 /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDocument.m; path = Classes/MyDocument.m; sourceTree = "<group>"; };
@@ -240,6 +278,18 @@
 			isa = PBXGroup;
 			children = (
 				F8835784120F256900D18794 /* Terminus.dfont */,
+				F84066E0145A8FDD006F25F7 /* atarcc.ttf */,
+				F84066E1145A8FDD006F25F7 /* atarcs.ttf */,
+				F84066E2145A8FDD006F25F7 /* CommodoreServer.ttf */,
+				F823103A1457F451007E1BE6 /* dos437.ttf */,
+				F84066E3145A8FDD006F25F7 /* MicroKnight_v1.0.ttf */,
+				F84066E4145A8FDD006F25F7 /* MicroKnightPlus_v1.0.ttf */,
+				F84066E5145A8FDD006F25F7 /* mO'sOul_v1.0.ttf */,
+				F84066E6145A8FDD006F25F7 /* P0T-NOoDLE_v1.0.ttf */,
+				F84066E7145A8FDD006F25F7 /* Topaz_a500_v1.0.ttf */,
+				F84066E8145A8FDD006F25F7 /* Topaz_a1200_v1.0.ttf */,
+				F84066E9145A8FDD006F25F7 /* TopazPlus_a500_v1.0.ttf */,
+				F84066EA145A8FDD006F25F7 /* TopazPlus_a1200_v1.0.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -257,6 +307,7 @@
 				F80F4B1C12D54709000731AA /* Divider.png */,
 				F8E1D4B21285DBA90069F262 /* duplicate.png */,
 				F869391D135A5C6C0024BE07 /* context_info.png */,
+				F82310381457EA10007E1BE6 /* custom_about.png */,
 			);
 			name = "Pictures and Icons";
 			sourceTree = "<group>";
@@ -341,6 +392,7 @@
 				F80F4B1D12D54709000731AA /* Divider.png in Resources */,
 				F869391E135A5C6C0024BE07 /* context_info.png in Resources */,
 				F80F7A26137FF63B00C16B38 /* FileInfoPopover.xib in Resources */,
+				F82310391457EA10007E1BE6 /* custom_about.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,11 +481,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/CotEditor\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Fraise\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Kod/deps\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/TDParseKit/frameworks\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_GC = unsupported;
@@ -443,11 +490,7 @@
 				GCC_PREFIX_HEADER = Ascension_Prefix.pch;
 				INFOPLIST_FILE = "Ascension-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks/MCPKit/MySQL/lib\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks/zlib\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = Ascension;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
@@ -463,11 +506,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/CotEditor\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Fraise\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Kod/deps\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/TDParseKit/frameworks\"",
 				);
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_MODEL_TUNING = G5;
@@ -475,11 +513,7 @@
 				GCC_PREFIX_HEADER = Ascension_Prefix.pch;
 				INFOPLIST_FILE = "Ascension-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks/MCPKit/MySQL/lib\"",
-					"\"$(SRCROOT)/../Experimental/Archiv_Cocoa/Sequel Pro/Frameworks/zlib\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = Ascension;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
@@ -492,7 +526,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				CURRENT_PROJECT_VERSION = 73;
+				CURRENT_PROJECT_VERSION = 74;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = unsupported;
@@ -514,7 +548,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				CURRENT_PROJECT_VERSION = 73;
+				CURRENT_PROJECT_VERSION = 74;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = unsupported;
