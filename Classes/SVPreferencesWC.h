@@ -23,7 +23,7 @@
 @property (nonatomic, assign) NSInteger currentViewTag;
 
 // class methods
-+ (SVPreferencesWC *)sharedPrefsWindowController;
++ (SVPreferencesWC *)sharedPreferencesWC;
 + (NSString *)nibName;
 
 // general methods

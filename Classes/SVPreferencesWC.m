@@ -19,14 +19,14 @@
 # pragma mark -
 # pragma mark class methods
 
-+ (SVPreferencesWC *)sharedPrefsWindowController
++ (SVPreferencesWC *)sharedPreferencesWC
 {
-    static SVPreferencesWC *sharedPrefsWindowController = nil;
+    static SVPreferencesWC *sharedPreferencesWC = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedPrefsWindowController = [[self alloc] initWithWindowNibName:[self nibName]];
+        sharedPreferencesWC = [[self alloc] initWithWindowNibName:[self nibName]];
     });
-    return sharedPrefsWindowController;
+    return sharedPreferencesWC;
 }
 
 + (NSString *)nibName

@@ -51,7 +51,7 @@
 
 - (IBAction)openPreferences:(id)sender
 {
-	[[SVPreferencesWC sharedPrefsWindowController] showWindow:nil];
+	[[SVPreferencesWC sharedPreferencesWC] showWindow:nil];
 	(void)sender;
 }
 
