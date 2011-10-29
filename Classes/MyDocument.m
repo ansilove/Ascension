@@ -29,7 +29,8 @@
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
 			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
-			encButtonIndex, vScroller, hScroller, appToolbar, isAnsiFile, rawAnsiString, ansiCacheFile; 
+			encButtonIndex, vScroller, hScroller, appToolbar, isAnsiFile, rawAnsiString, ansiCacheFile, 
+            fileInfoPopover; 
 
 # pragma mark -
 # pragma mark initialization
@@ -200,7 +201,12 @@
         [self.hScroller setKnobStyle:NSScrollerKnobStyleDark];
         [self.vScroller setKnobStyle:NSScrollerKnobStyleDark];
     }
+    
+    // Configure some behaviors of the file information popover.
+    self.fileInfoPopover.behavior = NSPopoverBehaviorTransient;
+    self.fileInfoPopover.animates = YES;
 }
+
 
 - (void)performResumeStateChange:(NSNotification *)note
 {
@@ -247,6 +253,11 @@
             [fileManager removeItemAtPath:self.ansiCacheFile error:nil];
         }
     }
+}
+
+- (IBAction)showFileInfoPopover:(id)sender 
+{
+    [[self fileInfoPopover] showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
 }
 
 # pragma mark -

@@ -69,6 +69,7 @@ typedef enum {
 
 // outlets
 @property (nonatomic, strong) IBOutlet NSWindow      *mainWindow;
+@property (nonatomic, strong) IBOutlet NSPopover     *fileInfoPopover;
 @property (nonatomic, strong) IBOutlet SVTextView	 *asciiTextView;
 @property (nonatomic, strong) IBOutlet NSScrollView  *asciiScrollView;
 @property (nonatomic, strong) IBOutlet NSToolbar     *appToolbar;
@@ -111,5 +112,6 @@ typedef enum {
 // actions
 - (IBAction)switchExportEncoding:(id)sender;
 - (IBAction)performLiveSearch:(id)sender;
+- (IBAction)showFileInfoPopover:(id)sender;
 
 @end
