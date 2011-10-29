@@ -16,11 +16,8 @@
 		F80458F712C69447004CF340 /* SVTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F80458F612C69447004CF340 /* SVTextView.m */; };
 		F80F27791297504600209618 /* SVFileInfoStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F27781297504600209618 /* SVFileInfoStrings.m */; };
 		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
-		F80F7A26137FF63B00C16B38 /* FileInfoPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = F80F7A24137FF63B00C16B38 /* FileInfoPopover.xib */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
 		F82310391457EA10007E1BE6 /* custom_about.png in Resources */ = {isa = PBXBuildFile; fileRef = F82310381457EA10007E1BE6 /* custom_about.png */; };
-		F825F8371364430000198EA9 /* SVFileInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F825F8361364430000198EA9 /* SVFileInfoWindowController.m */; };
-		F825F83B136443A700198EA9 /* SVFileInfoPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = F825F839136443A700198EA9 /* SVFileInfoPopoverController.m */; };
 		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
 		F84066F6145AA121006F25F7 /* atarcc.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E0145A8FDD006F25F7 /* atarcc.ttf */; };
 		F84066F7145AA121006F25F7 /* atarcs.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E1145A8FDD006F25F7 /* atarcs.ttf */; };
@@ -49,6 +46,7 @@
 		F8E149781452BC5000D445DF /* AnsiLove.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E149771452BC5000D445DF /* AnsiLove.framework */; };
 		F8E149791452BC9600D445DF /* AnsiLove.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8E149771452BC5000D445DF /* AnsiLove.framework */; };
 		F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1D4B21285DBA90069F262 /* duplicate.png */; };
+		F8EA113C145C0CE200550364 /* AboutBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8EA113E145C0CE200550364 /* AboutBox.xib */; };
 		F8EA140D12781D3E002A6E6E /* SVFontProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140612781D3E002A6E6E /* SVFontProperties.m */; };
 		F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140A12781D3E002A6E6E /* SVThemeObject.m */; };
 		F8F14433129068C600D89311 /* SVPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F14432129068C600D89311 /* SVPrefsController.m */; };
@@ -110,13 +108,8 @@
 		F80F27771297504600209618 /* SVFileInfoStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoStrings.h; path = Classes/SVFileInfoStrings.h; sourceTree = "<group>"; };
 		F80F27781297504600209618 /* SVFileInfoStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoStrings.m; path = Classes/SVFileInfoStrings.m; sourceTree = "<group>"; };
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
-		F80F7A25137FF63B00C16B38 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FileInfoPopover.xib; sourceTree = "<group>"; };
 		F82310381457EA10007E1BE6 /* custom_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = custom_about.png; path = Images/custom_about.png; sourceTree = "<group>"; };
 		F823103A1457F451007E1BE6 /* dos437.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dos437.ttf; sourceTree = "<group>"; };
-		F825F8351364430000198EA9 /* SVFileInfoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoWindowController.h; path = Classes/SVFileInfoWindowController.h; sourceTree = "<group>"; };
-		F825F8361364430000198EA9 /* SVFileInfoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoWindowController.m; path = Classes/SVFileInfoWindowController.m; sourceTree = "<group>"; };
-		F825F838136443A700198EA9 /* SVFileInfoPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoPopoverController.h; path = Classes/SVFileInfoPopoverController.h; sourceTree = "<group>"; };
-		F825F839136443A700198EA9 /* SVFileInfoPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoPopoverController.m; path = Classes/SVFileInfoPopoverController.m; sourceTree = "<group>"; };
 		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
 		F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRoardactedScroller.m; path = Classes/SVRoardactedScroller.m; sourceTree = "<group>"; };
 		F84066E0145A8FDD006F25F7 /* atarcc.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = atarcc.ttf; sourceTree = "<group>"; };
@@ -146,6 +139,7 @@
 		F8AD9A4A12CE2BA1004CC071 /* Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Customize.png; path = Images/Customize.png; sourceTree = "<group>"; };
 		F8E149771452BC5000D445DF /* AnsiLove.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AnsiLove.framework; path = Frameworks/AnsiLove.framework; sourceTree = "<group>"; };
 		F8E1D4B21285DBA90069F262 /* duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duplicate.png; path = Images/duplicate.png; sourceTree = "<group>"; };
+		F8EA113D145C0CE200550364 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/AboutBox.xib; sourceTree = "<group>"; };
 		F8EA140512781D3E002A6E6E /* SVFontProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFontProperties.h; path = Classes/SVFontProperties.h; sourceTree = "<group>"; };
 		F8EA140612781D3E002A6E6E /* SVFontProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFontProperties.m; path = Classes/SVFontProperties.m; sourceTree = "<group>"; };
 		F8EA140712781D3E002A6E6E /* SVPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVPrefsController.h; path = Classes/SVPrefsController.h; sourceTree = "<group>"; };
@@ -225,10 +219,6 @@
 				F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */,
 				F80F27771297504600209618 /* SVFileInfoStrings.h */,
 				F80F27781297504600209618 /* SVFileInfoStrings.m */,
-				F825F8351364430000198EA9 /* SVFileInfoWindowController.h */,
-				F825F8361364430000198EA9 /* SVFileInfoWindowController.m */,
-				F825F838136443A700198EA9 /* SVFileInfoPopoverController.h */,
-				F825F839136443A700198EA9 /* SVFileInfoPopoverController.m */,
 				F883576B120F250000D18794 /* SVPrefsWindowController.h */,
 				F8835765120F24ED00D18794 /* SVPrefsWindowController.m */,
 				F8EA140712781D3E002A6E6E /* SVPrefsController.h */,
@@ -259,7 +249,7 @@
 				1DDD582A0DA1D0D100B32029 /* MainMenu.xib */,
 				1DDD58280DA1D0D100B32029 /* MyDocument.xib */,
 				F8123D6211C7763000EABFE2 /* Preferences.xib */,
-				F80F7A24137FF63B00C16B38 /* FileInfoPopover.xib */,
+				F8EA113E145C0CE200550364 /* AboutBox.xib */,
 				F8BB69FC1442045000494F4E /* Pictures and Icons */,
 			);
 			name = Resources;
@@ -391,8 +381,8 @@
 				F8AD9A4C12CE2BA1004CC071 /* Customize.png in Resources */,
 				F80F4B1D12D54709000731AA /* Divider.png in Resources */,
 				F869391E135A5C6C0024BE07 /* context_info.png in Resources */,
-				F80F7A26137FF63B00C16B38 /* FileInfoPopover.xib in Resources */,
 				F82310391457EA10007E1BE6 /* custom_about.png in Resources */,
+				F8EA113C145C0CE200550364 /* AboutBox.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,8 +403,6 @@
 				F80F27791297504600209618 /* SVFileInfoStrings.m in Sources */,
 				F80458F712C69447004CF340 /* SVTextView.m in Sources */,
 				F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */,
-				F825F8371364430000198EA9 /* SVFileInfoWindowController.m in Sources */,
-				F825F83B136443A700198EA9 /* SVFileInfoPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,20 +441,20 @@
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		F80F7A24137FF63B00C16B38 /* FileInfoPopover.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F80F7A25137FF63B00C16B38 /* English */,
-			);
-			name = FileInfoPopover.xib;
-			sourceTree = "<group>";
-		};
 		F8123D6211C7763000EABFE2 /* Preferences.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F8EEB89611C6E07900F16727 /* English */,
 			);
 			name = Preferences.xib;
+			sourceTree = "<group>";
+		};
+		F8EA113E145C0CE200550364 /* AboutBox.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8EA113D145C0CE200550364 /* English */,
+			);
+			name = AboutBox.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
