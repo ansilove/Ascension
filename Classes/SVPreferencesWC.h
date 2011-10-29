@@ -1,5 +1,5 @@
 //
-//  SVPrefsWindowController.h
+//  SVPreferencesWC.h
 //  Ascension
 //
 //  Copyright (c) 2011, Stefan Vogt. All rights reserved.
@@ -11,7 +11,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVPrefsWindowController : NSWindowController <NSToolbarDelegate> 
+@interface SVPreferencesWC : NSWindowController <NSToolbarDelegate> 
 
 // outlets
 @property (nonatomic, strong) IBOutlet NSToolbar *prefsBar;
@@ -23,7 +23,7 @@
 @property (nonatomic, assign) NSInteger currentViewTag;
 
 // class methods
-+ (SVPrefsWindowController *)sharedPrefsWindowController;
++ (SVPreferencesWC *)sharedPrefsWindowController;
 + (NSString *)nibName;
 
 // general methods

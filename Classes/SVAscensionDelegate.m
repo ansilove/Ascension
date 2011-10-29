@@ -10,8 +10,8 @@
 //
 
 #import "SVAscensionDelegate.h"
-#import "SVPrefsWindowController.h"
-#import "SVPrefsController.h"
+#import "SVPreferencesWC.h"
+#import "SVPreferences.h"
 
 @implementation SVAscensionDelegate
 
@@ -25,7 +25,7 @@
 	if (self == [super init]) 
 	{
 		self.applicationHasStarted = NO;
-		[SVPrefsController checkUserDefaults];
+		[SVPreferences checkUserDefaults];
     } 
 	return self;
 }
@@ -51,7 +51,7 @@
 
 - (IBAction)openPreferences:(id)sender
 {
-	[[SVPrefsWindowController sharedPrefsWindowController] showWindow:nil];
+	[[SVPreferencesWC sharedPrefsWindowController] showWindow:nil];
 	(void)sender;
 }
 

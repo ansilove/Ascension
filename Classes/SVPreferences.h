@@ -1,5 +1,5 @@
 //
-//  SVPrefsController.h
+//  SVPreferences.h
 //  Ascension
 //
 //  Copyright (c) 2011, Stefan Vogt. All rights reserved.
@@ -11,7 +11,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SVPrefsController : NSObject
+@interface SVPreferences : NSObject
 
 // outlets
 @property (nonatomic, strong) IBOutlet NSColorWell *fontColorWell;

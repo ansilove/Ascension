@@ -1,5 +1,5 @@
 //
-//  SVPrefsWindowController.m
+//  SVPreferencesWC.m
 //  Ascension
 //
 //  Copyright (c) 2011, Stefan Vogt. All rights reserved.
@@ -9,9 +9,9 @@
 //  See the file LICENSE for details.
 //
 
-#import "SVPrefsWindowController.h"
+#import "SVPreferencesWC.h"
 
-@implementation SVPrefsWindowController
+@implementation SVPreferencesWC
 
 @synthesize currentViewTag, prefsBar, generalPreferenceView, colorsPreferenceView, 
             advancedPreferenceView;
@@ -19,9 +19,9 @@
 # pragma mark -
 # pragma mark class methods
 
-+ (SVPrefsWindowController *)sharedPrefsWindowController
++ (SVPreferencesWC *)sharedPrefsWindowController
 {
-    static SVPrefsWindowController *sharedPrefsWindowController = nil;
+    static SVPreferencesWC *sharedPrefsWindowController = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedPrefsWindowController = [[self alloc] initWithWindowNibName:[self nibName]];

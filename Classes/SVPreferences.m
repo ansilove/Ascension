@@ -1,5 +1,5 @@
 //
-//  SVPrefsController.m
+//  SVPreferences.m
 //  Ascension
 //
 //  Copyright (c) 2011, Stefan Vogt. All rights reserved.
@@ -9,10 +9,10 @@
 //  See the file LICENSE for details.
 //
 
-#import "SVPrefsController.h"
+#import "SVPreferences.h"
 #import "SVThemeObject.h" 
 
-@implementation SVPrefsController
+@implementation SVPreferences
 
 @synthesize fontColorWell, bgrndColorWell, cursorColorWell, linkColorWell, selectionColorWell, 
 			themesArray, themesView, pathForThemeLibraryFile, themeIndex;

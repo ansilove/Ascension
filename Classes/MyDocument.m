@@ -13,7 +13,7 @@
 #import "SVTextView.h"
 #import "SVRoardactedScroller.h"
 #import "SVFontProperties.h"
-#import "SVPrefsController.h"
+#import "SVPreferences.h"
 #import "SVFileInfoStrings.h"
 
 #define stdNSTextViewMargin 20
