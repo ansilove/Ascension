@@ -69,7 +69,6 @@
 							<string key="NSFrame">{{0, 59}, {530, 280}}</string>
 							<reference key="NSSuperview" ref="858081398"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSImageCell" key="NSCell" id="870205309">
 								<int key="NSCellFlags">130560</int>
