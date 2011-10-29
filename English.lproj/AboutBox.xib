@@ -51,7 +51,7 @@
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSImageView" id="451656588">
+						<object class="NSImageView" id="53450857">
 							<reference key="NSNextResponder" ref="858081398"/>
 							<int key="NSvFlags">256</int>
 							<object class="NSMutableSet" key="NSDragTypes">
@@ -71,7 +71,7 @@
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSImageCell" key="NSCell" id="101231992">
+							<object class="NSImageCell" key="NSCell" id="870205309">
 								<int key="NSCellFlags">130560</int>
 								<int key="NSCellFlags2">33554432</int>
 								<object class="NSCustomResource" key="NSContents">
@@ -89,7 +89,7 @@
 					<string key="NSFrameSize">{530, 339}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView" ref="451656588"/>
+					<reference key="NSNextKeyView" ref="53450857"/>
 					<string key="NSReuseIdentifierKey">_NS:224</string>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1050}}</string>
@@ -145,23 +145,23 @@
 						<reference key="object" ref="858081398"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="451656588"/>
+							<reference ref="53450857"/>
 						</object>
 						<reference key="parent" ref="347024000"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">3</int>
-						<reference key="object" ref="451656588"/>
+						<reference key="object" ref="53450857"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="101231992"/>
+							<reference ref="870205309"/>
 						</object>
 						<reference key="parent" ref="858081398"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
-						<reference key="object" ref="101231992"/>
-						<reference key="parent" ref="451656588"/>
+						<reference key="object" ref="870205309"/>
+						<reference key="parent" ref="53450857"/>
 					</object>
 				</object>
 			</object>
