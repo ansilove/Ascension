@@ -12,6 +12,7 @@
 #import "SVAscensionDelegate.h"
 #import "SVPreferencesWC.h"
 #import "SVPreferences.h"
+#import "SVEpicAboutBoxWC.h"
 
 @implementation SVAscensionDelegate
 
@@ -59,6 +60,12 @@
 {
 	NSString *issueTracker = (@"https://github.com/ByteProject/Ascension/issues");
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:issueTracker]];
+}
+
+- (IBAction)showAboutBox:(id)sender
+{
+    [[SVEpicAboutBoxWC sharedEpicAboutBoxWC] showWindow:nil];
+    (void)sender;
 }
 
 @end

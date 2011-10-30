@@ -19,5 +19,6 @@
 // actions
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)openIssueTracker:(id)sender;
+- (IBAction)showAboutBox:(id)sender;
 
 @end
