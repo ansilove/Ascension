@@ -21,6 +21,7 @@
 
 + (SVPreferencesWC *)sharedPreferencesWC
 {
+    // Numerous instances of a prefs window don't make any sense.
     static SVPreferencesWC *sharedPreferencesWC = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

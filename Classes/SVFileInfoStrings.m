@@ -20,6 +20,7 @@
 
 + (SVFileInfoStrings *)sharedFileInfoStrings
 {
+    // This class will be a separate, single thread.
     static SVFileInfoStrings *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
