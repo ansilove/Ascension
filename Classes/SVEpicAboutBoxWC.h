@@ -13,4 +13,8 @@
 
 @interface SVEpicAboutBoxWC : NSWindowController
 
+// class methods
++ (SVEpicAboutBoxWC *)sharedEpicAboutBoxWC;
++ (NSString *)nibName;
+
 @end

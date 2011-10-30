@@ -13,21 +13,35 @@
 
 @implementation SVEpicAboutBoxWC
 
-- (id)initWithWindow:(NSWindow *)window
+# pragma mark -
+# pragma mark class methods
+
++ (SVEpicAboutBoxWC *)sharedEpicAboutBoxWC
 {
-    self = [super initWithWindow:window];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
+    // We abuse GCD to be sure this class will be created once.
+    static SVEpicAboutBoxWC *sharedEpicAboutBoxWC = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedEpicAboutBoxWC = [[self alloc] initWithWindowNibName:[self nibName]];
+    });
+    return sharedEpicAboutBoxWC;
 }
 
-- (void)windowDidLoad
++ (NSString *)nibName 
 {
-    [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    return @"AboutBox";
+}
+
+# pragma mark -
+# pragma mark class methods
+
+- (void)awakeFromNib
+{
+    // This is an 'epic' about box, make the bottom sexy goddammit!
+    [self.window setContentBorderThickness:45.0 forEdge:NSMinYEdge];
+	
+    // There is only one way for about boxes to see the light: centered.
+    [self.window center];
 }
 
 @end
