@@ -11,6 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
+// Class providing NSBundle informations. Gets automatically initalized
+// when interface elements are bound to it's containing properties.
+
 @interface SVEpicAboutBox : NSObject
 
 @property (nonatomic, strong) NSString *bundleShortVersionString;

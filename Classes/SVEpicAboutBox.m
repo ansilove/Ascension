@@ -21,6 +21,7 @@
 {
     if (self == [super init]) 
     {
+        // Fetch the keys we need from info.plist and assign them to our synthesized properties.
         self.bundleShortVersionString =
         [[[NSBundle bundleWithIdentifier:selfBundleID] infoDictionary] valueForKey:@"CFBundleShortVersionString"];
         
