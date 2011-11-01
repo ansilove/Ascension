@@ -9,7 +9,7 @@
 //  See the file LICENSE for details.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 @interface SVFileInfoStrings : NSObject
 
