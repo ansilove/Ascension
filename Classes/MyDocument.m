@@ -257,7 +257,7 @@
 
 - (IBAction)showFileInfoPopover:(id)sender 
 {
-    [[self fileInfoPopover] showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
+    [self.fileInfoPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
 }
 
 # pragma mark -
