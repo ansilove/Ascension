@@ -59,7 +59,13 @@
     // Configure behaviour of the 'get in touch' popover.
     self.getInTouchPopover.behavior = NSPopoverBehaviorTransient;
     self.getInTouchPopover.animates = YES;
-    
+}
+
+# pragma mark -
+# pragma mark NSWindow delegate
+
+- (void)windowDidBecomeKey:(NSNotification *)notification 
+{
     // There is only one way for about boxes to see the light: centered.
     [self.window center];
 }
@@ -69,7 +75,29 @@
 
 - (IBAction)showGetInTouchPopover:(id)sender
 {
+    // This method calls the 'get in touch' popover.
     [self.getInTouchPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
+}
+
+- (IBAction)openDevelopersBlog:(id)sender
+{
+    // Opens my blog. Enjoy or don't enjoy. You decide and I don't care :)
+    NSString *devBlog = (@"http://byteproject.net");
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:devBlog]];
+}
+
+- (IBAction)openProjectWebsite:(id)sender
+{
+    // This will open Ascension's website.
+    NSString *projectSite = (@"http://byteproject.net/ascension");
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:projectSite]];
+}
+
+- (IBAction)followOnTwitter:(id)sender
+{
+    // Opens my Twitter profile so you can follow me. Careful, may contain tweets.
+    NSString *twitterProfile = (@"http://twitter.com/byteproject");
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:twitterProfile]];
 }
 
 @end

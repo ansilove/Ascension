@@ -23,5 +23,8 @@
 
 // actions
 - (IBAction)showGetInTouchPopover:(id)sender;
+- (IBAction)openDevelopersBlog:(id)sender;
+- (IBAction)openProjectWebsite:(id)sender;
+- (IBAction)followOnTwitter:(id)sender;
 
 @end
