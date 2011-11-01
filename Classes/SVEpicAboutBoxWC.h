@@ -13,8 +13,15 @@
 
 @interface SVEpicAboutBoxWC : NSWindowController
 
+// outlets
+@property (nonatomic, strong) IBOutlet NSView *getInTouchView;
+@property (nonatomic, strong) IBOutlet NSPopover *getInTouchPopover;
+
 // class methods
 + (SVEpicAboutBoxWC *)sharedEpicAboutBoxWC;
 + (NSString *)nibName;
+
+// actions
+- (IBAction)showGetInTouchPopover:(id)sender;
 
 @end

@@ -13,6 +13,8 @@
 
 @implementation SVEpicAboutBoxWC
 
+@synthesize getInTouchView, getInTouchPopover;
+
 # pragma mark -
 # pragma mark class methods
 
@@ -33,15 +35,41 @@
 }
 
 # pragma mark -
-# pragma mark class methods
+# pragma mark initialization
 
 - (void)awakeFromNib
 {
     // This is an 'epic' about box, make the bottom sexy goddammit!
     [self.window setContentBorderThickness:45.0 forEdge:NSMinYEdge];
+    
+    // Attach the accessory 'get in touch' view to the main window.
+    NSView *themeFrame = [[self.window contentView] superview];
 	
+	NSRect container = [themeFrame frame];
+	NSRect getInTouchRect = [self.getInTouchView frame];
+	
+	NSRect newFrame = NSMakeRect(container.size.width - getInTouchRect.size.width,
+								 container.size.height - getInTouchRect.size.height,
+								 getInTouchRect.size.width,
+								 getInTouchRect.size.height);
+	
+	[self.getInTouchView setFrame:newFrame];
+	[themeFrame addSubview:self.getInTouchView];
+    
+    // Configure behaviour of the 'get in touch' popover.
+    self.getInTouchPopover.behavior = NSPopoverBehaviorTransient;
+    self.getInTouchPopover.animates = YES;
+    
     // There is only one way for about boxes to see the light: centered.
     [self.window center];
+}
+
+# pragma mark -
+# pragma mark actions
+
+- (IBAction)showGetInTouchPopover:(id)sender
+{
+    [self.getInTouchPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
 }
 
 @end
