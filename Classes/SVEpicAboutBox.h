@@ -13,4 +13,8 @@
 
 @interface SVEpicAboutBox : NSObject
 
+@property (nonatomic, strong) NSString *bundleShortVersionString;
+@property (nonatomic, strong) NSString *bundleVersionNumber;
+@property (nonatomic, strong) NSString *humanReadableCopyright;
+
 @end

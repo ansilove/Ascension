@@ -11,6 +11,26 @@
 
 #import "SVEpicAboutBox.h"
 
+#define selfBundleID @"com.byteproject.Ascension"
+
 @implementation SVEpicAboutBox
+
+@synthesize bundleShortVersionString, bundleVersionNumber, humanReadableCopyright;
+
+- (id)init
+{
+    if (self == [super init]) 
+    {
+        self.bundleShortVersionString =
+        [[[NSBundle bundleWithIdentifier:selfBundleID] infoDictionary] valueForKey:@"CFBundleShortVersionString"];
+        
+        self.bundleVersionNumber =
+        [[[NSBundle bundleWithIdentifier:selfBundleID] infoDictionary] valueForKey:@"CFBundleVersion"];
+        
+        self.humanReadableCopyright =
+        [[[NSBundle bundleWithIdentifier:selfBundleID] infoDictionary] valueForKey:@"NSHumanReadableCopyright"];
+    }
+    return self;
+}
 
 @end
