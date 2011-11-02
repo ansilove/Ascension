@@ -14,8 +14,14 @@
 @interface SVEpicAboutBoxWC : NSWindowController
 
 // outlets
-@property (nonatomic, strong) IBOutlet NSView *getInTouchView;
-@property (nonatomic, strong) IBOutlet NSPopover *getInTouchPopover;
+@property (nonatomic, strong) IBOutlet NSView     *getInTouchView;
+@property (nonatomic, strong) IBOutlet NSPopover  *getInTouchPopover;
+@property (nonatomic, strong) IBOutlet NSPanel    *licenseSheet;
+@property (nonatomic, strong) IBOutlet NSTextView *licenseTextView;
+
+// integer and float values
+@property (nonatomic, assign) BOOL shouldHideCloseBadge;
+
 
 // class methods
 + (SVEpicAboutBoxWC *)sharedEpicAboutBoxWC;
@@ -26,5 +32,7 @@
 - (IBAction)openDevelopersBlog:(id)sender;
 - (IBAction)openProjectWebsite:(id)sender;
 - (IBAction)followOnTwitter:(id)sender;
+- (IBAction)orderFrontLicenseSheet:(id)sender;
+- (IBAction)orderOutLicenseSheet:(id)sender;
 
 @end
