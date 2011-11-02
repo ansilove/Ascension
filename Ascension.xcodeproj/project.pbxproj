@@ -18,6 +18,7 @@
 		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
 		F82310391457EA10007E1BE6 /* custom_about.png in Resources */ = {isa = PBXBuildFile; fileRef = F82310381457EA10007E1BE6 /* custom_about.png */; };
+		F83A1B651461FE4A00630FF2 /* sheet_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F83A1B641461FE4A00630FF2 /* sheet_background.png */; };
 		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
 		F84066F6145AA121006F25F7 /* atarcc.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E0145A8FDD006F25F7 /* atarcc.ttf */; };
 		F84066F7145AA121006F25F7 /* atarcs.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E1145A8FDD006F25F7 /* atarcs.ttf */; };
@@ -112,6 +113,7 @@
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
 		F82310381457EA10007E1BE6 /* custom_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = custom_about.png; path = Images/custom_about.png; sourceTree = "<group>"; };
 		F823103A1457F451007E1BE6 /* dos437.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dos437.ttf; sourceTree = "<group>"; };
+		F83A1B641461FE4A00630FF2 /* sheet_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sheet_background.png; path = Images/sheet_background.png; sourceTree = "<group>"; };
 		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
 		F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRoardactedScroller.m; path = Classes/SVRoardactedScroller.m; sourceTree = "<group>"; };
 		F84066E0145A8FDD006F25F7 /* atarcc.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = atarcc.ttf; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				F8E1D4B21285DBA90069F262 /* duplicate.png */,
 				F869391D135A5C6C0024BE07 /* context_info.png */,
 				F82310381457EA10007E1BE6 /* custom_about.png */,
+				F83A1B641461FE4A00630FF2 /* sheet_background.png */,
 			);
 			name = "Pictures and Icons";
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				F869391E135A5C6C0024BE07 /* context_info.png in Resources */,
 				F82310391457EA10007E1BE6 /* custom_about.png in Resources */,
 				F8EA113C145C0CE200550364 /* AboutBox.xib in Resources */,
+				F83A1B651461FE4A00630FF2 /* sheet_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

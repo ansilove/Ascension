@@ -19,10 +19,6 @@
 @property (nonatomic, strong) IBOutlet NSPanel    *licenseSheet;
 @property (nonatomic, strong) IBOutlet NSTextView *licenseTextView;
 
-// integer and float values
-@property (nonatomic, assign) BOOL shouldHideCloseBadge;
-
-
 // class methods
 + (SVEpicAboutBoxWC *)sharedEpicAboutBoxWC;
 + (NSString *)nibName;

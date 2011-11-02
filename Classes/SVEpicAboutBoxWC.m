@@ -13,8 +13,7 @@
 
 @implementation SVEpicAboutBoxWC
 
-@synthesize getInTouchView, getInTouchPopover, licenseSheet, licenseTextView,
-            shouldHideCloseBadge;
+@synthesize getInTouchView, getInTouchPopover, licenseSheet, licenseTextView;
 
 # pragma mark -
 # pragma mark class methods
@@ -43,9 +42,6 @@
     // This is an 'epic' about box, make the bottom sexy goddammit!
     [self.window setContentBorderThickness:45.0 forEdge:NSMinYEdge];
     
-    // Hide the informative close badge, we don't need it now.
-    self.shouldHideCloseBadge = YES;
-    
     // Attach the accessory 'get in touch' view to the main window.
     NSView *themeFrame = [[self.window contentView] superview];
 	
@@ -63,6 +59,9 @@
     // Configure behaviour of the 'get in touch' popover.
     self.getInTouchPopover.behavior = NSPopoverBehaviorTransient;
     self.getInTouchPopover.animates = YES;
+    
+    // Add some gorgeous transparency to our sheet.
+    [self.licenseSheet setAlphaValue:0.96];
 }
 
 # pragma mark -
@@ -108,9 +107,6 @@
 {
     [self.window setTitle:@"License Agreement"];
     
-    // Now we need to display our informative close badge.
-    self.shouldHideCloseBadge = NO;
-    
     // Show up the license / acknowledgements sheet.
     [NSApp beginSheet:self.licenseSheet
 	   modalForWindow:self.window 
@@ -127,9 +123,6 @@
     // Remove the license / acknowledgements sheet.
     [NSApp endSheet:self.licenseSheet]; 
     [self.licenseSheet orderOut:nil];
-    
-    // Finally, hide the informative close badge again.
-    self.shouldHideCloseBadge = YES;
 }
 
 @end
