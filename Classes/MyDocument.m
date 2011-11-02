@@ -178,6 +178,13 @@
 	[self updateFileInfoValues];
 }
 
+// Returns options for the fullscreen mode.
+- (NSApplicationPresentationOptions)window:(NSWindow *)window 
+      willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions {
+    return NSApplicationPresentationAutoHideMenuBar | NSApplicationPresentationHideDock | 
+           NSApplicationPresentationFullScreen | NSApplicationPresentationAutoHideToolbar;
+}
+
 - (void)createInterface 
 {
 	// Create the bottom bar.
@@ -210,6 +217,7 @@
 
 - (void)performResumeStateChange:(NSNotification *)note
 {
+    // Enables or disables the resume state.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     switch ([defaults integerForKey:@"startupBehavior"]) {
         case 0: {
@@ -227,6 +235,7 @@
 
 - (void)performScrollerStyleChange:(NSNotification *)note
 {
+    // Change scroller style to the specified value.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     switch ([defaults integerForKey:@"scrollerStyle"]) {
         case 0: {
