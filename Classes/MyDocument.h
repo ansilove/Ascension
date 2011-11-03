@@ -15,6 +15,7 @@
 
 @class SVTextView;
 
+// No confusion in switch methods, so much easier to read.
 typedef enum {
 	EncDosCP437,
 	EncDosCP866
