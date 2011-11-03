@@ -105,14 +105,37 @@
 
 - (IBAction)orderFrontLicenseSheet:(id)sender
 {
-    [self.window setTitle:@"License Agreement"];
-    
-    // Show up the license / acknowledgements sheet.
-    [NSApp beginSheet:self.licenseSheet
-	   modalForWindow:self.window 
-		modalDelegate:self 
-	   didEndSelector:NULL 
-		  contextInfo:NULL];
+    // Invoke the appropriate code, based on the button's sender tag.
+    switch ([sender tag]) 
+	{
+		case AckTag: {
+			// First, set the window title to Acknowledgements.
+            [self.window setTitle:@"Acknowledgements"];
+            
+            // Show up the license / acknowledgements sheet.
+            [NSApp beginSheet:self.licenseSheet
+               modalForWindow:self.window 
+                modalDelegate:self 
+               didEndSelector:NULL 
+                  contextInfo:NULL];
+			break;
+		}
+		case LicTag: {
+            // Set the window title to License Agreement.
+            [self.window setTitle:@"License Agreement"];
+            
+            // Show up the license / acknowledgements sheet.
+            [NSApp beginSheet:self.licenseSheet
+               modalForWindow:self.window 
+                modalDelegate:self 
+               didEndSelector:NULL 
+                  contextInfo:NULL];
+			break;
+		}
+		default: {
+			break;
+		}
+    }
 }
 
 - (IBAction)orderOutLicenseSheet:(id)sender
