@@ -38,7 +38,7 @@
 # pragma mark initialization
 
 - (void)awakeFromNib
-{    
+{     
     // This is an 'epic' about box, make the bottom sexy goddammit!
     [self.window setContentBorderThickness:45.0 forEdge:NSMinYEdge];
     
@@ -62,13 +62,10 @@
     
     // Add some gorgeous transparency to our sheet.
     [self.licenseSheet setAlphaValue:0.96];
-}
-
-# pragma mark -
-# pragma mark NSWindow delegate
-
-- (void)windowDidBecomeKey:(NSNotification *)notification 
-{
+    
+    // Minor configuration of the embedded licenseTextView.
+    [self.licenseTextView.textContainer setLineFragmentPadding:10.0];
+    
     // There is only one way for about boxes to see the light: centered.
     [self.window center];
 }
@@ -109,8 +106,13 @@
     switch ([sender tag]) 
 	{
 		case AckTag: {
-			// First, set the window title to Acknowledgements.
+			// First, set the window title to 'Acknowledgements'.
             [self.window setTitle:@"Acknowledgements"];
+            
+            // Now our NSTextView instance will read the Acknowledgements.rtf file.
+            NSBundle *myMainBundle = [NSBundle mainBundle];
+            NSString *ackFilePath = [myMainBundle pathForResource:@"Acknowledgements" ofType:@"rtf"];
+            [self.licenseTextView readRTFDFromFile:ackFilePath];
             
             // Show up the license / acknowledgements sheet.
             [NSApp beginSheet:self.licenseSheet
@@ -121,8 +123,13 @@
 			break;
 		}
 		case LicTag: {
-            // Set the window title to License Agreement.
+            // Set the window title to 'License Agreement'.
             [self.window setTitle:@"License Agreement"];
+            
+            // Make our NSTextView instance load the License.rtf file.
+            NSBundle *myMainBundle = [NSBundle mainBundle];
+            NSString *licenseFilePath = [myMainBundle pathForResource:@"License" ofType:@"rtf"];
+            [self.licenseTextView readRTFDFromFile:licenseFilePath];
             
             // Show up the license / acknowledgements sheet.
             [NSApp beginSheet:self.licenseSheet

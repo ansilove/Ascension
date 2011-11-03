@@ -109,7 +109,7 @@
 	
 	// Assign our attributed string.
 	if ([self string] != nil) {
-		[[self.asciiTextView textStorage] setAttributedString:[self string]];
+		[self.asciiTextView.textStorage setAttributedString:[self string]];
 	}
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -118,7 +118,7 @@
     [self prepareContent];
 	
 	// Value for auto-sizing the document window.
-	NSSize myTextSize = [self.asciiTextView textStorage].size;
+	NSSize myTextSize = self.asciiTextView.textStorage.size;
 	
 	// Apply width and height based on the specified values in the preferences.
 	if (self.contentString.length < 50) {
@@ -353,16 +353,16 @@
 	// Apply our atttributes.
 	attributes = [NSDictionary dictionaryWithObjectsAndKeys:asciiFont,
 				  NSFontAttributeName, customParagraph, NSParagraphStyleAttributeName, nil];
-	 [[self.asciiTextView textStorage] setAttributes:attributes 
-											  range:NSMakeRange(0, [self.asciiTextView textStorage].length)];
+	 [self.asciiTextView.textStorage setAttributes:attributes 
+											  range:NSMakeRange(0, self.asciiTextView.textStorage.length)];
 }
 
 - (void)performLinkification
 {
 	// Analyze the text storage and return a linkified string.
 	AHHyperlinkScanner *scanner = 
-	[AHHyperlinkScanner hyperlinkScannerWithAttributedString:[self.asciiTextView textStorage]];
-	[[self.asciiTextView textStorage] setAttributedString:[scanner linkifiedString]];
+	[AHHyperlinkScanner hyperlinkScannerWithAttributedString:self.asciiTextView.textStorage];
+	[self.asciiTextView.textStorage setAttributedString:[scanner linkifiedString]];
 }
 
 - (void)handlePasteOperation:(NSNotification *)note
@@ -469,7 +469,7 @@
 - (NSArray *)lsStringRangesInDocument:(NSString *)liveSearchString 
 {
 	// Returns an array of ranges suitable for NSTextView's setSelectedRanges method.
-    NSString *txtStorString = [[self.asciiTextView textStorage] string];
+    NSString *txtStorString = self.asciiTextView.textStorage.string;
     NSMutableArray *ranges = [NSMutableArray array];
 	
 	NSRange thisCharRange, searchCharRange;
@@ -509,7 +509,7 @@
 
 - (void)textDidChange:(NSNotification *)notification
 {
-    [self setString:[self.asciiTextView textStorage]];
+    [self setString:self.asciiTextView.textStorage];
 }
 
 # pragma mark -
@@ -576,7 +576,7 @@
 	if (self.asciiTextView) 
 	{
 		// Apply the loaded data to the text storage and restyle contents.
-		[[self.asciiTextView textStorage] setAttributedString:[self string]];
+		[self.asciiTextView.textStorage setAttributedString:[self string]];
 		[self prepareContent];
 	}
 	return YES;
@@ -671,7 +671,7 @@
 	if (self.asciiTextView) 
 	{
 		// Apply the loaded data to the text storage and restyle contents.
-		[[self.asciiTextView textStorage] setAttributedString:[self string]];
+		[self.asciiTextView.textStorage setAttributedString:[self string]];
 		[self prepareContent];
 	}
 	return YES;
