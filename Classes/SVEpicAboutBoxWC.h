@@ -11,6 +11,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+// Significantly improves readability while working with sender tags.
+typedef enum {
+    AckTag,
+    LicTag
+} SVAboutBoxButtonTag;
+
 @interface SVEpicAboutBoxWC : NSWindowController
 
 // outlets
