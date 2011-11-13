@@ -114,6 +114,10 @@
             NSString *ackFilePath = [myMainBundle pathForResource:@"Acknowledgements" ofType:@"rtf"];
             [self.licenseTextView readRTFDFromFile:ackFilePath];
             
+            // Opens our license textview scrolled to top.
+            NSRange zeroRange = { 0, 0 };
+            [self.licenseTextView scrollRangeToVisible: zeroRange];
+            
             // Show up the license / acknowledgements sheet.
             [NSApp beginSheet:self.licenseSheet
                modalForWindow:self.window 
@@ -130,6 +134,10 @@
             NSBundle *myMainBundle = [NSBundle mainBundle];
             NSString *licenseFilePath = [myMainBundle pathForResource:@"License" ofType:@"rtf"];
             [self.licenseTextView readRTFDFromFile:licenseFilePath];
+            
+            // Opens our license textview scrolled to top.
+            NSRange zeroRange = { 0, 0 };
+            [self.licenseTextView scrollRangeToVisible: zeroRange];
             
             // Show up the license / acknowledgements sheet.
             [NSApp beginSheet:self.licenseSheet
