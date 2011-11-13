@@ -20,10 +20,10 @@ typedef enum {
 @interface SVEpicAboutBoxWC : NSWindowController
 
 // outlets
-@property (nonatomic, strong) IBOutlet NSView     *getInTouchView;
-@property (nonatomic, strong) IBOutlet NSPopover  *getInTouchPopover;
-@property (nonatomic, strong) IBOutlet NSPanel    *licenseSheet;
-@property (nonatomic, strong) IBOutlet NSTextView *licenseTextView;
+@property (nonatomic, strong) IBOutlet NSView       *getInTouchView;
+@property (nonatomic, strong) IBOutlet NSPopover    *getInTouchPopover;
+@property (nonatomic, strong) IBOutlet NSPanel      *licenseSheet;
+@property (nonatomic, strong) IBOutlet NSTextView   *licenseTextView;
 
 // class methods
 + (SVEpicAboutBoxWC *)sharedEpicAboutBoxWC;
