@@ -20,9 +20,9 @@
 		F82310391457EA10007E1BE6 /* custom_about.png in Resources */ = {isa = PBXBuildFile; fileRef = F82310381457EA10007E1BE6 /* custom_about.png */; };
 		F83A1B651461FE4A00630FF2 /* sheet_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F83A1B641461FE4A00630FF2 /* sheet_background.png */; };
 		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
+		F83BA419146B2CE600F3DF9D /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = F83BA418146B2CE600F3DF9D /* container-migration.plist */; };
 		F84066F6145AA121006F25F7 /* atarcc.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E0145A8FDD006F25F7 /* atarcc.ttf */; };
 		F84066F7145AA121006F25F7 /* atarcs.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E1145A8FDD006F25F7 /* atarcs.ttf */; };
-		F84066F8145AA122006F25F7 /* CommodoreServer.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E2145A8FDD006F25F7 /* CommodoreServer.ttf */; };
 		F84066F9145AA122006F25F7 /* dos437.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F823103A1457F451007E1BE6 /* dos437.ttf */; };
 		F84066FA145AA122006F25F7 /* MicroKnight_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E3145A8FDD006F25F7 /* MicroKnight_v1.0.ttf */; };
 		F84066FB145AA122006F25F7 /* MicroKnightPlus_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E4145A8FDD006F25F7 /* MicroKnightPlus_v1.0.ttf */; };
@@ -42,6 +42,7 @@
 		F8835778120F251F00D18794 /* Ascension.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8835773120F251F00D18794 /* Ascension.icns */; };
 		F8835779120F251F00D18794 /* Colors.png in Resources */ = {isa = PBXBuildFile; fileRef = F8835774120F251F00D18794 /* Colors.png */; };
 		F883577A120F251F00D18794 /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = F8835775120F251F00D18794 /* General.png */; };
+		F8884DD9146F4A1A00FA376F /* C64_Pro_Mono_v1.0-STYLE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8884DD8146F4A1A00FA376F /* C64_Pro_Mono_v1.0-STYLE.ttf */; };
 		F898A66114633ED30008E3CD /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F898A65F14633ED30008E3CD /* License.rtf */; };
 		F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
@@ -86,7 +87,6 @@
 			files = (
 				F84066F6145AA121006F25F7 /* atarcc.ttf in CopyFiles */,
 				F84066F7145AA121006F25F7 /* atarcs.ttf in CopyFiles */,
-				F84066F8145AA122006F25F7 /* CommodoreServer.ttf in CopyFiles */,
 				F84066F9145AA122006F25F7 /* dos437.ttf in CopyFiles */,
 				F84066FA145AA122006F25F7 /* MicroKnight_v1.0.ttf in CopyFiles */,
 				F84066FB145AA122006F25F7 /* MicroKnightPlus_v1.0.ttf in CopyFiles */,
@@ -125,9 +125,10 @@
 		F83A1B641461FE4A00630FF2 /* sheet_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sheet_background.png; path = Images/sheet_background.png; sourceTree = "<group>"; };
 		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
 		F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRoardactedScroller.m; path = Classes/SVRoardactedScroller.m; sourceTree = "<group>"; };
+		F83BA418146B2CE600F3DF9D /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "container-migration.plist"; sourceTree = "<group>"; };
+		F83BA41B146B307400F3DF9D /* Ascension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Ascension.entitlements; sourceTree = "<group>"; };
 		F84066E0145A8FDD006F25F7 /* atarcc.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = atarcc.ttf; sourceTree = "<group>"; };
 		F84066E1145A8FDD006F25F7 /* atarcs.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = atarcs.ttf; sourceTree = "<group>"; };
-		F84066E2145A8FDD006F25F7 /* CommodoreServer.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CommodoreServer.ttf; sourceTree = "<group>"; };
 		F84066E3145A8FDD006F25F7 /* MicroKnight_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MicroKnight_v1.0.ttf; sourceTree = "<group>"; };
 		F84066E4145A8FDD006F25F7 /* MicroKnightPlus_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MicroKnightPlus_v1.0.ttf; sourceTree = "<group>"; };
 		F84066E5145A8FDD006F25F7 /* mO'sOul_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mO'sOul_v1.0.ttf"; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 		F8835774120F251F00D18794 /* Colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Colors.png; path = Images/Colors.png; sourceTree = "<group>"; };
 		F8835775120F251F00D18794 /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		F8835784120F256900D18794 /* Terminus.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Terminus.dfont; sourceTree = "<group>"; };
+		F8884DD8146F4A1A00FA376F /* C64_Pro_Mono_v1.0-STYLE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "C64_Pro_Mono_v1.0-STYLE.ttf"; sourceTree = "<group>"; };
 		F898A66014633ED30008E3CD /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/License.rtf; sourceTree = "<group>"; };
 		F8A894941208D34300871F98 /* AutoHyperlinks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoHyperlinks.framework; path = Frameworks/AutoHyperlinks.framework; sourceTree = "<group>"; };
 		F8AD9A4A12CE2BA1004CC071 /* Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Customize.png; path = Images/Customize.png; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* Ascension */ = {
 			isa = PBXGroup;
 			children = (
+				F83BA41B146B307400F3DF9D /* Ascension.entitlements */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
@@ -280,6 +283,7 @@
 				F898A65F14633ED30008E3CD /* License.rtf */,
 				2A37F4B9FDCFA73011CA2CEA /* Acknowledgements.rtf */,
 				8D15AC360486D014006FF6A4 /* Ascension-Info.plist */,
+				F83BA418146B2CE600F3DF9D /* container-migration.plist */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
 				F8BB69FC1442045000494F4E /* Pictures and Icons */,
 			);
@@ -301,7 +305,7 @@
 				F8835784120F256900D18794 /* Terminus.dfont */,
 				F84066E0145A8FDD006F25F7 /* atarcc.ttf */,
 				F84066E1145A8FDD006F25F7 /* atarcs.ttf */,
-				F84066E2145A8FDD006F25F7 /* CommodoreServer.ttf */,
+				F8884DD8146F4A1A00FA376F /* C64_Pro_Mono_v1.0-STYLE.ttf */,
 				F823103A1457F451007E1BE6 /* dos437.ttf */,
 				F84066E3145A8FDD006F25F7 /* MicroKnight_v1.0.ttf */,
 				F84066E4145A8FDD006F25F7 /* MicroKnightPlus_v1.0.ttf */,
@@ -433,6 +437,8 @@
 				F8B9E6A21464A0EA0007ACAA /* AFileTypePCB.icns in Resources */,
 				F8B9E6A31464A0EA0007ACAA /* AFileTypeTND.icns in Resources */,
 				F8B9E6A41464A0EA0007ACAA /* AFileTypeXB.icns in Resources */,
+				F83BA419146B2CE600F3DF9D /* container-migration.plist in Resources */,
+				F8884DD9146F4A1A00FA376F /* C64_Pro_Mono_v1.0-STYLE.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +531,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Ascension.entitlements;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -540,6 +548,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = Ascension;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 			};
@@ -550,6 +559,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Ascension.entitlements;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,6 +574,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = Ascension;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 			};
@@ -573,8 +585,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				CURRENT_PROJECT_VERSION = 75;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
+				CURRENT_PROJECT_VERSION = 76;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = unsupported;
@@ -595,8 +607,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				CURRENT_PROJECT_VERSION = 75;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
+				CURRENT_PROJECT_VERSION = 76;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = unsupported;
