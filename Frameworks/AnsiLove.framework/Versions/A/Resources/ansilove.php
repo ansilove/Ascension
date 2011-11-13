@@ -28,7 +28,7 @@ function write_log($message)
 
     $string = date("[Y-m-d] - H:i:s")." - $message\n";
 
-    fputs ($file,$string);
+    /* fputs ($file,$string); */
     fclose ($file);
 }
 
