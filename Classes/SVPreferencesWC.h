@@ -15,9 +15,12 @@
 
 // outlets
 @property (nonatomic, strong) IBOutlet NSToolbar *prefsBar;
-@property (nonatomic, strong) IBOutlet NSView	 *generalPreferenceView;
-@property (nonatomic, strong) IBOutlet NSView    *colorsPreferenceView;
-@property (nonatomic, strong) IBOutlet NSView	 *advancedPreferenceView;
+@property (nonatomic, strong) IBOutlet NSView	 *generalPrefView;
+@property (nonatomic, strong) IBOutlet NSView    *interfacePrefView;
+@property (nonatomic, strong) IBOutlet NSView	 *fontPrefView;
+@property (nonatomic, strong) IBOutlet NSView    *themePrefView;
+@property (nonatomic, strong) IBOutlet NSView    *asciiPrefView;
+@property (nonatomic, strong) IBOutlet NSView    *ansiPrefView;
 
 // integer and float values
 @property (nonatomic, assign) NSInteger currentViewTag;
