@@ -13,8 +13,8 @@
 
 @implementation SVPreferencesWC
 
-@synthesize currentViewTag, prefsBar, generalPreferenceView, colorsPreferenceView, 
-            advancedPreferenceView;
+@synthesize currentViewTag, prefsBar, generalPrefView, interfacePrefView, fontPrefView, 
+            themePrefView, asciiPrefView, ansiPrefView;
 
 # pragma mark -
 # pragma mark class methods
@@ -41,8 +41,8 @@
 - (void)awakeFromNib
 {
 	// Configure the preferences window.
-	[self.window setContentSize:[generalPreferenceView frame].size];
-	[[self.window contentView] addSubview:generalPreferenceView];
+	[self.window setContentSize:self.generalPrefView.frame.size];
+	[[self.window contentView] addSubview:self.generalPrefView];
 	[prefsBar setSelectedItemIdentifier:@"General"];
 	[self.window center];
 }
@@ -56,9 +56,13 @@
 	NSView *view = nil;
 	
 	switch(tag) {
-		case 0: default: view = generalPreferenceView; break;
-		case 1: view = advancedPreferenceView; break;
-		case 2: view = colorsPreferenceView; break;
+        case 0 : view = self.generalPrefView;   break;
+        case 1 : view = self.interfacePrefView; break;
+		case 2 : view = self.fontPrefView;      break;
+        case 3 : view = self.themePrefView;     break;
+        case 4 : view = self.asciiPrefView;     break;
+        case 5 : view = self.ansiPrefView;      break;
+        default: view = self.generalPrefView;   break;
 	}
     return view;
 }
