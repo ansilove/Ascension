@@ -29,7 +29,7 @@
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
 			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
-			encButtonIndex, vScroller, hScroller, appToolbar, isAnsiFile, rawAnsiString, ansiCacheFile, 
+			encButtonIndex, vScroller, hScroller, appToolbar, isAnsiFile, isRendered, rawAnsiString, ansiCacheFile, 
             fileInfoPopover; 
 
 # pragma mark -
@@ -92,6 +92,12 @@
        [nc addObserver:self 
               selector:@selector(performScrollerStyleChange:)
                   name:@"ScrollerStyleChange"
+                object:nil];
+       
+       // Get notified once AnsiLove finished rendering of ANSi sources.
+       [nc addObserver:self 
+              selector:@selector(setRenderingFinishedState:)
+                  name:@"AnsiLoveFinishedRendering"
                 object:nil];
        
        // Init the file information values.
@@ -626,8 +632,10 @@
                                         bits:@"transparent"
                                    iceColors:nil];
     
-    // Wait a second for AnsiLove.framework to finish rendering.
-    [NSThread sleepForTimeInterval:1.0];
+    // Wait for AnsiLove.framework to finish rendering.
+    while (self.isRendered == NO) {
+        [NSThread sleepForTimeInterval:0.1];
+    }
     
     // Grab the rendered image and init an NSImage instance for it.
     NSImage *renderedAnsiPNG = [[NSImage alloc] initWithContentsOfFile:self.ansiCacheFile];
@@ -896,6 +904,14 @@
 	[nc postNotificationName:@"ModDateNote"
 					  object:self 
 					userInfo:mDateDict];
+}
+
+# pragma mark -
+# pragma mark AnsiLove.framework specific
+
+- (void)setRenderingFinishedState:(NSNotification *)note
+{
+    self.isRendered = YES;
 }
 
 @end

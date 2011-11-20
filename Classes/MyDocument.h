@@ -56,6 +56,7 @@ typedef enum {
 @property (nonatomic, assign) CGFloat   newContentHeight;
 @property (nonatomic, assign) NSInteger encButtonIndex;
 @property (nonatomic, assign) BOOL      isAnsiFile;
+@property (nonatomic, assign) BOOL      isRendered;
 
 // colors
 @property (nonatomic, weak) NSColor *fontColor;
@@ -93,6 +94,7 @@ typedef enum {
 - (void)performCursorColorChange:(NSNotification *)note;
 - (void)performLinkColorChange:(NSNotification *)note;
 - (void)performSelectionColorChange:(NSNotification *)note;
+- (void)setRenderingFinishedState:(NSNotification *)note;
 - (void)switchASCIIEncoding;
 - (void)switchTextEncoding;
 - (void)updateFileInfoValues;
