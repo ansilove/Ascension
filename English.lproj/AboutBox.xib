@@ -696,7 +696,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<reference key="NSVScroller" ref="592476839"/>
 							<reference key="NSHScroller" ref="331716961"/>
 							<reference key="NSContentView" ref="982396008"/>
-							<bytes key="NSScrollAmts">QKAAAECgAABAoAAAQKAAAA</bytes>
 						</object>
 					</array>
 					<string key="NSFrameSize">{471, 355}</string>
