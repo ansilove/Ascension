@@ -9,6 +9,8 @@
 //  See the file LICENSE for details.
 //
 
+#import <Foundation/Foundation.h>
+
 @interface ALAnsiGenerator : NSObject
 
 // class methods

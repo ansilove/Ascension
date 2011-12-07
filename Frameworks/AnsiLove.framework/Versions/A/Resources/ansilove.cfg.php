@@ -1,11 +1,11 @@
 <?PHP
 /*****************************************************************************/
 /*                                                                           */
-/* Ansilove/PHP 1.08 (c) by Frederic Cambus 2003-2011                        */
+/* Ansilove/PHP 1.09 (c) by Frederic Cambus 2003-2011                        */
 /* http://ansilove.sourceforge.net                                           */
 /*                                                                           */
 /* Created:      2003/07/17                                                  */
-/* Last Updated: 2011/07/08                                                  */
+/* Last Updated: 2011/11/21                                                  */
 /*                                                                           */
 /*****************************************************************************/
 
@@ -45,4 +45,8 @@ DEFINE (WORKBENCH_COLOR_7,"255,255,255");
 DEFINE (THUMBNAILS_SIZE,"1");
 DEFINE (THUMBNAILS_HEIGHT,"0");
 DEFINE (THUMBNAILS_TAG,"-thumbnail");
+
+DEFINE (SPLIT,"0");
+DEFINE (SPLIT_HEIGHT,"4096");
+DEFINE (SPLIT_SEPARATOR,".");
 ?>

@@ -1,11 +1,11 @@
 <?PHP
 /*****************************************************************************/
 /*                                                                           */
-/* Ansilove/PHP 1.08 (c) by Frederic Cambus 2003-2011                        */
+/* Ansilove/PHP 1.09 (c) by Frederic Cambus 2003-2011                        */
 /* http://ansilove.sourceforge.net                                           */
 /*                                                                           */
 /* Created:      2003/07/17                                                  */
-/* Last Updated: 2011/07/08                                                  */
+/* Last Updated: 2011/11/21                                                  */
 /*                                                                           */
 /* Ansilove is released under a MIT-style license.                           */
 /* See LICENSE file for details.                                             */
@@ -685,6 +685,8 @@ function load_ansi($input,$output,$font,$bits,$icecolors)
                      $color_background=0;
                      $color_foreground=7;
                      $bold=FALSE;
+                     $underline=FALSE;
+                     $italics=FALSE;
                      $blink=FALSE;
                   }
 
@@ -695,6 +697,16 @@ function load_ansi($input,$output,$font,$bits,$icecolors)
                         $color_foreground+=8;
 					 }
                      $bold=TRUE;
+                  }
+
+                  if ($ansi_sequence_value==3)
+                  {
+                     $italics=TRUE;
+                  }
+
+                  if ($ansi_sequence_value==4)
+                  {
+                     $underline=TRUE;
                   }
 
                   if ($ansi_sequence_value==5)
@@ -730,6 +742,17 @@ function load_ansi($input,$output,$font,$bits,$icecolors)
                $loop+=$ansi_sequence_loop+2;
                break;
             }
+
+/*****************************************************************************/
+/* CURSOR DE/ACTIVATION (AMIGA ANSI)                                         */
+/*****************************************************************************/
+
+            if ($ansi_sequence_character=='p')
+            {
+               $loop+=$ansi_sequence_loop+2;
+               break;
+            }
+
             $ansi_sequence.=$ansi_sequence_character;
          }
       }
@@ -756,13 +779,20 @@ function load_ansi($input,$output,$font,$bits,$icecolors)
 /* WRITE CURRENT CHARACTER INFO IN A TEMPORARY ARRAY                         */
 /*****************************************************************************/
 
-         $ansi_buffer[]=$position_x;
-         $ansi_buffer[]=$position_y;
-         $ansi_buffer[]=$color_background;
-         $ansi_buffer[]=$color_foreground;
-         $ansi_buffer[]=$current_character;
+         if (!$font_amiga || ($current_character!=12 && $current_character!=13))
+         {
+            $ansi_buffer.=chr($color_background);
+            $ansi_buffer.=chr($color_foreground);
+            $ansi_buffer.=chr($current_character);
+            $ansi_buffer.=chr($bold);
+            $ansi_buffer.=chr($italics);
+            $ansi_buffer.=chr($underline);
+            $ansi_buffer.=chr($position_x);
+            $ansi_buffer.=chr($position_y & 0xFF);
+            $ansi_buffer.=chr($position_y>>8);
 
-         $position_x++;
+            $position_x++;
+         }
       }
       $loop++;
    }
@@ -845,22 +875,119 @@ function load_ansi($input,$output,$font,$bits,$icecolors)
       $background_canvas=imagecolorallocate($ansi,0,0,0);
    }
 
+   for ($loop=0; $loop<16; $loop++)
+   {
+	  /* Generating ANSI colors array in order to be able to draw underlines */
+      $color_index=imagecolorsforindex($background,$loop);
+      $colors[$loop]=imagecolorallocate($ansi,$color_index['red'],$color_index['green'],$color_index['blue']);
+   }
+
 
 
 /*****************************************************************************/
 /* RENDER ANSI                                                               */
 /*****************************************************************************/
 
-   for ($loop=0;$loop<sizeof($ansi_buffer);$loop+=5)
+   for ($loop=0;$loop<strlen($ansi_buffer);$loop+=9)
    {
-      $position_x=$ansi_buffer[$loop];
-      $position_y=$ansi_buffer[$loop+1];
-      $color_background=$ansi_buffer[$loop+2];
-      $color_foreground=$ansi_buffer[$loop+3];
-      $character=$ansi_buffer[$loop+4];
+      $color_background=ord($ansi_buffer[$loop]);
+      $color_foreground=ord($ansi_buffer[$loop+1]);
+      $character=ord($ansi_buffer[$loop+2]);
+      $bold=ord($ansi_buffer[$loop+3]);
+      $italics=ord($ansi_buffer[$loop+4]);
+      $underline=ord($ansi_buffer[$loop+5]);
+      $position_x=ord($ansi_buffer[$loop+6]);
+      $position_y=ord($ansi_buffer[$loop+7])+(ord($ansi_buffer[$loop+8])<<8);
 
-      imagecopy($ansi,$background,$position_x*$bits,$position_y*$font_size_y,$color_background*9,0,$bits,$font_size_y);
-      imagecopy($ansi,$font,$position_x*$bits,$position_y*$font_size_y,$character*$font_size_x,$color_foreground*$font_size_y,$bits,$font_size_y);
+      if (!$font_amiga)
+      {
+         imagecopy($ansi,$background,$position_x*$bits,$position_y*$font_size_y,$color_background*9,0,$bits,$font_size_y);
+         imagecopy($ansi,$font,$position_x*$bits,$position_y*$font_size_y,$character*$font_size_x,$color_foreground*$font_size_y,$bits,$font_size_y);
+      }
+      else
+      {
+         if ($color_background!=0 || !$italics)
+         {
+            imagecopy($ansi,$background,$position_x*$bits,$position_y*$font_size_y,$color_background*9,0,$bits,$font_size_y);
+         }
+
+         if (!$italics)
+         {
+            imagecopy($ansi,$font,$position_x*$bits,$position_y*$font_size_y,$character*$font_size_x,$color_foreground*$font_size_y,$bits,$font_size_y);
+         }
+         else
+         {
+            imagecopy($ansi,$font,$position_x*$bits+3,$position_y*$font_size_y,$character*$font_size_x,$color_foreground*$font_size_y,$bits,2);
+            imagecopy($ansi,$font,$position_x*$bits+2,$position_y*$font_size_y+2,$character*$font_size_x,$color_foreground*$font_size_y+2,$bits,4);
+            imagecopy($ansi,$font,$position_x*$bits+1,$position_y*$font_size_y+6,$character*$font_size_x,$color_foreground*$font_size_y+6,$bits,4);
+            imagecopy($ansi,$font,$position_x*$bits,$position_y*$font_size_y+10,$character*$font_size_x,$color_foreground*$font_size_y+10,$bits,4);
+            imagecopy($ansi,$font,$position_x*$bits-1,$position_y*$font_size_y+14,$character*$font_size_x,$color_foreground*$font_size_y+14,$bits,2);
+         }
+            
+         if ($italics && $bold)
+         {
+            imagecopy($ansi,$font,$position_x*$bits+3+1,$position_y*$font_size_y,$character*$font_size_x,$color_foreground*$font_size_y,$bits,2);
+            imagecopy($ansi,$font,$position_x*$bits+2+1,$position_y*$font_size_y+2,$character*$font_size_x,$color_foreground*$font_size_y+2,$bits,4);
+            imagecopy($ansi,$font,$position_x*$bits+1+1,$position_y*$font_size_y+6,$character*$font_size_x,$color_foreground*$font_size_y+6,$bits,4);
+            imagecopy($ansi,$font,$position_x*$bits+1,$position_y*$font_size_y+10,$character*$font_size_x,$color_foreground*$font_size_y+10,$bits,4);
+            imagecopy($ansi,$font,$position_x*$bits-1+1,$position_y*$font_size_y+14,$character*$font_size_x,$color_foreground*$font_size_y+14,$bits,2);
+         }
+
+         if ($bold && !$italics)
+         {
+            imagecopy($ansi,$font,1+$position_x*$bits,$position_y*$font_size_y,$character*$font_size_x,$color_foreground*$font_size_y,$bits,$font_size_y);
+         }
+
+         if ($underline)
+         {
+            $loop_column=0;
+            $character_size_x=8;
+
+            if ($bold)
+            {
+               $character_size_x++;
+            }
+
+            if ($italics)
+            {
+               $loop_column=-1;
+               $character_size_x=11;
+            }
+
+            while ($loop_column<$character_size_x)
+            {
+               if (imagecolorat($ansi,$position_x*$bits+$loop_column,$position_y*$font_size_y+15)==$color_background && imagecolorat($ansi,$position_x*$bits+$loop_column+1,$position_y*$font_size_y+15)==$color_background)
+               {
+                  imagesetpixel($ansi,$position_x*$bits+$loop_column,$position_y*$font_size_y+14,$colors[$color_foreground]);
+                  imagesetpixel($ansi,$position_x*$bits+$loop_column,$position_y*$font_size_y+15,$colors[$color_foreground]);
+               }
+               else if (imagecolorat($ansi,$position_x*$bits+$loop_column,$position_y*$font_size_y+15)!=$color_background && imagecolorat($ansi,$position_x*$bits+$loop_column+1,$position_y*$font_size_y+15)==$color_background)
+               {
+                  $loop_column++;
+               }
+               
+               $loop_column++;
+            }
+
+            if ($pixel_carry)
+            {
+               imagesetpixel($ansi,$position_x*$bits,$position_y*$font_size_y+14,$colors[$color_foreground]);
+               imagesetpixel($ansi,$position_x*$bits,$position_y*$font_size_y+15,$colors[$color_foreground]);
+               $pixel_carry=FALSE;
+            }
+
+            if (imagecolorat($font,$character*$font_size_x,$color_foreground*$font_size_y+15)!=20)
+            {
+               imagesetpixel($ansi,$position_x*$bits-1,$position_y*$font_size_y+14,$colors[$color_foreground]);
+               imagesetpixel($ansi,$position_x*$bits-1,$position_y*$font_size_y+15,$colors[$color_foreground]);
+            }
+
+            if (imagecolorat($font,$character*$font_size_x+$character_size_x-1,$color_foreground*$font_size_y+15)!=20)
+            {
+               $pixel_carry=TRUE;
+            }
+         }
+      }
    }
 
 
@@ -887,7 +1014,56 @@ function load_ansi($input,$output,$font,$bits,$icecolors)
       }
       else
       {
-         ImagePNG($ansi,$output);
+         if (!SPLIT)
+         {
+            ImagePNG($ansi,$output);
+         }
+         else
+         {
+            $image_size_y=$position_y_max*$font_size_y;
+            $split_size_y=SPLIT_HEIGHT;
+
+            $loop_max=($image_size_y/$split_size_y);
+
+            for ($loop=0; $loop<$loop_max; $loop++)
+            {
+               if (($image_size_y-($split_size_y*$loop))<$split_size_y)
+               {
+                  $height=($image_size_y-($split_size_y*$loop));
+               }
+               else
+               {
+                  $height=$split_size_y;
+               }
+
+               if (!$split = imagecreate($columns*$bits,$height))
+               {
+                  error("Can't allocate buffer image memory");
+               }
+
+               imagecolorallocate($split,0,0,0);
+               imagecopy($split,$ansi,0,0,0,($loop*$split_size_y),$columns*$bits,$height);
+
+               if ($loop_max>=1)
+               {
+                  $output_file=$output.SPLIT_SEPARATOR.str_pad($loop,4,"0",STR_PAD_LEFT).".png";
+               }
+               else
+               {
+                  $output_file=$output.".png";
+               }
+
+               $output_files[]=$output_file;
+
+               if ($transparent)
+               {
+                  imagecolortransparent($split,$background_canvas);
+               }
+
+               ImagePNG($split,$output_file);
+               imagedestroy($split);
+            }
+         }
       }
    }
 
@@ -900,6 +1076,8 @@ function load_ansi($input,$output,$font,$bits,$icecolors)
    imagedestroy($ansi);
    imagedestroy($background);
    imagedestroy($font);
+   
+   return $output_files;
 }
 
 
