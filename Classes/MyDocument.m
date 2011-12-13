@@ -671,8 +671,19 @@
 	// Check and apply the text encoding.
 	[self switchTextEncoding];
 	
+    // Init data with the specified encoding. 
 	NSString *textString = [[NSString alloc]initWithData:textData encoding:self.txtEncoding];
-	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:textString];
+	
+    // Bugfix, don't ask why. It's working now.
+    if (!textString) {
+        self.txtEncoding = WinLatin1;
+        NSString *failString = [[NSString alloc]initWithData:textData encoding:self.txtEncoding];
+        self.encButtonIndex = EIndexWinLatin1;
+        textString = failString;
+    }
+    
+    // Apply what we imported to our content string. 
+    NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:textString];
 	[self setString:importString];
 	
 	//If the UI is already loaded, this must be a 'revert to saved' operation.
