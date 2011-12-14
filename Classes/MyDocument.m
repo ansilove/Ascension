@@ -29,8 +29,8 @@
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
 			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
-			encButtonIndex, vScroller, hScroller, appToolbar, isAnsiFile, isRendered, rawAnsiString, ansiCacheFile, 
-            fileInfoPopover; 
+			encButtonIndex, vScroller, hScroller, appToolbar, fileInfoPopover, rawAnsiString, ansiCacheFile, 
+            isRendered, isUsingAnsiLove, isAnsFile, isIdfFile, isPcbFile, isXbFile, isAdfFile, isBinFile, isTndFile; 
 
 # pragma mark -
 # pragma mark initialization
@@ -262,7 +262,7 @@
 - (void)windowWillClose:(NSNotification *)notification
 {
     // In case this is an ANSi file, delete the cached PNG when the window closes.
-    if (self.isAnsiFile == YES) {
+    if (self.isUsingAnsiLove == YES) {
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if ([fileManager fileExistsAtPath:self.ansiCacheFile]) {
             [fileManager removeItemAtPath:self.ansiCacheFile error:nil];
@@ -281,7 +281,7 @@
 - (void)prepareContent
 {
 	// If this is no ANSi source file, prepare the textual content.
-	 if (self.isAnsiFile == NO) {
+	 if (self.isUsingAnsiLove == NO) {
          [self applyParagraphStyle];
          [self performLinkification];
      }
@@ -525,13 +525,44 @@
 							   error:(NSError **)pOutError 
 {	
 	// Launch the output file wrapper based on the document UTI.
-	if ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame) {
+	if ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame) 
+    {
 		return [self nfoFileWrapperWithError:pOutError];
 	}
-	else if ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame) {
+	else if ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame) 
+    {
 		return [self nfoFileWrapperWithError:pOutError];
 	}
-    else if ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame) {
+    else if ([pTypeName compare:@"com.byteproject.ascension.asc"] == NSOrderedSame) 
+    {
+		return [self nfoFileWrapperWithError:pOutError];
+	}
+    else if ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame) 
+    {
+        return [self ansFileWrapperWithError:pOutError];
+    }
+    else if ([pTypeName compare:@"com.byteproject.ascension.idf"] == NSOrderedSame) 
+    {
+        return [self ansFileWrapperWithError:pOutError];
+    }
+    else if ([pTypeName compare:@"com.byteproject.ascension.pcb"] == NSOrderedSame) 
+    {
+        return [self ansFileWrapperWithError:pOutError];
+    }
+    else if ([pTypeName compare:@"com.byteproject.ascension.xb"] == NSOrderedSame) 
+    {
+        return [self ansFileWrapperWithError:pOutError];
+    }
+    else if ([pTypeName compare:@"com.byteproject.ascension.adf"] == NSOrderedSame) 
+    {
+        return [self ansFileWrapperWithError:pOutError];
+    }
+    else if ([pTypeName compare:@"com.byteproject.ascension.bin"] == NSOrderedSame) 
+    {
+        return [self ansFileWrapperWithError:pOutError];
+    }
+    else if ([pTypeName compare:@"com.byteproject.ascension.tnd"] == NSOrderedSame) 
+    {
         return [self ansFileWrapperWithError:pOutError];
     }
     else {
@@ -544,14 +575,59 @@
 					 ofType:(NSString *)pTypeName 
 					  error:(NSError **)pOutError
 {
-	// Determine file type and launch the input file wrapper.
-	if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame)) {
+	// Determine file type and launch the input file wrapper, also set informal bool values.
+	if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame)) 
+    {
 		return [self nfoReadFileWrapper:pFileWrapper error:pOutError];
 	}
-	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame)) {
+	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame)) 
+    {
 		return [self nfoReadFileWrapper:pFileWrapper error:pOutError];
 	}
-	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame)) {
+	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.asc"] == NSOrderedSame)) 
+    {
+		return [self nfoReadFileWrapper:pFileWrapper error:pOutError];
+	}
+    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame)) 
+    {
+        self.isUsingAnsiLove = YES;
+        self.isAnsFile = YES;
+		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+	}
+    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.idf"] == NSOrderedSame)) 
+    {
+        self.isUsingAnsiLove = YES;
+        self.isIdfFile = YES;
+		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+	}
+    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.pcb"] == NSOrderedSame))
+    {
+        self.isUsingAnsiLove = YES;
+        self.isPcbFile = YES;
+		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+	}
+    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.xb"] == NSOrderedSame)) 
+    {
+        self.isUsingAnsiLove = YES;
+        self.isXbFile = YES;
+		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+	}
+    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.adf"] == NSOrderedSame)) 
+    {
+        self.isUsingAnsiLove = YES;
+        self.isAdfFile = YES;
+		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+	}
+    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.bin"] == NSOrderedSame)) 
+    {
+        self.isUsingAnsiLove = YES;
+        self.isBinFile = YES;
+		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+	}
+    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.tnd"] == NSOrderedSame)) 
+    {
+        self.isUsingAnsiLove = YES;
+        self.isTndFile = YES;
 		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
 	}
 	// In all other cases open the document using the text file wrapper.
@@ -591,9 +667,6 @@
 - (BOOL)ansReadFileWrapper:(NSFileWrapper *)pFileWrapper 
                      error:(NSError **)pOutError 
 {	
-    // First, we clarify this is an ANSi source file.
-    self.isAnsiFile = YES;
-    
 	// File wrapper for reading documents containing ANSi escape sequences.
 	NSData *cp437Data = [pFileWrapper regularFileContents];
 	if(!cp437Data) 
