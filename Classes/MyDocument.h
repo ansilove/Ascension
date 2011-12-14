@@ -55,8 +55,17 @@ typedef enum {
 @property (nonatomic, assign) CGFloat   newContentWidth;
 @property (nonatomic, assign) CGFloat   newContentHeight;
 @property (nonatomic, assign) NSInteger encButtonIndex;
-@property (nonatomic, assign) BOOL      isAnsiFile;
 @property (nonatomic, assign) BOOL      isRendered;
+@property (nonatomic, assign) BOOL      isUsingAnsiLove;
+@property (nonatomic, assign) BOOL      isAnsFile;
+@property (nonatomic, assign) BOOL      isIdfFile;
+@property (nonatomic, assign) BOOL      isPcbFile;
+@property (nonatomic, assign) BOOL      isXbFile;
+@property (nonatomic, assign) BOOL      isAdfFile;
+@property (nonatomic, assign) BOOL      isBinFile;
+@property (nonatomic, assign) BOOL      isTndFile;
+
+
 
 // colors
 @property (nonatomic, weak) NSColor *fontColor;
