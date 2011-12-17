@@ -17,6 +17,7 @@
 #import "SVFileInfoStrings.h"
 
 #define stdNSTextViewMargin 20
+#define ansiHelperMargin 8
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
 #define CodePage866 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSRussian)
 #define UnicodeUTF8 NSUTF8StringEncoding
@@ -30,7 +31,8 @@
 			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
 			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
 			encButtonIndex, vScroller, hScroller, appToolbar, fileInfoPopover, rawAnsiString, ansiCacheFile, 
-            isRendered, isUsingAnsiLove, isAnsFile, isIdfFile, isPcbFile, isXbFile, isAdfFile, isBinFile, isTndFile; 
+            isRendered, isUsingAnsiLove, isAnsFile, isIdfFile, isPcbFile, isXbFile, isAdfFile, isBinFile, isTndFile,
+            renderedAnsiImage;
 
 # pragma mark -
 # pragma mark initialization
@@ -123,16 +125,16 @@
 	// Apply the appearance attributes.
     [self prepareContent];
 	
-	// Value for auto-sizing the document window.
+	// We need the textstorage size for auto-sizing the document window.
 	NSSize myTextSize = self.asciiTextView.textStorage.size;
 	
-	// Apply width and height based on the specified values in the preferences.
-	if (self.contentString.length < 50) {
+	// New documents get width / height from the values specified in preferences.
+	if (self.contentString.length < 50 && self.isUsingAnsiLove == NO) {
 		self.newContentWidth = [defaults floatForKey:@"newContentWidth"];
 		self.newContentHeight = [defaults floatForKey:@"newContentWidth"];
 	}
 	else {
-		// Calculate the new content width and height, consider the toolbar (if visible).
+		// Calculate the new content dimensions, consider the toolbar (if visible).
 		CGFloat toolbarHeight = 0;
 		if ([appToolbar isVisible]) 
 		{
@@ -142,23 +144,37 @@
 			toolbarHeight = NSHeight(windowFrame) - NSHeight([[aController.window contentView] frame]);
 		}
 		// Check if the user enabled width auto-sizing.
-		if ([defaults boolForKey:@"autoSizeWidth"] == YES) {
-			self.newContentWidth = myTextSize.width + stdNSTextViewMargin;
+		if ([defaults boolForKey:@"autoSizeWidth"] == YES) 
+        {
+            // In case the content is an AnsiLove image, caluculate the width based on it... 
+			if (self.isUsingAnsiLove == YES) {
+                self.newContentWidth = self.renderedAnsiImage.size.width + ansiHelperMargin;
+            }
+            else {
+                // ...if not, calculate width via the textstorage.
+                self.newContentWidth = myTextSize.width + stdNSTextViewMargin;
+            }
 		}
 		else {
 			self.newContentWidth = [aController.window frame].size.width;
 		}
 		// Determine if height auto-sizing is enabled.
-		if ([defaults boolForKey:@"autoSizeHeight"] == YES) {
-			self.newContentHeight = myTextSize.height + [self titlebarHeight] + toolbarHeight;
+		if ([defaults boolForKey:@"autoSizeHeight"] == YES) 
+        {
+            if (self.isUsingAnsiLove == YES) {
+                // Use the AnsiLove image to calculate height, provided we got one in our textView...
+                self.newContentHeight = self.renderedAnsiImage.size.height + [self titlebarHeight] + toolbarHeight;
+            }
+            else {
+                // ...and if not: use the textstorage again.
+                self.newContentHeight = myTextSize.height + [self titlebarHeight] + toolbarHeight;
+            }
 		}
 		else {
 			self.newContentHeight = aController.window.frame.size.height - [self titlebarHeight] - toolbarHeight;
-		}
-		
+		}		
 	}
-    // NOTE: Future implementation will use 'windowWillUseStandardFrame'!
-	// Resize the document window based on either the caluclation or the preferences.
+	// Finally resize the document window based on either the caluclation or the preferences.
 	[aController.window setContentSize:NSMakeSize(self.newContentWidth, self.newContentHeight)];
 	
 	// Set position of the document window.
@@ -711,10 +727,10 @@
     }
     
     // Grab the rendered image and init an NSImage instance for it.
-    NSImage *renderedAnsiPNG = [[NSImage alloc] initWithContentsOfFile:self.ansiCacheFile];
+    self.renderedAnsiImage = [[NSImage alloc] initWithContentsOfFile:self.ansiCacheFile];
     
     // To display our ANSi .png create an NSTextAttachment and corresponding cell.
-    NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:renderedAnsiPNG];
+    NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:self.renderedAnsiImage];
     NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
     [attachment setAttachmentCell:attachmentCell];
     
