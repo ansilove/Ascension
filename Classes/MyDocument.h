@@ -43,6 +43,7 @@ typedef enum {
 @property (nonatomic, strong) NSMutableAttributedString *contentString;
 @property (nonatomic, strong) NSMutableAttributedString *rawAnsiString;
 @property (nonatomic, strong) NSString                  *ansiCacheFile;
+@property (nonatomic, strong) NSImage                   *renderedAnsiImage;
 @property (nonatomic, weak)   NSString					*iFilePath;
 @property (nonatomic, weak)   NSString					*iFileSize;
 @property (nonatomic, weak)   NSString					*iCreationDate;
