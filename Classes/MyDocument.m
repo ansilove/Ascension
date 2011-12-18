@@ -305,6 +305,7 @@
      else {
          // So this is an ANSi source file? Disable editing.
          [self.asciiTextView setEditable:NO];
+         [self.asciiTextView setSelectable:NO];
      }
     
     [self applyThemeColors];
