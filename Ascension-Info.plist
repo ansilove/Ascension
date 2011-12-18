@@ -169,7 +169,7 @@
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.byteproject.ascension.bin</string>
+				<string>com.apple.macbinary-archive</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>MyDocument</string>
@@ -404,7 +404,7 @@ All rights reserved.</string>
 			<key>UTTypeIconFile</key>
 			<string>AFileTypeBIN</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.byteproject.ascension.bin</string>
+			<string>com.apple.macbinary-archive</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -429,6 +429,28 @@ All rights reserved.</string>
 				<key>public.filename-extension</key>
 				<array>
 					<string>tnd</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Binary ANSi Artwork (.bin)</string>
+			<key>UTTypeIconFile</key>
+			<string>AFileTypeBIN</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.apple.macbinary-archive</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>bin</string>
 				</array>
 			</dict>
 		</dict>

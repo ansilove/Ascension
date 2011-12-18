@@ -573,7 +573,7 @@
     {
         return [self ansFileWrapperWithError:pOutError];
     }
-    else if ([pTypeName compare:@"com.byteproject.ascension.bin"] == NSOrderedSame) 
+    else if ([pTypeName compare:@"com.apple.macbinary-archive"] == NSOrderedSame) 
     {
         return [self ansFileWrapperWithError:pOutError];
     }
@@ -634,7 +634,7 @@
         self.isAdfFile = YES;
 		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
 	}
-    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.bin"] == NSOrderedSame)) 
+    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.apple.macbinary-archive"] == NSOrderedSame)) 
     {
         self.isUsingAnsiLove = YES;
         self.isBinFile = YES;
