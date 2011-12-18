@@ -16,6 +16,7 @@
 #import "SVPreferences.h"
 #import "SVFileInfoStrings.h"
 
+#define ansiEscapeCode @"[0m"
 #define stdNSTextViewMargin 20
 #define ansiHelperMargin 8
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
@@ -541,48 +542,48 @@
 							   error:(NSError **)pOutError 
 {	
 	// Launch the output file wrapper based on the document UTI.
-	if ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame) 
+	if ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame) 
     {
-		return [self nfoFileWrapperWithError:pOutError];
+		return [self ansiArtFileWrapperWithError:pOutError];
 	}
-	else if ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame) 
+	else if ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame) 
     {
-		return [self nfoFileWrapperWithError:pOutError];
+		return [self ansiArtFileWrapperWithError:pOutError];
 	}
     else if ([pTypeName compare:@"com.byteproject.ascension.asc"] == NSOrderedSame) 
     {
-		return [self nfoFileWrapperWithError:pOutError];
+		return [self ansiArtFileWrapperWithError:pOutError];
 	}
     else if ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame) 
     {
-        return [self ansFileWrapperWithError:pOutError];
+        return [self ansiArtFileWrapperWithError:pOutError];
     }
     else if ([pTypeName compare:@"com.byteproject.ascension.idf"] == NSOrderedSame) 
     {
-        return [self ansFileWrapperWithError:pOutError];
+        return [self ansiArtFileWrapperWithError:pOutError];
     }
     else if ([pTypeName compare:@"com.byteproject.ascension.pcb"] == NSOrderedSame) 
     {
-        return [self ansFileWrapperWithError:pOutError];
+        return [self ansiArtFileWrapperWithError:pOutError];
     }
     else if ([pTypeName compare:@"com.byteproject.ascension.xb"] == NSOrderedSame) 
     {
-        return [self ansFileWrapperWithError:pOutError];
+        return [self ansiArtFileWrapperWithError:pOutError];
     }
     else if ([pTypeName compare:@"com.byteproject.ascension.adf"] == NSOrderedSame) 
     {
-        return [self ansFileWrapperWithError:pOutError];
+        return [self ansiArtFileWrapperWithError:pOutError];
     }
     else if ([pTypeName compare:@"com.apple.macbinary-archive"] == NSOrderedSame) 
     {
-        return [self ansFileWrapperWithError:pOutError];
+        return [self ansiArtFileWrapperWithError:pOutError];
     }
     else if ([pTypeName compare:@"com.byteproject.ascension.tnd"] == NSOrderedSame) 
     {
-        return [self ansFileWrapperWithError:pOutError];
+        return [self ansiArtFileWrapperWithError:pOutError];
     }
     else {
-        return [self txtFileWrapperWithError:pOutError]; 
+        return [self textFileWrapperWithError:pOutError]; 
     }
 	return nil;
 }
@@ -592,68 +593,87 @@
 					  error:(NSError **)pOutError
 {
 	// Determine file type and launch the input file wrapper, also set informal bool values.
-	if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame)) 
+	if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame)) 
     {
-		return [self nfoReadFileWrapper:pFileWrapper error:pOutError];
+		return [self asciiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
-	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame)) 
+	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame)) 
     {
-		return [self nfoReadFileWrapper:pFileWrapper error:pOutError];
+        // We need to check if the file really is a .NFO or maybe a masked .ANS file with .NFO extension.
+        // I had to learn it's not uncommon, so this is the only way for accurate rendering results.
+        NSData *cp437Data = [pFileWrapper regularFileContents];
+        
+        // Now look up the proper encoding and init the data as NSString.
+        [self switchASCIIEncoding];
+        NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
+        
+        // Search for any ANSi escape sequences in our string.
+        if ([cp437String rangeOfString:ansiEscapeCode].location != NSNotFound) 
+        {
+            // Obiously this string contains ANSi escape sequences, we need to use the .ans file wrapper.
+            self.isUsingAnsiLove = YES;
+            self.isAnsFile = YES;
+            return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
+        }
+        else {
+            // Everything is fine, what we got here is a .NFO file.
+            return [self asciiArtReadFileWrapper:pFileWrapper error:pOutError];
+        }
 	}
 	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.asc"] == NSOrderedSame)) 
     {
-		return [self nfoReadFileWrapper:pFileWrapper error:pOutError];
+		return [self asciiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
     else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame)) 
     {
         self.isUsingAnsiLove = YES;
         self.isAnsFile = YES;
-		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
     else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.idf"] == NSOrderedSame)) 
     {
         self.isUsingAnsiLove = YES;
         self.isIdfFile = YES;
-		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
     else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.pcb"] == NSOrderedSame))
     {
         self.isUsingAnsiLove = YES;
         self.isPcbFile = YES;
-		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
     else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.xb"] == NSOrderedSame)) 
     {
         self.isUsingAnsiLove = YES;
         self.isXbFile = YES;
-		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
     else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.adf"] == NSOrderedSame)) 
     {
         self.isUsingAnsiLove = YES;
         self.isAdfFile = YES;
-		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
     else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.apple.macbinary-archive"] == NSOrderedSame)) 
     {
         self.isUsingAnsiLove = YES;
         self.isBinFile = YES;
-		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
     else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.tnd"] == NSOrderedSame)) 
     {
         self.isUsingAnsiLove = YES;
         self.isTndFile = YES;
-		return [self ansReadFileWrapper:pFileWrapper error:pOutError];
+		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
 	// In all other cases open the document using the text file wrapper.
 	else {
-		return [self txtReadFileWrapper:pFileWrapper error:pOutError];
+		return [self textReadFileWrapper:pFileWrapper error:pOutError];
 	}
 	return NO;
 }
 
-- (BOOL)nfoReadFileWrapper:(NSFileWrapper *)pFileWrapper 
+- (BOOL)asciiArtReadFileWrapper:(NSFileWrapper *)pFileWrapper 
 						   error:(NSError **)pOutError 
 {	
 	// File wrapper for reading NFO and DIZ documents.
@@ -680,7 +700,7 @@
 	return YES;
 }
 
-- (BOOL)ansReadFileWrapper:(NSFileWrapper *)pFileWrapper 
+- (BOOL)ansiArtReadFileWrapper:(NSFileWrapper *)pFileWrapper 
                      error:(NSError **)pOutError 
 {	
 	// File wrapper for reading documents containing ANSi escape sequences.
@@ -747,7 +767,7 @@
 	return YES;
 }
 
-- (BOOL)txtReadFileWrapper:(NSFileWrapper *)pFileWrapper 
+- (BOOL)textReadFileWrapper:(NSFileWrapper *)pFileWrapper 
 					 error:(NSError **)pOutError
 {
 	// File wrapper for reading all text-based documents except NFO and DIZ.
@@ -785,45 +805,49 @@
 	return YES;
 }
 
-- (NSFileWrapper *)nfoFileWrapperWithError:(NSError **)pOutError 
+- (NSFileWrapper *)ansiArtFileWrapperWithError:(NSError **)pOutError 
 {
-	// File wrapper for writing NFO and DIZ documents.
-	NSData *nfoData = 
-	[self.contentString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
-
-	if (!nfoData) {
-		return NULL;
-	}
-	// Enable undo after save operations.
-	[self.asciiTextView breakUndoCoalescing];
-	
-	NSFileWrapper *nfoFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:nfoData];
-	if (!nfoFileWrapperObj) {
-		return NULL;
-	}
-	return nfoFileWrapperObj;	
-}
-
-- (NSFileWrapper *)ansFileWrapperWithError:(NSError **)pOutError 
-{
-	// File wrapper for writing ANSi documents.
-	NSData *ansData = 
-	[self.rawAnsiString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
+    // This is a unified file wrapper for all kinds of supported ANSi art types.
+    // We figure out what to do with our 'isUsingAnsiLove' variable.
     
-	if (!ansData) {
-		return NULL;
-	}
-	// Enable undo after save operations.
-	[self.asciiTextView breakUndoCoalescing];
-	
-	NSFileWrapper *ansFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:ansData];
-	if (!ansFileWrapperObj) {
-		return NULL;
-	}
-	return ansFileWrapperObj;	
+    if (self.isUsingAnsiLove == YES) 
+    {
+        // File wrapper for writing .ANS, .IDF, .PCB, .XB, .ADF, .BIN and .TND.
+        NSData *ansData = 
+        [self.rawAnsiString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
+        
+        if (!ansData) {
+            return NULL;
+        }
+        // Enable undo after save operations.
+        [self.asciiTextView breakUndoCoalescing];
+        
+        NSFileWrapper *ansFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:ansData];
+        if (!ansFileWrapperObj) {
+            return NULL;
+        }
+        return ansFileWrapperObj;
+    }
+    else {
+        // File wrapper for writing .NFO, .DIZ and .ASC.
+        NSData *ascData = 
+        [self.contentString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
+        
+        if (!ascData) {
+            return NULL;
+        }
+        // Enable undo after save operations.
+        [self.asciiTextView breakUndoCoalescing];
+        
+        NSFileWrapper *ascFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:ascData];
+        if (!ascFileWrapperObj) {
+            return NULL;
+        }
+        return ascFileWrapperObj;
+    }
 }
 
-- (NSFileWrapper *)txtFileWrapperWithError:(NSError **)pOutError 
+- (NSFileWrapper *)textFileWrapperWithError:(NSError **)pOutError 
 {
 	// File wrapper for writing all text-based documents except NFO and DIZ.
 	NSData *txtData = 

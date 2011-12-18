@@ -109,12 +109,11 @@ typedef enum {
 - (void)switchTextEncoding;
 - (void)updateFileInfoValues;
 - (void)setString:(NSMutableAttributedString *)value;
-- (NSFileWrapper *)nfoFileWrapperWithError:(NSError **)pOutError;
-- (NSFileWrapper *)ansFileWrapperWithError:(NSError **)pOutError;
-- (NSFileWrapper *)txtFileWrapperWithError:(NSError **)pOutError;
-- (BOOL)nfoReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
-- (BOOL)ansReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
-- (BOOL)txtReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
+- (NSFileWrapper *)ansiArtFileWrapperWithError:(NSError **)pOutError;
+- (NSFileWrapper *)textFileWrapperWithError:(NSError **)pOutError;
+- (BOOL)asciiArtReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
+- (BOOL)ansiArtReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
+- (BOOL)textReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
 
 // objects and return values
 - (CGFloat)titlebarHeight;
