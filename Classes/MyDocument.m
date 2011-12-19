@@ -16,7 +16,7 @@
 #import "SVPreferences.h"
 #import "SVFileInfoStrings.h"
 
-#define ansiEscapeCode @"[0m"
+#define ansiEscapeSeq @"[0m"
 #define stdNSTextViewMargin 20
 #define ansiHelperMargin 8
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
@@ -609,7 +609,7 @@
         NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
         
         // Search for any ANSi escape sequences in our string.
-        if ([cp437String rangeOfString:ansiEscapeCode].location != NSNotFound) 
+        if ([cp437String rangeOfString:ansiEscapeSeq].location != NSNotFound)
         {
             // Obiously this string contains ANSi escape sequences, we need to use the .ans file wrapper.
             self.isUsingAnsiLove = YES;
