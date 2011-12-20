@@ -611,7 +611,7 @@
         // Search for any ANSi escape sequences in our string.
         if ([cp437String rangeOfString:ansiEscapeSeq].location != NSNotFound)
         {
-            // Obiously this string contains ANSi escape sequences, we need to use the .ans file wrapper.
+            // Obiously this string contains ANSi escape sequences, we need to use the .ANS file wrapper.
             self.isUsingAnsiLove = YES;
             self.isAnsFile = YES;
             return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
@@ -623,7 +623,25 @@
 	}
 	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.asc"] == NSOrderedSame)) 
     {
-		return [self asciiArtReadFileWrapper:pFileWrapper error:pOutError];
+		// Let's check if the file really is an .ASC or maybe a masked .ANS file with .ASC extension.
+        NSData *cp437Data = [pFileWrapper regularFileContents];
+        
+        // Now look up the proper encoding and init the data as NSString.
+        [self switchASCIIEncoding];
+        NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
+        
+        // Search for any ANSi escape sequences in our string.
+        if ([cp437String rangeOfString:ansiEscapeSeq].location != NSNotFound)
+        {
+            // Obiously this string contains ANSi escape sequences, we need to use the .ANS file wrapper.
+            self.isUsingAnsiLove = YES;
+            self.isAnsFile = YES;
+            return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
+        }
+        else {
+            // Everything is fine, what we got here is a .ASC file.
+            return [self asciiArtReadFileWrapper:pFileWrapper error:pOutError];
+        }
 	}
     else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame)) 
     {
