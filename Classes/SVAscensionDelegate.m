@@ -26,6 +26,22 @@
 	if (self == [super init]) 
 	{
 		self.applicationHasStarted = NO;
+        
+        // First thing we do is generating the 'Application support' folder. That
+        // will work around an issue that occurs when opening ANSi upon 1st launch.
+        NSFileManager *fileManager = [[NSFileManager alloc] init];
+        
+        NSString *folder = @"~/Library/Application Support/Ascension/";
+        folder = [folder stringByExpandingTildeInPath];
+        
+        if ([fileManager fileExistsAtPath:folder] == NO)
+        {
+            [fileManager createDirectoryAtPath:folder 
+                   withIntermediateDirectories:YES 
+                                    attributes:nil 
+                                         error:nil];
+        }
+        // Now check for the user defaults.
 		[SVPreferences checkUserDefaults];
     } 
 	return self;
