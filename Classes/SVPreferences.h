@@ -28,7 +28,7 @@
 @property (nonatomic, assign) NSInteger themeIndex;
 
 // strings
-@property (nonatomic, weak) NSString *pathForThemeLibraryFile;
+@property (nonatomic, strong) NSString *pathForThemeLibraryFile;
 
 // class methods
 + (void)checkUserDefaults;
