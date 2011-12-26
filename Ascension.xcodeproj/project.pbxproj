@@ -51,7 +51,7 @@
 		F883577A120F251F00D18794 /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = F8835775120F251F00D18794 /* General.png */; };
 		F898A66114633ED30008E3CD /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F898A65F14633ED30008E3CD /* License.rtf */; };
 		F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
-		F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
+		F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8B9E69D1464A0EA0007ACAA /* AFileTypeADF.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8B9E6951464A0EA0007ACAA /* AFileTypeADF.icns */; };
 		F8B9E69E1464A0EA0007ACAA /* AFileTypeANS.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8B9E6961464A0EA0007ACAA /* AFileTypeANS.icns */; };
 		F8B9E69F1464A0EA0007ACAA /* AFileTypeASC.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8B9E6971464A0EA0007ACAA /* AFileTypeASC.icns */; };
@@ -61,7 +61,7 @@
 		F8B9E6A31464A0EA0007ACAA /* AFileTypeTND.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8B9E69B1464A0EA0007ACAA /* AFileTypeTND.icns */; };
 		F8B9E6A41464A0EA0007ACAA /* AFileTypeXB.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8B9E69C1464A0EA0007ACAA /* AFileTypeXB.icns */; };
 		F8DBE75C132D5D6C00A9F868 /* Terminus.dfont in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8835784120F256900D18794 /* Terminus.dfont */; };
-		F8E149791452BC9600D445DF /* AnsiLove.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8E149771452BC5000D445DF /* AnsiLove.framework */; };
+		F8E149791452BC9600D445DF /* AnsiLove.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = F8E149771452BC5000D445DF /* AnsiLove.framework */; };
 		F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1D4B21285DBA90069F262 /* duplicate.png */; };
 		F8EA113C145C0CE200550364 /* AboutBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8EA113E145C0CE200550364 /* AboutBox.xib */; };
 		F8EA140D12781D3E002A6E6E /* SVFontProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140612781D3E002A6E6E /* SVFontProperties.m */; };
@@ -72,15 +72,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F808697411C8C56100680E85 /* CopyFiles */ = {
+		F808697411C8C56100680E85 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in CopyFiles */,
-				F8E149791452BC9600D445DF /* AnsiLove.framework in CopyFiles */,
+				F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in Copy Files */,
+				F8E149791452BC9600D445DF /* AnsiLove.framework in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F8DBE75A132D5D3400A9F868 /* CopyFiles */ = {
@@ -372,7 +373,7 @@
 				F8DBE75A132D5D3400A9F868 /* CopyFiles */,
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
-				F808697411C8C56100680E85 /* CopyFiles */,
+				F808697411C8C56100680E85 /* Copy Files */,
 			);
 			buildRules = (
 			);
