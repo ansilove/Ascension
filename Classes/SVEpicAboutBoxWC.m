@@ -60,9 +60,6 @@
     self.getInTouchPopover.behavior = NSPopoverBehaviorTransient;
     self.getInTouchPopover.animates = YES;
     
-    // Add some gorgeous transparency to our sheet.
-    [self.licenseSheet setAlphaValue:0.96];
-    
     // Minor configuration of the embedded licenseTextView.
     [self.licenseTextView.textContainer setLineFragmentPadding:10.0];
     
