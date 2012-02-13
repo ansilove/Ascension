@@ -151,7 +151,7 @@
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.byteproject.ascension.adf</string>
+				<string>com.amiga.adf-archive</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>MyDocument</string>
@@ -228,7 +228,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>79</string>
+	<string>80</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
@@ -385,7 +385,7 @@ All rights reserved.</string>
 			<key>UTTypeIconFile</key>
 			<string>AFileTypeADF</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.byteproject.ascension.adf</string>
+			<string>com.amiga.adf-archive</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -451,6 +451,25 @@ All rights reserved.</string>
 				<key>public.filename-extension</key>
 				<array>
 					<string>bin</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>ArtWorx Data File (.adf)</string>
+			<key>UTTypeIconFile</key>
+			<string>AFileTypeADF</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.amiga.adf-archive</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>adf</string>
 				</array>
 			</dict>
 		</dict>

@@ -571,7 +571,7 @@
     {
         return [self ansiArtFileWrapperWithError:pOutError];
     }
-    else if ([pTypeName compare:@"com.byteproject.ascension.adf"] == NSOrderedSame) 
+    else if ([pTypeName compare:@"com.amiga.adf-archive"] == NSOrderedSame) 
     {
         return [self ansiArtFileWrapperWithError:pOutError];
     }
@@ -667,7 +667,7 @@
         self.isXbFile = YES;
 		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
-    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.adf"] == NSOrderedSame)) 
+    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.amiga.adf-archive"] == NSOrderedSame)) 
     {
         self.isUsingAnsiLove = YES;
         self.isAdfFile = YES;
