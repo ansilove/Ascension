@@ -2,7 +2,7 @@
 //  ALSauceMachine.h
 //  AnsiLove.framework
 //
-//  Copyright (c) 2011, Stefan Vogt. All rights reserved.
+//  Copyright (c) 2011-2012, Stefan Vogt. All rights reserved.
 //  http://byteproject.net
 //
 //  Use of this source code is governed by a MIT-style license.

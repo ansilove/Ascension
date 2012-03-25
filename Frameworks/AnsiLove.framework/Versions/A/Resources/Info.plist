@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>11C73</string>
+	<string>11D50</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
@@ -17,26 +17,26 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.0</string>
+	<string>2.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>16</string>
+	<string>17</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>4D502</string>
+	<string>4E2002</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>11C63</string>
+	<string>11D50a</string>
 	<key>DTSDKName</key>
 	<string>macosx10.7</string>
 	<key>DTXcode</key>
-	<string>0421</string>
+	<string>0432</string>
 	<key>DTXcodeBuild</key>
-	<string>4D502</string>
+	<string>4E2002</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright (c) 2011 Stefan Vogt. All rights reserved.</string>
+	<string>Copyright © 2011-2012 Stefan Vogt. All rights reserved.</string>
 </dict>
 </plist>

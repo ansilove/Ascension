@@ -9,6 +9,9 @@
 //  See the file LICENSE for details.
 //
 
+// add all available file aliasses e.g. .ice and .cia to .ans
+// also lookup how ACiD named it's files in art packs.
+
 #import "MyDocument.h"
 #import "SVTextView.h"
 #import "SVRoardactedScroller.h"
