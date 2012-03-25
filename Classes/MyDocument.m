@@ -758,7 +758,7 @@
     // Call AnsiLove and generate the rendered PNG image.
     [ALAnsiGenerator createPNGFromAnsiSource:selfURLString 
                                   outputFile:self.ansiCacheFile
-                                        font:@"terminus"
+                                        font:@"80x25"
                                         bits:@"transparent"
                                    iceColors:nil
                                      columns:nil];
