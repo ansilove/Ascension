@@ -6,9 +6,5 @@
 	<true/>
 	<key>com.apple.security.files.user-selected.read-write</key>
 	<true/>
-	<key>com.apple.security.temporary-exception.files.absolute-path.read-only</key>
-	<string>/private/etc/protocols/</string>
-	<key>com.apple.security.temporary-exception.files.absolute-path.read-write</key>
-	<string>/private/var/db/net-snmp/</string>
 </dict>
 </plist>
