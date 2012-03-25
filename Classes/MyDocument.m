@@ -2,7 +2,7 @@
 //  MyDocument.m
 //  Ascension
 //
-//  Copyright (c) 2010-2011, Stefan Vogt. All rights reserved.
+//  Copyright (c) 2010-2012, Stefan Vogt. All rights reserved.
 //  http://byteproject.net
 //
 //  Use of this source code is governed by a MIT-style license.
@@ -757,11 +757,11 @@
     
     // Call AnsiLove and generate the rendered PNG image.
     [ALAnsiGenerator createPNGFromAnsiSource:selfURLString 
-                                  outputFile:self.ansiCacheFile 
-                                     columns:nil 
+                                  outputFile:self.ansiCacheFile
                                         font:@"terminus"
                                         bits:@"transparent"
-                                   iceColors:nil];
+                                   iceColors:nil
+                                     columns:nil];
     
     // Wait for AnsiLove.framework to finish rendering.
     while (self.isRendered == NO) {
