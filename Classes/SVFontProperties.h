@@ -14,7 +14,7 @@
 @interface SVFontProperties : NSObject
 
 // strings
-@property (nonatomic, weak) NSString *fontName;
+@property (nonatomic, strong) NSString *fontName;
 
 // integer and float values
 @property (nonatomic, assign) CGFloat fontSize;

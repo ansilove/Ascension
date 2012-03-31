@@ -44,10 +44,10 @@ typedef enum {
 @property (nonatomic, strong) NSMutableAttributedString *rawAnsiString;
 @property (nonatomic, strong) NSString                  *ansiCacheFile;
 @property (nonatomic, strong) NSImage                   *renderedAnsiImage;
-@property (nonatomic, weak)   NSString					*iFilePath;
-@property (nonatomic, weak)   NSString					*iFileSize;
-@property (nonatomic, weak)   NSString					*iCreationDate;
-@property (nonatomic, weak)   NSString					*iModDate;
+@property (nonatomic, strong) NSString					*iFilePath;
+@property (nonatomic, strong) NSString					*iFileSize;
+@property (nonatomic, strong) NSString					*iCreationDate;
+@property (nonatomic, strong) NSString					*iModDate;
 @property (nonatomic, assign) NSStringEncoding			nfoDizEncoding;
 @property (nonatomic, assign) NSStringEncoding			txtEncoding;
 @property (nonatomic, assign) NSStringEncoding			exportEncoding;
@@ -69,15 +69,15 @@ typedef enum {
 
 
 // colors
-@property (nonatomic, weak) NSColor *fontColor;
-@property (nonatomic, weak) NSColor *backgroundColor;
-@property (nonatomic, weak) NSColor *cursorColor;
-@property (nonatomic, weak) NSColor *linkColor;
-@property (nonatomic, weak) NSColor *selectionColor;
+@property (nonatomic, strong) NSColor *fontColor;
+@property (nonatomic, strong) NSColor *backgroundColor;
+@property (nonatomic, strong) NSColor *cursorColor;
+@property (nonatomic, strong) NSColor *linkColor;
+@property (nonatomic, strong) NSColor *selectionColor;
 
 // dictionaries
-@property (nonatomic, weak) NSDictionary *linkAttributes;
-@property (nonatomic, weak) NSDictionary *selectionAttributes;
+@property (nonatomic, strong) NSDictionary *linkAttributes;
+@property (nonatomic, strong) NSDictionary *selectionAttributes;
 
 // outlets
 @property (nonatomic, strong) IBOutlet NSWindow      *mainWindow;
