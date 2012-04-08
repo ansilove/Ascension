@@ -32,9 +32,9 @@
 @implementation MyDocument
 
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
-			cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
-			nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, 
-			encButtonIndex, vScroller, hScroller, appToolbar, fileInfoPopover, rawAnsiString, ansiCacheFile, 
+            cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
+            nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow,
+            encButtonIndex, vScroller, hScroller, appToolbar, fileInfoPopover, rawAnsiString, ansiCacheFile, 
             isRendered, isUsingAnsiLove, isAnsFile, isIdfFile, isPcbFile, isXbFile, isAdfFile, isBinFile, isTndFile,
             renderedAnsiImage;
 
@@ -191,6 +191,14 @@
 }
 
 # pragma mark -
+# pragma mark NSDocument overrides
+
+// Opens each document instance in a separate thread.
++ (BOOL)canConcurrentlyReadDocumentsOfType:(NSString *)typeName {
+    return YES;
+}
+
+# pragma mark -
 # pragma mark UI specific
 
 - (NSString *)windowNibName
@@ -205,7 +213,7 @@
 }
 
 // Returns options for the fullscreen mode.
-- (NSApplicationPresentationOptions)window:(NSWindow *)window 
+- (NSApplicationPresentationOptions)window:(NSWindow *)window
       willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions {
     return NSApplicationPresentationAutoHideMenuBar | NSApplicationPresentationHideDock | 
            NSApplicationPresentationFullScreen | NSApplicationPresentationAutoHideToolbar;
@@ -216,12 +224,12 @@
 	// Create the bottom bar.
     [self.mainWindow setContentBorderThickness:24.0 forEdge:NSMinYEdge];
     
-    // Should we disable the OS X window state restoration mechanism?
+     // Should we disable the OS X window state restoration mechanism?
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults integerForKey:@"startupBehavior"] == 1) {
         [self.mainWindow setRestorable:NO];
     }
-    
+   
     // Embedded look for the encoding button.
     [[encodingButton cell] setBackgroundStyle:NSBackgroundStyleRaised];
     
@@ -306,11 +314,19 @@
          [self performLinkification];
      }
      else {
-         // So this is an ANSi source file? Disable editing.
+         // So this is an ANSi source file? We can't use themes and custom colors.
+         [self.asciiTextView setBackgroundColor:[NSColor blackColor]];
+         [self.asciiScrollView setBackgroundColor:[NSColor blackColor]];
+         
+         // Also disable editing.
          [self.asciiTextView setEditable:NO];
          [self.asciiTextView setSelectable:NO];
+         
+         // Then, get the hell out.
+         return;
      }
     
+    // Let's mess around with ASCII themes.
     [self applyThemeColors];
 	
 	// Set the text color.
@@ -395,7 +411,7 @@
 - (void)handlePasteOperation:(NSNotification *)note
 {
 	// Linkify hyperlinks in the pasted content.
-	//[self performSelector:@selector(performLinkification) withObject:nil afterDelay:0.5];
+	[self performSelector:@selector(performLinkification) withObject:nil afterDelay:0.5];
 }
 
 - (CGFloat)titlebarHeight
@@ -421,33 +437,43 @@
 // The performColorChange methods are fired by notifications, invoked from the prefs.
 - (void)performFontColorChange:(NSNotification *)note
 {
-	NSColor *fontColorValue = [[note userInfo] objectForKey:@"fontColorValue"];
-	[self.asciiTextView setTextColor:fontColorValue];
+    if (self.isUsingAnsiLove == NO) {
+        NSColor *fontColorValue = [[note userInfo] objectForKey:@"fontColorValue"];
+        [self.asciiTextView setTextColor:fontColorValue];
+    }
 }
 
 - (void)performBgrndColorChange:(NSNotification *)note
 {
-	NSColor *bgrndColorValue = [[note userInfo] objectForKey:@"bgrndColorValue"];
-	[self.asciiTextView setBackgroundColor:bgrndColorValue];
-    [self.asciiScrollView setBackgroundColor:bgrndColorValue];
+    if (self.isUsingAnsiLove == NO) {
+         NSColor *bgrndColorValue = [[note userInfo] objectForKey:@"bgrndColorValue"];
+         [self.asciiTextView setBackgroundColor:bgrndColorValue];
+         [self.asciiScrollView setBackgroundColor:bgrndColorValue];
+     }
 }
 
 - (void)performCursorColorChange:(NSNotification *)note
 {
-	NSColor *cursorColorValue = [[note userInfo] objectForKey:@"cursorColorValue"];
-	[self.asciiTextView setInsertionPointColor:cursorColorValue];
+    if (self.isUsingAnsiLove == NO) {
+        NSColor *cursorColorValue = [[note userInfo] objectForKey:@"cursorColorValue"];
+        [self.asciiTextView setInsertionPointColor:cursorColorValue];
+    }
 }
 
 - (void)performLinkColorChange:(NSNotification *)note
 {
-	self.linkColor = [[note userInfo] objectForKey:@"linkColorValue"];
-	[self.asciiTextView setLinkTextAttributes:self.linkAttributes];
+    if (self.isUsingAnsiLove == NO) {
+        self.linkColor = [[note userInfo] objectForKey:@"linkColorValue"];
+        [self.asciiTextView setLinkTextAttributes:self.linkAttributes];
+    }
 }
 
 - (void)performSelectionColorChange:(NSNotification *)note
 {
-	self.selectionColor = [[note userInfo] objectForKey:@"selectionColorValue"];
-	[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+    if (self.isUsingAnsiLove == NO) {
+        self.selectionColor = [[note userInfo] objectForKey:@"selectionColorValue"];
+        [self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+    }
 }
 
 - (NSDictionary *)linkAttributes 
@@ -464,55 +490,6 @@
 	// Attribute dicitionary for selections.
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			self.selectionColor, NSBackgroundColorAttributeName, nil];
-}
-
-# pragma mark -
-# pragma mark live search
-
-- (IBAction)performLiveSearch:(id)sender
-{
-	// Search for the sender's string value and show any matching entries.
-	NSString *liveSearchString = [sender stringValue];
-	NSRange lsStringRange = [[self.asciiTextView string] rangeOfString:liveSearchString];
-	if (lsStringRange.location == NSNotFound) {
-		return;
-	}
-	else {
-		NSArray *lsStringRanges = [self lsStringRangesInDocument:liveSearchString];
-		if ([lsStringRanges count]) {
-			if ([self.asciiTextView respondsToSelector:@selector(setSelectedRanges:)]) {
-				[self.asciiTextView setSelectedRanges:lsStringRanges];
-			} 
-			else {
-				[self.asciiTextView setSelectedRange:[[lsStringRanges objectAtIndex:0] rangeValue]];
-			}
-		}
-		[self.mainWindow makeFirstResponder:self.asciiTextView];
-		[self.asciiTextView scrollRangeToVisible:lsStringRange];
-		[self.asciiTextView showFindIndicatorForRange:lsStringRange];
-	}
-}
-
-- (NSArray *)lsStringRangesInDocument:(NSString *)liveSearchString 
-{
-	// Returns an array of ranges suitable for NSTextView's setSelectedRanges method.
-    NSString *txtStorString = self.asciiTextView.textStorage.string;
-    NSMutableArray *ranges = [NSMutableArray array];
-	
-	NSRange thisCharRange, searchCharRange;
-    searchCharRange = NSMakeRange(0, [txtStorString length]);
-    while (searchCharRange.length > 0) {
-        thisCharRange = [txtStorString rangeOfString:liveSearchString options:0 range:searchCharRange];
-        if (thisCharRange.length > 0) {
-            searchCharRange.location = NSMaxRange(thisCharRange);
-            searchCharRange.length = [txtStorString length] - NSMaxRange(thisCharRange);
-            [ranges addObject: [NSValue valueWithRange:thisCharRange]];
-        } 
-		else {
-            searchCharRange = NSMakeRange(NSNotFound, 0);
-        }
-    }
-    return ranges;
 }
 
 # pragma mark -
