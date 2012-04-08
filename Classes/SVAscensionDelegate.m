@@ -50,8 +50,13 @@
 # pragma mark -
 # pragma mark general
 
-- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender 
-{ 
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
+{
+    return NO;
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
+{
     return NO;
 }
 
