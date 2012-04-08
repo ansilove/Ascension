@@ -14,6 +14,7 @@
 #import <AnsiLove/AnsiLove.h>
 
 @class SVTextView;
+@class SVRoardactedScroller;
 
 // No confusion in switch methods, so much easier to read.
 typedef enum {
@@ -44,13 +45,13 @@ typedef enum {
 @property (nonatomic, strong) NSMutableAttributedString *rawAnsiString;
 @property (nonatomic, strong) NSString                  *ansiCacheFile;
 @property (nonatomic, strong) NSImage                   *renderedAnsiImage;
-@property (nonatomic, strong) NSString					*iFilePath;
-@property (nonatomic, strong) NSString					*iFileSize;
-@property (nonatomic, strong) NSString					*iCreationDate;
-@property (nonatomic, strong) NSString					*iModDate;
-@property (nonatomic, assign) NSStringEncoding			nfoDizEncoding;
-@property (nonatomic, assign) NSStringEncoding			txtEncoding;
-@property (nonatomic, assign) NSStringEncoding			exportEncoding;
+@property (nonatomic, strong) NSString                  *iFilePath;
+@property (nonatomic, strong) NSString                  *iFileSize;
+@property (nonatomic, strong) NSString                  *iCreationDate;
+@property (nonatomic, strong) NSString                  *iModDate;
+@property (nonatomic, assign) NSStringEncoding          nfoDizEncoding;
+@property (nonatomic, assign) NSStringEncoding          txtEncoding;
+@property (nonatomic, assign) NSStringEncoding          exportEncoding;
 
 // integer and float values
 @property (nonatomic, assign) CGFloat   newContentWidth;
@@ -80,14 +81,14 @@ typedef enum {
 @property (nonatomic, strong) NSDictionary *selectionAttributes;
 
 // outlets
-@property (nonatomic, strong) IBOutlet NSWindow      *mainWindow;
-@property (nonatomic, strong) IBOutlet NSPopover     *fileInfoPopover;
-@property (nonatomic, strong) IBOutlet SVTextView	 *asciiTextView;
-@property (nonatomic, strong) IBOutlet NSScrollView  *asciiScrollView;
-@property (nonatomic, strong) IBOutlet NSToolbar     *appToolbar;
-@property (nonatomic, strong) IBOutlet NSPopUpButton *encodingButton;
-@property (nonatomic, strong) IBOutlet NSScroller    *vScroller;
-@property (nonatomic, strong) IBOutlet NSScroller    *hScroller;
+@property (nonatomic, strong) IBOutlet NSWindow             *mainWindow;
+@property (nonatomic, strong) IBOutlet NSPopover            *fileInfoPopover;
+@property (nonatomic, strong) IBOutlet SVTextView           *asciiTextView;
+@property (nonatomic, strong) IBOutlet NSScrollView         *asciiScrollView;
+@property (nonatomic, strong) IBOutlet NSToolbar            *appToolbar;
+@property (nonatomic, strong) IBOutlet NSPopUpButton        *encodingButton;
+@property (nonatomic, strong) IBOutlet SVRoardactedScroller *vScroller;
+@property (nonatomic, strong) IBOutlet SVRoardactedScroller *hScroller;
 
 
 // general methods
@@ -119,11 +120,9 @@ typedef enum {
 - (CGFloat)titlebarHeight;
 - (NSRect)screenRect;
 - (NSMutableAttributedString *)string;
-- (NSArray *)lsStringRangesInDocument:(NSString *)liveSearchString;
 
 // actions
 - (IBAction)switchExportEncoding:(id)sender;
-- (IBAction)performLiveSearch:(id)sender;
 - (IBAction)showFileInfoPopover:(id)sender;
 
 @end
