@@ -45,19 +45,19 @@ typedef struct {
 @interface ALSauceMachine : NSObject
 
 // SAUCE record properties
-@property (nonatomic, weak)   NSString  *ID;
-@property (nonatomic, weak)   NSString  *version;
-@property (nonatomic, weak)   NSString  *title;
-@property (nonatomic, weak)   NSString  *author;
-@property (nonatomic, weak)   NSString  *group;
-@property (nonatomic, weak)   NSString  *date;
+@property (nonatomic, strong) NSString  *ID;
+@property (nonatomic, strong) NSString  *version;
+@property (nonatomic, strong) NSString  *title;
+@property (nonatomic, strong) NSString  *author;
+@property (nonatomic, strong) NSString  *group;
+@property (nonatomic, strong) NSString  *date;
 @property (nonatomic, assign) NSInteger dataType;
 @property (nonatomic, assign) NSInteger fileType;
 @property (nonatomic, assign) NSInteger tinfo1;
 @property (nonatomic, assign) NSInteger tinfo2;
 @property (nonatomic, assign) NSInteger tinfo3;
 @property (nonatomic, assign) NSInteger tinfo4;
-@property (nonatomic, weak)   NSString  *comments;
+@property (nonatomic, strong) NSString  *comments;
 @property (nonatomic, assign) NSInteger flags;
 
 // SAUCE record BOOL properties
