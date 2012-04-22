@@ -219,15 +219,18 @@
 
 - (void)changeToggleSliderState:(NSNotification *)note
 {
-    // define user defaults
+    // define user defaults and notification center
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     
     // Check whether the viewer mode is turned ON or OFF now.
     if (self.viewerModeSlider.state == NSOffState) {
         [defaults setBool:NO forKey:@"viewerMode"];
+        [nc postNotificationName:@"UnlockEditor" object:self];
     }    
     else if (self.viewerModeSlider.state == NSOnState) {
         [defaults setBool:YES forKey:@"viewerMode"];
+        [nc postNotificationName:@"LockEditor" object:self];
     }
 }
 
