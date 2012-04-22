@@ -52,6 +52,9 @@
 		F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8B8453B1543548C00784F17 /* Text.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B8453A1543548C00784F17 /* Text.png */; };
+		F8B8454C15436EFB00784F17 /* SVToggleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B8454B15436EFB00784F17 /* SVToggleSlider.m */; };
+		F8B84556154372F800784F17 /* Toggle-Knob.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B84554154372F800784F17 /* Toggle-Knob.png */; };
+		F8B84557154372F800784F17 /* Toggle-Slider.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B84555154372F800784F17 /* Toggle-Slider.png */; };
 		F8B9E69D1464A0EA0007ACAA /* AFileTypeADF.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8B9E6951464A0EA0007ACAA /* AFileTypeADF.icns */; };
 		F8B9E69E1464A0EA0007ACAA /* AFileTypeANS.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8B9E6961464A0EA0007ACAA /* AFileTypeANS.icns */; };
 		F8B9E69F1464A0EA0007ACAA /* AFileTypeASC.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8B9E6971464A0EA0007ACAA /* AFileTypeASC.icns */; };
@@ -168,6 +171,10 @@
 		F898A66014633ED30008E3CD /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/License.rtf; sourceTree = "<group>"; };
 		F8A894941208D34300871F98 /* AutoHyperlinks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoHyperlinks.framework; path = Frameworks/AutoHyperlinks.framework; sourceTree = "<group>"; };
 		F8B8453A1543548C00784F17 /* Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Text.png; path = Images/Text.png; sourceTree = "<group>"; };
+		F8B8454A15436EFB00784F17 /* SVToggleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVToggleSlider.h; path = Classes/SVToggleSlider.h; sourceTree = "<group>"; };
+		F8B8454B15436EFB00784F17 /* SVToggleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVToggleSlider.m; path = Classes/SVToggleSlider.m; sourceTree = "<group>"; };
+		F8B84554154372F800784F17 /* Toggle-Knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Toggle-Knob.png"; path = "Images/Toggle-Knob.png"; sourceTree = "<group>"; };
+		F8B84555154372F800784F17 /* Toggle-Slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Toggle-Slider.png"; path = "Images/Toggle-Slider.png"; sourceTree = "<group>"; };
 		F8B9E6951464A0EA0007ACAA /* AFileTypeADF.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeADF.icns; path = Images/AFileTypeADF.icns; sourceTree = "<group>"; };
 		F8B9E6961464A0EA0007ACAA /* AFileTypeANS.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeANS.icns; path = Images/AFileTypeANS.icns; sourceTree = "<group>"; };
 		F8B9E6971464A0EA0007ACAA /* AFileTypeASC.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AFileTypeASC.icns; path = Images/AFileTypeASC.icns; sourceTree = "<group>"; };
@@ -265,6 +272,8 @@
 				F8835765120F24ED00D18794 /* SVPreferencesWC.m */,
 				F8EA140712781D3E002A6E6E /* SVPreferences.h */,
 				F8F14432129068C600D89311 /* SVPreferences.m */,
+				F8B8454A15436EFB00784F17 /* SVToggleSlider.h */,
+				F8B8454B15436EFB00784F17 /* SVToggleSlider.m */,
 				F8EA140912781D3E002A6E6E /* SVThemeObject.h */,
 				F8EA140A12781D3E002A6E6E /* SVThemeObject.m */,
 				F8726135145CBF0200821B70 /* SVEpicAboutBoxWC.h */,
@@ -358,6 +367,8 @@
 				F869391D135A5C6C0024BE07 /* context_info.png */,
 				F82310381457EA10007E1BE6 /* custom_about.png */,
 				F83A1B641461FE4A00630FF2 /* sheet_background.png */,
+				F8B84554154372F800784F17 /* Toggle-Knob.png */,
+				F8B84555154372F800784F17 /* Toggle-Slider.png */,
 			);
 			name = "Pictures and Icons";
 			sourceTree = "<group>";
@@ -457,6 +468,8 @@
 				F87EDE731475B15B00DEC27A /* Interface.png in Resources */,
 				F87EDE741475B15B00DEC27A /* Themes.png in Resources */,
 				F8B8453B1543548C00784F17 /* Text.png in Resources */,
+				F8B84556154372F800784F17 /* Toggle-Knob.png in Resources */,
+				F8B84557154372F800784F17 /* Toggle-Slider.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +493,7 @@
 				F8726137145CBF0200821B70 /* SVEpicAboutBoxWC.m in Sources */,
 				F872613B145CBF2F00821B70 /* SVEpicAboutBox.m in Sources */,
 				F80801AD149C353E0057FF76 /* SVSauceRecord.m in Sources */,
+				F8B8454C15436EFB00784F17 /* SVToggleSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
