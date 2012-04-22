@@ -10,12 +10,13 @@
 //
 
 #import "SVPreferences.h"
-#import "SVThemeObject.h" 
+#import "SVThemeObject.h"
+#import "SVToggleSlider.h"
 
 @implementation SVPreferences
 
 @synthesize fontColorWell, bgrndColorWell, cursorColorWell, linkColorWell, selectionColorWell, 
-			themesArray, themesView, pathForThemeLibraryFile, themeIndex;
+			themesArray, themesView, pathForThemeLibraryFile, themeIndex, viewerModeSlider;
 
 # pragma mark -
 # pragma mark initialization
@@ -36,6 +37,12 @@
 			   selector:@selector(saveThemeLibraryToDisk:) 
 				   name:@"AppClosing" 
 				 object:nil];
+        
+        // Observe any toggle slider state changes.
+        [nc addObserver:self
+               selector:@selector(changeToggleSliderState:)
+                   name:@"ToggleSliderStateChange"
+                 object:nil];
 	}
 	return self;
 }
@@ -67,6 +74,14 @@
 	NSInteger rowForThemeIndex = [defaults integerForKey:@"themeIndex"];
 	NSIndexSet *themesViewSelection = [NSIndexSet indexSetWithIndex:rowForThemeIndex];
 	[self.themesView selectRowIndexes:themesViewSelection byExtendingSelection:NO];
+    
+    // Set viewer mode slider button state.
+    if ([defaults boolForKey:@"viewerMode"] == YES) {
+        [self.viewerModeSlider setState:NSOnState animate:NO];
+    }
+    else {
+        [self.viewerModeSlider setState:NSOffState animate:NO];
+    }
 }
 
 # pragma mark -
@@ -112,6 +127,9 @@
 	if (![defaults valueForKey:@"themeIndex"]) {
 		[defaults setInteger:0 forKey:@"themeIndex"];
 	}
+    if (![defaults valueForKey:@"viewerMode"]) {
+		[defaults setBool:NO forKey:@"viewerMode"];
+	}
 	if (![defaults dataForKey:@"fontColor"]) {
 		NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]];
 		[defaults setObject:fontColorData forKey:@"fontColor"];
@@ -153,6 +171,7 @@
 	[defaults setBool:YES forKey:@"autoSizeWidth"];
 	[defaults setBool:NO forKey:@"autoSizeHeight"];
 	[defaults setInteger:0 forKey:@"themeIndex"];
+    [defaults setBool:NO forKey:@"viewerMode"];
 	
 	// Store initial colors as data to user defaults.
 	NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]];
@@ -172,6 +191,9 @@
 	[self generateStandardThemes];
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc postNotificationName:@"AppClosing" object:self];
+    
+    // Reset slider button state
+    [self.viewerModeSlider setState:NSOffState animate:YES];
 	
 	[defaults synchronize];
 	[self sendFontColorChangeNote];
@@ -193,6 +215,22 @@
     [self synchronizeDefaults:self];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc postNotificationName:@"ResumeStateChange" object:self];
+}
+
+- (void)changeToggleSliderState:(NSNotification *)note
+{
+    // define user defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // Check whether the viewer mode is turned ON or OFF now.
+    if (self.viewerModeSlider.state == NSOffState){
+        NSLog(@"Viewer Mode is turned OFF");
+        [defaults setBool:NO forKey:@"viewerMode"];
+    }    
+    else if (self.viewerModeSlider.state == NSOnState) {
+        NSLog(@"Viewer Mode is turned ON");
+        [defaults setBool:YES forKey:@"viewerMode"];
+    }
 }
 
 # pragma mark -
