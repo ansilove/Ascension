@@ -106,6 +106,17 @@
                   name:@"AnsiLoveFinishedRendering"
                 object:nil];
        
+       // Know when the editor needs to be locked or unlocked.
+       [nc addObserver:self 
+              selector:@selector(lockEditorFeatures:)
+                  name:@"LockEditor"
+                object:nil];
+       
+       [nc addObserver:self 
+              selector:@selector(unlockEditorFeatures:)
+                  name:@"UnlockEditor"
+                object:nil];
+       
        // Init the file information values.
        [SVFileInfoStrings sharedFileInfoStrings];
    }
@@ -306,25 +317,54 @@
 # pragma mark -
 # pragma mark content appearance
 
+- (void)disableEditing
+{
+    [self.asciiTextView setEditable:NO];
+    
+    // Only applies to ANSi files as they contain rendered images and no selectable text.
+    if (self.isUsingAnsiLove == YES) {
+        [self.asciiTextView setSelectable:NO];
+    }
+}
+
+- (void)enableEditing
+{
+    // Editing is not supported for types we rendered with AnsiLove.
+    if (self.isUsingAnsiLove == NO) {
+        [self.asciiTextView setEditable:YES];
+        [self.asciiTextView setSelectable:YES];
+    }
+}
+
+- (void)lockEditorFeatures:(NSNotification *)note
+{
+    [self disableEditing];
+}
+
+- (void)unlockEditorFeatures:(NSNotification *)note
+{
+    [self enableEditing];
+}
+
 - (void)prepareContent
 {
 	// If this is no ANSi source file, prepare the textual content.
-	 if (self.isUsingAnsiLove == NO) {
-         [self applyParagraphStyle];
-         [self performLinkification];
-     }
-     else {
-         // So this is an ANSi source file? We can't use themes and custom colors.
-         [self.asciiTextView setBackgroundColor:[NSColor blackColor]];
-         [self.asciiScrollView setBackgroundColor:[NSColor blackColor]];
-         
-         // Also disable editing.
-         [self.asciiTextView setEditable:NO];
-         [self.asciiTextView setSelectable:NO];
-         
-         // Then, get the hell out.
-         return;
-     }
+    if (self.isUsingAnsiLove == NO) {
+        [self applyParagraphStyle];
+        [self performLinkification];
+    }
+    else {
+        // So this is an ANSi source file? We can't use themes and custom colors.
+        [self.asciiTextView setBackgroundColor:[NSColor blackColor]];
+        [self.asciiScrollView setBackgroundColor:[NSColor blackColor]];
+        
+        // Also disable editing.
+        [self disableEditing];
+        
+        // Then, get the hell out.
+        return;
+    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     // Let's mess around with ASCII themes.
     [self applyThemeColors];
@@ -344,6 +384,11 @@
 	
 	// Set the color for selected and marked text.
 	[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+    
+    // Now find out if viewer mode is enabled?
+    if ([defaults boolForKey:@"viewerMode"] == YES) {
+        [self disableEditing];
+    }
 }
 
 - (void)applyThemeColors

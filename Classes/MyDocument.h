@@ -93,6 +93,10 @@ typedef enum {
 
 // general methods
 - (void)createInterface;
+- (void)disableEditing;
+- (void)enableEditing;
+- (void)lockEditorFeatures:(NSNotification *)note;
+- (void)unlockEditorFeatures:(NSNotification *)note;
 - (void)prepareContent;
 - (void)applyThemeColors;
 - (void)applyParagraphStyle;
