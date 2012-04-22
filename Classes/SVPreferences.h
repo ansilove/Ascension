@@ -11,15 +11,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SVToggleSlider;
+
 @interface SVPreferences : NSObject
 
 // outlets
-@property (nonatomic, strong) IBOutlet NSColorWell *fontColorWell;
-@property (nonatomic, strong) IBOutlet NSColorWell *bgrndColorWell;
-@property (nonatomic, strong) IBOutlet NSColorWell *cursorColorWell;
-@property (nonatomic, strong) IBOutlet NSColorWell *linkColorWell;
-@property (nonatomic, strong) IBOutlet NSColorWell *selectionColorWell;
-@property (nonatomic, strong) IBOutlet NSTableView *themesView;
+@property (nonatomic, strong) IBOutlet NSColorWell    *fontColorWell;
+@property (nonatomic, strong) IBOutlet NSColorWell    *bgrndColorWell;
+@property (nonatomic, strong) IBOutlet NSColorWell    *cursorColorWell;
+@property (nonatomic, strong) IBOutlet NSColorWell    *linkColorWell;
+@property (nonatomic, strong) IBOutlet NSColorWell    *selectionColorWell;
+@property (nonatomic, strong) IBOutlet NSTableView    *themesView;
+@property (nonatomic, strong) IBOutlet SVToggleSlider *viewerModeSlider;
 
 // data
 @property (nonatomic, strong) NSMutableArray *themesArray;
@@ -45,6 +48,9 @@
 - (IBAction)changeSelectionColor:(id)sender;
 - (IBAction)createCustomTheme:(id)sender;
 - (IBAction)copyExistingTheme:(id)sender;
+
+// features
+- (void)changeToggleSliderState:(NSNotification *)note;
 
 // specific theme methods
 - (void)generateStandardThemes;
