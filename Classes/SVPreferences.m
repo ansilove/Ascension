@@ -223,12 +223,10 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     // Check whether the viewer mode is turned ON or OFF now.
-    if (self.viewerModeSlider.state == NSOffState){
-        NSLog(@"Viewer Mode is turned OFF");
+    if (self.viewerModeSlider.state == NSOffState) {
         [defaults setBool:NO forKey:@"viewerMode"];
     }    
     else if (self.viewerModeSlider.state == NSOnState) {
-        NSLog(@"Viewer Mode is turned ON");
         [defaults setBool:YES forKey:@"viewerMode"];
     }
 }
