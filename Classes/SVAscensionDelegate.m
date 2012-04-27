@@ -43,6 +43,19 @@
         }
         // Now check for the user defaults.
 		[SVPreferences checkUserDefaults];
+        
+        // Let's observe if the save menu item needs to be disabled / enabled.
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        
+        [nc addObserver:self 
+               selector:@selector(disableSaveItem:)
+                   name:@"DisableSave"
+                 object:nil];
+        
+        [nc addObserver:self 
+               selector:@selector(enableSaveItem:)
+                   name:@"EnableSave"
+                 object:nil];
     } 
 	return self;
 }
@@ -87,6 +100,16 @@
 {
     [[SVEpicAboutBoxWC sharedEpicAboutBoxWC] showWindow:nil];
     (void)sender;
+}
+
+- (void)disableSaveItem:(NSNotification *)note
+{
+    self.enableSaveMenuItem = NO;
+}
+
+- (void)enableSaveItem:(NSNotification *)note
+{
+    self.enableSaveMenuItem = YES;
 }
 
 @end

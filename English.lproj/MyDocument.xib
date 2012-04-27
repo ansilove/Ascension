@@ -103,7 +103,7 @@
 								<string key="NSReuseIdentifierKey">_NS:164</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="680064283">
-									<int key="NSCellFlags">67226112</int>
+									<int key="NSCellFlags">67222016</int>
 									<int key="NSCellFlags2">134217728</int>
 									<string key="NSContents"/>
 									<object class="NSFont" key="NSSupport" id="291479599">
@@ -249,7 +249,7 @@
 											<string key="NSFrameSize">{10, 14}</string>
 											<reference key="NSSuperview" ref="918874659"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="973397786"/>
+											<reference key="NSNextKeyView" ref="373763667"/>
 											<object class="NSTextContainer" key="NSTextContainer" id="644506264">
 												<object class="NSLayoutManager" key="NSLayoutManager">
 													<object class="NSTextStorage" key="NSTextStorage">
@@ -669,7 +669,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string key="NSFrame">{{0, 24}, {650, 605}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="918874659"/>
+							<reference key="NSNextKeyView" ref="973397786"/>
 							<int key="NSsFlags">133648</int>
 							<reference key="NSVScroller" ref="973397786"/>
 							<reference key="NSHScroller" ref="50461650"/>
@@ -684,6 +684,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string key="NSFrame">{{499, 1}, {150, 22}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="1010913848">
 								<int key="NSCellFlags">-2080348096</int>
@@ -792,7 +793,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="43737000"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1680, 1050}}</string>
 				<string key="NSMinSize">{94, 141}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<string key="NSFrameAutosaveName">AscensionPosition</string>
@@ -821,9 +822,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<string key="NSFrame">{{17, 20}, {164, 14}}</string>
 						<reference key="NSSuperview" ref="80171091"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="461362328">
-							<int key="NSCellFlags">68284480</int>
+							<int key="NSCellFlags">68259904</int>
 							<int key="NSCellFlags2">272761856</int>
 							<string key="NSContents">the modification date</string>
 							<reference key="NSSupport" ref="26"/>
@@ -852,7 +854,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="NSNextKeyView" ref="882126172"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="432791950">
-							<int key="NSCellFlags">68284480</int>
+							<int key="NSCellFlags">68259904</int>
 							<int key="NSCellFlags2">272761856</int>
 							<string key="NSContents">Modification date:</string>
 							<reference key="NSSupport" ref="26"/>
@@ -871,7 +873,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="NSNextKeyView" ref="1038958699"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="293912849">
-							<int key="NSCellFlags">68284480</int>
+							<int key="NSCellFlags">68259904</int>
 							<int key="NSCellFlags2">272761856</int>
 							<string key="NSContents">the creation date</string>
 							<reference key="NSSupport" ref="26"/>
@@ -890,7 +892,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="NSNextKeyView" ref="166700852"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="484091282">
-							<int key="NSCellFlags">68284480</int>
+							<int key="NSCellFlags">68259904</int>
 							<int key="NSCellFlags2">272761856</int>
 							<string key="NSContents">Creation date:</string>
 							<reference key="NSSupport" ref="26"/>
@@ -909,7 +911,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="NSNextKeyView" ref="959141237"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="272706189">
-							<int key="NSCellFlags">68284480</int>
+							<int key="NSCellFlags">68259904</int>
 							<int key="NSCellFlags2">272761856</int>
 							<string key="NSContents">the file size</string>
 							<reference key="NSSupport" ref="26"/>
@@ -928,7 +930,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="NSNextKeyView" ref="575951967"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="396798756">
-							<int key="NSCellFlags">68284480</int>
+							<int key="NSCellFlags">68259904</int>
 							<int key="NSCellFlags2">272761856</int>
 							<string key="NSContents">File size:</string>
 							<reference key="NSSupport" ref="26"/>
@@ -1546,7 +1548,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">100447</int>
+			<int key="maxID">100594</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1614,47 +1616,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/MyDocument.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSDocument</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="printDocument:">id</string>
-						<string key="revertDocumentToSaved:">id</string>
-						<string key="runPageLayout:">id</string>
-						<string key="saveDocument:">id</string>
-						<string key="saveDocumentAs:">id</string>
-						<string key="saveDocumentTo:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="printDocument:">
-							<string key="name">printDocument:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="revertDocumentToSaved:">
-							<string key="name">revertDocumentToSaved:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="runPageLayout:">
-							<string key="name">runPageLayout:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocument:">
-							<string key="name">saveDocument:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocumentAs:">
-							<string key="name">saveDocumentAs:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocumentTo:">
-							<string key="name">saveDocumentTo:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSDocument.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

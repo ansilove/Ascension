@@ -15,10 +15,15 @@
 
 // integer and float values
 @property (nonatomic, assign) BOOL applicationHasStarted;
+@property (nonatomic, assign) BOOL enableSaveMenuItem;
 
 // actions
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)openIssueTracker:(id)sender;
 - (IBAction)showAboutBox:(id)sender;
+
+// general stuff
+- (void)disableSaveItem:(NSNotification *)note;
+- (void)enableSaveItem:(NSNotification *)note;
 
 @end

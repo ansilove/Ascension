@@ -36,7 +36,7 @@
             nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow,
             encButtonIndex, vScroller, hScroller, appToolbar, fileInfoPopover, rawAnsiString, ansiCacheFile, 
             isRendered, isUsingAnsiLove, isAnsFile, isIdfFile, isPcbFile, isXbFile, isAdfFile, isBinFile, isTndFile,
-            renderedAnsiImage;
+            renderedAnsiImage, shouldDisableSave;
 
 # pragma mark -
 # pragma mark initialization
@@ -221,6 +221,16 @@
 {
 	// Update the file information interface strings.
 	[self updateFileInfoValues];
+    
+    // Disable or enable the save menu item.
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	
+    if (self.shouldDisableSave == YES) {
+        [nc postNotificationName:@"DisableSave" object:self];
+    }
+    else {
+        [nc postNotificationName:@"EnableSave" object:self];
+    }
 }
 
 // Returns options for the fullscreen mode.
@@ -293,6 +303,7 @@
             [self.vScroller setKnobStyle:NSScrollerKnobStyleDark];
         }
         default: {
+            
             break;
         }
     }
@@ -307,6 +318,9 @@
             [fileManager removeItemAtPath:self.ansiCacheFile error:nil];
         }
     }
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:@"DisableSave" object:self];
 }
 
 - (IBAction)showFileInfoPopover:(id)sender 
@@ -339,11 +353,27 @@
 - (void)lockEditorFeatures:(NSNotification *)note
 {
     [self disableEditing];
+    
+    // Inform app delegate to disable save menu item.
+    self.shouldDisableSave = YES;
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc postNotificationName:@"DisableSave" object:self];
 }
 
 - (void)unlockEditorFeatures:(NSNotification *)note
 {
     [self enableEditing];
+    
+    if (self.isUsingAnsiLove == NO)
+    {
+        // Inform app delegate to enable save menu item.
+        self.shouldDisableSave = NO;
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"EnableSave" object:self];
+    }
+    else {
+        self.shouldDisableSave = YES;
+    }
 }
 
 - (void)prepareContent
@@ -358,14 +388,16 @@
         [self.asciiTextView setBackgroundColor:[NSColor blackColor]];
         [self.asciiScrollView setBackgroundColor:[NSColor blackColor]];
         
-        // Also disable editing.
+        // Also disable editing anyway.
         [self disableEditing];
+        
+        self.shouldDisableSave = YES;
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"DisableSave" object:self];
         
         // Then, get the hell out.
         return;
     }
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     // Let's mess around with ASCII themes.
     [self applyThemeColors];
 	
@@ -385,9 +417,17 @@
 	// Set the color for selected and marked text.
 	[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
     
+    // Definition of user defaults.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
     // Now find out if viewer mode is enabled?
     if ([defaults boolForKey:@"viewerMode"] == YES) {
         [self disableEditing];
+        
+        // Inform app delegate to disable save menu item.
+        self.shouldDisableSave = YES;
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"DisableSave" object:self];
     }
 }
 

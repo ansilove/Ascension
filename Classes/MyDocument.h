@@ -66,8 +66,7 @@ typedef enum {
 @property (nonatomic, assign) BOOL      isAdfFile;
 @property (nonatomic, assign) BOOL      isBinFile;
 @property (nonatomic, assign) BOOL      isTndFile;
-
-
+@property (nonatomic, assign) BOOL      shouldDisableSave;
 
 // colors
 @property (nonatomic, strong) NSColor *fontColor;
@@ -89,7 +88,6 @@ typedef enum {
 @property (nonatomic, strong) IBOutlet NSPopUpButton        *encodingButton;
 @property (nonatomic, strong) IBOutlet SVRoardactedScroller *vScroller;
 @property (nonatomic, strong) IBOutlet SVRoardactedScroller *hScroller;
-
 
 // general methods
 - (void)createInterface;
