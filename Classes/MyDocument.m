@@ -303,7 +303,6 @@
             [self.vScroller setKnobStyle:NSScrollerKnobStyleDark];
         }
         default: {
-            
             break;
         }
     }
