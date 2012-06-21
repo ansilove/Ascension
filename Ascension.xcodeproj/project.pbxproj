@@ -52,6 +52,8 @@
 		F89DB9CE15932BCD0009F5AA /* context_export.png in Resources */ = {isa = PBXBuildFile; fileRef = F89DB9CB15932BCD0009F5AA /* context_export.png */; };
 		F89DB9CF15932BCD0009F5AA /* context_srecord.png in Resources */ = {isa = PBXBuildFile; fileRef = F89DB9CC15932BCD0009F5AA /* context_srecord.png */; };
 		F89DB9D015932BCD0009F5AA /* context_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = F89DB9CD15932BCD0009F5AA /* context_twitter.png */; };
+		F89DB9D2159362390009F5AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89DB9D1159362390009F5AA /* Social.framework */; };
+		F89DB9D41593624C0009F5AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89DB9D31593624C0009F5AA /* Social.framework */; };
 		F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8B8453B1543548C00784F17 /* Text.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B8453A1543548C00784F17 /* Text.png */; };
@@ -175,6 +177,8 @@
 		F89DB9CB15932BCD0009F5AA /* context_export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_export.png; path = Images/context_export.png; sourceTree = "<group>"; };
 		F89DB9CC15932BCD0009F5AA /* context_srecord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_srecord.png; path = Images/context_srecord.png; sourceTree = "<group>"; };
 		F89DB9CD15932BCD0009F5AA /* context_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_twitter.png; path = Images/context_twitter.png; sourceTree = "<group>"; };
+		F89DB9D1159362390009F5AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F89DB9D31593624C0009F5AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F8A894941208D34300871F98 /* AutoHyperlinks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoHyperlinks.framework; path = Frameworks/AutoHyperlinks.framework; sourceTree = "<group>"; };
 		F8B8453A1543548C00784F17 /* Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Text.png; path = Images/Text.png; sourceTree = "<group>"; };
 		F8B8454A15436EFB00784F17 /* SVToggleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVToggleSlider.h; path = Classes/SVToggleSlider.h; sourceTree = "<group>"; };
@@ -209,8 +213,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+				F89DB9D2159362390009F5AA /* Social.framework in Frameworks */,
 				F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */,
 				F87EDE681475B12400DEC27A /* AnsiLove.framework in Frameworks */,
+				F89DB9D41593624C0009F5AA /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+				F89DB9D31593624C0009F5AA /* Social.framework */,
 				F8A894941208D34300871F98 /* AutoHyperlinks.framework */,
 				F8E149771452BC5000D445DF /* AnsiLove.framework */,
 			);
@@ -248,6 +255,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* Ascension */ = {
 			isa = PBXGroup;
 			children = (
+				F89DB9D1159362390009F5AA /* Social.framework */,
 				F83BA41B146B307400F3DF9D /* Ascension.entitlements */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
