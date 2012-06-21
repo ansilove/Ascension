@@ -252,9 +252,6 @@
 
 - (void)createInterface 
 {
-	// Create the bottom bar.
-    [self.mainWindow setContentBorderThickness:24.0 forEdge:NSMinYEdge];
-    
      // Should we disable the OS X window state restoration mechanism?
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults integerForKey:@"startupBehavior"] == 1) {
