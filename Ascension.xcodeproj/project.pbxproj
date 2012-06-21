@@ -19,6 +19,7 @@
 		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
 		F82310391457EA10007E1BE6 /* custom_about.png in Resources */ = {isa = PBXBuildFile; fileRef = F82310381457EA10007E1BE6 /* custom_about.png */; };
+		F829D5C11593646000CB03A5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F829D5C01593646000CB03A5 /* Accounts.framework */; };
 		F83A1B651461FE4A00630FF2 /* sheet_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F83A1B641461FE4A00630FF2 /* sheet_background.png */; };
 		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
 		F83BA419146B2CE600F3DF9D /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = F83BA418146B2CE600F3DF9D /* container-migration.plist */; };
@@ -52,8 +53,7 @@
 		F89DB9CE15932BCD0009F5AA /* context_export.png in Resources */ = {isa = PBXBuildFile; fileRef = F89DB9CB15932BCD0009F5AA /* context_export.png */; };
 		F89DB9CF15932BCD0009F5AA /* context_srecord.png in Resources */ = {isa = PBXBuildFile; fileRef = F89DB9CC15932BCD0009F5AA /* context_srecord.png */; };
 		F89DB9D015932BCD0009F5AA /* context_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = F89DB9CD15932BCD0009F5AA /* context_twitter.png */; };
-		F89DB9D2159362390009F5AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89DB9D1159362390009F5AA /* Social.framework */; };
-		F89DB9D41593624C0009F5AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89DB9D31593624C0009F5AA /* Social.framework */; };
+		F89DB9D61593642A0009F5AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89DB9D51593642A0009F5AA /* Social.framework */; };
 		F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8A8949D1208D36300871F98 /* AutoHyperlinks.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
 		F8B8453B1543548C00784F17 /* Text.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B8453A1543548C00784F17 /* Text.png */; };
@@ -138,6 +138,7 @@
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
 		F82310381457EA10007E1BE6 /* custom_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = custom_about.png; path = Images/custom_about.png; sourceTree = "<group>"; };
 		F823103A1457F451007E1BE6 /* dos437.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dos437.ttf; sourceTree = "<group>"; };
+		F829D5C01593646000CB03A5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F83A1B641461FE4A00630FF2 /* sheet_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sheet_background.png; path = Images/sheet_background.png; sourceTree = "<group>"; };
 		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
 		F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRoardactedScroller.m; path = Classes/SVRoardactedScroller.m; sourceTree = "<group>"; };
@@ -177,8 +178,7 @@
 		F89DB9CB15932BCD0009F5AA /* context_export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_export.png; path = Images/context_export.png; sourceTree = "<group>"; };
 		F89DB9CC15932BCD0009F5AA /* context_srecord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_srecord.png; path = Images/context_srecord.png; sourceTree = "<group>"; };
 		F89DB9CD15932BCD0009F5AA /* context_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_twitter.png; path = Images/context_twitter.png; sourceTree = "<group>"; };
-		F89DB9D1159362390009F5AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		F89DB9D31593624C0009F5AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F89DB9D51593642A0009F5AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F8A894941208D34300871F98 /* AutoHyperlinks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoHyperlinks.framework; path = Frameworks/AutoHyperlinks.framework; sourceTree = "<group>"; };
 		F8B8453A1543548C00784F17 /* Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Text.png; path = Images/Text.png; sourceTree = "<group>"; };
 		F8B8454A15436EFB00784F17 /* SVToggleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVToggleSlider.h; path = Classes/SVToggleSlider.h; sourceTree = "<group>"; };
@@ -213,10 +213,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
-				F89DB9D2159362390009F5AA /* Social.framework in Frameworks */,
+				F89DB9D61593642A0009F5AA /* Social.framework in Frameworks */,
+				F829D5C11593646000CB03A5 /* Accounts.framework in Frameworks */,
 				F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */,
 				F87EDE681475B12400DEC27A /* AnsiLove.framework in Frameworks */,
-				F89DB9D41593624C0009F5AA /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
-				F89DB9D31593624C0009F5AA /* Social.framework */,
+				F89DB9D51593642A0009F5AA /* Social.framework */,
+				F829D5C01593646000CB03A5 /* Accounts.framework */,
 				F8A894941208D34300871F98 /* AutoHyperlinks.framework */,
 				F8E149771452BC5000D445DF /* AnsiLove.framework */,
 			);
@@ -255,7 +256,6 @@
 		2A37F4AAFDCFA73011CA2CEA /* Ascension */ = {
 			isa = PBXGroup;
 			children = (
-				F89DB9D1159362390009F5AA /* Social.framework */,
 				F83BA41B146B307400F3DF9D /* Ascension.entitlements */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
