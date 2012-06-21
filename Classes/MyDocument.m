@@ -169,6 +169,11 @@
                 // ...if not, calculate width via the textstorage.
                 self.newContentWidth = myTextSize.width + stdNSTextViewMargin;
             }
+            
+            // Prevent autosizing from programatically resizing smaller than the window's minSize.
+            if (self.newContentWidth <= aController.window.minSize.width) {
+                self.newContentWidth = aController.window.minSize.width;
+            }
 		}
 		else {
 			self.newContentWidth = [aController.window frame].size.width;
@@ -183,6 +188,11 @@
             else {
                 // ...and if not: use the textstorage again.
                 self.newContentHeight = myTextSize.height + [self titlebarHeight] + toolbarHeight;
+            }
+            
+            // Again prevent auto-sizing from resizing under the minSize value.
+            if (self.newContentHeight <= aController.window.minSize.height) {
+                self.newContentWidth = aController.window.minSize.height;
             }
 		}
 		else {
