@@ -322,9 +322,27 @@
     [nc postNotificationName:@"DisableSave" object:self];
 }
 
-- (IBAction)showFileInfoPopover:(id)sender 
+# pragma mark -
+# pragma mark tools palette
+
+- (IBAction)showFileInfoPopover:(id)sender
 {
     [self.fileInfoPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
+}
+
+- (IBAction)exportAsImage:(id)sender
+{
+    NSLog(@"export as image fired...!");
+}
+
+- (IBAction)showSauceRecord:(id)sender
+{
+    NSLog(@"show Sauce record fired...!");
+}
+
+- (IBAction)postOnTwitter:(id)sender
+{
+    NSLog(@"post on Twitter fired...!");
 }
 
 # pragma mark -

@@ -126,5 +126,8 @@ typedef enum {
 // actions
 - (IBAction)switchExportEncoding:(id)sender;
 - (IBAction)showFileInfoPopover:(id)sender;
+- (IBAction)exportAsImage:(id)sender;
+- (IBAction)showSauceRecord:(id)sender;
+- (IBAction)postOnTwitter:(id)sender;
 
 @end
