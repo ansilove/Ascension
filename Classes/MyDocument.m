@@ -192,7 +192,7 @@
             
             // Again prevent auto-sizing from resizing under the minSize value.
             if (self.newContentHeight <= aController.window.minSize.height) {
-                self.newContentWidth = aController.window.minSize.height;
+                self.newContentHeight = aController.window.minSize.height;
             }
 		}
 		else {
