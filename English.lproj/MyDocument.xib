@@ -207,9 +207,9 @@
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">243C92A9-ECCC-4C2B-88E9-D3DB130B5E1C</characters>
 							</object>
-							<string key="NSToolbarItemLabel"/>
+							<string key="NSToolbarItemLabel">Export</string>
 							<string key="NSToolbarItemPaletteLabel">Export</string>
-							<nil key="NSToolbarItemToolTip"/>
+							<string key="NSToolbarItemToolTip">Export as PNG image</string>
 							<object class="NSButton" key="NSToolbarItemView" id="481624559">
 								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
@@ -274,9 +274,9 @@
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">81B78606-5B89-4F28-A1A7-66ED078083F2</characters>
 							</object>
-							<string key="NSToolbarItemLabel"/>
+							<string key="NSToolbarItemLabel">File Info</string>
 							<string key="NSToolbarItemPaletteLabel">File Info</string>
-							<nil key="NSToolbarItemToolTip"/>
+							<string key="NSToolbarItemToolTip">Show file information</string>
 							<object class="NSButton" key="NSToolbarItemView" id="770039272">
 								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
@@ -319,9 +319,9 @@
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">BC031AD1-C46B-4B4D-877C-3454B6C59820</characters>
 							</object>
-							<string key="NSToolbarItemLabel"/>
+							<string key="NSToolbarItemLabel">Sauce Record</string>
 							<string key="NSToolbarItemPaletteLabel">Sauce Record</string>
-							<nil key="NSToolbarItemToolTip"/>
+							<string key="NSToolbarItemToolTip">Display SAUCE record</string>
 							<object class="NSButton" key="NSToolbarItemView" id="76081994">
 								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
@@ -364,9 +364,9 @@
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">C605DA77-60CA-4A70-9E57-D86F48449E11</characters>
 							</object>
-							<string key="NSToolbarItemLabel"/>
+							<string key="NSToolbarItemLabel">Post on Twitter</string>
 							<string key="NSToolbarItemPaletteLabel">Post on Twitter</string>
-							<nil key="NSToolbarItemToolTip"/>
+							<string key="NSToolbarItemToolTip">Post ASCII / ANSi artwork on Twitter</string>
 							<object class="NSButton" key="NSToolbarItemView" id="45435672">
 								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
@@ -460,7 +460,7 @@
 							</object>
 						</object>
 					</dictionary>
-					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
+					<array key="NSToolbarIBAllowedItems">
 						<reference ref="1058612131"/>
 						<reference ref="278899677"/>
 						<reference ref="1022218794"/>
@@ -519,7 +519,7 @@
 											<string key="NSFrameSize">{650, 629}</string>
 											<reference key="NSSuperview" ref="918874659"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
+											<reference key="NSNextKeyView" ref="973397786"/>
 											<object class="NSTextContainer" key="NSTextContainer" id="644506264">
 												<object class="NSLayoutManager" key="NSLayoutManager">
 													<object class="NSTextStorage" key="NSTextStorage">
@@ -938,7 +938,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string key="NSFrameSize">{650, 629}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="973397786"/>
+							<reference key="NSNextKeyView" ref="918874659"/>
 							<int key="NSsFlags">133648</int>
 							<reference key="NSVScroller" ref="973397786"/>
 							<reference key="NSHScroller" ref="50461650"/>
@@ -953,7 +953,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="43737000"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1050}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMinSize">{285, 305}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<string key="NSFrameAutosaveName">AscensionPosition</string>
