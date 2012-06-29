@@ -1210,7 +1210,7 @@
 									<reference key="NSOnImage" ref="1033313550"/>
 									<reference key="NSMixedImage" ref="310636482"/>
 								</object>
-								<object class="NSMenuItem" id="1020475085">
+								<object class="NSMenuItem" id="340264675">
 									<reference key="NSMenu" ref="466310130"/>
 									<string key="NSTitle">Enter Full Screen</string>
 									<string key="NSKeyEquiv">f</string>
@@ -1290,6 +1290,24 @@
 								<object class="NSMenuItem" id="292091701">
 									<reference key="NSMenu" ref="388842427"/>
 									<string key="NSTitle">Report Issue</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="1033313550"/>
+									<reference key="NSMixedImage" ref="310636482"/>
+								</object>
+								<object class="NSMenuItem" id="262214135">
+									<reference key="NSMenu" ref="388842427"/>
+									<string key="NSTitle">AnsiLove/C Documentation</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="1033313550"/>
+									<reference key="NSMixedImage" ref="310636482"/>
+								</object>
+								<object class="NSMenuItem" id="1046710808">
+									<reference key="NSMenu" ref="388842427"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
 									<string key="NSKeyEquiv"/>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="1033313550"/>
@@ -1948,7 +1966,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">toggleFullScreen:</string>
 						<reference key="source" ref="1014"/>
-						<reference key="destination" ref="1020475085"/>
+						<reference key="destination" ref="340264675"/>
 					</object>
 					<int key="connectionID">596</int>
 				</object>
@@ -2031,6 +2049,14 @@
 						<reference key="destination" ref="238522557"/>
 					</object>
 					<int key="connectionID">587</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openIssueTracker:</string>
+						<reference key="source" ref="157898653"/>
+						<reference key="destination" ref="262214135"/>
+					</object>
+					<int key="connectionID">598</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2463,7 +2489,7 @@
 							<reference ref="102151532"/>
 							<reference ref="237841660"/>
 							<reference ref="982613385"/>
-							<reference ref="1020475085"/>
+							<reference ref="340264675"/>
 						</array>
 						<reference key="parent" ref="586577488"/>
 					</object>
@@ -2863,6 +2889,8 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="253952766"/>
 							<reference ref="292091701"/>
+							<reference ref="262214135"/>
+							<reference ref="1046710808"/>
 						</array>
 						<reference key="parent" ref="1050483726"/>
 					</object>
@@ -3028,8 +3056,18 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">595</int>
-						<reference key="object" ref="1020475085"/>
+						<reference key="object" ref="340264675"/>
 						<reference key="parent" ref="466310130"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">597</int>
+						<reference key="object" ref="262214135"/>
+						<reference key="parent" ref="388842427"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">599</int>
+						<reference key="object" ref="1046710808"/>
+						<reference key="parent" ref="388842427"/>
 					</object>
 				</array>
 			</object>
@@ -3175,6 +3213,8 @@
 				<string key="573.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="58.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="595.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="597.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="599.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="72.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="73.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="75.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3191,7 +3231,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">596</int>
+			<int key="maxID">599</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
