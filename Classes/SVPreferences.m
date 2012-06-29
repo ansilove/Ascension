@@ -112,6 +112,9 @@
 	if (![defaults valueForKey:@"docsOpenCentered"]) {
 		[defaults setBool:YES forKey:@"docsOpenCentered"];
 	}
+    if (![defaults valueForKey:@"terminateAfterLastWindowIsClosed"]) {
+        [defaults setBool:NO forKey:@"terminateAfterLastWindowIsClosed"];
+    }
 	if (![defaults valueForKey:@"newContentWidth"]) {
 		[defaults setFloat:650 forKey:@"newContentWidth"];
 	}
@@ -166,6 +169,7 @@
 	[defaults setInteger:0 forKey:@"nfoDizEncoding"];
 	[defaults setInteger:0 forKey:@"txtEncoding"];
 	[defaults setBool:YES forKey:@"docsOpenCentered"];
+    [defaults setBool:NO forKey:@"terminateAfterLastWindowIsClosed"];
 	[defaults setFloat:650 forKey:@"newContentWidth"];
 	[defaults setFloat:650 forKey:@"newContentHeight"];
 	[defaults setBool:YES forKey:@"autoSizeWidth"];
