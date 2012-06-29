@@ -73,6 +73,12 @@
     return NO;
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults boolForKey:@"terminateAfterLastWindowIsClosed"];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
 	self.applicationHasStarted = YES;
