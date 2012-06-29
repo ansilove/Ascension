@@ -96,6 +96,12 @@
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:issueTracker]];
 }
 
+- (IBAction)readAnsiLoveDocumentation:(id)sender;
+{
+    NSString *ansiLoveDocs = (@"https://github.com/ByteProject/AnsiLove-C#documentation");
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:ansiLoveDocs]];
+}
+
 - (IBAction)showAboutBox:(id)sender
 {
     [[SVEpicAboutBoxWC sharedEpicAboutBoxWC] showWindow:nil];

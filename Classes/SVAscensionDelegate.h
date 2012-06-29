@@ -20,6 +20,7 @@
 // actions
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)openIssueTracker:(id)sender;
+- (IBAction)readAnsiLoveDocumentation:(id)sender;
 - (IBAction)showAboutBox:(id)sender;
 
 // general stuff
