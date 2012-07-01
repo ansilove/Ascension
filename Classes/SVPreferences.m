@@ -115,6 +115,9 @@
     if (![defaults valueForKey:@"terminateAfterLastWindowIsClosed"]) {
         [defaults setBool:NO forKey:@"terminateAfterLastWindowIsClosed"];
     }
+    if (![defaults valueForKey:@"highlightAsciiHyperLinks"]) {
+		[defaults setBool:YES forKey:@"highlightAsciiHyperLinks"];
+	}
 	if (![defaults valueForKey:@"newContentWidth"]) {
 		[defaults setFloat:650 forKey:@"newContentWidth"];
 	}
@@ -170,6 +173,7 @@
 	[defaults setInteger:0 forKey:@"txtEncoding"];
 	[defaults setBool:YES forKey:@"docsOpenCentered"];
     [defaults setBool:NO forKey:@"terminateAfterLastWindowIsClosed"];
+    [defaults setBool:YES forKey:@"highlightAsciiHyperLinks"];
 	[defaults setFloat:650 forKey:@"newContentWidth"];
 	[defaults setFloat:650 forKey:@"newContentHeight"];
 	[defaults setBool:YES forKey:@"autoSizeWidth"];
