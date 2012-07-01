@@ -117,6 +117,12 @@
                   name:@"UnlockEditor"
                 object:nil];
        
+       // Get notified when the user toggles hyperlink attributes in prefs.
+       [nc addObserver:self
+              selector:@selector(toggleHyperLinkAttributes:)
+                  name:@"HyperLinkAttributeChange"
+                object:nil];
+       
        // Init the file information values.
        [SVFileInfoStrings sharedFileInfoStrings];
    }
@@ -517,15 +523,39 @@
         return;
     }
     
+    // Save insertion point / cursor position.
+    NSInteger insertionPoint = [[self.asciiTextView.selectedRanges objectAtIndex:0] rangeValue].location;
+    
 	// Analyze the text storage and return a linkified string.
 	AHHyperlinkScanner *scanner = 
 	[AHHyperlinkScanner hyperlinkScannerWithAttributedString:self.asciiTextView.textStorage];
 	[self.asciiTextView.textStorage setAttributedString:[scanner linkifiedString]];
+    
+    // Reapply the cursor position we stored before.
+    self.asciiTextView.selectedRange = NSMakeRange(insertionPoint, 0);
+}
+
+- (void)toggleHyperLinkAttributes:(NSNotification *)note
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([defaults boolForKey:@"highlightAsciiHyperLinks"] == NO)
+    {
+        // Create range based on the textStorage length.
+        NSRange area = NSMakeRange(0, self.asciiTextView.textStorage.length);
+        
+        // Now remove already highlighted hyperlinks.
+        [self.asciiTextView.textStorage removeAttribute:NSLinkAttributeName range:area];
+        
+    }
+    else {
+        [self performLinkification];
+    }
 }
 
 - (void)handlePasteOperation:(NSNotification *)note
 {
-	// Linkify hyperlinks in the pasted content.
+	// Linkify hyperlinks in the pasted content, only happens if highlighting links is enabled.
 	[self performSelector:@selector(performLinkification) withObject:nil afterDelay:0.5];
 }
 
