@@ -243,7 +243,7 @@
 }
 
 # pragma mark -
-# pragma mark user-defined colors
+# pragma mark user-defined attributes
 
 - (IBAction)selectScrollerStyle:(id)sender
 {
@@ -323,6 +323,17 @@
 	
 	[defaults synchronize];
 	[self sendSelectionColorChangeNote];
+}
+
+- (IBAction)changeHyperLinkAttributes:(id)sender
+{
+    // First, synchronize defaults.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults synchronize];
+    
+    // Post note to toggle hyperlink attributes in already opened documents.
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc postNotificationName:@"HyperLinkAttributeChange" object:self];
 }
 
 # pragma mark -

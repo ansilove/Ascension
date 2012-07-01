@@ -46,6 +46,7 @@
 - (IBAction)changeCursorColor:(id)sender;
 - (IBAction)changeLinkColor:(id)sender;
 - (IBAction)changeSelectionColor:(id)sender;
+- (IBAction)changeHyperLinkAttributes:(id)sender;
 - (IBAction)createCustomTheme:(id)sender;
 - (IBAction)copyExistingTheme:(id)sender;
 
