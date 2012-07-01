@@ -511,6 +511,12 @@
 
 - (void)performLinkification
 {
+    // Early return when highlighting ASCII hyperlinks is turned off in preferences.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults boolForKey:@"highlightAsciiHyperLinks"] == NO) {
+        return;
+    }
+    
 	// Analyze the text storage and return a linkified string.
 	AHHyperlinkScanner *scanner = 
 	[AHHyperlinkScanner hyperlinkScannerWithAttributedString:self.asciiTextView.textStorage];
