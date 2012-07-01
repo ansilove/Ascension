@@ -107,6 +107,7 @@ typedef enum {
 - (void)performCursorColorChange:(NSNotification *)note;
 - (void)performLinkColorChange:(NSNotification *)note;
 - (void)performSelectionColorChange:(NSNotification *)note;
+- (void)toggleHyperLinkAttributes:(NSNotification *)note;
 - (void)setRenderingFinishedState:(NSNotification *)note;
 - (void)switchASCIIEncoding;
 - (void)switchTextEncoding;
