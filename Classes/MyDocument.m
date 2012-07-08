@@ -517,9 +517,14 @@
 
 - (void)performLinkification
 {
-    // Early return when highlighting ASCII hyperlinks is turned off in preferences.
+    // When highlighting hyperlinks is turned off in preferences...
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults boolForKey:@"highlightAsciiHyperLinks"] == NO) {
+    if ([defaults boolForKey:@"highlightAsciiHyperLinks"] == NO)
+    {
+        // ...prevent NSTextView from automatically detecting hyperlinks
+        [self.asciiTextView setAutomaticLinkDetectionEnabled:NO];
+        
+        // ... and peform an early return.
         return;
     }
     
@@ -547,8 +552,11 @@
         // Now remove already highlighted hyperlinks.
         [self.asciiTextView.textStorage removeAttribute:NSLinkAttributeName range:area];
         
+        // Finally, we don't want NSTextView to automatically detect hyperlinks.
+        [self.asciiTextView setAutomaticLinkDetectionEnabled:NO];
     }
     else {
+        [self.asciiTextView setAutomaticLinkDetectionEnabled:YES];
         [self performLinkification];
     }
 }
