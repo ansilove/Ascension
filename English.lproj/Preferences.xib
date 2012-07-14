@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1080</int>
-		<string key="IBDocument.SystemVersion">12A256</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2809</string>
-		<string key="IBDocument.AppKitVersion">1185</string>
-		<string key="IBDocument.HIToolboxVersion">622.00</string>
+		<string key="IBDocument.SystemVersion">12A269</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
+		<string key="IBDocument.AppKitVersion">1187</string>
+		<string key="IBDocument.HIToolboxVersion">624.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2809</string>
+			<string key="NS.object.0">2549</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSArrayController</string>
@@ -3301,14 +3301,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<object class="IBActionConnection" key="connection">
 						<string key="label">synchronizeDefaults:</string>
 						<reference key="source" ref="196403220"/>
-						<reference key="destination" ref="793609397"/>
-					</object>
-					<int key="connectionID">958</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">synchronizeDefaults:</string>
-						<reference key="source" ref="196403220"/>
 						<reference key="destination" ref="102143794"/>
 					</object>
 					<int key="connectionID">991</int>
@@ -3320,6 +3312,38 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<reference key="destination" ref="319540861"/>
 					</object>
 					<int key="connectionID">1066</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeAnsiLoveStateAndReRender:</string>
+						<reference key="source" ref="196403220"/>
+						<reference key="destination" ref="793609397"/>
+					</object>
+					<int key="connectionID">1130</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeAnsiLoveStateAndReRender:</string>
+						<reference key="source" ref="196403220"/>
+						<reference key="destination" ref="77451419"/>
+					</object>
+					<int key="connectionID">1136</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeAnsiLoveStateAndReRender:</string>
+						<reference key="source" ref="196403220"/>
+						<reference key="destination" ref="867461889"/>
+					</object>
+					<int key="connectionID">1137</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeAnsiLoveStateAndReRender:</string>
+						<reference key="source" ref="196403220"/>
+						<reference key="destination" ref="791224975"/>
+					</object>
+					<int key="connectionID">1140</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -3653,6 +3677,70 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						</object>
 					</object>
 					<int key="connectionID">570</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">selectedIndex: values.ansiLoveFont</string>
+						<reference key="source" ref="793609397"/>
+						<reference key="destination" ref="521577155"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="793609397"/>
+							<reference key="NSDestination" ref="521577155"/>
+							<string key="NSLabel">selectedIndex: values.ansiLoveFont</string>
+							<string key="NSBinding">selectedIndex</string>
+							<string key="NSKeyPath">values.ansiLoveFont</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1070</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.ansiLoveIceColors</string>
+						<reference key="source" ref="791224975"/>
+						<reference key="destination" ref="521577155"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="791224975"/>
+							<reference key="NSDestination" ref="521577155"/>
+							<string key="NSLabel">value: values.ansiLoveIceColors</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.ansiLoveIceColors</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1139</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.ansiLoveBits</string>
+						<reference key="source" ref="77451419"/>
+						<reference key="destination" ref="521577155"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="77451419"/>
+							<reference key="NSDestination" ref="521577155"/>
+							<string key="NSLabel">value: values.ansiLoveBits</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.ansiLoveBits</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1132</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.ansiLoveColumns</string>
+						<reference key="source" ref="867461889"/>
+						<reference key="destination" ref="521577155"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="867461889"/>
+							<reference key="NSDestination" ref="521577155"/>
+							<string key="NSLabel">value: values.ansiLoveColumns</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.ansiLoveColumns</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1135</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -4428,7 +4516,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<array class="NSMutableArray" key="children">
 							<reference ref="400599752"/>
 							<reference ref="21582933"/>
-							<reference ref="793609397"/>
 							<reference ref="504041295"/>
 							<reference ref="574718925"/>
 							<reference ref="1020341387"/>
@@ -4440,6 +4527,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<reference ref="590849721"/>
 							<reference ref="77451419"/>
 							<reference ref="867461889"/>
+							<reference ref="793609397"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">ANSi</string>
@@ -5410,7 +5498,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1068</int>
+			<int key="maxID">1140</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5418,6 +5506,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<string key="className">SVPreferences</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="changeAnsiLoveStateAndReRender:">id</string>
 						<string key="changeBgrndColor:">id</string>
 						<string key="changeCursorColor:">id</string>
 						<string key="changeFontColor:">id</string>
@@ -5432,6 +5521,10 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<string key="synchronizeDefaults:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="changeAnsiLoveStateAndReRender:">
+							<string key="name">changeAnsiLoveStateAndReRender:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="changeBgrndColor:">
 							<string key="name">changeBgrndColor:</string>
 							<string key="candidateClassName">id</string>
