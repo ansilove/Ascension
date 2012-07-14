@@ -19,7 +19,6 @@
 		F80F4B1D12D54709000731AA /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = F80F4B1C12D54709000731AA /* Divider.png */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
 		F82310391457EA10007E1BE6 /* custom_about.png in Resources */ = {isa = PBXBuildFile; fileRef = F82310381457EA10007E1BE6 /* custom_about.png */; };
-		F829D5C11593646000CB03A5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F829D5C01593646000CB03A5 /* Accounts.framework */; };
 		F83A1B651461FE4A00630FF2 /* sheet_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F83A1B641461FE4A00630FF2 /* sheet_background.png */; };
 		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
 		F83BA419146B2CE600F3DF9D /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = F83BA418146B2CE600F3DF9D /* container-migration.plist */; };
@@ -138,7 +137,6 @@
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
 		F82310381457EA10007E1BE6 /* custom_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = custom_about.png; path = Images/custom_about.png; sourceTree = "<group>"; };
 		F823103A1457F451007E1BE6 /* dos437.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dos437.ttf; sourceTree = "<group>"; };
-		F829D5C01593646000CB03A5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F83A1B641461FE4A00630FF2 /* sheet_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sheet_background.png; path = Images/sheet_background.png; sourceTree = "<group>"; };
 		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
 		F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRoardactedScroller.m; path = Classes/SVRoardactedScroller.m; sourceTree = "<group>"; };
@@ -214,9 +212,8 @@
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				F89DB9D61593642A0009F5AA /* Social.framework in Frameworks */,
-				F829D5C11593646000CB03A5 /* Accounts.framework in Frameworks */,
-				F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */,
 				F87EDE681475B12400DEC27A /* AnsiLove.framework in Frameworks */,
+				F8A894951208D34300871F98 /* AutoHyperlinks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,9 +225,8 @@
 			children = (
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
 				F89DB9D51593642A0009F5AA /* Social.framework */,
-				F829D5C01593646000CB03A5 /* Accounts.framework */,
-				F8A894941208D34300871F98 /* AutoHyperlinks.framework */,
 				F8E149771452BC5000D445DF /* AnsiLove.framework */,
+				F8A894941208D34300871F98 /* AutoHyperlinks.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -642,7 +638,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 91;
+				CURRENT_PROJECT_VERSION = 92;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = unsupported;
@@ -665,7 +661,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 91;
+				CURRENT_PROJECT_VERSION = 92;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = unsupported;
