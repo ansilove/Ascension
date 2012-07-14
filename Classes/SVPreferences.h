@@ -40,6 +40,7 @@
 - (IBAction)restoreUserDefaults:(id)sender;
 - (IBAction)synchronizeDefaults:(id)sender;
 - (IBAction)changeResumeState:(id)sender;
+- (IBAction)changeAnsiLoveStateAndReRender:(id)sender;
 - (IBAction)selectScrollerStyle:(id)sender;
 - (IBAction)changeFontColor:(id)sender;
 - (IBAction)changeBgrndColor:(id)sender;
@@ -63,6 +64,7 @@
 - (void)sendCursorColorChangeNote;
 - (void)sendLinkColorChangeNote;
 - (void)sendSelectionColorChangeNote;
+- (void)sendAnsiLoveFontChangeNote;
 
 // data
 - (void)tableViewSelectionDidChange:(NSNotification *)notification;

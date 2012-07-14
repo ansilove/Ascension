@@ -118,6 +118,18 @@
     if (![defaults valueForKey:@"highlightAsciiHyperLinks"]) {
 		[defaults setBool:YES forKey:@"highlightAsciiHyperLinks"];
 	}
+    if (![defaults valueForKey:@"ansiLoveFont"]) {
+		[defaults setInteger:0 forKey:@"ansiLoveFont"];
+    }
+    if (![defaults stringForKey:@"ansiLoveBits"]) {
+		[defaults setObject:@"8" forKey:@"ansiLoveBits"];
+	}
+    if (![defaults stringForKey:@"ansiLoveColumns"]) {
+		[defaults setObject:@"160" forKey:@"ansiLoveColumns"];
+	}
+    if (![defaults valueForKey:@"ansiLoveIceColors"]) {
+		[defaults setBool:NO forKey:@"ansiLoveIceColors"];
+	}
 	if (![defaults valueForKey:@"newContentWidth"]) {
 		[defaults setFloat:650 forKey:@"newContentWidth"];
 	}
@@ -174,6 +186,10 @@
 	[defaults setBool:YES forKey:@"docsOpenCentered"];
     [defaults setBool:NO forKey:@"terminateAfterLastWindowIsClosed"];
     [defaults setBool:YES forKey:@"highlightAsciiHyperLinks"];
+    [defaults setInteger:0 forKey:@"ansiLoveFont"];
+    [defaults setObject:@"8" forKey:@"ansiLoveBits"];
+    [defaults setObject:@"160" forKey:@"ansiLoveColumns"];
+    [defaults setBool:NO forKey:@"ansiLoveIceColors"];
 	[defaults setFloat:650 forKey:@"newContentWidth"];
 	[defaults setFloat:650 forKey:@"newContentHeight"];
 	[defaults setBool:YES forKey:@"autoSizeWidth"];
@@ -202,13 +218,18 @@
     
     // Reset slider button state
     [self.viewerModeSlider setState:NSOffState animate:YES];
+    [nc postNotificationName:@"ToggleSliderStateChange" object:self];
 	
 	[defaults synchronize];
+    
 	[self sendFontColorChangeNote];
 	[self sendBgrndColorChangeNote];
 	[self sendCursorColorChangeNote];
 	[self sendLinkColorChangeNote];
 	[self sendSelectionColorChangeNote];
+    
+    // Change notification for forcing AnsiLove to re-render.
+    [nc postNotificationName:@"AnsiLoveRenderChange" object:self];
 }
 
 - (IBAction)synchronizeDefaults:(id)sender
@@ -240,6 +261,17 @@
         [defaults setBool:YES forKey:@"viewerMode"];
         [nc postNotificationName:@"LockEditor" object:self];
     }
+}
+
+# pragma mark -
+# pragma mark AnsiLove related
+
+- (IBAction)changeAnsiLoveStateAndReRender:(id)sender
+{
+    // Synchronize and send a note so our document instance knows the font changed.
+    [self synchronizeDefaults:self];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:@"AnsiLoveRenderChange" object:self];
 }
 
 # pragma mark -
@@ -337,7 +369,7 @@
 }
 
 # pragma mark -
-# pragma mark color notifications
+# pragma mark change notifications
 
 - (void)sendFontColorChangeNote
 {
@@ -387,6 +419,11 @@
 	[nc postNotificationName:@"SelectionColorChange"
 					  object:self
 					userInfo:dict];
+}
+
+- (void)sendAnsiLoveFontChangeNote
+{
+    
 }
 
 # pragma mark -
