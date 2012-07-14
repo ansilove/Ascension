@@ -36,7 +36,7 @@
             nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow,
             encButtonIndex, vScroller, hScroller, appToolbar, fileInfoPopover, rawAnsiString, ansiCacheFile, 
             isRendered, isUsingAnsiLove, isAnsFile, isIdfFile, isPcbFile, isXbFile, isAdfFile, isBinFile, isTndFile,
-            renderedAnsiImage, shouldDisableSave;
+            renderedAnsiImage, shouldDisableSave, alFont, alBits, alIceColors, alColumns;
 
 # pragma mark -
 # pragma mark initialization
@@ -123,6 +123,12 @@
                   name:@"HyperLinkAttributeChange"
                 object:nil];
        
+       // Watch for AnsiLove related state changes.
+       [nc addObserver:self
+              selector:@selector(performAnsiLoveRenderChange:)
+                  name:@"AnsiLoveRenderChange"
+                object:nil];
+       
        // Init the file information values.
        [SVFileInfoStrings sharedFileInfoStrings];
    }
@@ -146,67 +152,19 @@
 	// Apply the appearance attributes.
     [self prepareContent];
 	
-	// We need the textstorage size for auto-sizing the document window.
-	NSSize myTextSize = self.asciiTextView.textStorage.size;
-	
 	// New documents get width / height from the values specified in preferences.
-	if (self.contentString.length < 50 && self.isUsingAnsiLove == NO) {
+	if (self.contentString.length < 1 && self.isUsingAnsiLove == NO)
+    {
 		self.newContentWidth = [defaults floatForKey:@"newContentWidth"];
 		self.newContentHeight = [defaults floatForKey:@"newContentWidth"];
+        
+        // Apply content hight and width for new documents.
+        [self.mainWindow setContentSize:NSMakeSize(self.newContentWidth, self.newContentHeight)];
 	}
 	else {
-		// Calculate the new content dimensions, consider the toolbar (if visible).
-		CGFloat toolbarHeight = 0;
-		if ([appToolbar isVisible]) 
-		{
-			NSRect windowFrame;
-			windowFrame = [NSWindow contentRectForFrameRect:aController.window.frame
-												  styleMask:aController.window.styleMask];
-			toolbarHeight = NSHeight(windowFrame) - NSHeight([[aController.window contentView] frame]);
-		}
-		// Check if the user enabled width auto-sizing.
-		if ([defaults boolForKey:@"autoSizeWidth"] == YES) 
-        {
-            // In case the content is an AnsiLove image, caluculate the width based on it... 
-			if (self.isUsingAnsiLove == YES) {
-                self.newContentWidth = self.renderedAnsiImage.size.width + ansiHelperMargin;
-            }
-            else {
-                // ...if not, calculate width via the textstorage.
-                self.newContentWidth = myTextSize.width + stdNSTextViewMargin;
-            }
-            
-            // Prevent autosizing from programatically resizing smaller than the window's minSize.
-            if (self.newContentWidth <= aController.window.minSize.width) {
-                self.newContentWidth = aController.window.minSize.width;
-            }
-		}
-		else {
-			self.newContentWidth = [aController.window frame].size.width;
-		}
-		// Determine if height auto-sizing is enabled.
-		if ([defaults boolForKey:@"autoSizeHeight"] == YES) 
-        {
-            if (self.isUsingAnsiLove == YES) {
-                // Use the AnsiLove image to calculate height, provided we got one in our textView...
-                self.newContentHeight = self.renderedAnsiImage.size.height + [self titlebarHeight] + toolbarHeight;
-            }
-            else {
-                // ...and if not: use the textstorage again.
-                self.newContentHeight = myTextSize.height + [self titlebarHeight] + toolbarHeight;
-            }
-            
-            // Again prevent auto-sizing from resizing under the minSize value.
-            if (self.newContentHeight <= aController.window.minSize.height) {
-                self.newContentHeight = aController.window.minSize.height;
-            }
-		}
-		else {
-			self.newContentHeight = aController.window.frame.size.height - [self titlebarHeight] - toolbarHeight;
-		}		
-	}
-	// Finally resize the document window based on either the caluclation or the preferences.
-	[aController.window setContentSize:NSMakeSize(self.newContentWidth, self.newContentHeight)];
+        // The method name describes exactly what's happening here.
+        [self autoSizeDocumentWindow];
+    }
 	
 	// Set position of the document window.
 	[NSApp activateIgnoringOtherApps:YES];
@@ -333,6 +291,65 @@
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:@"DisableSave" object:self];
+}
+
+- (void)autoSizeDocumentWindow
+{
+    // We need the textstorage size for auto-sizing the document window.
+	NSSize myTextSize = self.asciiTextView.textStorage.size;
+    
+    // Calculate the new content dimensions, consider the toolbar (if visible).
+    CGFloat toolbarHeight = 0;
+    if ([appToolbar isVisible])
+    {
+        NSRect windowFrame;
+        windowFrame = [NSWindow contentRectForFrameRect:self.mainWindow.frame
+                                              styleMask:self.mainWindow.styleMask];
+        toolbarHeight = NSHeight(windowFrame) - NSHeight([[self.mainWindow contentView] frame]);
+    }
+    // Check if the user enabled width auto-sizing.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults boolForKey:@"autoSizeWidth"] == YES)
+    {
+        // In case the content is an AnsiLove image, caluculate the width based on it...
+        if (self.isUsingAnsiLove == YES) {
+            self.newContentWidth = self.renderedAnsiImage.size.width + ansiHelperMargin;
+        }
+        else {
+            // ...if not, calculate width via the textstorage.
+            self.newContentWidth = myTextSize.width + stdNSTextViewMargin;
+        }
+        
+        // Prevent autosizing from programatically resizing smaller than the window's minSize.
+        if (self.newContentWidth <= self.mainWindow.minSize.width) {
+            self.newContentWidth = self.mainWindow.minSize.width;
+        }
+    }
+    else {
+        self.newContentWidth = [self.mainWindow frame].size.width;
+    }
+    // Determine if height auto-sizing is enabled.
+    if ([defaults boolForKey:@"autoSizeHeight"] == YES)
+    {
+        if (self.isUsingAnsiLove == YES) {
+            // Use the AnsiLove image to calculate height, provided we got one in our textView...
+            self.newContentHeight = self.renderedAnsiImage.size.height + [self titlebarHeight] + toolbarHeight;
+        }
+        else {
+            // ...and if not: use the textstorage again.
+            self.newContentHeight = myTextSize.height + [self titlebarHeight] + toolbarHeight;
+        }
+        
+        // Again prevent auto-sizing from resizing under the minSize value.
+        if (self.newContentHeight <= self.mainWindow.minSize.height) {
+            self.newContentHeight = self.mainWindow.minSize.height;
+        }
+    }
+    else {
+        self.newContentHeight = self.mainWindow.frame.size.height - [self titlebarHeight] - toolbarHeight;
+    }
+    // Finally resize the document window based on either the caluclation or the preferences.
+    [self.mainWindow setContentSize:NSMakeSize(self.newContentWidth, self.newContentHeight)];
 }
 
 # pragma mark -
@@ -871,50 +888,8 @@
     // This will store the raw ANSi string for save operations and other stuff.
 	self.rawAnsiString = [[NSMutableAttributedString alloc] initWithString:cp437String];
     
-    // Get the current file URL and convert it to an UNIX path.
-    NSURL *currentURL = [self fileURL];
-    NSString *selfURLString = [currentURL path];
-    
-    // Get the currrent file name without any path informations.
-    NSString *pureFileName = [selfURLString lastPathComponent];
-    
-    // Generate output file name and path.
-    self.ansiCacheFile = [NSString stringWithFormat:
-                          @"~/Library/Application Support/Ascension/%@.png", pureFileName];
-    
-    // Expand tilde in output path.
-    self.ansiCacheFile = [self.ansiCacheFile stringByExpandingTildeInPath];
-    
-    // Call AnsiLove and generate the rendered PNG image.
-    [ALAnsiGenerator createPNGFromAnsiSource:selfURLString 
-                                  outputFile:self.ansiCacheFile
-                                        font:@"80x25"
-                                        bits:@"transparent"
-                                   iceColors:nil
-                                     columns:nil];
-    
-    // Wait for AnsiLove.framework to finish rendering.
-    while (self.isRendered == NO) {
-        [NSThread sleepForTimeInterval:0.1];
-    }
-    
-    // Grab the rendered image and init an NSImage instance for it.
-    self.renderedAnsiImage = [[NSImage alloc] initWithContentsOfFile:self.ansiCacheFile];
-    
-    // To display our ANSi .png create an NSTextAttachment and corresponding cell.
-    NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:self.renderedAnsiImage];
-    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-    [attachment setAttachmentCell:attachmentCell];
-    
-    // Now generate an attributed String with our .png attachment.
-    NSAttributedString *imageString = [[NSAttributedString alloc] init];
-    imageString = [NSAttributedString attributedStringWithAttachment:attachment];
-    
-    // The content string of asciiTextView is mutable, so we need a mutable copy.
-    NSMutableAttributedString *mutableImageString = [imageString mutableCopy];
-    
-    // Finally set the mutable string with our .png attachement as content string.
-    [self setString:mutableImageString];
+    // Fire our code to render ANSi.
+    [self renderANSiArtwork];
     
 	return YES;
 }
@@ -939,7 +914,7 @@
     if (!textString) {
         self.txtEncoding = WinLatin1;
         NSString *failString = [[NSString alloc]initWithData:textData encoding:self.txtEncoding];
-        self.encButtonIndex = EIndexWinLatin1;
+        self.encButtonIndex = xWinLatin1;
         textString = failString;
     }
     
@@ -1024,14 +999,14 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	switch ([defaults integerForKey:@"nfoDizEncoding"]) 
 	{
-		case EncDosCP437: {
+		case eDosCP437: {
 			self.nfoDizEncoding = CodePage437;
-			self.encButtonIndex = EIndexDosCP437;
+			self.encButtonIndex = xDosCP437;
 			break;
 		}
-		case EncDosCP866: {
+		case eDosCP866: {
 			self.nfoDizEncoding = CodePage866;
-			self.encButtonIndex = EIndexDosCP866;
+			self.encButtonIndex = xDosCP866;
 			break;
 		}
 		default: {
@@ -1048,24 +1023,24 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	switch ([defaults integerForKey:@"txtEncoding"]) 
 	{
-		case EncUniUTF8: {
+		case eUniUTF8: {
 			self.txtEncoding = UnicodeUTF8;
-			self.encButtonIndex = EIndexUniUTF8;
+			self.encButtonIndex = xUniUTF8;
 			break;
 		}
-		case EncUniUTF16: {
+		case eUniUTF16: {
 			self.txtEncoding = UnicodeUTF16;
-			self.encButtonIndex = EIndexUniUTF16;
+			self.encButtonIndex = xUniUTF16;
 			break;
 		}
-		case EncMacRoman: {
+		case eMacRoman: {
 			self.txtEncoding = MacOSRoman;
-			self.encButtonIndex = EIndexMacRoman;
+			self.encButtonIndex = xMacRoman;
 			break;
 		}
-		case EncWinLatin: {
+		case eWinLatin: {
 			self.txtEncoding = WinLatin1;
-			self.encButtonIndex = EIndexWinLatin1;
+			self.encButtonIndex = xWinLatin1;
 			break;
 		}
 		default: {
@@ -1081,27 +1056,27 @@
 	// Define the export encoding based on the encoding button index.
 	switch (self.encButtonIndex) 
 	{
-		case EIndexDosCP437: {
+		case xDosCP437: {
 			self.exportEncoding = CodePage437;
 			break;
 		}
-		case EIndexDosCP866: {
+		case xDosCP866: {
 			self.exportEncoding = CodePage866;
 			break;
 		}
-		case EIndexUniUTF8: {
+		case xUniUTF8: {
 			self.exportEncoding = UnicodeUTF8;
 			break;
 		}
-		case EIndexUniUTF16: {
+		case xUniUTF16: {
 			self.exportEncoding = UnicodeUTF16;
 			break;
 		}
-		case EIndexMacRoman: {
+		case xMacRoman: {
 			self.exportEncoding = MacOSRoman;
 			break;
 		}
-		case EIndexWinLatin1: {
+		case xWinLatin1: {
 			self.exportEncoding = WinLatin1;
 			break;
 		}
@@ -1185,9 +1160,222 @@
 # pragma mark -
 # pragma mark AnsiLove.framework specific
 
+- (void)renderANSiArtwork
+{
+    // Get the current file URL and convert it to an UNIX path.
+    NSURL *currentURL = [self fileURL];
+    NSString *selfURLString = [currentURL path];
+    
+    // Get the currrent file name without any path informations.
+    NSString *pureFileName = [selfURLString lastPathComponent];
+    
+    // Generate output file name and path.
+    self.ansiCacheFile = [NSString stringWithFormat:
+                          @"~/Library/Application Support/Ascension/%@.png", pureFileName];
+    
+    // Expand tilde in output path.
+    self.ansiCacheFile = [self.ansiCacheFile stringByExpandingTildeInPath];
+    
+    // What AnsiLove flags should be used to render the current artwork?
+    [self setAnsiLoveFont];
+    [self setAnsiLoveBits];
+    [self setAnsiLoveIceColors];
+    [self setAnsiLoveColumns];
+    
+    // Call AnsiLove and generate the rendered PNG image.
+    [ALAnsiGenerator createPNGFromAnsiSource:selfURLString
+                                  outputFile:self.ansiCacheFile
+                                        font:self.alFont
+                                        bits:self.alBits
+                                   iceColors:self.alIceColors
+                                     columns:self.alColumns];
+    
+    // Wait for AnsiLove.framework to finish rendering.
+    while (self.isRendered == NO) {
+        [NSThread sleepForTimeInterval:0.1];
+    }
+    
+    // Grab the rendered image and init an NSImage instance for it.
+    self.renderedAnsiImage = [[NSImage alloc] initWithContentsOfFile:self.ansiCacheFile];
+    
+    // To display our ANSi .png create an NSTextAttachment and corresponding cell.
+    NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:self.renderedAnsiImage];
+    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+    [attachment setAttachmentCell:attachmentCell];
+    
+    // Now generate an attributed String with our .png attachment.
+    NSAttributedString *imageString = [[NSAttributedString alloc] init];
+    imageString = [NSAttributedString attributedStringWithAttachment:attachment];
+    
+    
+    // The content string of asciiTextView is mutable, so we need a mutable copy.
+    NSMutableAttributedString *mutableImageString = [imageString mutableCopy];
+    
+    // Finally set the mutable string with our .png attachement as content string.
+    [self setString:mutableImageString];
+}
+
 - (void)setRenderingFinishedState:(NSNotification *)note
 {
     self.isRendered = YES;
+}
+
+- (void)performAnsiLoveRenderChange:(NSNotification *)note
+{
+    if (self.isUsingAnsiLove == YES)
+    {
+        // Reset isRendered bool value.
+        self.isRendered = NO;
+        
+        // Re-render the ANSi artwork with updated AnsiLove flags.
+        [self renderANSiArtwork];
+        
+        // Apply the updated string to our NSTextView instance.
+        [self.asciiTextView.textStorage setAttributedString:[self string]];
+        
+        // Optimize the document window again, content sizes probably changed.
+        [self autoSizeDocumentWindow];
+        
+        // Center resized document window again if set up in prefs.
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if ([defaults boolForKey:@"docsOpenCentered"] == YES) {
+            [self.mainWindow center];
+        }
+    }
+}
+
+- (void)setAnsiLoveFont
+{
+	// Get the font value to pass to AnsiLove.framework.
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	switch ([defaults integerForKey:@"ansiLoveFont"])
+	{
+		case alTerminus: {
+			self.alFont = @"terminus";
+			break;
+		}
+        case al80x25: {
+			self.alFont = @"80x25";
+			break;
+		}
+        case al80x50: {
+			self.alFont = @"80x50";
+			break;
+		}
+        case alBaltic: {
+			self.alFont = @"baltic";
+			break;
+		}
+        case alCyrillicSlavic: {
+			self.alFont = @"cyrillic";
+			break;
+		}
+        case alFrenchCanadian: {
+			self.alFont = @"french-canadian";
+			break;
+		}
+        case alGreek: {
+			self.alFont = @"greek";
+			break;
+		}
+        case alGreek869: {
+			self.alFont = @"greek-869";
+			break;
+		}
+        case alHebrew: {
+			self.alFont = @"hebrew";
+			break;
+		}
+        case alIcelandic: {
+			self.alFont = @"icelandic";
+			break;
+		}
+        case alLatin1: {
+			self.alFont = @"latin1";
+			break;
+		}
+        case alLatin2: {
+			self.alFont = @"latin2";
+			break;
+		}
+        case alNordic: {
+			self.alFont = @"nordic";
+			break;
+		}
+        case alPortuguese: {
+			self.alFont = @"portuguese";
+			break;
+		}
+        case alCyrillicRussian: {
+			self.alFont = @"russian";
+			break;
+		}
+        case alTurkish: {
+			self.alFont = @"turkish";
+			break;
+		}
+        case alTopaz: {
+			self.alFont = @"topaz";
+			break;
+		}
+        case alTopazPlus: {
+			self.alFont = @"topaz+";
+			break;
+		}
+        case alTopaz500: {
+			self.alFont = @"topaz500";
+			break;
+		}
+        case alTopaz500Plus: {
+			self.alFont = @"topaz500+";
+			break;
+		}
+        case alMoSoul: {
+			self.alFont = @"mosoul";
+			break;
+		}
+        case alPotNoodle: {
+			self.alFont = @"pot-noodle";
+			break;
+		}
+        case alMicroKnight: {
+			self.alFont = @"microknight";
+			break;
+		}
+        case alMicroKnightPlus: {
+			self.alFont = @"microknight+";
+			break;
+		}
+		default: {
+			break;
+		}
+	}
+}
+
+- (void)setAnsiLoveBits
+{
+    // Set the bits value to pass to AnsiLove.
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.alBits = [defaults stringForKey:@"ansiLoveBits"];
+}
+
+- (void)setAnsiLoveIceColors
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([defaults boolForKey:@"ansiLoveIceColors"] == YES) {
+        self.alIceColors = @"1";
+    }
+    else {
+        self.alIceColors = @"0";
+    }
+}
+
+- (void)setAnsiLoveColumns
+{
+    // Set the bits value to pass to AnsiLove.
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.alColumns = [defaults stringForKey:@"ansiLoveColumns"];
 }
 
 @end

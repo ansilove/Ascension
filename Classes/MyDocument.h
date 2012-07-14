@@ -16,27 +16,61 @@
 @class SVTextView;
 @class SVRoardactedScroller;
 
-// No confusion in switch methods, so much easier to read.
 typedef enum {
-	EncDosCP437,
-	EncDosCP866
-} SVAscensionASCIIEncoding;
+	eDosCP437,
+	eDosCP866
+} ASCIIArtEncoding;
 
 typedef enum {
-	EncUniUTF8,
-	EncUniUTF16,
-	EncMacRoman,
-	EncWinLatin
-} SVAscensionTextEncoding;
+	eUniUTF8,
+	eUniUTF16,
+	eMacRoman,
+	eWinLatin
+} TextFileEncoding;
 
 typedef enum {
-	EIndexDosCP437,
-	EIndexDosCP866,
-	EIndexUniUTF8,
-	EIndexUniUTF16,
-	EIndexMacRoman,
-	EIndexWinLatin1,
-} SVEncodingButtonIndex;
+	xDosCP437,
+	xDosCP866,
+	xUniUTF8,
+	xUniUTF16,
+	xMacRoman,
+	xWinLatin1
+} EncodingButtonIndex;
+
+typedef enum {
+    alTerminus,
+    al80x25,
+    al80x50,
+    alBaltic,
+    alCyrillicSlavic,
+    alFrenchCanadian,
+    alGreek,
+    alGreek869,
+    alHebrew,
+    alIcelandic,
+    alLatin1,
+    alLatin2,
+    alNordic,
+    alPortuguese,
+    alCyrillicRussian,
+    alTurkish,
+    alTopaz,
+    alTopazPlus,
+    alTopaz500,
+    alTopaz500Plus,
+    alMoSoul,
+    alPotNoodle,
+    alMicroKnight,
+    alMicroKnightPlus
+} AnsiLoveFonts;
+
+typedef enum {
+    alEight,
+    alNine,
+    alCed,
+    alWorkbench,
+    alTransparent
+} AnsiLoveBits;
 
 @interface MyDocument : NSDocument
 
@@ -44,7 +78,10 @@ typedef enum {
 @property (nonatomic, strong) NSMutableAttributedString *contentString;
 @property (nonatomic, strong) NSMutableAttributedString *rawAnsiString;
 @property (nonatomic, strong) NSString                  *ansiCacheFile;
-@property (nonatomic, strong) NSImage                   *renderedAnsiImage;
+@property (nonatomic, strong) NSString                  *alFont;
+@property (nonatomic, strong) NSString                  *alBits;
+@property (nonatomic, strong) NSString                  *alIceColors;
+@property (nonatomic, strong) NSString                  *alColumns;
 @property (nonatomic, strong) NSString                  *iFilePath;
 @property (nonatomic, strong) NSString                  *iFileSize;
 @property (nonatomic, strong) NSString                  *iCreationDate;
@@ -52,6 +89,9 @@ typedef enum {
 @property (nonatomic, assign) NSStringEncoding          nfoDizEncoding;
 @property (nonatomic, assign) NSStringEncoding          txtEncoding;
 @property (nonatomic, assign) NSStringEncoding          exportEncoding;
+
+// images
+@property (nonatomic, strong) NSImage *renderedAnsiImage;
 
 // integer and float values
 @property (nonatomic, assign) CGFloat   newContentWidth;
@@ -113,6 +153,11 @@ typedef enum {
 - (void)switchTextEncoding;
 - (void)updateFileInfoValues;
 - (void)setString:(NSMutableAttributedString *)value;
+- (void)performAnsiLoveRenderChange:(NSNotification *)note;
+- (void)setAnsiLoveFont;
+- (void)setAnsiLoveBits;
+- (void)setAnsiLoveColumns;
+- (void)setAnsiLoveIceColors;
 - (NSFileWrapper *)ansiArtFileWrapperWithError:(NSError **)pOutError;
 - (NSFileWrapper *)textFileWrapperWithError:(NSError **)pOutError;
 - (BOOL)asciiArtReadFileWrapper:(NSFileWrapper *)pFileWrapper error:(NSError **)pOutError;
