@@ -40,6 +40,7 @@
 - (IBAction)restoreUserDefaults:(id)sender;
 - (IBAction)synchronizeDefaults:(id)sender;
 - (IBAction)changeResumeState:(id)sender;
+- (IBAction)chooseASCIIFont:(id)sender;
 - (IBAction)changeAnsiLoveStateAndReRender:(id)sender;
 - (IBAction)selectScrollerStyle:(id)sender;
 - (IBAction)changeFontColor:(id)sender;
