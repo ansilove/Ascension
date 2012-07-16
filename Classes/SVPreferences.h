@@ -11,6 +11,22 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef enum {
+	fTerminus,
+    fDos437,
+    fTopaz,
+    fTopazPlus,
+    fTopaz500,
+    fTopaz500Plus,
+    fMoSoul,
+    fPotNoodle,
+    fMicroKnight,
+    fMicroKnightPlus,
+    fC64ProMono,
+    fAtariClassicChunky,
+    fAtariClassicSmooth
+} ASCIIFonts;
+
 @class SVToggleSlider;
 
 @interface SVPreferences : NSObject
