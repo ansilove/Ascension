@@ -103,6 +103,9 @@
 	if (![defaults valueForKey:@"fontSize"]) {
 		[defaults setFloat:14.0 forKey:@"fontSize"];
 	}
+    if (![defaults valueForKey:@"asciiFontIndex"]) {
+		[defaults setInteger:0 forKey:@"asciiFontIndex"];
+	}
 	if (![defaults valueForKey:@"nfoDizEncoding"]) {
 		[defaults setInteger:0 forKey:@"nfoDizEncoding"];
 	}
@@ -181,6 +184,7 @@
     [defaults setInteger:0 forKey:@"scrollerStyle"];
 	[defaults setObject:@"Terminus" forKey:@"fontName"];
 	[defaults setFloat:14.0 forKey:@"fontSize"];
+    [defaults setInteger:0 forKey:@"asciiFontIndex"];
 	[defaults setInteger:0 forKey:@"nfoDizEncoding"];
 	[defaults setInteger:0 forKey:@"txtEncoding"];
 	[defaults setBool:YES forKey:@"docsOpenCentered"];
@@ -276,6 +280,87 @@
 
 # pragma mark -
 # pragma mark user-defined attributes
+
+- (IBAction)chooseASCIIFont:(id)sender
+{
+    // Check font index, then write font properties to user defaults.
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	switch ([defaults integerForKey:@"asciiFontIndex"])
+	{
+		case fTerminus: {
+			[defaults setObject:@"Terminus" forKey:@"fontName"];
+            [defaults setFloat:14.0 forKey:@"fontSize"];
+			break;
+		}
+        case fDos437: {
+			[defaults setObject:@"dos437" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fTopaz: {
+			[defaults setObject:@"Topaz a600a1200a400" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fTopazPlus: {
+			[defaults setObject:@"TopazPlus a600a1200a4000" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fTopaz500: {
+			[defaults setObject:@"Topaz a500a1000a2000" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fTopaz500Plus: {
+			[defaults setObject:@"TopazPlus a500a1000a2000" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fMoSoul: {
+			[defaults setObject:@"mOsOul" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fPotNoodle: {
+			[defaults setObject:@"P0T-NOoDLE" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fMicroKnight: {
+			[defaults setObject:@"MicroKnight" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fMicroKnightPlus: {
+			[defaults setObject:@"MicroKnightPlus" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fC64ProMono: {
+			[defaults setObject:@"C64 Pro Mono/Style" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fAtariClassicChunky: {
+			[defaults setObject:@"Atari Classic Chunky" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+        case fAtariClassicSmooth: {
+			[defaults setObject:@"Atari Classic Smooth" forKey:@"fontName"];
+            [defaults setFloat:8.0 forKey:@"fontSize"];
+			break;
+		}
+		default: {
+			break;
+		}
+	}
+
+    [self synchronizeDefaults:self];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:@"ASCIIFontChange" object:self];
+}
 
 - (IBAction)selectScrollerStyle:(id)sender
 {
