@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1DDD582C0DA1D0D100B32029 /* MyDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58280DA1D0D100B32029 /* MyDocument.xib */; };
+		1DDD582C0DA1D0D100B32029 /* SVAnsiDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58280DA1D0D100B32029 /* SVAnsiDocument.xib */; };
 		1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD582A0DA1D0D100B32029 /* MainMenu.xib */; };
 		8D15AC2C0486D014006FF6A4 /* Acknowledgements.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Acknowledgements.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
@@ -43,7 +43,7 @@
 		F87EDE711475B15B00DEC27A /* Customize.png in Resources */ = {isa = PBXBuildFile; fileRef = F87EDE6B1475B15B00DEC27A /* Customize.png */; };
 		F87EDE731475B15B00DEC27A /* Interface.png in Resources */ = {isa = PBXBuildFile; fileRef = F87EDE6D1475B15B00DEC27A /* Interface.png */; };
 		F87EDE741475B15B00DEC27A /* Themes.png in Resources */ = {isa = PBXBuildFile; fileRef = F87EDE6E1475B15B00DEC27A /* Themes.png */; };
-		F8835768120F24ED00D18794 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* MyDocument.m */; };
+		F8835768120F24ED00D18794 /* SVAnsiDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* SVAnsiDocument.m */; };
 		F8835769120F24ED00D18794 /* SVPreferencesWC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835765120F24ED00D18794 /* SVPreferencesWC.m */; };
 		F883576A120F24ED00D18794 /* SVAscensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835767120F24ED00D18794 /* SVAscensionDelegate.m */; };
 		F8835778120F251F00D18794 /* Ascension.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8835773120F251F00D18794 /* Ascension.icns */; };
@@ -118,7 +118,7 @@
 		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		1DDD58290DA1D0D100B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MyDocument.xib; sourceTree = "<group>"; };
+		1DDD58290DA1D0D100B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/SVAnsiDocument.xib; sourceTree = "<group>"; };
 		1DDD582B0DA1D0D100B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2564AD2C0F5327BB00F57823 /* Ascension_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ascension_Prefix.pch; sourceTree = "<group>"; };
 		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 		F87EDE6B1475B15B00DEC27A /* Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Customize.png; path = Images/Customize.png; sourceTree = "<group>"; };
 		F87EDE6D1475B15B00DEC27A /* Interface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Interface.png; path = Images/Interface.png; sourceTree = "<group>"; };
 		F87EDE6E1475B15B00DEC27A /* Themes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Themes.png; path = Images/Themes.png; sourceTree = "<group>"; };
-		F8835763120F24ED00D18794 /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDocument.h; path = Classes/MyDocument.h; sourceTree = "<group>"; };
-		F8835764120F24ED00D18794 /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDocument.m; path = Classes/MyDocument.m; sourceTree = "<group>"; };
+		F8835763120F24ED00D18794 /* SVAnsiDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVAnsiDocument.h; path = Classes/SVAnsiDocument.h; sourceTree = "<group>"; };
+		F8835764120F24ED00D18794 /* SVAnsiDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVAnsiDocument.m; path = Classes/SVAnsiDocument.m; sourceTree = "<group>"; };
 		F8835765120F24ED00D18794 /* SVPreferencesWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVPreferencesWC.m; path = Classes/SVPreferencesWC.m; sourceTree = "<group>"; };
 		F8835766120F24ED00D18794 /* SVAscensionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVAscensionDelegate.h; path = Classes/SVAscensionDelegate.h; sourceTree = "<group>"; };
 		F8835767120F24ED00D18794 /* SVAscensionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVAscensionDelegate.m; path = Classes/SVAscensionDelegate.m; sourceTree = "<group>"; };
@@ -263,8 +263,8 @@
 		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F8835763120F24ED00D18794 /* MyDocument.h */,
-				F8835764120F24ED00D18794 /* MyDocument.m */,
+				F8835763120F24ED00D18794 /* SVAnsiDocument.h */,
+				F8835764120F24ED00D18794 /* SVAnsiDocument.m */,
 				F80801AB149C353E0057FF76 /* SVSauceRecord.h */,
 				F80801AC149C353E0057FF76 /* SVSauceRecord.m */,
 				F80F27771297504600209618 /* SVFileInfoStrings.h */,
@@ -304,7 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				1DDD582A0DA1D0D100B32029 /* MainMenu.xib */,
-				1DDD58280DA1D0D100B32029 /* MyDocument.xib */,
+				1DDD58280DA1D0D100B32029 /* SVAnsiDocument.xib */,
 				F8123D6211C7763000EABFE2 /* Preferences.xib */,
 				F8EA113E145C0CE200550364 /* AboutBox.xib */,
 				F898A65F14633ED30008E3CD /* License.rtf */,
@@ -447,7 +447,7 @@
 			files = (
 				8D15AC2C0486D014006FF6A4 /* Acknowledgements.rtf in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
-				1DDD582C0DA1D0D100B32029 /* MyDocument.xib in Resources */,
+				1DDD582C0DA1D0D100B32029 /* SVAnsiDocument.xib in Resources */,
 				1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */,
 				F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */,
 				F8835778120F251F00D18794 /* Ascension.icns in Resources */,
@@ -492,7 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC320486D014006FF6A4 /* main.m in Sources */,
-				F8835768120F24ED00D18794 /* MyDocument.m in Sources */,
+				F8835768120F24ED00D18794 /* SVAnsiDocument.m in Sources */,
 				F8835769120F24ED00D18794 /* SVPreferencesWC.m in Sources */,
 				F883576A120F24ED00D18794 /* SVAscensionDelegate.m in Sources */,
 				F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */,
@@ -518,12 +518,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		1DDD58280DA1D0D100B32029 /* MyDocument.xib */ = {
+		1DDD58280DA1D0D100B32029 /* SVAnsiDocument.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1DDD58290DA1D0D100B32029 /* English */,
 			);
-			name = MyDocument.xib;
+			name = SVAnsiDocument.xib;
 			sourceTree = "<group>";
 		};
 		1DDD582A0DA1D0D100B32029 /* MainMenu.xib */ = {

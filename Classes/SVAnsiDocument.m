@@ -1,5 +1,5 @@
 //
-//  MyDocument.m
+//  SVAnsiDocument.m
 //  Ascension
 //
 //  Copyright (c) 2010-2012, Stefan Vogt. All rights reserved.
@@ -12,7 +12,7 @@
 // add all available file aliasses e.g. .ice and .cia to .ans
 // also lookup how ACiD named it's files in art packs.
 
-#import "MyDocument.h"
+#import "SVAnsiDocument.h"
 #import "SVTextView.h"
 #import "SVRoardactedScroller.h"
 #import "SVPreferences.h"
@@ -45,7 +45,7 @@
 #define MacOSRoman NSMacOSRomanStringEncoding
 #define WinLatin1 NSWindowsCP1252StringEncoding
 
-@implementation MyDocument
+@implementation SVAnsiDocument
 
 @synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
             cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
@@ -204,7 +204,7 @@
 
 - (NSString *)windowNibName
 {
-    return @"MyDocument";
+    return @"SVAnsiDocument";
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)notification 

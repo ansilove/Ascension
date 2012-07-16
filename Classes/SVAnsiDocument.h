@@ -1,5 +1,5 @@
 //
-//  MyDocument.h
+//  SVAnsiDocument.h
 //  Ascension
 //
 //  Copyright (c) 2010-2012, Stefan Vogt. All rights reserved.
@@ -72,7 +72,7 @@ typedef enum {
     alTransparent
 } AnsiLoveBits;
 
-@interface MyDocument : NSDocument
+@interface SVAnsiDocument : NSDocument
 
 // strings
 @property (nonatomic, strong) NSMutableAttributedString *contentString;

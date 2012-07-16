@@ -26,7 +26,7 @@
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -46,7 +46,7 @@
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -64,7 +64,7 @@
 				<string>com.byteproject.ascension.asc</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -82,7 +82,7 @@
 				<string>com.byteproject.ascension.ans</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -100,7 +100,7 @@
 				<string>com.byteproject.ascension.idf</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -118,7 +118,7 @@
 				<string>com.byteproject.ascension.pcb</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -136,7 +136,7 @@
 				<string>com.byteproject.ascension.xb</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -154,7 +154,7 @@
 				<string>com.amiga.adf-archive</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -172,7 +172,7 @@
 				<string>com.apple.macbinary-archive</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -190,7 +190,7 @@
 				<string>com.byteproject.ascension.tnd</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -208,7 +208,7 @@
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
+			<string>SVAnsiDocument</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
