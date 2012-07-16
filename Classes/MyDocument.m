@@ -19,11 +19,28 @@
 #import "SVPreferences.h"
 #import "SVFileInfoStrings.h"
 
+// helpers
 #define ansiEscapeSeq @"[0m"
 #define stdNSTextViewMargin 20
 #define ansiHelperMargin 8
+
+// ANSi / ASCII string encodings
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
+#define CodePage775 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSBalticRim)
+#define CodePage855 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSCyrillic)
+#define CodePage863 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSCanadianFrench)
+#define CodePage737 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSGreek)
+#define CodePage869 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSGreek2)
+#define CodePage862 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSHebrew)
+#define CodePage861 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSIcelandic)
+#define CodePage850 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatin1)
+#define CodePage852 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatin2)
+#define CodePage865 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSNordic)
+#define CodePage860 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSPortuguese)
 #define CodePage866 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSRussian)
+#define CodePage857 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSTurkish)
+
+// alternate string encodings
 #define UnicodeUTF8 NSUTF8StringEncoding
 #define UnicodeUTF16 NSUTF16StringEncoding
 #define MacOSRoman NSMacOSRomanStringEncoding
