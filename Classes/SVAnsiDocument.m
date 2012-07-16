@@ -47,7 +47,7 @@
 
 @implementation SVAnsiDocument
 
-@synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
+@synthesize ansiTextView, ansiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
             cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
             nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow,
             encButtonIndex, vScroller, hScroller, appToolbar, fileInfoPopover, rawAnsiString, ansiCacheFile, 
@@ -160,7 +160,7 @@
 	
 	// Assign our attributed string.
 	if ([self string] != nil) {
-		[self.asciiTextView.textStorage setAttributedString:[self string]];
+		[self.ansiTextView.textStorage setAttributedString:[self string]];
 	}
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -312,7 +312,7 @@
 - (void)autoSizeDocumentWindow
 {
     // We need the textstorage size for auto-sizing the document window.
-	NSSize myTextSize = self.asciiTextView.textStorage.size;
+	NSSize myTextSize = self.ansiTextView.textStorage.size;
     
     // Calculate the new content dimensions, consider the toolbar (if visible).
     CGFloat toolbarHeight = 0;
@@ -396,11 +396,11 @@
 
 - (void)disableEditing
 {
-    [self.asciiTextView setEditable:NO];
+    [self.ansiTextView setEditable:NO];
     
     // Only applies to ANSi files as they contain rendered images and no selectable text.
     if (self.isUsingAnsiLove == YES) {
-        [self.asciiTextView setSelectable:NO];
+        [self.ansiTextView setSelectable:NO];
     }
 }
 
@@ -408,8 +408,8 @@
 {
     // Editing is not supported for types we rendered with AnsiLove.
     if (self.isUsingAnsiLove == NO) {
-        [self.asciiTextView setEditable:YES];
-        [self.asciiTextView setSelectable:YES];
+        [self.ansiTextView setEditable:YES];
+        [self.ansiTextView setSelectable:YES];
     }
 }
 
@@ -448,8 +448,8 @@
     }
     else {
         // So this is an ANSi source file? We can't use themes and custom colors.
-        [self.asciiTextView setBackgroundColor:[NSColor blackColor]];
-        [self.asciiScrollView setBackgroundColor:[NSColor blackColor]];
+        [self.ansiTextView setBackgroundColor:[NSColor blackColor]];
+        [self.ansiScrollView setBackgroundColor:[NSColor blackColor]];
         
         // Also disable editing anyway.
         [self disableEditing];
@@ -465,20 +465,20 @@
     [self applyThemeColors];
 	
 	// Set the text color.
-	[self.asciiTextView setTextColor:self.fontColor];
+	[self.ansiTextView setTextColor:self.fontColor];
 	
 	// Apply background color.
-	[self.asciiTextView setBackgroundColor:self.backgroundColor];
-    [self.asciiScrollView setBackgroundColor:self.backgroundColor];
+	[self.ansiTextView setBackgroundColor:self.backgroundColor];
+    [self.ansiScrollView setBackgroundColor:self.backgroundColor];
 	
 	// Set the cursor color.
-	[self.asciiTextView setInsertionPointColor:self.cursorColor];
+	[self.ansiTextView setInsertionPointColor:self.cursorColor];
 	
 	// Specify the style for all contained links.
-	[self.asciiTextView setLinkTextAttributes:self.linkAttributes];
+	[self.ansiTextView setLinkTextAttributes:self.linkAttributes];
 	
 	// Set the color for selected and marked text.
-	[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+	[self.ansiTextView setSelectedTextAttributes:self.selectionAttributes];
     
     // Definition of user defaults.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -541,13 +541,13 @@
 	[customParagraph setMaximumLineHeight:self.fontSize];
 	
 	// Set our custom paragraph as default paragraph style.
-	[self.asciiTextView setDefaultParagraphStyle:customParagraph];
+	[self.ansiTextView setDefaultParagraphStyle:customParagraph];
 	
 	// Apply our atttributes.
 	attributes = [NSDictionary dictionaryWithObjectsAndKeys:asciiFont,
 				  NSFontAttributeName, customParagraph, NSParagraphStyleAttributeName, nil];
-	 [self.asciiTextView.textStorage setAttributes:attributes 
-											  range:NSMakeRange(0, self.asciiTextView.textStorage.length)];
+	 [self.ansiTextView.textStorage setAttributes:attributes 
+											  range:NSMakeRange(0, self.ansiTextView.textStorage.length)];
 }
 
 - (void)performLinkification
@@ -557,22 +557,22 @@
     if ([defaults boolForKey:@"highlightAsciiHyperLinks"] == NO)
     {
         // ...prevent NSTextView from automatically detecting hyperlinks
-        [self.asciiTextView setAutomaticLinkDetectionEnabled:NO];
+        [self.ansiTextView setAutomaticLinkDetectionEnabled:NO];
         
         // ... and peform an early return.
         return;
     }
     
     // Save insertion point / cursor position.
-    NSInteger insertionPoint = [[self.asciiTextView.selectedRanges objectAtIndex:0] rangeValue].location;
+    NSInteger insertionPoint = [[self.ansiTextView.selectedRanges objectAtIndex:0] rangeValue].location;
     
 	// Analyze the text storage and return a linkified string.
 	AHHyperlinkScanner *scanner = 
-	[AHHyperlinkScanner hyperlinkScannerWithAttributedString:self.asciiTextView.textStorage];
-	[self.asciiTextView.textStorage setAttributedString:[scanner linkifiedString]];
+	[AHHyperlinkScanner hyperlinkScannerWithAttributedString:self.ansiTextView.textStorage];
+	[self.ansiTextView.textStorage setAttributedString:[scanner linkifiedString]];
     
     // Reapply the cursor position we stored before.
-    self.asciiTextView.selectedRange = NSMakeRange(insertionPoint, 0);
+    self.ansiTextView.selectedRange = NSMakeRange(insertionPoint, 0);
 }
 
 - (void)toggleHyperLinkAttributes:(NSNotification *)note
@@ -582,16 +582,16 @@
     if ([defaults boolForKey:@"highlightAsciiHyperLinks"] == NO)
     {
         // Create range based on the textStorage length.
-        NSRange area = NSMakeRange(0, self.asciiTextView.textStorage.length);
+        NSRange area = NSMakeRange(0, self.ansiTextView.textStorage.length);
         
         // Now remove already highlighted hyperlinks.
-        [self.asciiTextView.textStorage removeAttribute:NSLinkAttributeName range:area];
+        [self.ansiTextView.textStorage removeAttribute:NSLinkAttributeName range:area];
         
         // Finally, we don't want NSTextView to automatically detect hyperlinks.
-        [self.asciiTextView setAutomaticLinkDetectionEnabled:NO];
+        [self.ansiTextView setAutomaticLinkDetectionEnabled:NO];
     }
     else {
-        [self.asciiTextView setAutomaticLinkDetectionEnabled:YES];
+        [self.ansiTextView setAutomaticLinkDetectionEnabled:YES];
         [self performLinkification];
     }
 }
@@ -627,7 +627,7 @@
 {
     if (self.isUsingAnsiLove == NO) {
         NSColor *fontColorValue = [[note userInfo] objectForKey:@"fontColorValue"];
-        [self.asciiTextView setTextColor:fontColorValue];
+        [self.ansiTextView setTextColor:fontColorValue];
     }
 }
 
@@ -635,8 +635,8 @@
 {
     if (self.isUsingAnsiLove == NO) {
          NSColor *bgrndColorValue = [[note userInfo] objectForKey:@"bgrndColorValue"];
-         [self.asciiTextView setBackgroundColor:bgrndColorValue];
-         [self.asciiScrollView setBackgroundColor:bgrndColorValue];
+         [self.ansiTextView setBackgroundColor:bgrndColorValue];
+         [self.ansiScrollView setBackgroundColor:bgrndColorValue];
      }
 }
 
@@ -644,7 +644,7 @@
 {
     if (self.isUsingAnsiLove == NO) {
         NSColor *cursorColorValue = [[note userInfo] objectForKey:@"cursorColorValue"];
-        [self.asciiTextView setInsertionPointColor:cursorColorValue];
+        [self.ansiTextView setInsertionPointColor:cursorColorValue];
     }
 }
 
@@ -652,7 +652,7 @@
 {
     if (self.isUsingAnsiLove == NO) {
         self.linkColor = [[note userInfo] objectForKey:@"linkColorValue"];
-        [self.asciiTextView setLinkTextAttributes:self.linkAttributes];
+        [self.ansiTextView setLinkTextAttributes:self.linkAttributes];
     }
 }
 
@@ -660,7 +660,7 @@
 {
     if (self.isUsingAnsiLove == NO) {
         self.selectionColor = [[note userInfo] objectForKey:@"selectionColorValue"];
-        [self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
+        [self.ansiTextView setSelectedTextAttributes:self.selectionAttributes];
     }
 }
 
@@ -701,7 +701,7 @@
 
 - (void)textDidChange:(NSNotification *)notification
 {
-    [self setString:self.asciiTextView.textStorage];
+    [self setString:self.ansiTextView.textStorage];
 }
 
 # pragma mark -
@@ -878,10 +878,10 @@
 	[self setString:importString];
 	
 	//If the UI is already loaded, this must be a 'revert to saved' operation.
-	if (self.asciiTextView) 
+	if (self.ansiTextView) 
 	{
 		// Apply the loaded data to the text storage and restyle contents.
-		[self.asciiTextView.textStorage setAttributedString:[self string]];
+		[self.ansiTextView.textStorage setAttributedString:[self string]];
 		[self prepareContent];
 	}
 	return YES;
@@ -941,10 +941,10 @@
 	[self setString:importString];
 	
 	//If the UI is already loaded, this must be a 'revert to saved' operation.
-	if (self.asciiTextView) 
+	if (self.ansiTextView) 
 	{
 		// Apply the loaded data to the text storage and restyle contents.
-		[self.asciiTextView.textStorage setAttributedString:[self string]];
+		[self.ansiTextView.textStorage setAttributedString:[self string]];
 		[self prepareContent];
 	}
 	return YES;
@@ -965,7 +965,7 @@
             return NULL;
         }
         // Enable undo after save operations.
-        [self.asciiTextView breakUndoCoalescing];
+        [self.ansiTextView breakUndoCoalescing];
         
         NSFileWrapper *ansFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:ansData];
         if (!ansFileWrapperObj) {
@@ -982,7 +982,7 @@
             return NULL;
         }
         // Enable undo after save operations.
-        [self.asciiTextView breakUndoCoalescing];
+        [self.ansiTextView breakUndoCoalescing];
         
         NSFileWrapper *ascFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:ascData];
         if (!ascFileWrapperObj) {
@@ -1002,7 +1002,7 @@
 		return NULL;
 	}
 	// Enable undo after save operations.
-	[self.asciiTextView breakUndoCoalescing];
+	[self.ansiTextView breakUndoCoalescing];
 	
 	NSFileWrapper *txtFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:txtData];
 	if (!txtFileWrapperObj) {
@@ -1226,7 +1226,7 @@
     imageString = [NSAttributedString attributedStringWithAttachment:attachment];
     
     
-    // The content string of asciiTextView is mutable, so we need a mutable copy.
+    // The content string of ansiTextView is mutable, so we need a mutable copy.
     NSMutableAttributedString *mutableImageString = [imageString mutableCopy];
     
     // Finally set the mutable string with our .png attachement as content string.
@@ -1249,7 +1249,7 @@
         [self renderANSiArtwork];
         
         // Apply the updated string to our NSTextView instance.
-        [self.asciiTextView.textStorage setAttributedString:[self string]];
+        [self.ansiTextView.textStorage setAttributedString:[self string]];
         
         // Optimize the document window again, content sizes probably changed.
         [self autoSizeDocumentWindow];
