@@ -1253,12 +1253,6 @@
         
         // Optimize the document window again, content sizes probably changed.
         [self autoSizeDocumentWindow];
-        
-        // Center resized document window again if set up in prefs.
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        if ([defaults boolForKey:@"docsOpenCentered"] == YES) {
-            [self.mainWindow center];
-        }
     }
 }
 
