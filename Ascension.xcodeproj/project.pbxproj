@@ -71,7 +71,6 @@
 		F8E149791452BC9600D445DF /* AnsiLove.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = F8E149771452BC5000D445DF /* AnsiLove.framework */; };
 		F8E1D4B31285DBA90069F262 /* duplicate.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1D4B21285DBA90069F262 /* duplicate.png */; };
 		F8EA113C145C0CE200550364 /* AboutBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8EA113E145C0CE200550364 /* AboutBox.xib */; };
-		F8EA140D12781D3E002A6E6E /* SVFontProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140612781D3E002A6E6E /* SVFontProperties.m */; };
 		F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA140A12781D3E002A6E6E /* SVThemeObject.m */; };
 		F8F14433129068C600D89311 /* SVPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F14432129068C600D89311 /* SVPreferences.m */; };
 		F8F3A42912A0780100102D23 /* AFileTypeDIZ.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8F3A42712A0780100102D23 /* AFileTypeDIZ.icns */; };
@@ -194,8 +193,6 @@
 		F8E149771452BC5000D445DF /* AnsiLove.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AnsiLove.framework; path = Frameworks/AnsiLove.framework; sourceTree = "<group>"; };
 		F8E1D4B21285DBA90069F262 /* duplicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duplicate.png; path = Images/duplicate.png; sourceTree = "<group>"; };
 		F8EA113D145C0CE200550364 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/AboutBox.xib; sourceTree = "<group>"; };
-		F8EA140512781D3E002A6E6E /* SVFontProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFontProperties.h; path = Classes/SVFontProperties.h; sourceTree = "<group>"; };
-		F8EA140612781D3E002A6E6E /* SVFontProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFontProperties.m; path = Classes/SVFontProperties.m; sourceTree = "<group>"; };
 		F8EA140712781D3E002A6E6E /* SVPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVPreferences.h; path = Classes/SVPreferences.h; sourceTree = "<group>"; };
 		F8EA140912781D3E002A6E6E /* SVThemeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVThemeObject.h; path = Classes/SVThemeObject.h; sourceTree = "<group>"; };
 		F8EA140A12781D3E002A6E6E /* SVThemeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVThemeObject.m; path = Classes/SVThemeObject.m; sourceTree = "<group>"; };
@@ -276,8 +273,6 @@
 				F80458F612C69447004CF340 /* SVTextView.m */,
 				F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */,
 				F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */,
-				F8EA140512781D3E002A6E6E /* SVFontProperties.h */,
-				F8EA140612781D3E002A6E6E /* SVFontProperties.m */,
 				F883576B120F250000D18794 /* SVPreferencesWC.h */,
 				F8835765120F24ED00D18794 /* SVPreferencesWC.m */,
 				F8EA140712781D3E002A6E6E /* SVPreferences.h */,
@@ -500,7 +495,6 @@
 				F8835768120F24ED00D18794 /* MyDocument.m in Sources */,
 				F8835769120F24ED00D18794 /* SVPreferencesWC.m in Sources */,
 				F883576A120F24ED00D18794 /* SVAscensionDelegate.m in Sources */,
-				F8EA140D12781D3E002A6E6E /* SVFontProperties.m in Sources */,
 				F8EA140F12781D3E002A6E6E /* SVThemeObject.m in Sources */,
 				F8F14433129068C600D89311 /* SVPreferences.m in Sources */,
 				F80F27791297504600209618 /* SVFileInfoStrings.m in Sources */,

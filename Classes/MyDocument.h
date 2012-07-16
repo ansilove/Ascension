@@ -86,6 +86,7 @@ typedef enum {
 @property (nonatomic, strong) NSString                  *iFileSize;
 @property (nonatomic, strong) NSString                  *iCreationDate;
 @property (nonatomic, strong) NSString                  *iModDate;
+@property (nonatomic, strong) NSString                  *fontName;
 @property (nonatomic, assign) NSStringEncoding          nfoDizEncoding;
 @property (nonatomic, assign) NSStringEncoding          txtEncoding;
 @property (nonatomic, assign) NSStringEncoding          exportEncoding;
@@ -94,6 +95,7 @@ typedef enum {
 @property (nonatomic, strong) NSImage *renderedAnsiImage;
 
 // integer and float values
+@property (nonatomic, assign) CGFloat   fontSize;
 @property (nonatomic, assign) CGFloat   newContentWidth;
 @property (nonatomic, assign) CGFloat   newContentHeight;
 @property (nonatomic, assign) NSInteger encButtonIndex;

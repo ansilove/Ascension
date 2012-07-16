@@ -15,7 +15,6 @@
 #import "MyDocument.h"
 #import "SVTextView.h"
 #import "SVRoardactedScroller.h"
-#import "SVFontProperties.h"
 #import "SVPreferences.h"
 #import "SVFileInfoStrings.h"
 
@@ -53,7 +52,7 @@
             nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow,
             encButtonIndex, vScroller, hScroller, appToolbar, fileInfoPopover, rawAnsiString, ansiCacheFile, 
             isRendered, isUsingAnsiLove, isAnsFile, isIdfFile, isPcbFile, isXbFile, isAdfFile, isBinFile, isTndFile,
-            renderedAnsiImage, shouldDisableSave, alFont, alBits, alIceColors, alColumns;
+            renderedAnsiImage, shouldDisableSave, alFont, alBits, alIceColors, alColumns, fontName, fontSize;
 
 # pragma mark -
 # pragma mark initialization
@@ -527,17 +526,19 @@
 	NSMutableParagraphStyle *customParagraph;
 	NSDictionary *attributes;
 	
-	// Initialize instance of SVFontProperties.
-	SVFontProperties *myFontProperty = [[SVFontProperties alloc] init];
+	// Read font properties from preferences.
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.fontName = [defaults stringForKey:@"fontName"];
+    self.fontSize = [defaults floatForKey:@"fontSize"];
 	
 	// Set the font.
-	asciiFont = [NSFont fontWithName:myFontProperty.fontName size:myFontProperty.fontSize];
+	asciiFont = [NSFont fontWithName:self.fontName size:self.fontSize];
 	
 	// Set line height identical to font size.
 	customParagraph = [[NSMutableParagraphStyle alloc] init];
 	[customParagraph setLineSpacing:0];
-	[customParagraph setMinimumLineHeight:myFontProperty.fontSize];
-	[customParagraph setMaximumLineHeight:myFontProperty.fontSize];
+	[customParagraph setMinimumLineHeight:self.fontSize];
+	[customParagraph setMaximumLineHeight:self.fontSize];
 	
 	// Set our custom paragraph as default paragraph style.
 	[self.asciiTextView setDefaultParagraphStyle:customParagraph];
