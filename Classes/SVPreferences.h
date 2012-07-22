@@ -12,19 +12,9 @@
 #import <Cocoa/Cocoa.h>
 
 typedef enum {
-	fTerminus,
-    fDos437,
-    fTopaz,
-    fTopazPlus,
-    fTopaz500,
-    fTopaz500Plus,
-    fMoSoul,
-    fPotNoodle,
-    fMicroKnight,
-    fMicroKnightPlus,
-    fC64ProMono,
-    fAtariClassicChunky,
-    fAtariClassicSmooth
+	fTerminusRegular,
+    fTerminusLarge,
+    fTerminusExtraLarge
 } ASCIIFonts;
 
 @class SVToggleSlider;
@@ -39,6 +29,7 @@ typedef enum {
 @property (nonatomic, strong) IBOutlet NSColorWell    *selectionColorWell;
 @property (nonatomic, strong) IBOutlet NSTableView    *themesView;
 @property (nonatomic, strong) IBOutlet SVToggleSlider *viewerModeSlider;
+@property (nonatomic, strong) IBOutlet NSTextField    *fontInfoTextField;
 
 // data
 @property (nonatomic, strong) NSMutableArray *themesArray;
@@ -48,6 +39,8 @@ typedef enum {
 
 // strings
 @property (nonatomic, strong) NSString *pathForThemeLibraryFile;
+@property (nonatomic, strong) NSString *fontInfoLabel;
+
 
 // class methods
 + (void)checkUserDefaults;
