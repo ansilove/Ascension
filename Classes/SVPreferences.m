@@ -16,7 +16,8 @@
 @implementation SVPreferences
 
 @synthesize fontColorWell, bgrndColorWell, cursorColorWell, linkColorWell, selectionColorWell, 
-			themesArray, themesView, pathForThemeLibraryFile, themeIndex, viewerModeSlider;
+			themesArray, themesView, pathForThemeLibraryFile, themeIndex, viewerModeSlider,
+            fontInfoLabel, fontInfoTextField;
 
 # pragma mark -
 # pragma mark initialization
@@ -82,6 +83,18 @@
     else {
         [self.viewerModeSlider setState:NSOffState animate:NO];
     }
+    
+    // Change font information label to something that makes sense.
+    if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusRegular) {
+        [self.fontInfoTextField setStringValue:@"font size: 14.0pt"];
+    }
+    if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusLarge) {
+        [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
+    }
+    if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusExtraLarge) {
+        [self.fontInfoTextField setStringValue:@"font size: 20.0pt"];
+    }
+
 }
 
 # pragma mark -
@@ -97,6 +110,9 @@
     if (![defaults valueForKey:@"scrollerStyle"]) {
 		[defaults setInteger:0 forKey:@"scrollerStyle"];
 	}
+    if (![defaults valueForKey:@"enableAnsiLoveForASCII"]) {
+        [defaults setBool:NO forKey:@"enableAnsiLoveForASCII"];
+    }
 	if (![defaults stringForKey:@"fontName"]) {
 		[defaults setObject:@"Terminus" forKey:@"fontName"];
 	}
@@ -182,6 +198,7 @@
 	// Restore the initial user defaults.
 	[defaults setInteger:0 forKey:@"startupBehavior"];
     [defaults setInteger:0 forKey:@"scrollerStyle"];
+    [defaults setBool:NO forKey:@"enableAnsiLoveForASCII"];
 	[defaults setObject:@"Terminus" forKey:@"fontName"];
 	[defaults setFloat:14.0 forKey:@"fontSize"];
     [defaults setInteger:0 forKey:@"asciiFontIndex"];
@@ -224,8 +241,6 @@
     [self.viewerModeSlider setState:NSOffState animate:YES];
     [nc postNotificationName:@"ToggleSliderStateChange" object:self];
 	
-	[defaults synchronize];
-    
 	[self sendFontColorChangeNote];
 	[self sendBgrndColorChangeNote];
 	[self sendCursorColorChangeNote];
@@ -234,6 +249,14 @@
     
     // Change notification for forcing AnsiLove to re-render.
     [nc postNotificationName:@"AnsiLoveRenderChange" object:self];
+    
+    // Post note to change hyperlink attributes.
+    [nc postNotificationName:@"HyperLinkAttributeChange" object:self];
+    
+    // Reset font info label to font size value that's restored now.
+    [self.fontInfoTextField setStringValue:@"font size: 14.0pt"];
+    
+    [defaults synchronize];
 }
 
 - (IBAction)synchronizeDefaults:(id)sender
@@ -272,7 +295,7 @@
 
 - (IBAction)changeAnsiLoveStateAndReRender:(id)sender
 {
-    // Synchronize and send a note so our document instance knows the font changed.
+    // Synchronize and send a note so our document instance knows AnsiLove flags changed.
     [self synchronizeDefaults:self];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:@"AnsiLoveRenderChange" object:self];
@@ -287,77 +310,30 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	switch ([defaults integerForKey:@"asciiFontIndex"])
 	{
-		case fTerminus: {
+		case fTerminusRegular: {
 			[defaults setObject:@"Terminus" forKey:@"fontName"];
             [defaults setFloat:14.0 forKey:@"fontSize"];
+            [self.fontInfoTextField setStringValue:@"font size: 14.0pt"];
 			break;
 		}
-        case fDos437: {
-			[defaults setObject:@"dos437" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
+        case fTerminusLarge: {
+			[defaults setObject:@"Terminus" forKey:@"fontName"];
+            [defaults setFloat:16.0 forKey:@"fontSize"];
+            [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
 			break;
 		}
-        case fTopaz: {
-			[defaults setObject:@"Topaz a600a1200a400" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
-			break;
-		}
-        case fTopazPlus: {
-			[defaults setObject:@"TopazPlus a600a1200a4000" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
-			break;
-		}
-        case fTopaz500: {
-			[defaults setObject:@"Topaz a500a1000a2000" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
-			break;
-		}
-        case fTopaz500Plus: {
-			[defaults setObject:@"TopazPlus a500a1000a2000" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
-			break;
-		}
-        case fMoSoul: {
-			[defaults setObject:@"mOsOul" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
-			break;
-		}
-        case fPotNoodle: {
-			[defaults setObject:@"P0T-NOoDLE" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
-			break;
-		}
-        case fMicroKnight: {
-			[defaults setObject:@"MicroKnight" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
-			break;
-		}
-        case fMicroKnightPlus: {
-			[defaults setObject:@"MicroKnightPlus" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
-			break;
-		}
-        case fC64ProMono: {
-			[defaults setObject:@"C64 Pro Mono/Style" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
-			break;
-		}
-        case fAtariClassicChunky: {
-			[defaults setObject:@"Atari Classic Chunky" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
-			break;
-		}
-        case fAtariClassicSmooth: {
-			[defaults setObject:@"Atari Classic Smooth" forKey:@"fontName"];
-            [defaults setFloat:8.0 forKey:@"fontSize"];
+        case fTerminusExtraLarge: {
+			[defaults setObject:@"Terminus" forKey:@"fontName"];
+            [defaults setFloat:20.0 forKey:@"fontSize"];
+            [self.fontInfoTextField setStringValue:@"font size: 20.0pt"];
 			break;
 		}
 		default: {
 			break;
 		}
 	}
-
     [self synchronizeDefaults:self];
+    
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:@"ASCIIFontChange" object:self];
 }
