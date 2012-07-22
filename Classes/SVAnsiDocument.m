@@ -68,7 +68,12 @@
 	   // Define NSNotificationCenter.
 	   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	   
-	   // Register as an observer for font color changes.
+       // Register as an observer for font and font color changes.
+       [nc addObserver:self
+			  selector:@selector(performFontChange:)
+				  name:@"ASCIIFontChange"
+				object:nil];
+       
 	   [nc addObserver:self
 			  selector:@selector(performFontColorChange:) 
 				  name:@"FontColorChange"
@@ -530,7 +535,7 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.fontName = [defaults stringForKey:@"fontName"];
     self.fontSize = [defaults floatForKey:@"fontSize"];
-	
+    
 	// Set the font.
 	asciiFont = [NSFont fontWithName:self.fontName size:self.fontSize];
 	
@@ -622,7 +627,14 @@
     return screenRect;
 }
 
-// The performColorChange methods are fired by notifications, invoked from the prefs.
+- (void)performFontChange:(NSNotification *)note
+{
+    if (self.isUsingAnsiLove == NO) {
+        [self prepareContent];
+        [self autoSizeDocumentWindow];
+    }
+}
+
 - (void)performFontColorChange:(NSNotification *)note
 {
     if (self.isUsingAnsiLove == NO) {

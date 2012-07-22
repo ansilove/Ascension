@@ -144,6 +144,7 @@ typedef enum {
 - (void)handlePasteOperation:(NSNotification *)note;
 - (void)performResumeStateChange:(NSNotification *)note;
 - (void)performScrollerStyleChange:(NSNotification *)note;
+- (void)performFontChange:(NSNotification *)note;
 - (void)performFontColorChange:(NSNotification *)note;
 - (void)performBgrndColorChange:(NSNotification *)note;
 - (void)performCursorColorChange:(NSNotification *)note;
