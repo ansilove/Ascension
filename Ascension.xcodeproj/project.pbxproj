@@ -22,21 +22,9 @@
 		F83A1B651461FE4A00630FF2 /* sheet_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F83A1B641461FE4A00630FF2 /* sheet_background.png */; };
 		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
 		F83BA419146B2CE600F3DF9D /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = F83BA418146B2CE600F3DF9D /* container-migration.plist */; };
-		F84066F6145AA121006F25F7 /* atarcc.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E0145A8FDD006F25F7 /* atarcc.ttf */; };
-		F84066F7145AA121006F25F7 /* atarcs.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E1145A8FDD006F25F7 /* atarcs.ttf */; };
-		F84066F9145AA122006F25F7 /* dos437.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F823103A1457F451007E1BE6 /* dos437.ttf */; };
-		F84066FA145AA122006F25F7 /* MicroKnight_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E3145A8FDD006F25F7 /* MicroKnight_v1.0.ttf */; };
-		F84066FB145AA122006F25F7 /* MicroKnightPlus_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E4145A8FDD006F25F7 /* MicroKnightPlus_v1.0.ttf */; };
-		F84066FC145AA122006F25F7 /* mO'sOul_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E5145A8FDD006F25F7 /* mO'sOul_v1.0.ttf */; };
-		F84066FD145AA122006F25F7 /* P0T-NOoDLE_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E6145A8FDD006F25F7 /* P0T-NOoDLE_v1.0.ttf */; };
-		F84066FE145AA122006F25F7 /* Topaz_a500_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E7145A8FDD006F25F7 /* Topaz_a500_v1.0.ttf */; };
-		F84066FF145AA122006F25F7 /* Topaz_a1200_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E8145A8FDD006F25F7 /* Topaz_a1200_v1.0.ttf */; };
-		F8406700145AA122006F25F7 /* TopazPlus_a500_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066E9145A8FDD006F25F7 /* TopazPlus_a500_v1.0.ttf */; };
-		F8406701145AA122006F25F7 /* TopazPlus_a1200_v1.0.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F84066EA145A8FDD006F25F7 /* TopazPlus_a1200_v1.0.ttf */; };
 		F869391E135A5C6C0024BE07 /* context_info.png in Resources */ = {isa = PBXBuildFile; fileRef = F869391D135A5C6C0024BE07 /* context_info.png */; };
 		F8726137145CBF0200821B70 /* SVEpicAboutBoxWC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8726136145CBF0200821B70 /* SVEpicAboutBoxWC.m */; };
 		F872613B145CBF2F00821B70 /* SVEpicAboutBox.m in Sources */ = {isa = PBXBuildFile; fileRef = F872613A145CBF2F00821B70 /* SVEpicAboutBox.m */; };
-		F87EDE671475B0C300DEC27A /* C64_Pro_Mono_v1.0-STYLE.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8884DD8146F4A1A00FA376F /* C64_Pro_Mono_v1.0-STYLE.ttf */; };
 		F87EDE681475B12400DEC27A /* AnsiLove.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E149771452BC5000D445DF /* AnsiLove.framework */; };
 		F87EDE6F1475B15B00DEC27A /* ANSI.png in Resources */ = {isa = PBXBuildFile; fileRef = F87EDE691475B15B00DEC27A /* ANSI.png */; };
 		F87EDE701475B15B00DEC27A /* ASCII.png in Resources */ = {isa = PBXBuildFile; fileRef = F87EDE6A1475B15B00DEC27A /* ASCII.png */; };
@@ -96,18 +84,6 @@
 			dstPath = Fonts;
 			dstSubfolderSpec = 7;
 			files = (
-				F84066F6145AA121006F25F7 /* atarcc.ttf in CopyFiles */,
-				F87EDE671475B0C300DEC27A /* C64_Pro_Mono_v1.0-STYLE.ttf in CopyFiles */,
-				F84066F7145AA121006F25F7 /* atarcs.ttf in CopyFiles */,
-				F84066F9145AA122006F25F7 /* dos437.ttf in CopyFiles */,
-				F84066FA145AA122006F25F7 /* MicroKnight_v1.0.ttf in CopyFiles */,
-				F84066FB145AA122006F25F7 /* MicroKnightPlus_v1.0.ttf in CopyFiles */,
-				F84066FC145AA122006F25F7 /* mO'sOul_v1.0.ttf in CopyFiles */,
-				F84066FD145AA122006F25F7 /* P0T-NOoDLE_v1.0.ttf in CopyFiles */,
-				F84066FE145AA122006F25F7 /* Topaz_a500_v1.0.ttf in CopyFiles */,
-				F84066FF145AA122006F25F7 /* Topaz_a1200_v1.0.ttf in CopyFiles */,
-				F8406700145AA122006F25F7 /* TopazPlus_a500_v1.0.ttf in CopyFiles */,
-				F8406701145AA122006F25F7 /* TopazPlus_a1200_v1.0.ttf in CopyFiles */,
 				F8DBE75C132D5D6C00A9F868 /* Terminus.dfont in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,22 +111,11 @@
 		F80F27781297504600209618 /* SVFileInfoStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoStrings.m; path = Classes/SVFileInfoStrings.m; sourceTree = "<group>"; };
 		F80F4B1C12D54709000731AA /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Divider.png; path = Images/Divider.png; sourceTree = "<group>"; };
 		F82310381457EA10007E1BE6 /* custom_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = custom_about.png; path = Images/custom_about.png; sourceTree = "<group>"; };
-		F823103A1457F451007E1BE6 /* dos437.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dos437.ttf; sourceTree = "<group>"; };
 		F83A1B641461FE4A00630FF2 /* sheet_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sheet_background.png; path = Images/sheet_background.png; sourceTree = "<group>"; };
 		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
 		F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRoardactedScroller.m; path = Classes/SVRoardactedScroller.m; sourceTree = "<group>"; };
 		F83BA418146B2CE600F3DF9D /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "container-migration.plist"; sourceTree = "<group>"; };
 		F83BA41B146B307400F3DF9D /* Ascension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Ascension.entitlements; sourceTree = "<group>"; };
-		F84066E0145A8FDD006F25F7 /* atarcc.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = atarcc.ttf; sourceTree = "<group>"; };
-		F84066E1145A8FDD006F25F7 /* atarcs.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = atarcs.ttf; sourceTree = "<group>"; };
-		F84066E3145A8FDD006F25F7 /* MicroKnight_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MicroKnight_v1.0.ttf; sourceTree = "<group>"; };
-		F84066E4145A8FDD006F25F7 /* MicroKnightPlus_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MicroKnightPlus_v1.0.ttf; sourceTree = "<group>"; };
-		F84066E5145A8FDD006F25F7 /* mO'sOul_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mO'sOul_v1.0.ttf"; sourceTree = "<group>"; };
-		F84066E6145A8FDD006F25F7 /* P0T-NOoDLE_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "P0T-NOoDLE_v1.0.ttf"; sourceTree = "<group>"; };
-		F84066E7145A8FDD006F25F7 /* Topaz_a500_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Topaz_a500_v1.0.ttf; sourceTree = "<group>"; };
-		F84066E8145A8FDD006F25F7 /* Topaz_a1200_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Topaz_a1200_v1.0.ttf; sourceTree = "<group>"; };
-		F84066E9145A8FDD006F25F7 /* TopazPlus_a500_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TopazPlus_a500_v1.0.ttf; sourceTree = "<group>"; };
-		F84066EA145A8FDD006F25F7 /* TopazPlus_a1200_v1.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TopazPlus_a1200_v1.0.ttf; sourceTree = "<group>"; };
 		F869391D135A5C6C0024BE07 /* context_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_info.png; path = Images/context_info.png; sourceTree = "<group>"; };
 		F8726135145CBF0200821B70 /* SVEpicAboutBoxWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVEpicAboutBoxWC.h; path = Classes/SVEpicAboutBoxWC.h; sourceTree = "<group>"; };
 		F8726136145CBF0200821B70 /* SVEpicAboutBoxWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVEpicAboutBoxWC.m; path = Classes/SVEpicAboutBoxWC.m; sourceTree = "<group>"; };
@@ -170,7 +135,6 @@
 		F8835773120F251F00D18794 /* Ascension.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Ascension.icns; path = Images/Ascension.icns; sourceTree = "<group>"; };
 		F8835775120F251F00D18794 /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		F8835784120F256900D18794 /* Terminus.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Terminus.dfont; sourceTree = "<group>"; };
-		F8884DD8146F4A1A00FA376F /* C64_Pro_Mono_v1.0-STYLE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "C64_Pro_Mono_v1.0-STYLE.ttf"; sourceTree = "<group>"; };
 		F898A66014633ED30008E3CD /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/License.rtf; sourceTree = "<group>"; };
 		F89DB9CB15932BCD0009F5AA /* context_export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_export.png; path = Images/context_export.png; sourceTree = "<group>"; };
 		F89DB9CC15932BCD0009F5AA /* context_srecord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = context_srecord.png; path = Images/context_srecord.png; sourceTree = "<group>"; };
@@ -330,18 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				F8835784120F256900D18794 /* Terminus.dfont */,
-				F84066E0145A8FDD006F25F7 /* atarcc.ttf */,
-				F84066E1145A8FDD006F25F7 /* atarcs.ttf */,
-				F8884DD8146F4A1A00FA376F /* C64_Pro_Mono_v1.0-STYLE.ttf */,
-				F823103A1457F451007E1BE6 /* dos437.ttf */,
-				F84066E3145A8FDD006F25F7 /* MicroKnight_v1.0.ttf */,
-				F84066E4145A8FDD006F25F7 /* MicroKnightPlus_v1.0.ttf */,
-				F84066E5145A8FDD006F25F7 /* mO'sOul_v1.0.ttf */,
-				F84066E6145A8FDD006F25F7 /* P0T-NOoDLE_v1.0.ttf */,
-				F84066E7145A8FDD006F25F7 /* Topaz_a500_v1.0.ttf */,
-				F84066E8145A8FDD006F25F7 /* Topaz_a1200_v1.0.ttf */,
-				F84066E9145A8FDD006F25F7 /* TopazPlus_a500_v1.0.ttf */,
-				F84066EA145A8FDD006F25F7 /* TopazPlus_a1200_v1.0.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
