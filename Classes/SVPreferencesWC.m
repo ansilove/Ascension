@@ -13,8 +13,7 @@
 
 @implementation SVPreferencesWC
 
-@synthesize currentViewTag, prefsBar, generalPrefView, interfacePrefView, textPrefView, 
-            themePrefView, asciiPrefView, ansiPrefView;
+@synthesize currentViewTag, prefsBar, generalPrefView, interfacePrefView, schemePrefView, asciiPrefView;
 
 # pragma mark -
 # pragma mark class methods
@@ -58,10 +57,8 @@
 	switch(tag) {
         case 0 : view = self.generalPrefView;   break;
         case 1 : view = self.interfacePrefView; break;
-		case 2 : view = self.textPrefView;      break;
-        case 3 : view = self.themePrefView;     break;
-        case 4 : view = self.asciiPrefView;     break;
-        case 5 : view = self.ansiPrefView;      break;
+        case 2 : view = self.asciiPrefView;     break;
+        case 3 : view = self.schemePrefView;    break;
         default: view = self.generalPrefView;   break;
 	}
     return view;

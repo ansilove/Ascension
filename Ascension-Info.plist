@@ -18,7 +18,7 @@
 			<key>CFBundleTypeName</key>
 			<string>ASCII Release Information (.nfo)</string>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
+			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.byteproject.ascension.nfo</string>
@@ -26,7 +26,7 @@
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
+			<string>SVAsciiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -38,7 +38,7 @@
 			<key>CFBundleTypeName</key>
 			<string>Description in Zipfile (.diz)</string>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
+			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.byteproject.ascension.diz</string>
@@ -46,7 +46,7 @@
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
+			<string>SVAsciiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -58,139 +58,13 @@
 			<key>CFBundleTypeName</key>
 			<string>ASCII Artwork (.asc)</string>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
+			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.byteproject.ascension.asc</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>ans</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>AFileTypeANS</string>
-			<key>CFBundleTypeName</key>
-			<string>ANSi Artwork (.ans)</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.byteproject.ascension.ans</string>
-			</array>
-			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>idf</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>AFileTypeIDF</string>
-			<key>CFBundleTypeName</key>
-			<string>iCE Draw File (.idf)</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.byteproject.ascension.idf</string>
-			</array>
-			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>pcb</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>AFileTypePCB</string>
-			<key>CFBundleTypeName</key>
-			<string>PCBoard BBS File (.pcb)</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.byteproject.ascension.pcb</string>
-			</array>
-			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>xb</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>AFileTypeXB</string>
-			<key>CFBundleTypeName</key>
-			<string>eXtended Binary (.xb)</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.byteproject.ascension.xb</string>
-			</array>
-			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>adf</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>AFileTypeADF</string>
-			<key>CFBundleTypeName</key>
-			<string>ArtWorx Data File (.adf)</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.amiga.adf-archive</string>
-			</array>
-			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>bin</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>AFileTypeBIN</string>
-			<key>CFBundleTypeName</key>
-			<string>Binary ANSi Artwork (.bin)</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.apple.macbinary-archive</string>
-			</array>
-			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>tdf</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>AFileTypeTND</string>
-			<key>CFBundleTypeName</key>
-			<string>Tundra Draw File (.tnd)</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.byteproject.ascension.tnd</string>
-			</array>
-			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
+			<string>SVAsciiDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -200,7 +74,7 @@
 			<key>CFBundleTypeName</key>
 			<string>Plain Text (.txt)</string>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
+			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.plain-text</string>
@@ -208,7 +82,7 @@
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
-			<string>SVAnsiDocument</string>
+			<string>SVAsciiDocument</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
@@ -296,180 +170,6 @@ All rights reserved.</string>
 				<key>public.filename-extension</key>
 				<array>
 					<string>asc</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>ANSi Artwork (.ans)</string>
-			<key>UTTypeIconFile</key>
-			<string>AFileTypeANS</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.byteproject.ascension.ans</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>ans</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>iCE Draw File (.idf)</string>
-			<key>UTTypeIconFile</key>
-			<string>AFileTypeIDF</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.byteproject.ascension.idf</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>idf</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>PCBoard BBS File (.pcb)</string>
-			<key>UTTypeIconFile</key>
-			<string>AFileTypePCB</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.byteproject.ascension.pcb</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>pcb</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>eXtended Binary (.xb)</string>
-			<key>UTTypeIconFile</key>
-			<string>AFileTypeXB</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.byteproject.ascension.xb</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>xb</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>ArtWorx Data File (.adf)</string>
-			<key>UTTypeIconFile</key>
-			<string>AFileTypeADF</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.amiga.adf-archive</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>adf</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Binary ANSi Artwork (.bin)</string>
-			<key>UTTypeIconFile</key>
-			<string>AFileTypeBIN</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.apple.macbinary-archive</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>bin</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Tundra Draw File (.tnd)</string>
-			<key>UTTypeIconFile</key>
-			<string>AFileTypeTND</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.byteproject.ascension.tnd</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>tnd</string>
-				</array>
-			</dict>
-		</dict>
-	</array>
-	<key>UTImportedTypeDeclarations</key>
-	<array>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Binary ANSi Artwork (.bin)</string>
-			<key>UTTypeIconFile</key>
-			<string>AFileTypeBIN</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.apple.macbinary-archive</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>bin</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>ArtWorx Data File (.adf)</string>
-			<key>UTTypeIconFile</key>
-			<string>AFileTypeADF</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.amiga.adf-archive</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>adf</string>
 				</array>
 			</dict>
 		</dict>

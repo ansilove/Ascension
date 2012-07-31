@@ -86,7 +86,7 @@
 - (IBAction)openProjectWebsite:(id)sender
 {
     // This will open Ascension's website.
-    NSString *projectSite = (@"http://byteproject.net/ascension");
+    NSString *projectSite = (@"http://ascension.byteproject.net");
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:projectSite]];
 }
 
@@ -95,6 +95,13 @@
     // Opens my Twitter profile so you can follow me. Careful, may contain tweets.
     NSString *twitterProfile = (@"http://twitter.com/byteproject");
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:twitterProfile]];
+}
+
+- (IBAction)grabEscapes:(id)sender
+{
+    // Self-Promotion can't be a bad thing. Right? Right.
+    NSString *escapesLandingPage = (@"http://escapes.byteproject.net");
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:escapesLandingPage]];
 }
 
 - (IBAction)orderFrontLicenseSheet:(id)sender

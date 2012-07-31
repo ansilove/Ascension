@@ -1,5 +1,5 @@
 //
-//  SVAnsiDocument.m
+//  SVAsciiDocument.m
 //  Ascension
 //
 //  Copyright (c) 2010-2012, Stefan Vogt. All rights reserved.
@@ -9,19 +9,14 @@
 //  See the file LICENSE for details.
 //
 
-// add all available file aliasses e.g. .ice and .cia to .ans
-// also lookup how ACiD named it's files in art packs.
-
-#import "SVAnsiDocument.h"
+#import "SVAsciiDocument.h"
 #import "SVTextView.h"
 #import "SVRoardactedScroller.h"
 #import "SVPreferences.h"
 #import "SVFileInfoStrings.h"
 
 // helpers
-#define ansiEscapeSeq @"[0m"
 #define stdNSTextViewMargin 20
-#define ansiHelperMargin 8
 
 // ANSi / ASCII string encodings
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
@@ -39,20 +34,12 @@
 #define CodePage866 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSRussian)
 #define CodePage857 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSTurkish)
 
-// alternate string encodings
-#define UnicodeUTF8 NSUTF8StringEncoding
-#define UnicodeUTF16 NSUTF16StringEncoding
-#define MacOSRoman NSMacOSRomanStringEncoding
-#define WinLatin1 NSWindowsCP1252StringEncoding
+@implementation SVAsciiDocument
 
-@implementation SVAnsiDocument
-
-@synthesize ansiTextView, ansiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
+@synthesize asciiTextView, asciiScrollView, contentString, newContentHeight, newContentWidth, backgroundColor,  
             cursorColor, linkColor, linkAttributes, selectionColor, encodingButton, selectionAttributes, fontColor,
-            nfoDizEncoding, txtEncoding, exportEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow,
-            encButtonIndex, vScroller, hScroller, appToolbar, fileInfoPopover, rawAnsiString, ansiCacheFile, 
-            isRendered, isUsingAnsiLove, isAnsFile, isIdfFile, isPcbFile, isXbFile, isAdfFile, isBinFile, isTndFile,
-            renderedAnsiImage, shouldDisableSave, alFont, alBits, alIceColors, alColumns, fontName, fontSize;
+            nfoDizEncoding, newEncoding, iFilePath, iCreationDate, iModDate, iFileSize, mainWindow, encButtonIndex,
+            vScroller, hScroller, appToolbar, fileInfoPopover, fontName, fontSize;
 
 # pragma mark -
 # pragma mark initialization
@@ -70,43 +57,8 @@
 	   
        // Register as an observer for font and font color changes.
        [nc addObserver:self
-			  selector:@selector(performFontChange:)
-				  name:@"ASCIIFontChange"
-				object:nil];
-       
-	   [nc addObserver:self
-			  selector:@selector(performFontColorChange:) 
-				  name:@"FontColorChange"
-				object:nil];
-	   
-	   // Become an observer for background color changes.
-	   [nc addObserver:self
-			  selector:@selector(performBgrndColorChange:) 
-				  name:@"BgrndColorChange"
-				object:nil];
-	   
-	   // Start observating any cursor color changes.
-	   [nc addObserver:self
-			  selector:@selector(performCursorColorChange:)
-				  name:@"CursorColorChange"
-				object:nil];
-	   
-	   // Register as observer for link color changes.
-	   [nc addObserver:self
-			  selector:@selector(performLinkColorChange:)
-				  name:@"LinkColorChange"
-				object:nil];
-	   
-	   // Become observer of color changes for selected text.
-	   [nc addObserver:self
-			  selector:@selector(performSelectionColorChange:)
-				  name:@"SelectionColorChange"
-				object:nil];
-	   
-	   // Check if the user pastes content into SVTextView.
-	   [nc addObserver:self
-			  selector:@selector(handlePasteOperation:)
-				  name:@"PasteNote"
+			  selector:@selector(performColorSchemeChange:)
+				  name:@"ColorSchemeChange"
 				object:nil];
        
        // Check if the user enables or disables the OS X resume feature.
@@ -121,33 +73,10 @@
                   name:@"ScrollerStyleChange"
                 object:nil];
        
-       // Get notified once AnsiLove finished rendering of ANSi sources.
-       [nc addObserver:self 
-              selector:@selector(setRenderingFinishedState:)
-                  name:@"AnsiLoveFinishedRendering"
-                object:nil];
-       
-       // Know when the editor needs to be locked or unlocked.
-       [nc addObserver:self 
-              selector:@selector(lockEditorFeatures:)
-                  name:@"LockEditor"
-                object:nil];
-       
-       [nc addObserver:self 
-              selector:@selector(unlockEditorFeatures:)
-                  name:@"UnlockEditor"
-                object:nil];
-       
        // Get notified when the user toggles hyperlink attributes in prefs.
        [nc addObserver:self
               selector:@selector(toggleHyperLinkAttributes:)
                   name:@"HyperLinkAttributeChange"
-                object:nil];
-       
-       // Watch for AnsiLove related state changes.
-       [nc addObserver:self
-              selector:@selector(performAnsiLoveRenderChange:)
-                  name:@"AnsiLoveRenderChange"
                 object:nil];
        
        // Init the file information values.
@@ -165,7 +94,7 @@
 	
 	// Assign our attributed string.
 	if ([self string] != nil) {
-		[self.ansiTextView.textStorage setAttributedString:[self string]];
+		[self.asciiTextView.textStorage setAttributedString:[self string]];
 	}
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -173,20 +102,10 @@
 	// Apply the appearance attributes.
     [self prepareContent];
 	
-	// New documents get width / height from the values specified in preferences.
-	if (self.contentString.length < 1 && self.isUsingAnsiLove == NO)
-    {
-		self.newContentWidth = [defaults floatForKey:@"newContentWidth"];
-		self.newContentHeight = [defaults floatForKey:@"newContentWidth"];
-        
-        // Apply content hight and width for new documents.
-        [self.mainWindow setContentSize:NSMakeSize(self.newContentWidth, self.newContentHeight)];
-	}
-	else {
-        // The method name describes exactly what's happening here.
-        [self autoSizeDocumentWindow];
-    }
 	
+    // The method name describes exactly what's happening here.
+    [self autoSizeDocumentWindow];
+ 	
 	// Set position of the document window.
 	[NSApp activateIgnoringOtherApps:YES];
 	if ([defaults boolForKey:@"docsOpenCentered"] == YES) 
@@ -209,23 +128,13 @@
 
 - (NSString *)windowNibName
 {
-    return @"SVAnsiDocument";
+    return @"SVAsciiDocument";
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)notification 
 {
 	// Update the file information interface strings.
 	[self updateFileInfoValues];
-    
-    // Disable or enable the save menu item.
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	
-    if (self.shouldDisableSave == YES) {
-        [nc postNotificationName:@"DisableSave" object:self];
-    }
-    else {
-        [nc postNotificationName:@"EnableSave" object:self];
-    }
 }
 
 // Returns options for the fullscreen mode.
@@ -244,7 +153,7 @@
     }
    
     // Embedded look for the encoding button.
-    [[encodingButton cell] setBackgroundStyle:NSBackgroundStyleRaised];
+    [[self.encodingButton cell] setBackgroundStyle:NSBackgroundStyleRaised];
     
     // Set the style of our overlay Scrollers.
     if ([defaults integerForKey:@"scrollerStyle"] == 0) {
@@ -300,24 +209,10 @@
     }
 }
 
-- (void)windowWillClose:(NSNotification *)notification
-{
-    // In case this is an ANSi file, delete the cached PNG when the window closes.
-    if (self.isUsingAnsiLove == YES) {
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        if ([fileManager fileExistsAtPath:self.ansiCacheFile]) {
-            [fileManager removeItemAtPath:self.ansiCacheFile error:nil];
-        }
-    }
-    
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc postNotificationName:@"DisableSave" object:self];
-}
-
 - (void)autoSizeDocumentWindow
 {
     // We need the textstorage size for auto-sizing the document window.
-	NSSize myTextSize = self.ansiTextView.textStorage.size;
+	NSSize myTextSize = self.asciiTextView.textStorage.size;
     
     // Calculate the new content dimensions, consider the toolbar (if visible).
     CGFloat toolbarHeight = 0;
@@ -332,14 +227,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults boolForKey:@"autoSizeWidth"] == YES)
     {
-        // In case the content is an AnsiLove image, caluculate the width based on it...
-        if (self.isUsingAnsiLove == YES) {
-            self.newContentWidth = self.renderedAnsiImage.size.width + ansiHelperMargin;
-        }
-        else {
-            // ...if not, calculate width via the textstorage.
-            self.newContentWidth = myTextSize.width + stdNSTextViewMargin;
-        }
+        // Calculate width via the textstorage.
+        self.newContentWidth = myTextSize.width + stdNSTextViewMargin;
         
         // Prevent autosizing from programatically resizing smaller than the window's minSize.
         if (self.newContentWidth <= self.mainWindow.minSize.width) {
@@ -352,15 +241,9 @@
     // Determine if height auto-sizing is enabled.
     if ([defaults boolForKey:@"autoSizeHeight"] == YES)
     {
-        if (self.isUsingAnsiLove == YES) {
-            // Use the AnsiLove image to calculate height, provided we got one in our textView...
-            self.newContentHeight = self.renderedAnsiImage.size.height + [self titlebarHeight] + toolbarHeight;
-        }
-        else {
-            // ...and if not: use the textstorage again.
-            self.newContentHeight = myTextSize.height + [self titlebarHeight] + toolbarHeight;
-        }
-        
+        // Use the textstorage again to calculate a proper height value.
+        self.newContentHeight = myTextSize.height + [self titlebarHeight] + toolbarHeight;
+                
         // Again prevent auto-sizing from resizing under the minSize value.
         if (self.newContentHeight <= self.mainWindow.minSize.height) {
             self.newContentHeight = self.mainWindow.minSize.height;
@@ -381,125 +264,36 @@
     [self.fileInfoPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
 }
 
-- (IBAction)exportAsImage:(id)sender
-{
-    NSLog(@"export as image fired...!");
-}
-
-- (IBAction)showSauceRecord:(id)sender
-{
-    NSLog(@"show Sauce record fired...!");
-}
-
-- (IBAction)postOnTwitter:(id)sender
-{
-    NSLog(@"post on Twitter fired...!");
-}
-
 # pragma mark -
 # pragma mark content appearance
 
-- (void)disableEditing
-{
-    [self.ansiTextView setEditable:NO];
-    
-    // Only applies to ANSi files as they contain rendered images and no selectable text.
-    if (self.isUsingAnsiLove == YES) {
-        [self.ansiTextView setSelectable:NO];
-    }
-}
-
-- (void)enableEditing
-{
-    // Editing is not supported for types we rendered with AnsiLove.
-    if (self.isUsingAnsiLove == NO) {
-        [self.ansiTextView setEditable:YES];
-        [self.ansiTextView setSelectable:YES];
-    }
-}
-
-- (void)lockEditorFeatures:(NSNotification *)note
-{
-    [self disableEditing];
-    
-    // Inform app delegate to disable save menu item.
-    self.shouldDisableSave = YES;
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc postNotificationName:@"DisableSave" object:self];
-}
-
-- (void)unlockEditorFeatures:(NSNotification *)note
-{
-    [self enableEditing];
-    
-    if (self.isUsingAnsiLove == NO)
-    {
-        // Inform app delegate to enable save menu item.
-        self.shouldDisableSave = NO;
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc postNotificationName:@"EnableSave" object:self];
-    }
-    else {
-        self.shouldDisableSave = YES;
-    }
-}
-
 - (void)prepareContent
 {
-	// If this is no ANSi source file, prepare the textual content.
-    if (self.isUsingAnsiLove == NO) {
-        [self applyParagraphStyle];
-        [self performLinkification];
-    }
-    else {
-        // So this is an ANSi source file? We can't use themes and custom colors.
-        [self.ansiTextView setBackgroundColor:[NSColor blackColor]];
-        [self.ansiScrollView setBackgroundColor:[NSColor blackColor]];
-        
-        // Also disable editing anyway.
-        [self disableEditing];
-        
-        self.shouldDisableSave = YES;
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc postNotificationName:@"DisableSave" object:self];
-        
-        // Then, get the hell out.
-        return;
-    }
+	// Prepare the textual content.
+    [self applyParagraphStyle];
+    [self performLinkification];
+    
     // Let's mess around with ASCII themes.
-    [self applyThemeColors];
+    [self applySchemeColors];
 	
 	// Set the text color.
-	[self.ansiTextView setTextColor:self.fontColor];
+	[self.asciiTextView setTextColor:self.fontColor];
 	
 	// Apply background color.
-	[self.ansiTextView setBackgroundColor:self.backgroundColor];
-    [self.ansiScrollView setBackgroundColor:self.backgroundColor];
+	[self.asciiTextView setBackgroundColor:self.backgroundColor];
+    [self.asciiScrollView setBackgroundColor:self.backgroundColor];
 	
 	// Set the cursor color.
-	[self.ansiTextView setInsertionPointColor:self.cursorColor];
+	[self.asciiTextView setInsertionPointColor:self.cursorColor];
 	
 	// Specify the style for all contained links.
-	[self.ansiTextView setLinkTextAttributes:self.linkAttributes];
+	[self.asciiTextView setLinkTextAttributes:self.linkAttributes];
 	
 	// Set the color for selected and marked text.
-	[self.ansiTextView setSelectedTextAttributes:self.selectionAttributes];
-    
-    // Definition of user defaults.
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    // Now find out if viewer mode is enabled?
-    if ([defaults boolForKey:@"viewerMode"] == YES) {
-        [self disableEditing];
-        
-        // Inform app delegate to disable save menu item.
-        self.shouldDisableSave = YES;
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc postNotificationName:@"DisableSave" object:self];
-    }
+	[self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
 }
 
-- (void)applyThemeColors
+- (void)applySchemeColors
 {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
@@ -538,21 +332,21 @@
     
 	// Set the font.
 	asciiFont = [NSFont fontWithName:self.fontName size:self.fontSize];
-	
+    
 	// Set line height identical to font size.
 	customParagraph = [[NSMutableParagraphStyle alloc] init];
 	[customParagraph setLineSpacing:0];
 	[customParagraph setMinimumLineHeight:self.fontSize];
 	[customParagraph setMaximumLineHeight:self.fontSize];
-	
+    
 	// Set our custom paragraph as default paragraph style.
-	[self.ansiTextView setDefaultParagraphStyle:customParagraph];
+	[self.asciiTextView setDefaultParagraphStyle:customParagraph];
 	
 	// Apply our atttributes.
 	attributes = [NSDictionary dictionaryWithObjectsAndKeys:asciiFont,
 				  NSFontAttributeName, customParagraph, NSParagraphStyleAttributeName, nil];
-	 [self.ansiTextView.textStorage setAttributes:attributes 
-											  range:NSMakeRange(0, self.ansiTextView.textStorage.length)];
+	 [self.asciiTextView.textStorage setAttributes:attributes 
+											  range:NSMakeRange(0, self.asciiTextView.textStorage.length)];
 }
 
 - (void)performLinkification
@@ -562,22 +356,15 @@
     if ([defaults boolForKey:@"highlightAsciiHyperLinks"] == NO)
     {
         // ...prevent NSTextView from automatically detecting hyperlinks
-        [self.ansiTextView setAutomaticLinkDetectionEnabled:NO];
+        [self.asciiTextView setAutomaticLinkDetectionEnabled:NO];
         
         // ... and peform an early return.
         return;
     }
-    
-    // Save insertion point / cursor position.
-    NSInteger insertionPoint = [[self.ansiTextView.selectedRanges objectAtIndex:0] rangeValue].location;
-    
 	// Analyze the text storage and return a linkified string.
 	AHHyperlinkScanner *scanner = 
-	[AHHyperlinkScanner hyperlinkScannerWithAttributedString:self.ansiTextView.textStorage];
-	[self.ansiTextView.textStorage setAttributedString:[scanner linkifiedString]];
-    
-    // Reapply the cursor position we stored before.
-    self.ansiTextView.selectedRange = NSMakeRange(insertionPoint, 0);
+	[AHHyperlinkScanner hyperlinkScannerWithAttributedString:self.asciiTextView.textStorage];
+	[self.asciiTextView.textStorage setAttributedString:[scanner linkifiedString]];
 }
 
 - (void)toggleHyperLinkAttributes:(NSNotification *)note
@@ -587,24 +374,18 @@
     if ([defaults boolForKey:@"highlightAsciiHyperLinks"] == NO)
     {
         // Create range based on the textStorage length.
-        NSRange area = NSMakeRange(0, self.ansiTextView.textStorage.length);
+        NSRange area = NSMakeRange(0, self.asciiTextView.textStorage.length);
         
         // Now remove already highlighted hyperlinks.
-        [self.ansiTextView.textStorage removeAttribute:NSLinkAttributeName range:area];
+        [self.asciiTextView.textStorage removeAttribute:NSLinkAttributeName range:area];
         
         // Finally, we don't want NSTextView to automatically detect hyperlinks.
-        [self.ansiTextView setAutomaticLinkDetectionEnabled:NO];
+        [self.asciiTextView setAutomaticLinkDetectionEnabled:NO];
     }
     else {
-        [self.ansiTextView setAutomaticLinkDetectionEnabled:YES];
+        [self.asciiTextView setAutomaticLinkDetectionEnabled:YES];
         [self performLinkification];
     }
-}
-
-- (void)handlePasteOperation:(NSNotification *)note
-{
-	// Linkify hyperlinks in the pasted content, only happens if highlighting links is enabled.
-	[self performSelector:@selector(performLinkification) withObject:nil afterDelay:0.5];
 }
 
 - (CGFloat)titlebarHeight
@@ -627,56 +408,18 @@
     return screenRect;
 }
 
-- (void)performFontChange:(NSNotification *)note
+- (void)performColorSchemeChange:(NSNotification *)note
 {
-    if (self.isUsingAnsiLove == NO) {
-        [self prepareContent];
-        [self autoSizeDocumentWindow];
-    }
+    [self applySchemeColors];
+    [self.asciiTextView setTextColor:self.fontColor];
+    [self.asciiTextView setBackgroundColor:self.backgroundColor];
+    [self.asciiScrollView setBackgroundColor:self.backgroundColor];
+    [self.asciiTextView setInsertionPointColor:self.cursorColor];
+    [self.asciiTextView setLinkTextAttributes:self.linkAttributes];
+    [self.asciiTextView setSelectedTextAttributes:self.selectionAttributes];
 }
 
-- (void)performFontColorChange:(NSNotification *)note
-{
-    if (self.isUsingAnsiLove == NO) {
-        NSColor *fontColorValue = [[note userInfo] objectForKey:@"fontColorValue"];
-        [self.ansiTextView setTextColor:fontColorValue];
-    }
-}
-
-- (void)performBgrndColorChange:(NSNotification *)note
-{
-    if (self.isUsingAnsiLove == NO) {
-         NSColor *bgrndColorValue = [[note userInfo] objectForKey:@"bgrndColorValue"];
-         [self.ansiTextView setBackgroundColor:bgrndColorValue];
-         [self.ansiScrollView setBackgroundColor:bgrndColorValue];
-     }
-}
-
-- (void)performCursorColorChange:(NSNotification *)note
-{
-    if (self.isUsingAnsiLove == NO) {
-        NSColor *cursorColorValue = [[note userInfo] objectForKey:@"cursorColorValue"];
-        [self.ansiTextView setInsertionPointColor:cursorColorValue];
-    }
-}
-
-- (void)performLinkColorChange:(NSNotification *)note
-{
-    if (self.isUsingAnsiLove == NO) {
-        self.linkColor = [[note userInfo] objectForKey:@"linkColorValue"];
-        [self.ansiTextView setLinkTextAttributes:self.linkAttributes];
-    }
-}
-
-- (void)performSelectionColorChange:(NSNotification *)note
-{
-    if (self.isUsingAnsiLove == NO) {
-        self.selectionColor = [[note userInfo] objectForKey:@"selectionColorValue"];
-        [self.ansiTextView setSelectedTextAttributes:self.selectionAttributes];
-    }
-}
-
-- (NSDictionary *)linkAttributes 
+- (NSDictionary *)linkAttributes
 {
 	// The attributes for embedded hyperlinks.
 	return [NSDictionary dictionaryWithObjectsAndKeys:
@@ -713,61 +456,11 @@
 
 - (void)textDidChange:(NSNotification *)notification
 {
-    [self setString:self.ansiTextView.textStorage];
+    [self setString:self.asciiTextView.textStorage];
 }
 
 # pragma mark -
 # pragma mark data and encoding
-
-- (NSFileWrapper *)fileWrapperOfType:(NSString *)pTypeName 
-							   error:(NSError **)pOutError 
-{	
-	// Launch the output file wrapper based on the document UTI.
-	if ([pTypeName compare:@"com.byteproject.ascension.diz"] == NSOrderedSame) 
-    {
-		return [self ansiArtFileWrapperWithError:pOutError];
-	}
-	else if ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame) 
-    {
-		return [self ansiArtFileWrapperWithError:pOutError];
-	}
-    else if ([pTypeName compare:@"com.byteproject.ascension.asc"] == NSOrderedSame) 
-    {
-		return [self ansiArtFileWrapperWithError:pOutError];
-	}
-    else if ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame) 
-    {
-        return [self ansiArtFileWrapperWithError:pOutError];
-    }
-    else if ([pTypeName compare:@"com.byteproject.ascension.idf"] == NSOrderedSame) 
-    {
-        return [self ansiArtFileWrapperWithError:pOutError];
-    }
-    else if ([pTypeName compare:@"com.byteproject.ascension.pcb"] == NSOrderedSame) 
-    {
-        return [self ansiArtFileWrapperWithError:pOutError];
-    }
-    else if ([pTypeName compare:@"com.byteproject.ascension.xb"] == NSOrderedSame) 
-    {
-        return [self ansiArtFileWrapperWithError:pOutError];
-    }
-    else if ([pTypeName compare:@"com.amiga.adf-archive"] == NSOrderedSame) 
-    {
-        return [self ansiArtFileWrapperWithError:pOutError];
-    }
-    else if ([pTypeName compare:@"com.apple.macbinary-archive"] == NSOrderedSame) 
-    {
-        return [self ansiArtFileWrapperWithError:pOutError];
-    }
-    else if ([pTypeName compare:@"com.byteproject.ascension.tnd"] == NSOrderedSame) 
-    {
-        return [self ansiArtFileWrapperWithError:pOutError];
-    }
-    else {
-        return [self textFileWrapperWithError:pOutError]; 
-    }
-	return nil;
-}
 
 - (BOOL)readFromFileWrapper:(NSFileWrapper *)pFileWrapper 
 					 ofType:(NSString *)pTypeName 
@@ -780,94 +473,14 @@
 	}
 	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.nfo"] == NSOrderedSame)) 
     {
-        // We need to check if the file really is a .NFO or maybe a masked .ANS file with .NFO extension.
-        // I had to learn it's not uncommon, so this is the only way for accurate rendering results.
-        NSData *cp437Data = [pFileWrapper regularFileContents];
-        
-        // Now look up the proper encoding and init the data as NSString.
-        [self switchASCIIEncoding];
-        NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
-        
-        // Search for any ANSi escape sequences in our string.
-        if ([cp437String rangeOfString:ansiEscapeSeq].location != NSNotFound)
-        {
-            // Obiously this string contains ANSi escape sequences, we need to use the .ANS file wrapper.
-            self.isUsingAnsiLove = YES;
-            self.isAnsFile = YES;
-            return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
-        }
-        else {
-            // Everything is fine, what we got here is a .NFO file.
-            return [self asciiArtReadFileWrapper:pFileWrapper error:pOutError];
-        }
+        return [self asciiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
 	else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.asc"] == NSOrderedSame)) 
     {
-		// Let's check if the file really is an .ASC or maybe a masked .ANS file with .ASC extension.
-        NSData *cp437Data = [pFileWrapper regularFileContents];
-        
-        // Now look up the proper encoding and init the data as NSString.
-        [self switchASCIIEncoding];
-        NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
-        
-        // Search for any ANSi escape sequences in our string.
-        if ([cp437String rangeOfString:ansiEscapeSeq].location != NSNotFound)
-        {
-            // Obiously this string contains ANSi escape sequences, we need to use the .ANS file wrapper.
-            self.isUsingAnsiLove = YES;
-            self.isAnsFile = YES;
-            return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
-        }
-        else {
-            // Everything is fine, what we got here is a .ASC file.
-            return [self asciiArtReadFileWrapper:pFileWrapper error:pOutError];
-        }
-	}
-    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.ans"] == NSOrderedSame)) 
-    {
-        self.isUsingAnsiLove = YES;
-        self.isAnsFile = YES;
-		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
-	}
-    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.idf"] == NSOrderedSame)) 
-    {
-        self.isUsingAnsiLove = YES;
-        self.isIdfFile = YES;
-		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
-	}
-    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.pcb"] == NSOrderedSame))
-    {
-        self.isUsingAnsiLove = YES;
-        self.isPcbFile = YES;
-		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
-	}
-    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.xb"] == NSOrderedSame)) 
-    {
-        self.isUsingAnsiLove = YES;
-        self.isXbFile = YES;
-		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
-	}
-    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.amiga.adf-archive"] == NSOrderedSame)) 
-    {
-        self.isUsingAnsiLove = YES;
-        self.isAdfFile = YES;
-		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
-	}
-    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.apple.macbinary-archive"] == NSOrderedSame)) 
-    {
-        self.isUsingAnsiLove = YES;
-        self.isBinFile = YES;
-		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
-	}
-    else if ([pFileWrapper isRegularFile] && ([pTypeName compare:@"com.byteproject.ascension.tnd"] == NSOrderedSame)) 
-    {
-        self.isUsingAnsiLove = YES;
-        self.isTndFile = YES;
-		return [self ansiArtReadFileWrapper:pFileWrapper error:pOutError];
-	}
-	// In all other cases open the document using the text file wrapper.
+		return [self asciiArtReadFileWrapper:pFileWrapper error:pOutError];
+    }
 	else {
-		return [self textReadFileWrapper:pFileWrapper error:pOutError];
+		return [self asciiArtReadFileWrapper:pFileWrapper error:pOutError];
 	}
 	return NO;
 }
@@ -881,239 +494,231 @@
 	{
 		return NO;
 	}
-	
-	// Check and apply the NFO / DIZ encoding.
-	[self switchASCIIEncoding];
+    // Check what encoding should be applied.
+    [self switchASCIIEncoding];
 	
 	NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
 	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:cp437String];
 	[self setString:importString];
 	
 	//If the UI is already loaded, this must be a 'revert to saved' operation.
-	if (self.ansiTextView) 
+	if (self.asciiTextView) 
 	{
 		// Apply the loaded data to the text storage and restyle contents.
-		[self.ansiTextView.textStorage setAttributedString:[self string]];
+		[self.asciiTextView.textStorage setAttributedString:[self string]];
 		[self prepareContent];
 	}
 	return YES;
-}
-
-- (BOOL)ansiArtReadFileWrapper:(NSFileWrapper *)pFileWrapper 
-                     error:(NSError **)pOutError 
-{	
-	// File wrapper for reading documents containing ANSi escape sequences.
-	NSData *cp437Data = [pFileWrapper regularFileContents];
-	if(!cp437Data) 
-	{
-		return NO;
-	}
-    
-	// Check and apply the NFO / DIZ encoding.
-	[self switchASCIIEncoding];
-	
-    // Read the raw ANSi string.
-	NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
-    
-    // This will store the raw ANSi string for save operations and other stuff.
-	self.rawAnsiString = [[NSMutableAttributedString alloc] initWithString:cp437String];
-    
-    // Fire our code to render ANSi.
-    [self renderANSiArtwork];
-    
-	return YES;
-}
-
-- (BOOL)textReadFileWrapper:(NSFileWrapper *)pFileWrapper 
-					 error:(NSError **)pOutError
-{
-	// File wrapper for reading all text-based documents except NFO and DIZ.
-	NSData *textData = [pFileWrapper regularFileContents];
-	if(!textData) 
-	{
-		return NO;
-	}
-	
-	// Check and apply the text encoding.
-	[self switchTextEncoding];
-	
-    // Init data with the specified encoding. 
-	NSString *textString = [[NSString alloc]initWithData:textData encoding:self.txtEncoding];
-	
-    // Bugfix, don't ask why. It's working now.
-    if (!textString) {
-        self.txtEncoding = WinLatin1;
-        NSString *failString = [[NSString alloc]initWithData:textData encoding:self.txtEncoding];
-        self.encButtonIndex = xWinLatin1;
-        textString = failString;
-    }
-    
-    // Apply what we imported to our content string. 
-    NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:textString];
-	[self setString:importString];
-	
-	//If the UI is already loaded, this must be a 'revert to saved' operation.
-	if (self.ansiTextView) 
-	{
-		// Apply the loaded data to the text storage and restyle contents.
-		[self.ansiTextView.textStorage setAttributedString:[self string]];
-		[self prepareContent];
-	}
-	return YES;
-}
-
-- (NSFileWrapper *)ansiArtFileWrapperWithError:(NSError **)pOutError 
-{
-    // This is a unified file wrapper for all kinds of supported ANSi art types.
-    // We figure out what to do with our 'isUsingAnsiLove' variable.
-    
-    if (self.isUsingAnsiLove == YES) 
-    {
-        // File wrapper for writing .ANS, .IDF, .PCB, .XB, .ADF, .BIN and .TND.
-        NSData *ansData = 
-        [self.rawAnsiString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
-        
-        if (!ansData) {
-            return NULL;
-        }
-        // Enable undo after save operations.
-        [self.ansiTextView breakUndoCoalescing];
-        
-        NSFileWrapper *ansFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:ansData];
-        if (!ansFileWrapperObj) {
-            return NULL;
-        }
-        return ansFileWrapperObj;
-    }
-    else {
-        // File wrapper for writing .NFO, .DIZ and .ASC.
-        NSData *ascData = 
-        [self.contentString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
-        
-        if (!ascData) {
-            return NULL;
-        }
-        // Enable undo after save operations.
-        [self.ansiTextView breakUndoCoalescing];
-        
-        NSFileWrapper *ascFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:ascData];
-        if (!ascFileWrapperObj) {
-            return NULL;
-        }
-        return ascFileWrapperObj;
-    }
-}
-
-- (NSFileWrapper *)textFileWrapperWithError:(NSError **)pOutError 
-{
-	// File wrapper for writing all text-based documents except NFO and DIZ.
-	NSData *txtData = 
-	[self.contentString.string dataUsingEncoding:self.exportEncoding allowLossyConversion:YES];
-	
-	if (!txtData) {
-		return NULL;
-	}
-	// Enable undo after save operations.
-	[self.ansiTextView breakUndoCoalescing];
-	
-	NSFileWrapper *txtFileWrapperObj = [[NSFileWrapper alloc] initRegularFileWithContents:txtData];
-	if (!txtFileWrapperObj) {
-		return NULL;
-	}
-	return txtFileWrapperObj;	
 }
 
 - (void)switchASCIIEncoding
 {
 	// Read and apply the ASCII encoding from user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	switch ([defaults integerForKey:@"nfoDizEncoding"]) 
+    switch ([defaults integerForKey:@"nfoDizEncoding"])
 	{
 		case eDosCP437: {
+            // Latin US
 			self.nfoDizEncoding = CodePage437;
 			self.encButtonIndex = xDosCP437;
 			break;
 		}
+        case eDosCP775: {
+            // Baltic Rim
+            self.nfoDizEncoding = CodePage775;
+            self.encButtonIndex = xDosCP775;
+            break;
+        }
+        case eDosCP855: {
+            // Cyrillic (Slavic)
+            self.nfoDizEncoding = CodePage855;
+            self.encButtonIndex = xDosCP855;
+            break;
+        }
+        case eDosCP863: {
+            // French-Canadian
+            self.nfoDizEncoding = CodePage863;
+            self.encButtonIndex = xDosCP863;
+            break;
+        }
+        case eDosCP737: {
+            // Greek
+            self.nfoDizEncoding = CodePage737;
+            self.encButtonIndex = xDosCP737;
+            break;
+        }
+        case eDosCP869: {
+            // Greek 2
+            self.nfoDizEncoding = CodePage869;
+            self.encButtonIndex = xDosCP869;
+            break;
+        }
+        case eDosCP862: {
+            // Hebrew
+            self.nfoDizEncoding = CodePage862;
+            self.encButtonIndex = xDosCP862;
+            break;
+        }
+        case eDosCP861: {
+            // Icelandic
+            self.nfoDizEncoding = CodePage861;
+            self.encButtonIndex = xDosCP861;
+            break;
+        }
+        case eDosCP850: {
+            // Latin 1
+            self.nfoDizEncoding = CodePage850;
+            self.encButtonIndex = xDosCP850;
+            break;
+        }
+        case eDosCP852: {
+            // Latin 2
+            self.nfoDizEncoding = CodePage852;
+            self.encButtonIndex = xDosCP852;
+            break;
+        }
+        case eDosCP865: {
+            // Nordic
+            self.nfoDizEncoding = CodePage865;
+            self.encButtonIndex = xDosCP865;
+            break;
+        }
+        case eDosCP860: {
+            // Portuguese
+            self.nfoDizEncoding = CodePage860;
+            self.encButtonIndex = xDosCP860;
+            break;
+        }
 		case eDosCP866: {
+            // Cyrillic (Russian)
 			self.nfoDizEncoding = CodePage866;
 			self.encButtonIndex = xDosCP866;
 			break;
 		}
+        case eDosCP857: {
+            // Turkish
+            self.nfoDizEncoding = CodePage857;
+            self.encButtonIndex = xDosCP857;
+            break;
+        }
+        case eAmiga: {
+            // Amiga (Latin 1, Western)
+            self.nfoDizEncoding = CodePage850;
+            self.encButtonIndex = xAmiga;
+            break;
+        }
 		default: {
 			break;
 		}
 	}
-	// Set the export encoding to the current NFO / DIZ encoding.
-	self.exportEncoding = self.nfoDizEncoding;
 }
 
-- (void)switchTextEncoding
+- (IBAction)switchCurrentEncoding:(id)sender
 {
-	// Read and apply the TXT encoding from user defaults.
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	switch ([defaults integerForKey:@"txtEncoding"]) 
-	{
-		case eUniUTF8: {
-			self.txtEncoding = UnicodeUTF8;
-			self.encButtonIndex = xUniUTF8;
-			break;
-		}
-		case eUniUTF16: {
-			self.txtEncoding = UnicodeUTF16;
-			self.encButtonIndex = xUniUTF16;
-			break;
-		}
-		case eMacRoman: {
-			self.txtEncoding = MacOSRoman;
-			self.encButtonIndex = xMacRoman;
-			break;
-		}
-		case eWinLatin: {
-			self.txtEncoding = WinLatin1;
-			self.encButtonIndex = xWinLatin1;
-			break;
-		}
-		default: {
-			break;
-		}
-	}
-	// Set the export encoding to the current TXT encoding.
-	self.exportEncoding = self.txtEncoding;
-}
-
-- (IBAction)switchExportEncoding:(id)sender
-{
-	// Define the export encoding based on the encoding button index.
-	switch (self.encButtonIndex) 
+	// Switch the current encoding based on the encoding button index.
+	switch (self.encButtonIndex)
 	{
 		case xDosCP437: {
-			self.exportEncoding = CodePage437;
+            // Latin US
+			self.newEncoding = CodePage437;
+			break;
+		}
+        case xDosCP775: {
+            // Baltic Rim
+			self.newEncoding = CodePage775;
+			break;
+		}
+        case xDosCP855: {
+            // Cyrillic (Slavic)
+			self.newEncoding = CodePage855;
+			break;
+		}
+        case xDosCP863: {
+            // French-Canadian
+			self.newEncoding = CodePage863;
+			break;
+		}
+        case xDosCP737: {
+            // Greek
+			self.newEncoding = CodePage737;
+			break;
+		}
+        case xDosCP869: {
+            // Greek 2
+			self.newEncoding = CodePage869;
+			break;
+		}
+        case xDosCP862: {
+            // Hebrew
+			self.newEncoding = CodePage862;
+			break;
+		}
+        case xDosCP861: {
+            // Icelandic
+			self.newEncoding = CodePage861;
+			break;
+		}
+        case xDosCP850: {
+            // Latin 1
+			self.newEncoding = CodePage850;
+			break;
+		}
+        case xDosCP852: {
+            // Latin 2
+			self.newEncoding = CodePage852;
+			break;
+		}
+        case xDosCP865: {
+            // Nordic
+			self.newEncoding = CodePage865;
+			break;
+		}
+        case xDosCP860: {
+            // Portuguese
+			self.newEncoding = CodePage860;
 			break;
 		}
 		case xDosCP866: {
-			self.exportEncoding = CodePage866;
+            // Cyrillic (Russian)
+			self.newEncoding = CodePage866;
 			break;
 		}
-		case xUniUTF8: {
-			self.exportEncoding = UnicodeUTF8;
+        case xDosCP857: {
+            // Turkish
+			self.newEncoding = CodePage857;
 			break;
 		}
-		case xUniUTF16: {
-			self.exportEncoding = UnicodeUTF16;
+        case xAmiga: {
+            // Amiga (Latin 1, Western)
+			self.newEncoding = CodePage850;
 			break;
-		}
-		case xMacRoman: {
-			self.exportEncoding = MacOSRoman;
-			break;
-		}
-		case xWinLatin1: {
-			self.exportEncoding = WinLatin1;
-			break;
-		}
+        }
 		default: {
 			break;
 		}
 	}
+    
+    // Convert current string to NSData, generate newly encoded string and apply.
+    NSData *convertData = [self.contentString.string dataUsingEncoding:self.nfoDizEncoding];
+    NSString *cp437String = [[NSString alloc]initWithData:convertData encoding:self.newEncoding];
+	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:cp437String];
+    [self setString:importString];
+    [self.asciiTextView.textStorage setAttributedString:[self string]];
+    [self prepareContent];
+    
+    // Now set the new encoding as current encoding.
+    self.nfoDizEncoding = self.newEncoding;
+}
+
+
+- (IBAction)applyCurrentEncoding:(id)sender
+{
+    NSData *convertData = [self.contentString.string dataUsingEncoding:self.nfoDizEncoding];
+    
+    NSString *cp437String = [[NSString alloc]initWithData:convertData encoding:self.nfoDizEncoding];
+	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:cp437String];
+	[self setString:importString];
+
 }
 
 # pragma mark -
@@ -1185,221 +790,6 @@
 	[nc postNotificationName:@"ModDateNote"
 					  object:self 
 					userInfo:mDateDict];
-}
-
-# pragma mark -
-# pragma mark AnsiLove.framework specific
-
-- (void)renderANSiArtwork
-{
-    // Get the current file URL and convert it to an UNIX path.
-    NSURL *currentURL = [self fileURL];
-    NSString *selfURLString = [currentURL path];
-    
-    // Get the currrent file name without any path informations.
-    NSString *pureFileName = [selfURLString lastPathComponent];
-    
-    // Generate output file name and path.
-    self.ansiCacheFile = [NSString stringWithFormat:
-                          @"~/Library/Application Support/Ascension/%@.png", pureFileName];
-    
-    // Expand tilde in output path.
-    self.ansiCacheFile = [self.ansiCacheFile stringByExpandingTildeInPath];
-    
-    // What AnsiLove flags should be used to render the current artwork?
-    [self setAnsiLoveFont];
-    [self setAnsiLoveBits];
-    [self setAnsiLoveIceColors];
-    [self setAnsiLoveColumns];
-    
-    // Call AnsiLove and generate the rendered PNG image.
-    [ALAnsiGenerator createPNGFromAnsiSource:selfURLString
-                                  outputFile:self.ansiCacheFile
-                                        font:self.alFont
-                                        bits:self.alBits
-                                   iceColors:self.alIceColors
-                                     columns:self.alColumns];
-    
-    // Wait for AnsiLove.framework to finish rendering.
-    while (self.isRendered == NO) {
-        [NSThread sleepForTimeInterval:0.1];
-    }
-    
-    // Grab the rendered image and init an NSImage instance for it.
-    self.renderedAnsiImage = [[NSImage alloc] initWithContentsOfFile:self.ansiCacheFile];
-    
-    // To display our ANSi .png create an NSTextAttachment and corresponding cell.
-    NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:self.renderedAnsiImage];
-    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-    [attachment setAttachmentCell:attachmentCell];
-    
-    // Now generate an attributed String with our .png attachment.
-    NSAttributedString *imageString = [[NSAttributedString alloc] init];
-    imageString = [NSAttributedString attributedStringWithAttachment:attachment];
-    
-    
-    // The content string of ansiTextView is mutable, so we need a mutable copy.
-    NSMutableAttributedString *mutableImageString = [imageString mutableCopy];
-    
-    // Finally set the mutable string with our .png attachement as content string.
-    [self setString:mutableImageString];
-}
-
-- (void)setRenderingFinishedState:(NSNotification *)note
-{
-    self.isRendered = YES;
-}
-
-- (void)performAnsiLoveRenderChange:(NSNotification *)note
-{
-    if (self.isUsingAnsiLove == YES)
-    {
-        // Reset isRendered bool value.
-        self.isRendered = NO;
-        
-        // Re-render the ANSi artwork with updated AnsiLove flags.
-        [self renderANSiArtwork];
-        
-        // Apply the updated string to our NSTextView instance.
-        [self.ansiTextView.textStorage setAttributedString:[self string]];
-        
-        // Optimize the document window again, content sizes probably changed.
-        [self autoSizeDocumentWindow];
-    }
-}
-
-- (void)setAnsiLoveFont
-{
-	// Get the font value to pass to AnsiLove.framework.
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	switch ([defaults integerForKey:@"ansiLoveFont"])
-	{
-		case alTerminus: {
-			self.alFont = @"terminus";
-			break;
-		}
-        case al80x25: {
-			self.alFont = @"80x25";
-			break;
-		}
-        case al80x50: {
-			self.alFont = @"80x50";
-			break;
-		}
-        case alBaltic: {
-			self.alFont = @"baltic";
-			break;
-		}
-        case alCyrillicSlavic: {
-			self.alFont = @"cyrillic";
-			break;
-		}
-        case alFrenchCanadian: {
-			self.alFont = @"french-canadian";
-			break;
-		}
-        case alGreek: {
-			self.alFont = @"greek";
-			break;
-		}
-        case alGreek869: {
-			self.alFont = @"greek-869";
-			break;
-		}
-        case alHebrew: {
-			self.alFont = @"hebrew";
-			break;
-		}
-        case alIcelandic: {
-			self.alFont = @"icelandic";
-			break;
-		}
-        case alLatin1: {
-			self.alFont = @"latin1";
-			break;
-		}
-        case alLatin2: {
-			self.alFont = @"latin2";
-			break;
-		}
-        case alNordic: {
-			self.alFont = @"nordic";
-			break;
-		}
-        case alPortuguese: {
-			self.alFont = @"portuguese";
-			break;
-		}
-        case alCyrillicRussian: {
-			self.alFont = @"russian";
-			break;
-		}
-        case alTurkish: {
-			self.alFont = @"turkish";
-			break;
-		}
-        case alTopaz: {
-			self.alFont = @"topaz";
-			break;
-		}
-        case alTopazPlus: {
-			self.alFont = @"topaz+";
-			break;
-		}
-        case alTopaz500: {
-			self.alFont = @"topaz500";
-			break;
-		}
-        case alTopaz500Plus: {
-			self.alFont = @"topaz500+";
-			break;
-		}
-        case alMoSoul: {
-			self.alFont = @"mosoul";
-			break;
-		}
-        case alPotNoodle: {
-			self.alFont = @"pot-noodle";
-			break;
-		}
-        case alMicroKnight: {
-			self.alFont = @"microknight";
-			break;
-		}
-        case alMicroKnightPlus: {
-			self.alFont = @"microknight+";
-			break;
-		}
-		default: {
-			break;
-		}
-	}
-}
-
-- (void)setAnsiLoveBits
-{
-    // Set the bits value to pass to AnsiLove.
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.alBits = [defaults stringForKey:@"ansiLoveBits"];
-}
-
-- (void)setAnsiLoveIceColors
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    if ([defaults boolForKey:@"ansiLoveIceColors"] == YES) {
-        self.alIceColors = @"1";
-    }
-    else {
-        self.alIceColors = @"0";
-    }
-}
-
-- (void)setAnsiLoveColumns
-{
-    // Set the bits value to pass to AnsiLove.
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.alColumns = [defaults stringForKey:@"ansiLoveColumns"];
 }
 
 @end

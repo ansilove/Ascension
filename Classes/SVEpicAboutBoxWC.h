@@ -36,5 +36,6 @@ typedef enum {
 - (IBAction)followOnTwitter:(id)sender;
 - (IBAction)orderFrontLicenseSheet:(id)sender;
 - (IBAction)orderOutLicenseSheet:(id)sender;
+- (IBAction)grabEscapes:(id)sender;
 
 @end
