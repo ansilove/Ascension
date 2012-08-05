@@ -611,7 +611,7 @@
 											<string key="NSFrameSize">{469, 312}</string>
 											<reference key="NSSuperview" ref="982396008"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="592476839"/>
+											<reference key="NSNextKeyView" ref="331716961"/>
 											<string key="NSReuseIdentifierKey">_NS:1480</string>
 											<object class="NSTextContainer" key="NSTextContainer" id="645390888">
 												<object class="NSLayoutManager" key="NSLayoutManager">
@@ -741,7 +741,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string key="NSFrame">{{0, 43}, {471, 312}}</string>
 							<reference key="NSSuperview" ref="220470509"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="331716961"/>
+							<reference key="NSNextKeyView" ref="982396008"/>
 							<string key="NSReuseIdentifierKey">_NS:940</string>
 							<int key="NSsFlags">133648</int>
 							<reference key="NSVScroller" ref="592476839"/>
@@ -1408,6 +1408,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<string key="superclassName">NSWindowController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="followOnTwitter:">id</string>
+						<string key="grabEscapes:">id</string>
 						<string key="openDevelopersBlog:">id</string>
 						<string key="openProjectWebsite:">id</string>
 						<string key="orderFrontLicenseSheet:">id</string>
@@ -1417,6 +1418,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="followOnTwitter:">
 							<string key="name">followOnTwitter:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="grabEscapes:">
+							<string key="name">grabEscapes:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="openDevelopersBlog:">
