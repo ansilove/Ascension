@@ -13,7 +13,6 @@
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		F80458F712C69447004CF340 /* SVTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F80458F612C69447004CF340 /* SVTextView.m */; };
 		F80F27791297504600209618 /* SVFileInfoStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F27781297504600209618 /* SVFileInfoStrings.m */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
 		F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */; };
@@ -80,8 +79,6 @@
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D15AC360486D014006FF6A4 /* Ascension-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Ascension-Info.plist"; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Ascension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ascension.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F80458F512C69447004CF340 /* SVTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVTextView.h; path = Classes/SVTextView.h; sourceTree = "<group>"; };
-		F80458F612C69447004CF340 /* SVTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVTextView.m; path = Classes/SVTextView.m; sourceTree = "<group>"; };
 		F80F27771297504600209618 /* SVFileInfoStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVFileInfoStrings.h; path = Classes/SVFileInfoStrings.h; sourceTree = "<group>"; };
 		F80F27781297504600209618 /* SVFileInfoStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVFileInfoStrings.m; path = Classes/SVFileInfoStrings.m; sourceTree = "<group>"; };
 		F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRoardactedScroller.h; path = Classes/SVRoardactedScroller.h; sourceTree = "<group>"; };
@@ -180,8 +177,6 @@
 				F8835764120F24ED00D18794 /* SVAsciiDocument.m */,
 				F80F27771297504600209618 /* SVFileInfoStrings.h */,
 				F80F27781297504600209618 /* SVFileInfoStrings.m */,
-				F80458F512C69447004CF340 /* SVTextView.h */,
-				F80458F612C69447004CF340 /* SVTextView.m */,
 				F83A4C78134A8C0C00FAC872 /* SVRoardactedScroller.h */,
 				F83A4C79134A8C0C00FAC872 /* SVRoardactedScroller.m */,
 				F883576B120F250000D18794 /* SVPreferencesWC.h */,
@@ -360,7 +355,6 @@
 				F883576A120F24ED00D18794 /* SVAscensionDelegate.m in Sources */,
 				F8F14433129068C600D89311 /* SVPreferences.m in Sources */,
 				F80F27791297504600209618 /* SVFileInfoStrings.m in Sources */,
-				F80458F712C69447004CF340 /* SVTextView.m in Sources */,
 				F83A4C7A134A8C0C00FAC872 /* SVRoardactedScroller.m in Sources */,
 				F8726137145CBF0200821B70 /* SVEpicAboutBoxWC.m in Sources */,
 				F872613B145CBF2F00821B70 /* SVEpicAboutBox.m in Sources */,
@@ -492,7 +486,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 94;
+				CURRENT_PROJECT_VERSION = 95;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = unsupported;
@@ -515,7 +509,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Stefan Vogt";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 94;
+				CURRENT_PROJECT_VERSION = 95;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = unsupported;
