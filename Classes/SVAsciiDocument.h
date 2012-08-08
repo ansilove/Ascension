@@ -94,7 +94,7 @@ typedef enum {
 // outlets
 @property (nonatomic, strong) IBOutlet NSWindow             *mainWindow;
 @property (nonatomic, strong) IBOutlet NSPopover            *fileInfoPopover;
-@property (nonatomic, strong) IBOutlet SVTextView           *asciiTextView;
+@property (nonatomic, strong) IBOutlet NSTextView           *asciiTextView;
 @property (nonatomic, strong) IBOutlet NSScrollView         *asciiScrollView;
 @property (nonatomic, strong) IBOutlet NSToolbar            *appToolbar;
 @property (nonatomic, strong) IBOutlet NSPopUpButton        *encodingButton;
