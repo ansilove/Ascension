@@ -10,13 +10,13 @@
 //
 
 #import "SVAsciiDocument.h"
-#import "SVTextView.h"
 #import "SVRoardactedScroller.h"
 #import "SVPreferences.h"
 #import "SVFileInfoStrings.h"
 
 // helpers
 #define stdNSTextViewMargin 20
+#define wtfBugFixForTextStorageSize 79
 
 // ANSi / ASCII string encodings
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
@@ -101,7 +101,6 @@
 	
 	// Apply the appearance attributes.
     [self prepareContent];
-	
 	
     // The method name describes exactly what's happening here.
     [self autoSizeDocumentWindow];
@@ -228,7 +227,7 @@
     if ([defaults boolForKey:@"autoSizeWidth"] == YES)
     {
         // Calculate width via the textstorage.
-        self.newContentWidth = myTextSize.width + stdNSTextViewMargin;
+        self.newContentWidth = myTextSize.width + stdNSTextViewMargin - wtfBugFixForTextStorageSize;
         
         // Prevent autosizing from programatically resizing smaller than the window's minSize.
         if (self.newContentWidth <= self.mainWindow.minSize.width) {
@@ -500,14 +499,7 @@
 	NSString *cp437String = [[NSString alloc]initWithData:cp437Data encoding:self.nfoDizEncoding];
 	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:cp437String];
 	[self setString:importString];
-	
-	//If the UI is already loaded, this must be a 'revert to saved' operation.
-	if (self.asciiTextView) 
-	{
-		// Apply the loaded data to the text storage and restyle contents.
-		[self.asciiTextView.textStorage setAttributedString:[self string]];
-		[self prepareContent];
-	}
+    
 	return YES;
 }
 
@@ -708,17 +700,6 @@
     
     // Now set the new encoding as current encoding.
     self.nfoDizEncoding = self.newEncoding;
-}
-
-
-- (IBAction)applyCurrentEncoding:(id)sender
-{
-    NSData *convertData = [self.contentString.string dataUsingEncoding:self.nfoDizEncoding];
-    
-    NSString *cp437String = [[NSString alloc]initWithData:convertData encoding:self.nfoDizEncoding];
-	NSMutableAttributedString *importString = [[NSMutableAttributedString alloc] initWithString:cp437String];
-	[self setString:importString];
-
 }
 
 # pragma mark -
