@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1080</int>
-		<string key="IBDocument.SystemVersion">12A269</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
-		<string key="IBDocument.AppKitVersion">1187</string>
-		<string key="IBDocument.HIToolboxVersion">624.00</string>
+		<int key="IBDocument.SystemTarget">1070</int>
+		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2843</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2549</string>
+			<string key="NS.object.0">2843</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSButton</string>
@@ -124,6 +124,7 @@
 							<string key="NSFrame">{{378, 10}, {140, 25}}</string>
 							<reference key="NSSuperview" ref="858081398"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:687</string>
 							<int key="NSTag">1</int>
 							<bool key="NSEnabled">YES</bool>
@@ -295,7 +296,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="607093177">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">205651968</int>
-								<string key="NSContents">Frederic Cambus, Brian Cassidy, Mads Frantzen, Jan Galler, Patrick Chamelo, Curtis Wensley, Jason Scott, Doug Moore, the artscene.</string>
+								<string key="NSContents">Frederic Cambus, Brian Cassidy, Mads Frantzen, Jan Galler, Patrick Chamelo, Curtis Wensley, Jason Scott, Doug Moore, Wim Haanstra, the artscene.</string>
 								<reference key="NSSupport" ref="26"/>
 								<string key="NSCellIdentifier">_NS:360</string>
 								<reference key="NSControlView" ref="151820962"/>
@@ -337,7 +338,7 @@
 					<reference key="NSNextKeyView" ref="53450857"/>
 					<string key="NSReuseIdentifierKey">_NS:224</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1050}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -364,6 +365,7 @@
 									<string key="NSFrame">{{103, 3}, {30, 17}}</string>
 									<reference key="NSSuperview" ref="668368479"/>
 									<reference key="NSWindow"/>
+									<reference key="NSNextKeyView"/>
 									<string key="NSReuseIdentifierKey">_NS:204</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="540643303">
@@ -399,7 +401,7 @@
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="668368479"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1050}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -425,6 +427,7 @@
 						<string key="NSFrame">{{8, 8}, {111, 17}}</string>
 						<reference key="NSSuperview" ref="571992544"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:204</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="365486964">
@@ -578,6 +581,7 @@
 							<string key="NSFrame">{{402, 7}, {61, 25}}</string>
 							<reference key="NSSuperview" ref="220470509"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:687</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="530390465">
@@ -611,7 +615,7 @@
 											<string key="NSFrameSize">{469, 312}</string>
 											<reference key="NSSuperview" ref="982396008"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="331716961"/>
+											<reference key="NSNextKeyView" ref="592476839"/>
 											<string key="NSReuseIdentifierKey">_NS:1480</string>
 											<object class="NSTextContainer" key="NSTextContainer" id="645390888">
 												<object class="NSLayoutManager" key="NSLayoutManager">
@@ -741,7 +745,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string key="NSFrame">{{0, 43}, {471, 312}}</string>
 							<reference key="NSSuperview" ref="220470509"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="982396008"/>
+							<reference key="NSNextKeyView" ref="331716961"/>
 							<string key="NSReuseIdentifierKey">_NS:940</string>
 							<int key="NSsFlags">133648</int>
 							<reference key="NSVScroller" ref="592476839"/>
@@ -758,7 +762,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<reference key="NSNextKeyView" ref="644699513"/>
 					<string key="NSReuseIdentifierKey">_NS:207</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1050}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">NO</bool>
 			</object>
@@ -1486,6 +1490,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
+			<real value="1070" key="NS.object.0"/>
+		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
 			<real value="4400" key="NS.object.0"/>
