@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">12A269</string>
+		<string key="IBDocument.SystemVersion">12B19</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
 		<string key="IBDocument.AppKitVersion">1187</string>
 		<string key="IBDocument.HIToolboxVersion">624.00</string>
@@ -443,7 +443,6 @@
 											<string key="NSFrameSize">{650, 629}</string>
 											<reference key="NSSuperview" ref="918874659"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
 											<object class="NSTextContainer" key="NSTextContainer" id="644506264">
 												<object class="NSLayoutManager" key="NSLayoutManager">
 													<object class="NSTextStorage" key="NSTextStorage">
@@ -463,7 +462,7 @@
 												<int key="NSTCFlags">1</int>
 											</object>
 											<object class="NSTextViewSharedData" key="NSSharedData">
-												<int key="NSFlags">1141133057</int>
+												<int key="NSFlags">1074023681</int>
 												<int key="NSTextCheckingTypes">0</int>
 												<nil key="NSMarkedAttributes"/>
 												<object class="NSColor" key="NSBackgroundColor" id="680971456">
@@ -1239,14 +1238,6 @@ wGw</bytes>
 						<reference key="destination" ref="925785244"/>
 					</object>
 					<int key="connectionID">100753</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">encodingButtonCell</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="336880588"/>
-					</object>
-					<int key="connectionID">100765</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
