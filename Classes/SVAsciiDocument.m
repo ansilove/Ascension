@@ -16,7 +16,6 @@
 
 // helpers
 #define stdNSTextViewMargin 20
-#define wtfBugFixForTextStorageSize 79
 
 // ANSi / ASCII string encodings
 #define CodePage437 CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSLatinUS)
@@ -226,8 +225,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults boolForKey:@"autoSizeWidth"] == YES)
     {
-        // Calculate width via the textstorage.
-        self.newContentWidth = myTextSize.width + stdNSTextViewMargin - wtfBugFixForTextStorageSize;
+        // Calculate new content width.
+        self.newContentWidth = myTextSize.width + stdNSTextViewMargin;
         
         // Prevent autosizing from programatically resizing smaller than the window's minSize.
         if (self.newContentWidth <= self.mainWindow.minSize.width) {
@@ -331,6 +330,22 @@
     
 	// Set the font.
 	asciiFont = [NSFont fontWithName:self.fontName size:self.fontSize];
+    
+    // Define pitch value.
+    CGFloat pitchValue = 8.0;
+    
+    // Create dictionary with fixed width font attribute.
+    NSDictionary *pitchDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithFloat:pitchValue], NSFontFixedAdvanceAttribute, nil];
+    
+    // Grab font descriptor from current font.
+    NSFontDescriptor *desc = [asciiFont fontDescriptor];
+    
+    // Add fixed pitch attributes to font descriptor.
+    desc = [desc fontDescriptorByAddingAttributes:pitchDict];
+    
+    // Apply fixed pitch changes to current font.
+    asciiFont = [NSFont fontWithDescriptor:desc size:[asciiFont pointSize]];
     
 	// Set line height identical to font size.
 	customParagraph = [[NSMutableParagraphStyle alloc] init];
