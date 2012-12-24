@@ -1,6 +1,6 @@
 # Ascension
 
-Ascension is a NFO / DIZ / ASC viewer for OS X, focused on being a lightweight tool with an essential feature set. It comes with full Retina support, including a Retina optimized interface and even renders ASCII art in high DPI.
+Ascension is a NFO DIZ ASC viewer for OS X, focused on being a lightweight tool with an essential feature set. It comes with full Retina support, including a Retina optimized interface and even renders ASCII art in high DPI.
 
 You want it all? Check out our flagship app [ESCAPES](http://escapes.byteproject.net), where a considerably improved variant of Ascension is built-in. While Ascension is purism, [ESCAPES](http://escapes.byteproject.net) is the candy.
 
