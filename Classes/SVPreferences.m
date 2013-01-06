@@ -166,7 +166,7 @@
     {
         case sDOS:
         {
-            // DOS color scheme
+            // DOS colors. The traditional scheme.
             NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:170/255.l green:170/255.l blue:170/255.l alpha:1.0]];
             [defaults setObject:fontColorData forKey:@"fontColor"];
             
@@ -184,7 +184,7 @@
 			break;
 		}
         case sBlackAndWhite: {
-            // Black and White color scheme
+            // Black and White. Pretty easy.
             NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]];
             [defaults setObject:fontColorData forKey:@"fontColor"];
             
@@ -201,7 +201,152 @@
             [defaults setObject:selectionColorData forKey:@"selectionColor"];
 			break;
 		}
+        case sBloodstream: {
+            // The most evil red you can imagine.
+            NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:245/255.l green:30/255.l blue:30/255.l alpha:1.0]];
+            [defaults setObject:fontColorData forKey:@"fontColor"];
+            
+            NSData *backgroundColorData =[NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
+            [defaults setObject:backgroundColorData forKey:@"backgroundColor"];
+            
+            NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:245/255.l green:30/255.l blue:30/255.l alpha:1.0]];
+            [defaults setObject:linkColorData forKey:@"linkColor"];
+            
+            NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:245/255.l green:30/255.l blue:30/255.l alpha:1.0]];
+            [defaults setObject:cursorColorData forKey:@"cursorColor"];
+            
+            NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:245/255.l green:30/255.l blue:30/255.l alpha:0.2]];
+            [defaults setObject:selectionColorData forKey:@"selectionColor"];
+			break;
+        }
+        case sOcean: {
+            // Dive into the ocean.
+            NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0/255.l green:160/255.l blue:255/255.l alpha:1.0]];
+            [defaults setObject:fontColorData forKey:@"fontColor"];
+            
+            NSData *backgroundColorData =[NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
+            [defaults setObject:backgroundColorData forKey:@"backgroundColor"];
+            
+            NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0/255.l green:160/255.l blue:255/255.l alpha:1.0]];
+            [defaults setObject:linkColorData forKey:@"linkColor"];
+            
+            NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0/255.l green:160/255.l blue:255/255.l alpha:1.0]];
+            [defaults setObject:cursorColorData forKey:@"cursorColor"];
+            
+            NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0/255.l green:160/255.l blue:255/255.l alpha:0.2]];
+            [defaults setObject:selectionColorData forKey:@"selectionColor"];
+			break;
+        }
+        case sPoison: {
+            // The poison well.
+            NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:45/255.l green:255/255.l blue:58/255.l alpha:1.0]];
+            [defaults setObject:fontColorData forKey:@"fontColor"];
+            
+            NSData *backgroundColorData =[NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
+            [defaults setObject:backgroundColorData forKey:@"backgroundColor"];
+            
+            NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:45/255.l green:255/255.l blue:58/255.l alpha:1.0]];
+            [defaults setObject:linkColorData forKey:@"linkColor"];
+            
+            NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:45/255.l green:255/255.l blue:58/255.l alpha:1.0]];
+            [defaults setObject:cursorColorData forKey:@"cursorColor"];
+            
+            NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:45/255.l green:255/255.l blue:58/255.l alpha:0.2]];
+            [defaults setObject:selectionColorData forKey:@"selectionColor"];
+			break;
+        }
+        case sSunshine: {
+            // Golden, just like the sun.
+            NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:255/255.l green:198/255.l blue:0/255.l alpha:1.0]];
+            [defaults setObject:fontColorData forKey:@"fontColor"];
+            
+            NSData *backgroundColorData =[NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
+            [defaults setObject:backgroundColorData forKey:@"backgroundColor"];
+            
+            NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:255/255.l green:198/255.l blue:0/255.l alpha:1.0]];
+            [defaults setObject:linkColorData forKey:@"linkColor"];
+            
+            NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:255/255.l green:198/255.l blue:0/255.l alpha:1.0]];
+            [defaults setObject:cursorColorData forKey:@"cursorColor"];
+            
+            NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:255/255.l green:198/255.l blue:0/255.l alpha:0.2]];
+            [defaults setObject:selectionColorData forKey:@"selectionColor"];
+			break;
+        }
+        case sBlackElder: {
+            // This is lilac.
+            NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:184/255.l green:121/255.l blue:255/255.l alpha:1.0]];
+            [defaults setObject:fontColorData forKey:@"fontColor"];
+            
+            NSData *backgroundColorData =[NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
+            [defaults setObject:backgroundColorData forKey:@"backgroundColor"];
+            
+            NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:184/255.l green:121/255.l blue:255/255.l alpha:1.0]];
+            [defaults setObject:linkColorData forKey:@"linkColor"];
+            
+            NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:184/255.l green:121/255.l blue:255/255.l alpha:1.0]];
+            [defaults setObject:cursorColorData forKey:@"cursorColor"];
+            
+            NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:184/255.l green:121/255.l blue:255/255.l alpha:0.2]];
+            [defaults setObject:selectionColorData forKey:@"selectionColor"];
+			break;
+        }
+        case sMint: {
+            // May hurt the eyes.
+            NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0/255.l green:255/255.l blue:198/255.l alpha:1.0]];
+            [defaults setObject:fontColorData forKey:@"fontColor"];
+            
+            NSData *backgroundColorData =[NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
+            [defaults setObject:backgroundColorData forKey:@"backgroundColor"];
+            
+            NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0/255.l green:255/255.l blue:198/255.l alpha:1.0]];
+            [defaults setObject:linkColorData forKey:@"linkColor"];
+            
+            NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0/255.l green:255/255.l blue:198/255.l alpha:1.0]];
+            [defaults setObject:cursorColorData forKey:@"cursorColor"];
+            
+            NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0/255.l green:255/255.l blue:198/255.l alpha:0.2]];
+            [defaults setObject:selectionColorData forKey:@"selectionColor"];
+			break;
+        }
+        case sCappuccino: {
+            // Earthly-brown, like your coffee.
+            NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:180/255.l green:140/255.l blue:111/255.l alpha:1.0]];
+            [defaults setObject:fontColorData forKey:@"fontColor"];
+            
+            NSData *backgroundColorData =[NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
+            [defaults setObject:backgroundColorData forKey:@"backgroundColor"];
+            
+            NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:180/255.l green:140/255.l blue:111/255.l alpha:1.0]];
+            [defaults setObject:linkColorData forKey:@"linkColor"];
+            
+            NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:180/255.l green:140/255.l blue:111/255.l alpha:1.0]];
+            [defaults setObject:cursorColorData forKey:@"cursorColor"];
+            
+            NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:180/255.l green:140/255.l blue:111/255.l alpha:0.2]];
+            [defaults setObject:selectionColorData forKey:@"selectionColor"];
+			break;
+        }
+        case sGirlschool: {
+            // For the ladies out there.
+            NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:244/255.l green:15/255.l blue:185/255.l alpha:1.0]];
+            [defaults setObject:fontColorData forKey:@"fontColor"];
+            
+            NSData *backgroundColorData =[NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
+            [defaults setObject:backgroundColorData forKey:@"backgroundColor"];
+            
+            NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:244/255.l green:15/255.l blue:185/255.l  alpha:1.0]];
+            [defaults setObject:linkColorData forKey:@"linkColor"];
+            
+            NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:244/255.l green:15/255.l blue:185/255.l  alpha:1.0]];
+            [defaults setObject:cursorColorData forKey:@"cursorColor"];
+            
+            NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:244/255.l green:15/255.l blue:185/255.l alpha:0.2]];
+            [defaults setObject:selectionColorData forKey:@"selectionColor"];
+			break;
+        }
         case sReversed: {
+            // Inverted colors: white background, black font. Not the way to display ASCII art.
             NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
             [defaults setObject:fontColorData forKey:@"fontColor"];
             
