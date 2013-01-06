@@ -14,6 +14,14 @@
 typedef enum {
 	sDOS,
     sBlackAndWhite,
+    sBloodstream,
+    sOcean,
+    sPoison,
+    sSunshine,
+    sBlackElder,
+    sMint,
+    sCappuccino,
+    sGirlschool,
     sReversed
 } ColorSchemes;
 
