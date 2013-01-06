@@ -2,7 +2,7 @@
 //  SVRoardactedScroller.h
 //  Ascension
 //
-//  Copyright (c) 2010-2012, Stefan Vogt. All rights reserved.
+//  Copyright (c) 2010-2013, Stefan Vogt. All rights reserved.
 //  http://byteproject.net
 //
 //  Use of this source code is governed by a MIT-style license.
