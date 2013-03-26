@@ -1,13 +1,13 @@
-# Ascension
+# Ascension (public 2.x branch)
 
-Ascension is a NFO DIZ ASC viewer for OS X, focused on being a lightweight tool with an essential feature set. It comes with full Retina support, including a Retina optimized interface and even renders ASCII art in high DPI.
+This repository is a legacy, containing the very last public source code of my app Ascension. Note that branch 2.x won't be further developed. Since version 3.x, Ascension is not open source anymore.
 
 You want it all? Check out our flagship app [ESCAPES](http://escapes.byteproject.net), where a considerably improved variant of Ascension is built-in. While Ascension is purism, [ESCAPES](http://escapes.byteproject.net) is the candy.
 
-## Download
+## Get the latest version
 
-Visit the [Mac App Store](http://itunes.apple.com/app/ascension/id410426085?mt=12) to download the latest version. You may also follow this link to see a current screenshot.
+Fortunately Ascension remains actively developed. You can visit the [Mac App Store](http://itunes.apple.com/app/ascension/id410426085?mt=12) to get the latest version. You might also be interested in my flagship app [Escapes]((http://escapes.byteproject.net), where a considerably improved variant of Ascension is built-in.
 
 ## License
 
-Ascension is released under a MIT-style license. See the file `LICENSE` for details.
+Ascension 2.x is released under a MIT-style license. See the file `LICENSE` for details.
