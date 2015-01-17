@@ -3,6 +3,10 @@
 # Mac OS X Finder
 .DS_Store
 
+# Xcode
+xcuserdata/
+project.xcworkspace/
+
 # Xcode per user config
 *.mode1
 *.mode1v3
@@ -11,9 +15,8 @@
 *.perspectivev3
 *.pbxuser
 
-# Xcode 4
-xcuserdata/
-project.xcworkspace/
+# AppCode
+.idea/
 
 # Generated files
 VersionX-revision.h
