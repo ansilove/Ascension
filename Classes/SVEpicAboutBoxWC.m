@@ -2,7 +2,7 @@
 //  SVEpicAboutBoxWC.m
 //  Ascension
 //
-//  Copyright (C) 2011-2015 Stefan Vogt.
+//  Copyright (C) 2010-2015 Stefan Vogt.
 //  All rights reserved.
 //
 //  This source code is licensed under the BSD 3-Clause License.
@@ -78,7 +78,7 @@
 
 - (IBAction)openDeveloperSite:(id)sender
 {
-    // Opens my virtual vCard. Eat it!
+    // Opens my blog. Enjoy (or not).
     NSString *devSite = (@"http://byteproject.net");
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:devSite]];
 }
@@ -86,7 +86,7 @@
 - (IBAction)openProjectWebsite:(id)sender
 {
     // This will open the Ascension website.
-    NSString *projectSite = (@"http://escapes.byteproject.net");
+    NSString *projectSite = (@"http://ascension.byteproject.net");
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:projectSite]];
 }
 
