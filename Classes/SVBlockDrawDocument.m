@@ -2040,6 +2040,36 @@
     // Grab the rendered image and init an NSImage instance for it.
     self.renderedAnsiImage = [[NSImage alloc] initWithHiResContentsOfFile:self.ansiCacheFile];
     
+    // Since libgd2 output files are 96 DPI, we need to deal with resolutions.
+    // We use a BitmapImageRep for managing / adjusting pixel values.
+    CGImageRef ansiImageRef = [self.renderedAnsiImage CGImageForProposedRect:nil context:nil hints:nil];
+    NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithCGImage:ansiImageRef];
+    
+    // Get the point and pixel sizes.
+    NSSize pointsSize = rep.size;
+    NSSize pixelSize = NSMakeSize(rep.pixelsWide, rep.pixelsHigh);
+    NSSize updatedPointsSize = pointsSize;
+    
+    // Check wether the screen is regular or Retina resolution.
+    if ([[NSScreen mainScreen]backingScaleFactor] == 2.0f)
+    {
+        NSLog(@"144 DPI");
+        self.dotsPerInch = 144.0f;
+    }
+    else {
+        NSLog(@"72 DPI");
+        self.dotsPerInch = 72.0f;
+    }
+    
+    // Update point size based on the user DPI.
+    updatedPointsSize.width = ceilf((72.0f * pixelSize.width)/self.dotsPerInch);
+    updatedPointsSize.height = ceilf((72.0f * pixelSize.height)/self.dotsPerInch);
+    
+    // Set the correct aspect ratio and add representation to our NSImage instance.
+    [rep setSize:updatedPointsSize];
+    self.renderedAnsiImage.size = rep.size;
+    [self.renderedAnsiImage addRepresentation:rep];
+    
     // To display our ANSi .png create an NSTextAttachment and corresponding cell.
     NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:self.renderedAnsiImage];
     NSTextAttachment *attachment = [NSTextAttachment new];
