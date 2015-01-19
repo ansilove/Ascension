@@ -19,19 +19,28 @@
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="1" userLabel="AboutBox">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="163" y="199" width="530" height="325"/>
+            <rect key="contentRect" x="163" y="199" width="700" height="475"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" id="2">
-                <rect key="frame" x="0.0" y="0.0" width="530" height="325"/>
+                <rect key="frame" x="0.0" y="1" width="700" height="475"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView id="3">
-                        <rect key="frame" x="0.0" y="45" width="530" height="280"/>
+                        <rect key="frame" x="-20" y="45" width="740" height="430"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="custom_about" id="4"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="aboutclaner" id="4"/>
                     </imageView>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="J2f-M8-ASk">
+                        <rect key="frame" x="67" y="133" width="155" height="34"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="right" title="Handcrafted by Stefan Vogt for the AnsiLove Collective" id="fXh-KP-7DX">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <button verticalHuggingPriority="750" id="7">
-                        <rect key="frame" x="230" y="10" width="140" height="25"/>
+                        <rect key="frame" x="399" y="9" width="140" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="squareTextured" title="Acknowledgements" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -42,7 +51,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" tag="1" id="13">
-                        <rect key="frame" x="378" y="10" width="140" height="25"/>
+                        <rect key="frame" x="548" y="9" width="140" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="squareTextured" title="License Agreement" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="14">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -52,21 +61,12 @@
                             <action selector="orderFrontLicenseSheet:" target="-2" id="167"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" id="19">
-                        <rect key="frame" x="19" y="280" width="97" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ascension" id="20">
-                            <font key="font" metaFont="systemBold" size="15"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField verticalHuggingPriority="750" id="21">
-                        <rect key="frame" x="19" y="267" width="204" height="14"/>
+                        <rect key="frame" x="69" y="195" width="153" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 0.0.0 (0)" id="22">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Version 0.0.0 (0)" id="22">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
@@ -82,51 +82,14 @@
                             </binding>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="38">
-                        <rect key="frame" x="19" y="235" width="156" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Development and Concept:" id="39">
-                            <font key="font" metaFont="smallSystemBold"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" id="40">
-                        <rect key="frame" x="19" y="219" width="70" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Stefan Vogt" id="41">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" id="136">
-                        <rect key="frame" x="19" y="187" width="92" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Special Thanks:" id="139">
-                            <font key="font" metaFont="smallSystemBold"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="142">
-                        <rect key="frame" x="19" y="101" width="209" height="84"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="justified" id="143">
-                            <font key="font" metaFont="smallSystem"/>
-                            <string key="title">Frederic Cambus, Brian Cassidy, Mads Frantzen, Jan Galler, Patrick Chamelo, Curtis Wensley, Jason Scott, Doug Moore, Wim Haanstra, the artscene.</string>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="144">
-                        <rect key="frame" x="19" y="67" width="217" height="22"/>
+                        <rect key="frame" x="30" y="44" width="192" height="61"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="145">
+                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="right" id="145">
                             <font key="font" metaFont="miniSystem"/>
-                            <string key="title">Copyright © 0000-0000 Stefan Vogt.
+                            <string key="title">Copyright (C) 0000-0000 Stefan Vogt.
 All rights reserved.</string>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
@@ -137,11 +100,21 @@ All rights reserved.</string>
                             </binding>
                         </connections>
                     </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="N8v-gO-hyq">
+                        <rect key="frame" x="102" y="219" width="140" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ascension III" id="xsH-un-UaZ">
+                            <font key="font" metaFont="system" size="20"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="149"/>
             </connections>
+            <point key="canvasLocation" x="533" y="242.5"/>
         </window>
         <window title="GetInTouch" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="54" userLabel="GetInTouch">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
@@ -184,22 +157,11 @@ All rights reserved.</string>
             </connections>
         </popover>
         <customView id="111">
-            <rect key="frame" x="0.0" y="0.0" width="126" height="81"/>
+            <rect key="frame" x="0.0" y="0.0" width="143" height="81"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" id="116">
-                    <rect key="frame" x="8" y="55" width="111" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="inline" title="Developer vCard" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="117">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="openDeveloperSite:" target="-2" id="187"/>
-                    </connections>
-                </button>
                 <button verticalHuggingPriority="750" id="118">
-                    <rect key="frame" x="8" y="31" width="111" height="17"/>
+                    <rect key="frame" x="8" y="31" width="127" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="inline" title="Ascension Website" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="119">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -210,7 +172,7 @@ All rights reserved.</string>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" id="120">
-                    <rect key="frame" x="8" y="7" width="111" height="17"/>
+                    <rect key="frame" x="8" y="7" width="127" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="inline" title="Follow on Twitter" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="121">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -220,7 +182,19 @@ All rights reserved.</string>
                         <action selector="followOnTwitter:" target="-2" id="152"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" id="116">
+                    <rect key="frame" x="8" y="55" width="127" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="inline" title="Developer Blog" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="117">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="openDeveloperSite:" target="-2" id="187"/>
+                    </connections>
+                </button>
             </subviews>
+            <point key="canvasLocation" x="477.5" y="-125.5"/>
         </customView>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="153" userLabel="License Panel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
@@ -282,9 +256,10 @@ Gw
                 </subviews>
             </view>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="yHM-d2-eRr"/>
     </objects>
     <resources>
-        <image name="custom_about" width="530" height="280"/>
+        <image name="aboutclaner" width="700" height="430"/>
         <image name="sheet_background" width="473" height="50"/>
     </resources>
 </document>
