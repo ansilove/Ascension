@@ -114,7 +114,7 @@ All rights reserved.</string>
             <connections>
                 <outlet property="delegate" destination="-2" id="149"/>
             </connections>
-            <point key="canvasLocation" x="533" y="242.5"/>
+            <point key="canvasLocation" x="805" y="-616.5"/>
         </window>
         <window title="GetInTouch" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="54" userLabel="GetInTouch">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
@@ -130,7 +130,7 @@ All rights reserved.</string>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <button verticalHuggingPriority="750" id="103">
-                                <rect key="frame" x="103" y="3" width="30" height="17"/>
+                                <rect key="frame" x="111" y="3" width="22" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="inline" title="@" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="104">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -157,13 +157,13 @@ All rights reserved.</string>
             </connections>
         </popover>
         <customView id="111">
-            <rect key="frame" x="0.0" y="0.0" width="143" height="81"/>
+            <rect key="frame" x="0.0" y="1" width="143" height="102"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" id="118">
-                    <rect key="frame" x="8" y="31" width="127" height="17"/>
+                    <rect key="frame" x="8" y="38" width="127" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="inline" title="Ascension Website" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="119">
+                    <buttonCell key="cell" type="squareTextured" title="Ascension Website" bezelStyle="texturedSquare" alignment="center" borderStyle="border" inset="2" id="119">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -172,9 +172,9 @@ All rights reserved.</string>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" id="120">
-                    <rect key="frame" x="8" y="7" width="127" height="17"/>
+                    <rect key="frame" x="8" y="8" width="127" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="inline" title="Follow on Twitter" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="121">
+                    <buttonCell key="cell" type="squareTextured" title="Follow on Twitter" bezelStyle="texturedSquare" alignment="center" borderStyle="border" inset="2" id="121">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -182,10 +182,15 @@ All rights reserved.</string>
                         <action selector="followOnTwitter:" target="-2" id="152"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" id="116">
-                    <rect key="frame" x="8" y="55" width="127" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ARv-qB-JQp">
+                    <rect key="frame" x="18" y="35" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="inline" title="Developer Blog" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="117">
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Eyk-VD-b7r"/>
+                </imageView>
+                <button verticalHuggingPriority="750" id="116">
+                    <rect key="frame" x="8" y="68" width="127" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="squareTextured" title="Developer Blog" bezelStyle="texturedSquare" alignment="center" borderStyle="border" inset="2" id="117">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -194,52 +199,43 @@ All rights reserved.</string>
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="477.5" y="-125.5"/>
+            <point key="canvasLocation" x="477.5" y="-115"/>
         </customView>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="153" userLabel="License Panel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="167" y="110" width="471" height="355"/>
+            <rect key="contentRect" x="167" y="110" width="627" height="402"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
-            <view key="contentView" id="154">
-                <rect key="frame" x="0.0" y="0.0" width="471" height="355"/>
+            <view key="contentView" wantsLayer="YES" id="154">
+                <rect key="frame" x="0.0" y="-5" width="627" height="402"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView id="183">
-                        <rect key="frame" x="1" y="0.0" width="471" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="sheet_background" id="184"/>
-                    </imageView>
-                    <button verticalHuggingPriority="750" id="164">
-                        <rect key="frame" x="402" y="7" width="61" height="25"/>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dUx-Wl-fig">
+                        <rect key="frame" x="247" y="-1" width="399" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="squareTextured" title="Close" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="165">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="orderOutLicenseSheet:" target="-2" id="166"/>
-                        </connections>
-                    </button>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sheet_background" id="NWf-6Z-hZQ"/>
+                    </imageView>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="INc-m6-hxa">
+                        <rect key="frame" x="0.0" y="0.0" width="399" height="43"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sheet_background" id="MII-OA-zQV"/>
+                    </imageView>
                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="155" customClass="RFOverlayScrollView">
-                        <rect key="frame" x="0.0" y="43" width="471" height="312"/>
+                        <rect key="frame" x="0.0" y="36" width="627" height="366"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" id="Mxf-E6-ZYw">
                             <rect key="frame" x="0.0" y="0.0" width="471" height="312"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" id="156">
-                                    <rect key="frame" x="0.0" y="0.0" width="469" height="312"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="469" height="417"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="471" height="312"/>
-                                    <size key="maxSize" width="521" height="10000000"/>
+                                    <size key="minSize" width="627" height="366"/>
+                                    <size key="maxSize" width="627" height="10000000"/>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="471" height="312"/>
-                                    <size key="maxSize" width="521" height="10000000"/>
+                                    <size key="minSize" width="627" height="366"/>
+                                    <size key="maxSize" width="627" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -253,8 +249,23 @@ Gw
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button verticalHuggingPriority="750" id="164">
+                        <rect key="frame" x="574" y="9" width="44" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="inline" title="Close" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="165">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystemBold"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="orderOutLicenseSheet:" target="-2" id="166"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="819.5" y="-458"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="yHM-d2-eRr"/>
     </objects>
