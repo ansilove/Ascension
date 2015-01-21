@@ -40,6 +40,9 @@ typedef enum {
 // strings
 @property (nonatomic, strong) NSString *pathForThemeLibraryFile;
 @property (nonatomic, strong) NSString *fontInfoLabel;
+@property (nonatomic, strong) NSString *fontFile;
+@property (nonatomic, strong) NSString *destinationPath;
+
 
 // class methods
 + (void)checkUserDefaults;
@@ -59,6 +62,7 @@ typedef enum {
 - (IBAction)changeHyperLinkAttributes:(id)sender;
 - (IBAction)createCustomTheme:(id)sender;
 - (IBAction)copyExistingTheme:(id)sender;
+- (IBAction)installBlockZoneFont:(id)sender;
 
 // features
 - (void)changeToggleSliderState:(NSNotification *)note;
