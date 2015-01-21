@@ -19,5 +19,7 @@
 @property (nonatomic, strong) NSString *bundleShortVersionString;
 @property (nonatomic, strong) NSString *bundleVersionNumber;
 @property (nonatomic, strong) NSString *humanReadableCopyright;
+@property (nonatomic, strong) NSString *blockZoneVersionInformation;
+@property (nonatomic, strong) NSString *ansiLoveVersionInformation;
 
 @end

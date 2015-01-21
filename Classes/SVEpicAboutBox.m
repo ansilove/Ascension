@@ -12,6 +12,7 @@
 #import "SVEpicAboutBox.h"
 
 #define selfBundleID @"com.byteproject.Ascension"
+#define ansiLoveBundleID @"com.byteproject.AnsiLove"
 
 @implementation SVEpicAboutBox
 
@@ -28,6 +29,12 @@
         
         self.humanReadableCopyright =
         [[[NSBundle bundleWithIdentifier:selfBundleID] infoDictionary] valueForKey:@"NSHumanReadableCopyright"];
+        
+        self.blockZoneVersionInformation =
+        [[[NSBundle bundleWithIdentifier:selfBundleID] infoDictionary] valueForKey:@"BlockZone version"];
+        
+        self.ansiLoveVersionInformation =
+        [[[NSBundle bundleWithIdentifier:ansiLoveBundleID] infoDictionary] valueForKey:@"CFBundleShortVersionString"];
     }
     return self;
 }
