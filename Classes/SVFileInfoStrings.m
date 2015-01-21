@@ -62,7 +62,6 @@
     return self;
 }
 
-
 # pragma mark -
 # pragma mark dictionaries to properties
 
