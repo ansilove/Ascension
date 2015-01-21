@@ -13,8 +13,8 @@
 
 typedef enum {
 	fBlockZone,
-    fTerminusLarge,
-    fTerminusExtraLarge
+    fTerminusRegular,
+    fTerminusLarge
 } ASCIIFonts;
 
 @class SVToggleSlider;

@@ -84,10 +84,10 @@
     if ([defaults integerForKey:@"asciiFontIndex"] == fBlockZone) {
         [self.fontInfoTextField setStringValue:@"font size: 14.0pt"];
     }
-    if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusLarge) {
+    if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusRegular) {
         [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
     }
-    if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusExtraLarge) {
+    if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusLarge) {
         [self.fontInfoTextField setStringValue:@"font size: 20.0pt"];
     }
 
@@ -326,13 +326,13 @@
             [self.fontInfoTextField setStringValue:@"font size: 14.0pt"];
 			break;
 		}
-        case fTerminusLarge: {
+        case fTerminusRegular: {
 			[defaults setObject:@"Terminus" forKey:@"fontName"];
             [defaults setFloat:16.0 forKey:@"fontSize"];
             [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
 			break;
 		}
-        case fTerminusExtraLarge: {
+        case fTerminusLarge: {
 			[defaults setObject:@"Terminus" forKey:@"fontName"];
             [defaults setFloat:20.0 forKey:@"fontSize"];
             [self.fontInfoTextField setStringValue:@"font size: 20.0pt"];
