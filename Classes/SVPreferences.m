@@ -158,7 +158,7 @@
 		[defaults setBool:YES forKey:@"autoSizeWidth"];
 	}
 	if (![defaults valueForKey:@"autoSizeHeight"]) {
-		[defaults setBool:NO forKey:@"autoSizeHeight"];
+		[defaults setBool:YES forKey:@"autoSizeHeight"];
 	}
 	if (![defaults valueForKey:@"themeIndex"]) {
 		[defaults setInteger:0 forKey:@"themeIndex"];
@@ -214,7 +214,7 @@
 	[defaults setFloat:650 forKey:@"newContentWidth"];
 	[defaults setFloat:650 forKey:@"newContentHeight"];
 	[defaults setBool:YES forKey:@"autoSizeWidth"];
-	[defaults setBool:NO forKey:@"autoSizeHeight"];
+	[defaults setBool:YES forKey:@"autoSizeHeight"];
 	[defaults setInteger:0 forKey:@"themeIndex"];
     [defaults setBool:NO forKey:@"viewerMode"];
 	
