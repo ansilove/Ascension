@@ -82,7 +82,7 @@
     
     // Change font information label to something that makes sense.
     if ([defaults integerForKey:@"asciiFontIndex"] == fBlockZone) {
-        [self.fontInfoTextField setStringValue:@"font size: 14.0pt"];
+        [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
     }
     if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusRegular) {
         [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
@@ -110,13 +110,13 @@
         [defaults setBool:NO forKey:@"enableAnsiLoveForASCII"];
     }
 	if (![defaults stringForKey:@"fontName"]) {
-		[defaults setObject:@"Terminus" forKey:@"fontName"];
+		[defaults setObject:@"BlockZone" forKey:@"fontName"];
 	}
 	if (![defaults valueForKey:@"fontSize"]) {
 		[defaults setFloat:16.0 forKey:@"fontSize"];
 	}
     if (![defaults valueForKey:@"asciiFontIndex"]) {
-		[defaults setInteger:1 forKey:@"asciiFontIndex"];
+		[defaults setInteger:0 forKey:@"asciiFontIndex"];
 	}
 	if (![defaults valueForKey:@"nfoDizEncoding"]) {
 		[defaults setInteger:0 forKey:@"nfoDizEncoding"];
@@ -198,7 +198,7 @@
 	[defaults setInteger:0 forKey:@"startupBehavior"];
     [defaults setInteger:0 forKey:@"scrollerStyle"];
     [defaults setBool:NO forKey:@"enableAnsiLoveForASCII"];
-	[defaults setObject:@"Terminus" forKey:@"fontName"];
+	[defaults setObject:@"BlockZone" forKey:@"fontName"];
 	[defaults setFloat:16.0 forKey:@"fontSize"];
     [defaults setInteger:0 forKey:@"asciiFontIndex"];
 	[defaults setInteger:0 forKey:@"nfoDizEncoding"];
@@ -254,7 +254,7 @@
     [nc postNotificationName:@"HyperLinkAttributeChange" object:self];
     
     // Reset font info label to font size value that's restored now.
-    [self.fontInfoTextField setStringValue:@"font size: 14.0pt"];
+    [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
     
     [defaults synchronize];
 }
@@ -321,9 +321,9 @@
 	switch ([defaults integerForKey:@"asciiFontIndex"])
 	{
 		case fBlockZone: {
-			[defaults setObject:@"Terminus" forKey:@"fontName"];
-            [defaults setFloat:14.0 forKey:@"fontSize"];
-            [self.fontInfoTextField setStringValue:@"font size: 14.0pt"];
+			[defaults setObject:@"BlockZone" forKey:@"fontName"];
+            [defaults setFloat:16.0 forKey:@"fontSize"];
+            [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
 			break;
 		}
         case fTerminusRegular: {
