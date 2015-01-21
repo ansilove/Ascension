@@ -12,7 +12,7 @@
 #import <Cocoa/Cocoa.h>
 
 typedef enum {
-	fTerminusRegular,
+	fBlockZone,
     fTerminusLarge,
     fTerminusExtraLarge
 } ASCIIFonts;

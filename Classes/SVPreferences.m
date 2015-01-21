@@ -81,7 +81,7 @@
     }
     
     // Change font information label to something that makes sense.
-    if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusRegular) {
+    if ([defaults integerForKey:@"asciiFontIndex"] == fBlockZone) {
         [self.fontInfoTextField setStringValue:@"font size: 14.0pt"];
     }
     if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusLarge) {
@@ -320,7 +320,7 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	switch ([defaults integerForKey:@"asciiFontIndex"])
 	{
-		case fTerminusRegular: {
+		case fBlockZone: {
 			[defaults setObject:@"Terminus" forKey:@"fontName"];
             [defaults setFloat:14.0 forKey:@"fontSize"];
             [self.fontInfoTextField setStringValue:@"font size: 14.0pt"];
