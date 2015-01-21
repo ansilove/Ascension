@@ -2053,11 +2053,9 @@
     // Check wether the screen is regular or Retina resolution.
     if ([[NSScreen mainScreen]backingScaleFactor] == 2.0f)
     {
-        NSLog(@"144 DPI");
         self.dotsPerInch = 144.0f;
     }
     else {
-        NSLog(@"72 DPI");
         self.dotsPerInch = 72.0f;
     }
     
