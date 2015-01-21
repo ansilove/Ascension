@@ -13,8 +13,6 @@
 
 @implementation SVEpicAboutBoxWC
 
-@synthesize getInTouchView, getInTouchPopover, licenseSheet, licenseTextView;
-
 # pragma mark -
 # pragma mark class methods
 

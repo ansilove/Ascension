@@ -13,9 +13,6 @@
 
 @implementation SVPreferencesWC
 
-@synthesize currentViewTag, prefsBar, generalPrefView, interfacePrefView, textPrefView, 
-            themePrefView, asciiPrefView, ansiPrefView;
-
 # pragma mark -
 # pragma mark class methods
 
@@ -43,7 +40,7 @@
 	// Configure the preferences window.
 	[self.window setContentSize:self.generalPrefView.frame.size];
 	[[self.window contentView] addSubview:self.generalPrefView];
-	[prefsBar setSelectedItemIdentifier:@"General"];
+	[self.prefsBar setSelectedItemIdentifier:@"General"];
 	[self.window center];
 }
 
@@ -104,8 +101,8 @@
 	NSInteger tag = [sender tag];
 	
 	NSView *view = [self viewForTag:tag];
-	NSView *previousView = [self viewForTag:currentViewTag];
-	currentViewTag = tag;
+	NSView *previousView = [self viewForTag:self.currentViewTag];
+	self.currentViewTag = tag;
 	NSRect newFrame = [self newFrameForNewContentView:view];
 	
 	[NSAnimationContext beginGrouping];

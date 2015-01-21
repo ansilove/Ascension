@@ -13,9 +13,6 @@
 
 @implementation SVThemeObject
 
-@synthesize atName, atFontColor, atBackgroundColor, atLinkColor, atCursorColor, 
-			atSelectionColor;
-
 # pragma mark -
 # pragma mark initialization
 

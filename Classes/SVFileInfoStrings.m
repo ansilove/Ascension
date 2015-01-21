@@ -13,8 +13,6 @@
 
 @implementation SVFileInfoStrings
 
-@synthesize uiFileSizeString, uiCreationDateString, uiModDateString;
-
 # pragma mark -
 # pragma mark initialization 
 
