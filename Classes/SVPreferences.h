@@ -67,6 +67,11 @@ typedef enum {
 // features
 - (void)changeToggleSliderState:(NSNotification *)note;
 
+// system operations
+- (void)evaluateFontPath;
+- (void)copyFontFromBundle;
+- (void)fontInstallReport;
+
 // specific theme methods
 - (void)generateStandardThemes;
 - (void)applyColorValueToTheme;
