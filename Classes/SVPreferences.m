@@ -137,7 +137,7 @@
 		[defaults setBool:YES forKey:@"highlightAsciiHyperLinks"];
 	}
     if (![defaults valueForKey:@"ansiLoveFont"]) {
-		[defaults setInteger:0 forKey:@"ansiLoveFont"];
+		[defaults setInteger:1 forKey:@"ansiLoveFont"];
     }
     if (![defaults stringForKey:@"ansiLoveBits"]) {
 		[defaults setObject:@"8" forKey:@"ansiLoveBits"];
@@ -207,7 +207,7 @@
 	[defaults setBool:YES forKey:@"docsOpenCentered"];
     [defaults setBool:NO forKey:@"terminateAfterLastWindowIsClosed"];
     [defaults setBool:YES forKey:@"highlightAsciiHyperLinks"];
-    [defaults setInteger:0 forKey:@"ansiLoveFont"];
+    [defaults setInteger:1 forKey:@"ansiLoveFont"];
     [defaults setObject:@"8" forKey:@"ansiLoveBits"];
     [defaults setObject:@"160" forKey:@"ansiLoveColumns"];
     [defaults setBool:NO forKey:@"ansiLoveIceColors"];
