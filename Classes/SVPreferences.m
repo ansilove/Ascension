@@ -15,10 +15,6 @@
 
 @implementation SVPreferences
 
-@synthesize fontColorWell, bgrndColorWell, cursorColorWell, linkColorWell, selectionColorWell, 
-			themesArray, themesView, pathForThemeLibraryFile, themeIndex, viewerModeSlider,
-            fontInfoLabel, fontInfoTextField;
-
 # pragma mark -
 # pragma mark initialization
 
@@ -65,7 +61,7 @@
 
 - (NSInteger)themeIndex
 {
-	return [self.themesView selectedRow];
+	return self.themesView.selectedRow;
 }
 
 - (void)awakeFromNib
@@ -306,6 +302,16 @@
 }
 
 # pragma mark -
+# pragma mark system operations
+
+- (IBAction)installBlockZoneFont:(id)sender
+{
+    
+}
+
+
+
+# pragma mark -
 # pragma mark user-defined attributes
 
 - (IBAction)chooseASCIIFont:(id)sender
@@ -353,7 +359,7 @@
 {
 	// Save the new font color value to user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[fontColorWell color]];
+	NSData *fontColorData = [NSArchiver archivedDataWithRootObject:self.fontColorWell.color];
 	[defaults setObject:fontColorData forKey:@"fontColor"];
 	
 	if (sender == self.fontColorWell) {
@@ -368,7 +374,7 @@
 {
 	// Save our new backround color value to user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *bgrndColorData = [NSArchiver archivedDataWithRootObject:[bgrndColorWell color]];
+	NSData *bgrndColorData = [NSArchiver archivedDataWithRootObject:self.bgrndColorWell.color];
 	[defaults setObject:bgrndColorData forKey:@"backgroundColor"];
 	
 	if (sender == self.bgrndColorWell) {
@@ -382,7 +388,7 @@
 {
 	// Store the new cursor color value to user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[cursorColorWell color]];
+	NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:self.cursorColorWell.color];
 	[defaults setObject:cursorColorData forKey:@"cursorColor"];
 	
 	if (sender == self.cursorColorWell) {
@@ -396,7 +402,7 @@
 {
 	// Save the new color for hyperlinks to user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[linkColorWell color]];
+	NSData *linkColorData = [NSArchiver archivedDataWithRootObject:self.linkColorWell.color];
 	[defaults setObject:linkColorData forKey:@"linkColor"];
 	
 	if (sender == self.linkColorWell) {
@@ -411,7 +417,7 @@
 {
 	// Save the new color for selected text to user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:[selectionColorWell color]];
+	NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:self.selectionColorWell.color];
 	[defaults setObject:selectionColorData forKey:@"selectionColor"];
 	
 	if (sender == self.selectionColorWell) {
@@ -440,7 +446,7 @@
 {
 	// Send font color change notification to all instances of MyDocument.
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
-	NSDictionary *dict = [NSDictionary dictionaryWithObject:[fontColorWell color] forKey:@"fontColorValue"]; 
+	NSDictionary *dict = [NSDictionary dictionaryWithObject:self.fontColorWell.color forKey:@"fontColorValue"];
 	[nc postNotificationName:@"FontColorChange"
 					  object:self 
 					userInfo:dict];
@@ -450,7 +456,7 @@
 {
 	// Send background color change notification to all instances of MyDocument.
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
-	NSDictionary *dict = [NSDictionary dictionaryWithObject:[bgrndColorWell color] forKey:@"bgrndColorValue"]; 
+	NSDictionary *dict = [NSDictionary dictionaryWithObject:self.bgrndColorWell.color forKey:@"bgrndColorValue"];
 	[nc postNotificationName:@"BgrndColorChange"
 					  object:self 
 					userInfo:dict];
@@ -460,7 +466,7 @@
 {
 	// Send cursor color change notification to all instances of MyDocument.
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
-	NSDictionary *dict = [NSDictionary dictionaryWithObject:[cursorColorWell color] forKey:@"cursorColorValue"];
+	NSDictionary *dict = [NSDictionary dictionaryWithObject:self.cursorColorWell.color forKey:@"cursorColorValue"];
 	[nc postNotificationName:@"CursorColorChange"
 					  object:self
 					userInfo:dict];
@@ -470,7 +476,7 @@
 {
 	// Send link color change notification to all instances of MyDocument.
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
-	NSDictionary *dict = [NSDictionary dictionaryWithObject:[linkColorWell color] forKey:@"linkColorValue"];
+	NSDictionary *dict = [NSDictionary dictionaryWithObject:self.linkColorWell.color forKey:@"linkColorValue"];
 	[nc postNotificationName:@"LinkColorChange"
 					  object:self
 					userInfo:dict];
@@ -480,7 +486,7 @@
 {
 	// Send selection color change notification to all instances of MyDocument.
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
-	NSDictionary *dict = [NSDictionary dictionaryWithObject:[selectionColorWell color] forKey:@"selectionColorValue"];
+	NSDictionary *dict = [NSDictionary dictionaryWithObject:self.selectionColorWell.color forKey:@"selectionColorValue"];
 	[nc postNotificationName:@"SelectionColorChange"
 					  object:self
 					userInfo:dict];
@@ -616,7 +622,7 @@
 - (IBAction)copyExistingTheme:(id)sender 
 {
 	// Identify the selected theme.
-	NSInteger row = [self.themesView selectedRow];
+	NSInteger row = self.themesView.selectedRow;
 	SVThemeObject *selectedTheme = [self.themesArray objectAtIndex:row];
 	
 	// Duplicate our selected theme in library.
@@ -633,13 +639,13 @@
 
 - (void)applyColorValueToTheme
 {
-	NSInteger row = [self.themesView selectedRow];
+	NSInteger row = self.themesView.selectedRow;
 	SVThemeObject *selectedTheme = [self.themesArray objectAtIndex:row];
-	selectedTheme.atFontColor = [self.fontColorWell color];
-	selectedTheme.atBackgroundColor = [self.bgrndColorWell color];
-	selectedTheme.atLinkColor = [self.linkColorWell color];
-	selectedTheme.atCursorColor = [self.cursorColorWell color];
-	selectedTheme.atSelectionColor = [self.selectionColorWell color];
+	selectedTheme.atFontColor = self.fontColorWell.color;
+	selectedTheme.atBackgroundColor = self.bgrndColorWell.color;
+	selectedTheme.atLinkColor = self.linkColorWell.color;
+	selectedTheme.atCursorColor = self.cursorColorWell.color;
+	selectedTheme.atSelectionColor = self.selectionColorWell.color;
 }
 
 # pragma mark -
@@ -647,7 +653,7 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-	NSInteger row = [self.themesView selectedRow];
+	NSInteger row = self.themesView.selectedRow;
 	if (row == -1) {
 		return;
 	} 
