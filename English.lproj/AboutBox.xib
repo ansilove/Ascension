@@ -30,8 +30,24 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="aboutclaner" id="4"/>
                     </imageView>
+                    <textField verticalHuggingPriority="750" id="dni-2z-Z6Z">
+                        <rect key="frame" x="64" y="171" width="158" height="11"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="right" title="AnsiLove.framework 0.0.0" id="3f7-9u-J2F">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="23" name="displayPatternValue1" keyPath="ansiLoveVersionInformation" id="E9s-ye-EaP">
+                                <dictionary key="options">
+                                    <string key="NSDisplayPattern">AnsiLove.framework %{value1}@</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="J2f-M8-ASk">
-                        <rect key="frame" x="67" y="133" width="155" height="34"/>
+                        <rect key="frame" x="67" y="108" width="155" height="34"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="right" title="Handcrafted by Stefan Vogt for the AnsiLove Collective" id="fXh-KP-7DX">
                             <font key="font" metaFont="smallSystem"/>
@@ -62,7 +78,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" id="21">
-                        <rect key="frame" x="69" y="195" width="153" height="25"/>
+                        <rect key="frame" x="69" y="197" width="153" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Version 0.0.0 (0)" id="22">
                             <font key="font" metaFont="system"/>
@@ -83,7 +99,7 @@
                         </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="144">
-                        <rect key="frame" x="30" y="44" width="192" height="61"/>
+                        <rect key="frame" x="30" y="59" width="192" height="42"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="right" id="145">
                             <font key="font" metaFont="miniSystem"/>
@@ -101,13 +117,29 @@ All rights reserved.</string>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="N8v-gO-hyq">
-                        <rect key="frame" x="102" y="219" width="140" height="22"/>
+                        <rect key="frame" x="102" y="223" width="140" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ascension III" id="xsH-un-UaZ">
                             <font key="font" metaFont="system" size="20"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="yGG-ag-apd">
+                        <rect key="frame" x="64" y="157" width="158" height="11"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="right" title="BlockZone.ttf 0.000" id="OwN-eW-5Ol">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="23" name="displayPatternValue1" keyPath="blockZoneVersionInformation" id="Uro-gG-gWe">
+                                <dictionary key="options">
+                                    <string key="NSDisplayPattern">BlockZone.ttf %{value1}@</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
                     </textField>
                 </subviews>
             </view>
@@ -231,10 +263,10 @@ All rights reserved.</string>
                                     <rect key="frame" x="0.0" y="0.0" width="469" height="417"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="627" height="366"/>
+                                    <size key="minSize" width="625" height="366"/>
                                     <size key="maxSize" width="627" height="10000000"/>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="627" height="366"/>
+                                    <size key="minSize" width="625" height="366"/>
                                     <size key="maxSize" width="627" height="10000000"/>
                                 </textView>
                             </subviews>
