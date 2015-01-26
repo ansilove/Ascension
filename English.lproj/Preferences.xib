@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C78c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C106a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
@@ -630,11 +630,11 @@
             <point key="canvasLocation" x="28" y="-0.5"/>
         </customView>
         <customView id="711" userLabel="ASCII">
-            <rect key="frame" x="0.0" y="-5" width="372" height="323"/>
+            <rect key="frame" x="0.0" y="-5" width="372" height="349"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="339">
-                    <rect key="frame" x="30" y="220" width="128" height="17"/>
+                    <rect key="frame" x="30" y="246" width="128" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="ASCII art encoding: " id="340">
                         <font key="font" metaFont="system"/>
@@ -643,7 +643,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="1001">
-                    <rect key="frame" x="29" y="285" width="133" height="17"/>
+                    <rect key="frame" x="29" y="311" width="133" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Font / character set:" id="1002">
                         <font key="font" metaFont="system"/>
@@ -652,7 +652,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="397">
-                    <rect key="frame" x="29" y="188" width="317" height="26"/>
+                    <rect key="frame" x="29" y="214" width="317" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="DOS - Codepage 437 - US" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1194" id="398">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -713,7 +713,7 @@
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" id="995">
-                    <rect key="frame" x="164" y="279" width="181" height="26"/>
+                    <rect key="frame" x="164" y="305" width="181" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="BlockZone" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="998" id="996">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -738,22 +738,22 @@
                     </connections>
                 </popUpButton>
                 <imageView id="1003">
-                    <rect key="frame" x="19" y="245" width="333" height="2"/>
+                    <rect key="frame" x="19" y="271" width="333" height="2"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="Divider" id="1004"/>
                 </imageView>
                 <imageView id="Inj-y9-wYj">
-                    <rect key="frame" x="19" y="152" width="333" height="2"/>
+                    <rect key="frame" x="19" y="178" width="333" height="2"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="Divider" id="FkV-LE-4qs"/>
                 </imageView>
                 <imageView id="DGu-WJ-SAP">
-                    <rect key="frame" x="20" y="57" width="333" height="2"/>
+                    <rect key="frame" x="20" y="83" width="333" height="2"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="Divider" id="Lh7-px-qua"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" id="1019">
-                    <rect key="frame" x="23" y="256" width="321" height="17"/>
+                    <rect key="frame" x="23" y="282" width="321" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="This is a placeholder string bound to... your mom!" id="1020">
                         <font key="font" metaFont="smallSystem"/>
@@ -762,7 +762,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="1225">
-                    <rect key="frame" x="10" y="163" width="334" height="17"/>
+                    <rect key="frame" x="10" y="189" width="334" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Ascension will open NFO/DIZ/ASC files with this encoding." id="1226">
                         <font key="font" metaFont="smallSystem"/>
@@ -771,7 +771,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="358">
-                    <rect key="frame" x="34" y="127" width="105" height="17"/>
+                    <rect key="frame" x="34" y="153" width="105" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Text encoding:" id="359">
                         <font key="font" metaFont="system"/>
@@ -779,17 +779,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="M4Y-K3-IHX">
-                    <rect key="frame" x="34" y="28" width="124" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="System operations:" id="upr-jt-8Bb">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField verticalHuggingPriority="750" id="508">
-                    <rect key="frame" x="48" y="70" width="296" height="17"/>
+                    <rect key="frame" x="48" y="96" width="296" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Text files will be opened using the specified encoding." id="509">
                         <font key="font" metaFont="smallSystem"/>
@@ -798,7 +789,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="383">
-                    <rect key="frame" x="29" y="95" width="316" height="26"/>
+                    <rect key="frame" x="29" y="121" width="316" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Unicode (UTF-8)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="386" id="384">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -818,15 +809,28 @@
                     </connections>
                 </popUpButton>
                 <button verticalHuggingPriority="750" id="FWt-LB-6LX">
-                    <rect key="frame" x="160" y="18" width="188" height="32"/>
+                    <rect key="frame" x="26" y="18" width="322" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Install BlockZone.ttf" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dEa-Sa-BoU">
+                    <buttonCell key="cell" type="push" title="I won't do dumb placeholder strings again..!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dEa-Sa-BoU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="installBlockZoneFont:" target="119" id="zk3-jk-yYd"/>
+                        <binding destination="119" name="title" keyPath="blockZoneButtonTitle" id="cBi-lO-xcj"/>
+                    </connections>
                 </button>
+                <textField verticalHuggingPriority="750" id="M4Y-K3-IHX">
+                    <rect key="frame" x="34" y="54" width="124" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="System operations:" id="upr-jt-8Bb">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="108" y="32.5"/>
+            <point key="canvasLocation" x="108" y="45.5"/>
         </customView>
         <customView id="5" userLabel="Themes">
             <rect key="frame" x="0.0" y="5" width="377" height="339"/>
@@ -1092,6 +1096,7 @@
                 <outlet property="cursorColorWell" destination="167" id="178"/>
                 <outlet property="fontColorWell" destination="126" id="154"/>
                 <outlet property="fontInfoTextField" destination="1019" id="1191"/>
+                <outlet property="fontSystemButton" destination="FWt-LB-6LX" id="aaz-pg-PAn"/>
                 <outlet property="linkColorWell" destination="166" id="183"/>
                 <outlet property="selectionColorWell" destination="274" id="280"/>
                 <outlet property="themesView" destination="257" id="290"/>

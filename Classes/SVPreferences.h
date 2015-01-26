@@ -30,6 +30,7 @@ typedef enum {
 @property (nonatomic, strong) IBOutlet NSTableView    *themesView;
 @property (nonatomic, strong) IBOutlet SVToggleSlider *viewerModeSlider;
 @property (nonatomic, strong) IBOutlet NSTextField    *fontInfoTextField;
+@property (nonatomic, strong) IBOutlet NSButton       *fontSystemButton;
 
 // data
 @property (nonatomic, strong) NSMutableArray *themesArray;
@@ -42,7 +43,8 @@ typedef enum {
 @property (nonatomic, strong) NSString *fontInfoLabel;
 @property (nonatomic, strong) NSString *fontFile;
 @property (nonatomic, strong) NSString *destinationPath;
-
+@property (nonatomic, strong) NSString *blockZoneVersionString;
+@property (nonatomic, strong) NSString *blockZoneButtonTitle;
 
 // class methods
 + (void)checkUserDefaults;
@@ -70,7 +72,11 @@ typedef enum {
 // system operations
 - (void)evaluateFontPath;
 - (void)copyFontFromBundle;
+- (void)replaceWithFontFromBundle;
+- (void)removeBlockZoneFromSystem;
 - (void)fontInstallReport;
+- (void)fontUpdateReport;
+- (void)fontRemoveReport;
 
 // specific theme methods
 - (void)generateStandardThemes;

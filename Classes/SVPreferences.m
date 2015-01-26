@@ -13,6 +13,8 @@
 #import "SVThemeObject.h"
 #import "SVToggleSlider.h"
 
+#define selfBundleID @"com.byteproject.Ascension"
+
 @implementation SVPreferences
 
 # pragma mark -
@@ -166,6 +168,9 @@
     if (![defaults valueForKey:@"viewerMode"]) {
 		[defaults setBool:NO forKey:@"viewerMode"];
 	}
+    if (![defaults valueForKey:@"blockZoneInstalled"]) {
+        [defaults setBool:NO forKey:@"blockZoneInstalled"];
+    }
 	if (![defaults dataForKey:@"fontColor"]) {
 		NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]];
 		[defaults setObject:fontColorData forKey:@"fontColor"];
@@ -217,6 +222,17 @@
 	[defaults setBool:YES forKey:@"autoSizeHeight"];
 	[defaults setInteger:0 forKey:@"themeIndex"];
     [defaults setBool:NO forKey:@"viewerMode"];
+    
+    // Check if BlockZone is installed locally. If yes, no revert.
+    [self evaluateFontPath];
+    NSFileManager *fileManager = [NSFileManager new];
+    if ([fileManager fileExistsAtPath:self.destinationPath] == YES)
+    {
+        [defaults setBool:YES forKey:@"blockZoneInstalled"];
+    }
+    else {
+        [defaults setBool:NO forKey:@"blockZoneInstalled"];
+    }
 	
 	// Store initial colors as data to user defaults.
 	NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]];
@@ -306,10 +322,175 @@
 
 - (IBAction)installBlockZoneFont:(id)sender
 {
+    NSFileManager *fileManager = [NSFileManager new];
     
+    // Lead me through each gentle step, by step, by inch, by loaded memory.
+    [self evaluateFontPath];
+    
+    // In case BlockZone is installed already, this is an update.
+    if ([fileManager fileExistsAtPath:self.destinationPath] == YES)
+    {
+        // Show version string of bundled BlockZone, let user confirm updating.
+        NSAlert *fontUpdateConfirmation = [[NSAlert alloc] init];
+        [fontUpdateConfirmation addButtonWithTitle:@"Update"];
+        [fontUpdateConfirmation addButtonWithTitle:@"Remove"];
+        [fontUpdateConfirmation addButtonWithTitle:@"Cancel"];
+        [fontUpdateConfirmation setMessageText:@"Update / remove BlockZone font"];
+        [fontUpdateConfirmation setInformativeText:[NSString stringWithFormat:
+         @"BlockZone seems installed already. Do you want to update the font on your system "
+         @"with the bundled version %@? Ascension always uses the bundled variant, so updating "
+         @"is only necessary in case you want the newest font version available for other "
+         @"applications. Optionally, you can choose to uninstall the font.",
+         self.blockZoneVersionString]];
+        [fontUpdateConfirmation setAlertStyle:NSWarningAlertStyle];
+        
+        NSInteger modalReturn = [fontUpdateConfirmation runModal];
+        
+        // Provided the user hit 'Update', perform BlockZone update.
+        if (modalReturn == NSAlertFirstButtonReturn) {
+            [self replaceWithFontFromBundle];
+            [self fontUpdateReport];
+        }
+        // For convinience, we offer an option to remove the installed font file.
+        else if (modalReturn == NSAlertSecondButtonReturn) {
+            [self removeBlockZoneFromSystem];
+            [self fontRemoveReport];
+        }
+        else {
+            return;
+        }
+    }
+    // So this is a fresh install.
+    else {
+        // Prompt the user to confirm BlockZone installation.
+        NSAlert *fontInstallConfirmation = [[NSAlert alloc] init];
+        [fontInstallConfirmation addButtonWithTitle:@"Install"];
+        [fontInstallConfirmation addButtonWithTitle:@"Cancel"];
+        [fontInstallConfirmation setMessageText:@"Install BlockZone font"];
+        [fontInstallConfirmation setInformativeText:
+         @"BlockZone is a faithful, pixel-perfect recreation of the original DOS font, bundled "
+         @"with Ascension. This step is not necessary unless you want the font available for "
+         @"other applications on your system. Ascension will always use the bundled variant."];
+        [fontInstallConfirmation setAlertStyle:NSWarningAlertStyle];
+        
+        // Provided the user hit 'install', perform Terminus installation.
+        if ([fontInstallConfirmation runModal] == NSAlertFirstButtonReturn) {
+            [self copyFontFromBundle];
+            [self fontInstallReport];
+        }
+        else {
+            return;
+        }
+    }
 }
 
+- (void)evaluateFontPath
+{
+    // Evaluate the path to BlockZone
+    NSString *usrFontsPath = @"~/Library/Fonts/";
+    usrFontsPath = [usrFontsPath stringByExpandingTildeInPath];
+    self.fontFile = @"BlockZone.ttf";
+    self.destinationPath = [usrFontsPath stringByAppendingPathComponent:self.fontFile];
+}
 
+- (void)copyFontFromBundle
+{
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    
+    // Copies BlockZone from the Bundle resources to ~/Library/Fonts.
+    NSString *srcPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:
+                         [NSString stringWithFormat:@"/Fonts/%@", self.fontFile]];
+    NSError *fontError;
+    [fileManager copyItemAtPath:srcPath toPath:self.destinationPath error:&fontError];
+}
+
+- (void)replaceWithFontFromBundle
+{
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    
+    // Replaces BlockZone in ~/Library/Fonts with the bundled version.
+    NSString *srcPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:
+                         [NSString stringWithFormat:@"/Fonts/%@", self.fontFile]];
+    NSError *fontError;
+    [fileManager removeItemAtPath:self.destinationPath error:&fontError];
+    [fileManager copyItemAtPath:srcPath toPath:self.destinationPath error:&fontError];
+}
+
+- (void)removeBlockZoneFromSystem 
+{
+    // Removes BlockZone.ttf from user fonts.
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    NSError *fontError;
+    [fileManager removeItemAtPath:self.destinationPath error:&fontError];
+}
+
+- (void)fontUpdateReport
+{
+    // Report for the font update process.
+    NSAlert *fontUpdateSuccess = [[NSAlert alloc] init];
+    [fontUpdateSuccess addButtonWithTitle:@"Ok"];
+    [fontUpdateSuccess setMessageText:@"Update completed"];
+    [fontUpdateSuccess setInformativeText:
+     @"BlockZone.ttf has been successfully updated."];
+    [fontUpdateSuccess runModal];
+}
+
+- (void)fontInstallReport
+{
+    // Report for the font installation process.
+    NSAlert *fontInstallSuccess = [[NSAlert alloc] init];
+    [fontInstallSuccess addButtonWithTitle:@"Ok"];
+    [fontInstallSuccess setMessageText:@"Installation completed"];
+    [fontInstallSuccess setInformativeText:[NSString stringWithFormat:
+     @"BlockZone %@ has been successfully installed on your "
+     @"system. In case you want to remove it at a later date, "
+     @"just use Ascension's built-in option." , self.blockZoneVersionString]];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"blockZoneInstalled"];
+    [defaults synchronize];
+    
+    [fontInstallSuccess runModal];
+    
+    self.fontSystemButton.title = @"Update / Remove BlockZone.ttf";
+}
+
+- (void)fontRemoveReport
+{
+    // Report for the font uninstallation process.
+    NSAlert *fontUninstallSuccess = [[NSAlert alloc] init];
+    [fontUninstallSuccess addButtonWithTitle:@"Ok"];
+    [fontUninstallSuccess setMessageText:@"Uninstall completed"];
+    [fontUninstallSuccess setInformativeText:
+     @"BlockZone has been successfully removed from your system."];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:NO forKey:@"blockZoneInstalled"];
+    [defaults synchronize];
+    
+    [fontUninstallSuccess runModal];
+    
+    self.fontSystemButton.title = @"Install BlockZone.ttf";
+}
+
+- (NSString *)blockZoneVersionString
+{
+    return [[[NSBundle bundleWithIdentifier:selfBundleID] infoDictionary] valueForKey:@"BlockZone version"];
+}
+
+- (NSString *)blockZoneButtonTitle
+{
+    // Changes the button title to install, or update / remove depending
+    // on installation status of BlockZone.ttf
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([defaults boolForKey:@"blockZoneInstalled"] == YES) {
+        return @"Update / Remove BlockZone.ttf";
+    }
+    else {
+        return @"Install BlockZone.ttf";
+    }
+}
 
 # pragma mark -
 # pragma mark user-defined attributes
