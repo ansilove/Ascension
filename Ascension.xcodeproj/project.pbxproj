@@ -31,6 +31,10 @@
 		F83EAB3F15D7382A00A78B56 /* sheet_background.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F83EAB2F15D7382900A78B56 /* sheet_background.tiff */; };
 		F83EAB4215D7382A00A78B56 /* Toggle-Knob.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F83EAB3215D7382900A78B56 /* Toggle-Knob.tiff */; };
 		F83EAB4315D7382A00A78B56 /* Toggle-Slider.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F83EAB3315D7382900A78B56 /* Toggle-Slider.tiff */; };
+		F849E7CD1A73A2E800C509AA /* PetMe64.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F849E7CB1A73A2E800C509AA /* PetMe64.ttf */; };
+		F849E7CE1A73A2E800C509AA /* PetMe642Y.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F849E7CC1A73A2E800C509AA /* PetMe642Y.ttf */; };
+		F849E7CF1A73A32600C509AA /* PetMe64.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F849E7CB1A73A2E800C509AA /* PetMe64.ttf */; };
+		F849E7D01A73A32800C509AA /* PetMe642Y.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F849E7CC1A73A2E800C509AA /* PetMe642Y.ttf */; };
 		F85C66201A6B2D69002A7D31 /* aboutclaner.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F85C661F1A6B2D69002A7D31 /* aboutclaner.tiff */; };
 		F86D170E1A62E92700B9A69B /* AscFileTypeADF.icns in Resources */ = {isa = PBXBuildFile; fileRef = F86D17041A62E92700B9A69B /* AscFileTypeADF.icns */; };
 		F86D170F1A62E92700B9A69B /* AscFileTypeANS.icns in Resources */ = {isa = PBXBuildFile; fileRef = F86D17051A62E92700B9A69B /* AscFileTypeANS.icns */; };
@@ -87,6 +91,8 @@
 			files = (
 				F8FA13251A62F19800674257 /* BlockZone.ttf in CopyFiles */,
 				F8DBE75C132D5D6C00A9F868 /* Terminus.dfont in CopyFiles */,
+				F849E7CF1A73A32600C509AA /* PetMe64.ttf in CopyFiles */,
+				F849E7D01A73A32800C509AA /* PetMe642Y.ttf in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +132,8 @@
 		F83EAB2F15D7382900A78B56 /* sheet_background.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = sheet_background.tiff; path = Images/sheet_background.tiff; sourceTree = "<group>"; };
 		F83EAB3215D7382900A78B56 /* Toggle-Knob.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "Toggle-Knob.tiff"; path = "Images/Toggle-Knob.tiff"; sourceTree = "<group>"; };
 		F83EAB3315D7382900A78B56 /* Toggle-Slider.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "Toggle-Slider.tiff"; path = "Images/Toggle-Slider.tiff"; sourceTree = "<group>"; };
+		F849E7CB1A73A2E800C509AA /* PetMe64.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PetMe64.ttf; sourceTree = "<group>"; };
+		F849E7CC1A73A2E800C509AA /* PetMe642Y.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PetMe642Y.ttf; sourceTree = "<group>"; };
 		F85C661F1A6B2D69002A7D31 /* aboutclaner.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = aboutclaner.tiff; path = Images/aboutclaner.tiff; sourceTree = "<group>"; };
 		F86D17041A62E92700B9A69B /* AscFileTypeADF.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AscFileTypeADF.icns; path = Images/AscFileTypeADF.icns; sourceTree = "<group>"; };
 		F86D17051A62E92700B9A69B /* AscFileTypeANS.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = AscFileTypeANS.icns; path = Images/AscFileTypeANS.icns; sourceTree = "<group>"; };
@@ -314,6 +322,8 @@
 			children = (
 				F8FA13231A62F16900674257 /* BlockZone.ttf */,
 				F8835784120F256900D18794 /* Terminus.dfont */,
+				F849E7CB1A73A2E800C509AA /* PetMe64.ttf */,
+				F849E7CC1A73A2E800C509AA /* PetMe642Y.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -448,6 +458,8 @@
 				F83EAB3915D7382A00A78B56 /* context_twitter.tiff in Resources */,
 				F85C66201A6B2D69002A7D31 /* aboutclaner.tiff in Resources */,
 				F83EAB3A15D7382A00A78B56 /* Customize.tiff in Resources */,
+				F849E7CD1A73A2E800C509AA /* PetMe64.ttf in Resources */,
+				F849E7CE1A73A2E800C509AA /* PetMe642Y.ttf in Resources */,
 				F83EAB3B15D7382A00A78B56 /* Divider.tiff in Resources */,
 				F83EAB3C15D7382A00A78B56 /* duplicate.tiff in Resources */,
 				F86D17121A62E92700B9A69B /* AscFileTypeDIZ.icns in Resources */,
