@@ -1053,13 +1053,13 @@
     intFontSize = (NSInteger)self.fontSize;
 
     // Figure out the pitch value we should apply.
-    switch (intFontSize) {
-        case 14: {
-            pitchValue = 8.0;
-            break;
-        }
+    switch (intFontSize)
+    {
         case 16: {
             pitchValue = 8.0;
+            if ([self.fontName isEqualToString:@"Pet Me 64"] == YES) {
+                pitchValue = 16.0;
+            }
             break;
         }
         case 20: {
