@@ -92,7 +92,9 @@
     if ([defaults integerForKey:@"asciiFontIndex"] == fTerminusLarge) {
         [self.fontInfoTextField setStringValue:@"font size: 20.0pt"];
     }
-
+    if ([defaults integerForKey:@"asciiFontIndex"] == fEightyColPet) {
+        [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
+    }
 }
 
 # pragma mark -
@@ -519,6 +521,11 @@
             [self.fontInfoTextField setStringValue:@"font size: 20.0pt"];
 			break;
 		}
+        case fEightyColPet: {
+            [defaults setObject:@"Pet Me 64 2Y" forKey:@"fontName"];
+            [defaults setFloat:16.0 forKey:@"fontSize"];
+            [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
+        }
 		default: {
 			break;
 		}

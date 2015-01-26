@@ -630,7 +630,7 @@
             <point key="canvasLocation" x="28" y="-0.5"/>
         </customView>
         <customView id="711" userLabel="ASCII">
-            <rect key="frame" x="0.0" y="-5" width="372" height="349"/>
+            <rect key="frame" x="0.0" y="1" width="372" height="350"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="339">
@@ -643,7 +643,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="1001">
-                    <rect key="frame" x="29" y="311" width="133" height="17"/>
+                    <rect key="frame" x="29" y="312" width="133" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Font / character set:" id="1002">
                         <font key="font" metaFont="system"/>
@@ -712,31 +712,6 @@
                         <binding destination="42" name="selectedIndex" keyPath="values.nfoDizEncoding" id="531"/>
                     </connections>
                 </popUpButton>
-                <popUpButton verticalHuggingPriority="750" id="995">
-                    <rect key="frame" x="164" y="305" width="181" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="BlockZone" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="998" id="996">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" title="OtherViews" id="997">
-                            <items>
-                                <menuItem title="BlockZone" state="on" id="998">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Terminus" id="999">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Terminus Large" id="1000">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <action selector="chooseASCIIFont:" target="119" id="1160"/>
-                        <binding destination="42" name="selectedIndex" keyPath="values.asciiFontIndex" id="1142"/>
-                    </connections>
-                </popUpButton>
                 <imageView id="1003">
                     <rect key="frame" x="19" y="271" width="333" height="2"/>
                     <autoresizingMask key="autoresizingMask"/>
@@ -774,6 +749,15 @@
                     <rect key="frame" x="34" y="153" width="105" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Text encoding:" id="359">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="M4Y-K3-IHX">
+                    <rect key="frame" x="34" y="54" width="124" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="System operations:" id="upr-jt-8Bb">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -820,17 +804,36 @@
                         <binding destination="119" name="title" keyPath="blockZoneButtonTitle" id="cBi-lO-xcj"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" id="M4Y-K3-IHX">
-                    <rect key="frame" x="34" y="54" width="124" height="17"/>
+                <popUpButton verticalHuggingPriority="750" id="995">
+                    <rect key="frame" x="167" y="307" width="179" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="System operations:" id="upr-jt-8Bb">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                    <popUpButtonCell key="cell" type="push" title="BlockZone" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="998" id="996">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" id="997">
+                            <items>
+                                <menuItem title="BlockZone" state="on" id="998">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="Terminus" id="999">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="Terminus Large" id="1000">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="Commodore 64" id="PPY-X3-9ig">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="chooseASCIIFont:" target="119" id="1160"/>
+                        <binding destination="42" name="selectedIndex" keyPath="values.asciiFontIndex" id="1142"/>
+                    </connections>
+                </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="108" y="45.5"/>
+            <point key="canvasLocation" x="85" y="109"/>
         </customView>
         <customView id="5" userLabel="Themes">
             <rect key="frame" x="0.0" y="5" width="377" height="339"/>
