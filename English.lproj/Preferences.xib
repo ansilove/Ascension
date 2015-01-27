@@ -29,27 +29,27 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="91CC4722-03A7-414D-93F6-1CB9C1B89D9F" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="11">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="741A0B11-1D7C-426C-8822-D00CCBA8F1B7" explicitItemIdentifier="General" label="General" paletteLabel="General" image="GeneralTemplate" id="19">
+                    <toolbarItem implicitItemIdentifier="741A0B11-1D7C-426C-8822-D00CCBA8F1B7" explicitItemIdentifier="General" label="General" paletteLabel="General" image="generalTemplate" id="19">
                         <connections>
                             <action selector="switchView:" target="-2" id="28"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="7C808F77-2BF8-443D-9A1A-6F4080F37995" explicitItemIdentifier="Interface" label="Interface" paletteLabel="Interface" tag="1" image="InterfaceTemplate" id="20">
+                    <toolbarItem implicitItemIdentifier="7C808F77-2BF8-443D-9A1A-6F4080F37995" explicitItemIdentifier="Interface" label="Interface" paletteLabel="Interface" tag="1" image="interfaceTemplate" id="20">
                         <connections>
                             <action selector="switchView:" target="-2" id="29"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A73B3FFC-80A3-4BA9-8D6F-6999FA00852C" explicitItemIdentifier="ANSI" label="ANSi" paletteLabel="ANSi" tag="2" image="ANSITemplate" id="860">
+                    <toolbarItem implicitItemIdentifier="A73B3FFC-80A3-4BA9-8D6F-6999FA00852C" explicitItemIdentifier="ANSI" label="ANSi" paletteLabel="ANSi" tag="2" image="ansiTemplate" id="860">
                         <connections>
                             <action selector="switchView:" target="-2" id="861"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="0F7EBED7-67ED-4C4B-A135-E7CCFA561386" explicitItemIdentifier="ASCII" label="ASCII" paletteLabel="ASCII" tag="3" image="ASCIITemplate" id="858">
+                    <toolbarItem implicitItemIdentifier="0F7EBED7-67ED-4C4B-A135-E7CCFA561386" explicitItemIdentifier="ASCII" label="ASCII" paletteLabel="ASCII" tag="3" image="asciiTemplate" id="858">
                         <connections>
                             <action selector="switchView:" target="-2" id="859"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="BAD108B5-5279-428B-8501-26017F4B6B5B" explicitItemIdentifier="Themes" label="Themes" paletteLabel="Themes" tag="4" image="ThemesTemplate" id="856">
+                    <toolbarItem implicitItemIdentifier="BAD108B5-5279-428B-8501-26017F4B6B5B" explicitItemIdentifier="Themes" label="Themes" paletteLabel="Themes" tag="4" image="themesTemplate" id="856">
                         <connections>
                             <action selector="switchView:" target="-2" id="857"/>
                         </connections>
@@ -1116,14 +1116,14 @@
         </arrayController>
     </objects>
     <resources>
-        <image name="ANSITemplate" width="32" height="32"/>
-        <image name="ASCIITemplate" width="32" height="32"/>
         <image name="Divider" width="333" height="2"/>
-        <image name="GeneralTemplate" width="32" height="32"/>
-        <image name="InterfaceTemplate" width="32" height="32"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
-        <image name="ThemesTemplate" width="32" height="32"/>
+        <image name="ansiTemplate" width="32" height="32"/>
+        <image name="asciiTemplate" width="32" height="32"/>
         <image name="duplicate" width="14" height="14"/>
+        <image name="generalTemplate" width="32" height="32"/>
+        <image name="interfaceTemplate" width="32" height="32"/>
+        <image name="themesTemplate" width="32" height="32"/>
     </resources>
 </document>
