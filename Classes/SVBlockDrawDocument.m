@@ -315,6 +315,8 @@
     if ([defaults integerForKey:@"startupBehavior"] == 1) {
         [self.mainWindow setRestorable:NO];
     }
+    
+    [self.mainWindow setContentBorderThickness:25.0 forEdge:NSMinYEdge];
    
     // Embedded look for the encoding button.
     [[self.encodingButton cell] setBackgroundStyle:NSBackgroundStyleRaised];
@@ -655,7 +657,7 @@
     }
     // Don't use the DOS font either for ASCII nor text files.
     if (self.isUsingAnsiLove == NO) {
-        self.alFont = @"terminus";
+        self.alFont = @"80x25";
     }
 
     // Call AnsiLove and generate the rendered image.
