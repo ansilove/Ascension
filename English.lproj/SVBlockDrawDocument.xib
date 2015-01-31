@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C78c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C106a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
@@ -10,7 +10,7 @@
                 <outlet property="ansiScrollView" destination="100021" id="100724"/>
                 <outlet property="ansiTextView" destination="100024" id="100723"/>
                 <outlet property="appToolbar" destination="100055" id="100089"/>
-                <outlet property="encodingButton" destination="100698" id="100710"/>
+                <outlet property="encodingButton" destination="Bg4-eT-IjF" id="c7M-IB-pyA"/>
                 <outlet property="fileInfoPopover" destination="100443" id="100445"/>
                 <outlet property="hScroller" destination="100022" id="100280"/>
                 <outlet property="mainWindow" destination="5" id="100246"/>
@@ -32,7 +32,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="100021" customClass="RFOverlayScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="650" height="629"/>
+                        <rect key="frame" x="0.0" y="25" width="650" height="604"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="bI6-XP-ges">
                             <rect key="frame" x="0.0" y="0.0" width="650" height="629"/>
@@ -42,10 +42,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="650" height="629"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="650" height="629"/>
+                                    <size key="minSize" width="650" height="604"/>
                                     <size key="maxSize" width="10000000" height="10000000"/>
                                     <color key="insertionPointColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <size key="minSize" width="650" height="629"/>
+                                    <size key="minSize" width="650" height="604"/>
                                     <size key="maxSize" width="10000000" height="10000000"/>
                                     <allowedInputSourceLocales>
                                         <string>sr_Latn_RS</string>
@@ -349,17 +349,91 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <popUpButton id="Bg4-eT-IjF" userLabel="Encoding button">
+                        <rect key="frame" x="491" y="1" width="152" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <string key="toolTip">Modify the current encoding by selecting it here (live preview). The new encoding won't be applied until you hit Save or Save as.</string>
+                        <popUpButtonCell key="cell" type="bevel" title="CP437 | US" bezelStyle="rounded" alignment="right" controlSize="small" lineBreakMode="truncatingTail" state="on" inset="2" selectedItem="nsk-OZ-tfL" id="blh-nk-IS9">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" title="OtherViews" id="9sP-zR-qRz">
+                                <items>
+                                    <menuItem title="CP437 | US" state="on" id="nsk-OZ-tfL">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP775 | Baltic Rim" id="jR9-ug-rY6">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP855 | Cyrillic (Slavic)" id="3OS-Nk-Cft">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP863 | French-Canadian" id="AJw-PF-I2Z">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP737 | Greek" id="Cnr-i3-rdw">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP869 | Greek 2" id="U7g-H1-xLf">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP862 | Hebrew" id="1cN-y8-x1e">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP861 | Icelandic" id="cPm-oP-7hn">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP850 | Latin 1" id="ysC-oq-6NR">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP852 | Latin 2" id="CPl-BG-r2K">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP865 | Nordic" id="1kc-Rt-oxk">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP860 | Portuguese" id="vti-7f-JeG">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP866 | Cyrillic (Russian)" id="tyx-Hp-Dkk">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="CP857 | Turkish" id="6mt-Ly-mQV">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="Amiga" id="2cf-nG-TQi">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="Unicode (UTF-8)" id="qtX-Tv-pCR">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="Unicode (UTF-16)" id="fHB-Fy-Yrd">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="Mac Roman" id="1AW-dn-ecY">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="Win Latin1" id="AW6-GC-WER">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="switchExportEncoding:" target="-2" id="BFe-Ch-6e2"/>
+                            <binding destination="-2" name="selectedIndex" keyPath="encButtonIndex" id="6EI-e1-Zm7"/>
+                        </connections>
+                    </popUpButton>
                 </subviews>
             </view>
             <toolbar key="toolbar" implicitIdentifier="D5BF2268-30C1-4EAF-BF29-17E8A26A934F" displayMode="iconOnly" sizeMode="regular" id="100055">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="81B78606-5B89-4F28-A1A7-66ED078083F2" label="File Info" paletteLabel="File Info" toolTip="Show file information" image="context_info" id="100626">
+                    <toolbarItem implicitItemIdentifier="81B78606-5B89-4F28-A1A7-66ED078083F2" label="Info" paletteLabel="Info" toolTip="show file information" image="info" id="100626">
                         <size key="minSize" width="26" height="25"/>
-                        <size key="maxSize" width="26" height="25"/>
+                        <size key="maxSize" width="34" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="100624">
-                            <rect key="frame" x="12" y="14" width="26" height="25"/>
+                            <rect key="frame" x="12" y="14" width="33" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="context_info" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100625">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="info" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100625">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -368,13 +442,13 @@
                             <action selector="showFileInfoPopover:" target="-2" id="100694"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="243C92A9-ECCC-4C2B-88E9-D3DB130B5E1C" label="Export" paletteLabel="Export" toolTip="Export PNG image" image="context_export" id="100673">
+                    <toolbarItem implicitItemIdentifier="243C92A9-ECCC-4C2B-88E9-D3DB130B5E1C" label="Export" paletteLabel="Export" toolTip="export PNG image" image="export" id="100673">
                         <size key="minSize" width="26" height="25"/>
-                        <size key="maxSize" width="26" height="25"/>
+                        <size key="maxSize" width="34" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="100674">
-                            <rect key="frame" x="9" y="14" width="26" height="25"/>
+                            <rect key="frame" x="8" y="14" width="34" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="context_export" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100675">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="export" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100675">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -383,13 +457,13 @@
                             <action selector="exportAsImage:" target="-2" id="100695"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="BC031AD1-C46B-4B4D-877C-3454B6C59820" label="Sauce Record" paletteLabel="Sauce Record" toolTip="Investigate SAUCE record" image="context_srecord" id="100681">
+                    <toolbarItem implicitItemIdentifier="BC031AD1-C46B-4B4D-877C-3454B6C59820" label="Sauce" paletteLabel="Sauce" toolTip="investigate SAUCE record" image="sauce" id="100681">
                         <size key="minSize" width="26" height="25"/>
-                        <size key="maxSize" width="26" height="25"/>
+                        <size key="maxSize" width="34" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="100682">
-                            <rect key="frame" x="26" y="14" width="26" height="25"/>
+                            <rect key="frame" x="28" y="14" width="34" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="context_srecord" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100683">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="sauce" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100683">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -398,13 +472,25 @@
                             <action selector="showSauceRecord:" target="-2" id="100696"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="C605DA77-60CA-4A70-9E57-D86F48449E11" label="Post on Twitter" paletteLabel="Post on Twitter" toolTip="Post ANSi/ASCII artwork on Twitter" image="context_twitter" id="100677">
+                    <toolbarItem implicitItemIdentifier="24AE050A-23B6-4B70-B6C0-E7EE68301035" label="Modify" paletteLabel="Modify" toolTip="investigate SAUCE record" image="modify" id="xaa-mH-x42">
                         <size key="minSize" width="26" height="25"/>
-                        <size key="maxSize" width="26" height="25"/>
-                        <button key="view" verticalHuggingPriority="750" id="100678">
-                            <rect key="frame" x="31" y="14" width="26" height="25"/>
+                        <size key="maxSize" width="34" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="Dpx-dK-Yc8">
+                            <rect key="frame" x="28" y="14" width="34" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="context_twitter" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100679">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="modify" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S4D-s0-0Nm">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C605DA77-60CA-4A70-9E57-D86F48449E11" label="Twitter" paletteLabel="Twitter" toolTip="share on Twitter" image="twitter" id="100677">
+                        <size key="minSize" width="26" height="25"/>
+                        <size key="maxSize" width="34" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="100678">
+                            <rect key="frame" x="31" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="twitter" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100679">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -413,84 +499,17 @@
                             <action selector="postOnTwitter:" target="-2" id="100697"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="14A32089-3A21-4952-9A52-22715AB2A34F" label="" paletteLabel="Encoding" id="100709">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="127" height="22"/>
-                        <size key="maxSize" width="152" height="22"/>
-                        <popUpButton key="view" id="100698">
-                            <rect key="frame" x="0.0" y="14" width="152" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <string key="toolTip">Modify the current encoding by selecting it here (live preview). The new encoding won't be applied until you hit Save or Save as.</string>
-                            <popUpButtonCell key="cell" type="bevel" title="CP437 | US" bezelStyle="rounded" alignment="right" controlSize="small" lineBreakMode="truncatingTail" state="on" inset="2" selectedItem="100706" id="100699">
-                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="smallSystem"/>
-                                <menu key="menu" title="OtherViews" id="100700">
-                                    <items>
-                                        <menuItem title="CP437 | US" state="on" id="100706">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP775 | Baltic Rim" id="100705">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP855 | Cyrillic (Slavic)" id="100733">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP863 | French-Canadian" id="100734">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP737 | Greek" id="100735">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP869 | Greek 2" id="100736">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP862 | Hebrew" id="100737">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP861 | Icelandic" id="100738">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP850 | Latin 1" id="100739">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP852 | Latin 2" id="100740">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP865 | Nordic" id="100741">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP860 | Portuguese" id="100742">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP866 | Cyrillic (Russian)" id="100743">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="CP857 | Turkish" id="100744">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="Amiga" id="100750">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="Unicode (UTF-8)" id="100704">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="Unicode (UTF-16)" id="100703">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="Mac Roman" id="100702">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="Win Latin1" id="100701">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </popUpButtonCell>
-                            <connections>
-                                <action selector="switchExportEncoding:" target="-2" id="100707"/>
-                                <binding destination="-2" name="selectedIndex" keyPath="encButtonIndex" id="100749"/>
-                            </connections>
-                        </popUpButton>
+                    <toolbarItem implicitItemIdentifier="77AF457E-DFED-4A46-8718-C1BA73362162" label="Facebook" paletteLabel="Facebook" toolTip="share on Facebook" image="facebook" id="pbY-qe-QcY">
+                        <size key="minSize" width="26" height="25"/>
+                        <size key="maxSize" width="34" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="ceW-aU-8g0">
+                            <rect key="frame" x="31" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="facebook" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9vP-di-iPC">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="100061"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="100060"/>
@@ -502,17 +521,18 @@
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="100626"/>
-                    <toolbarItem reference="100673"/>
                     <toolbarItem reference="100681"/>
-                    <toolbarItem reference="100677"/>
+                    <toolbarItem reference="xaa-mH-x42"/>
+                    <toolbarItem reference="100673"/>
                     <toolbarItem reference="100061"/>
-                    <toolbarItem reference="100709"/>
+                    <toolbarItem reference="100677"/>
+                    <toolbarItem reference="pbY-qe-QcY"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="17"/>
             </connections>
-            <point key="canvasLocation" x="522" y="464.5"/>
+            <point key="canvasLocation" x="384" y="419.5"/>
         </window>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="100432" customClass="SVFileInfoStrings"/>
@@ -915,9 +935,11 @@
     </objects>
     <resources>
         <image name="Customize" width="32" height="32"/>
-        <image name="context_export" width="16" height="16"/>
-        <image name="context_info" width="16" height="16"/>
-        <image name="context_srecord" width="16" height="16"/>
-        <image name="context_twitter" width="14" height="14"/>
+        <image name="export" width="16" height="16"/>
+        <image name="facebook" width="16" height="16"/>
+        <image name="info" width="16" height="16"/>
+        <image name="modify" width="16" height="16"/>
+        <image name="sauce" width="16" height="16"/>
+        <image name="twitter" width="16" height="16"/>
     </resources>
 </document>
