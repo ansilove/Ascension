@@ -21,7 +21,6 @@
 		F829F68A1A65F4CD00F021BD /* AnsiLove.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = F829F6841A65F33D00F021BD /* AnsiLove.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F83E7D7517DFB3C400EB11CE /* RFOverlayScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83E7D7217DFB3C400EB11CE /* RFOverlayScroller.m */; };
 		F83E7D7617DFB3C400EB11CE /* RFOverlayScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F83E7D7417DFB3C400EB11CE /* RFOverlayScrollView.m */; };
-		F83EAB3A15D7382A00A78B56 /* Customize.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F83EAB2A15D7382900A78B56 /* Customize.tiff */; };
 		F83EAB3B15D7382A00A78B56 /* Divider.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F83EAB2B15D7382900A78B56 /* Divider.tiff */; };
 		F83EAB3C15D7382A00A78B56 /* duplicate.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F83EAB2C15D7382900A78B56 /* duplicate.tiff */; };
 		F83EAB3F15D7382A00A78B56 /* sheet_background.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F83EAB2F15D7382900A78B56 /* sheet_background.tiff */; };
@@ -59,7 +58,6 @@
 		F8C731551A7D670E00FA2B67 /* export.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F8C7314F1A7D670E00FA2B67 /* export.tiff */; };
 		F8C731561A7D670E00FA2B67 /* facebook.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F8C731501A7D670E00FA2B67 /* facebook.tiff */; };
 		F8C731571A7D670E00FA2B67 /* info.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F8C731511A7D670E00FA2B67 /* info.tiff */; };
-		F8C731581A7D670E00FA2B67 /* modify.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F8C731521A7D670E00FA2B67 /* modify.tiff */; };
 		F8C731591A7D670E00FA2B67 /* sauce.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F8C731531A7D670E00FA2B67 /* sauce.tiff */; };
 		F8C7315A1A7D670E00FA2B67 /* twitter.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F8C731541A7D670E00FA2B67 /* twitter.tiff */; };
 		F8DBE75C132D5D6C00A9F868 /* Terminus.dfont in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8835784120F256900D18794 /* Terminus.dfont */; };
@@ -120,7 +118,6 @@
 		F83E7D7217DFB3C400EB11CE /* RFOverlayScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOverlayScroller.m; path = Classes/RFOverlayScroller.m; sourceTree = "<group>"; };
 		F83E7D7317DFB3C400EB11CE /* RFOverlayScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOverlayScrollView.h; path = Classes/RFOverlayScrollView.h; sourceTree = "<group>"; };
 		F83E7D7417DFB3C400EB11CE /* RFOverlayScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOverlayScrollView.m; path = Classes/RFOverlayScrollView.m; sourceTree = "<group>"; };
-		F83EAB2A15D7382900A78B56 /* Customize.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = Customize.tiff; path = Images/Customize.tiff; sourceTree = "<group>"; };
 		F83EAB2B15D7382900A78B56 /* Divider.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = Divider.tiff; path = Images/Divider.tiff; sourceTree = "<group>"; };
 		F83EAB2C15D7382900A78B56 /* duplicate.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = duplicate.tiff; path = Images/duplicate.tiff; sourceTree = "<group>"; };
 		F83EAB2F15D7382900A78B56 /* sheet_background.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = sheet_background.tiff; path = Images/sheet_background.tiff; sourceTree = "<group>"; };
@@ -163,7 +160,6 @@
 		F8C7314F1A7D670E00FA2B67 /* export.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = export.tiff; path = Images/export.tiff; sourceTree = "<group>"; };
 		F8C731501A7D670E00FA2B67 /* facebook.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = facebook.tiff; path = Images/facebook.tiff; sourceTree = "<group>"; };
 		F8C731511A7D670E00FA2B67 /* info.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = info.tiff; path = Images/info.tiff; sourceTree = "<group>"; };
-		F8C731521A7D670E00FA2B67 /* modify.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = modify.tiff; path = Images/modify.tiff; sourceTree = "<group>"; };
 		F8C731531A7D670E00FA2B67 /* sauce.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = sauce.tiff; path = Images/sauce.tiff; sourceTree = "<group>"; };
 		F8C731541A7D670E00FA2B67 /* twitter.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = twitter.tiff; path = Images/twitter.tiff; sourceTree = "<group>"; };
 		F8EA113D145C0CE200550364 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/AboutBox.xib; sourceTree = "<group>"; };
@@ -342,10 +338,8 @@
 				F8C731511A7D670E00FA2B67 /* info.tiff */,
 				F8C731531A7D670E00FA2B67 /* sauce.tiff */,
 				F8C7314F1A7D670E00FA2B67 /* export.tiff */,
-				F8C731521A7D670E00FA2B67 /* modify.tiff */,
 				F8C731501A7D670E00FA2B67 /* facebook.tiff */,
 				F8C731541A7D670E00FA2B67 /* twitter.tiff */,
-				F83EAB2A15D7382900A78B56 /* Customize.tiff */,
 				F83EAB2B15D7382900A78B56 /* Divider.tiff */,
 				F83EAB2C15D7382900A78B56 /* duplicate.tiff */,
 				F83EAB3215D7382900A78B56 /* Toggle-Knob.tiff */,
@@ -452,9 +446,7 @@
 				F8C559531A78291D00A7A149 /* asciiTemplate.tiff in Resources */,
 				F8C559541A78291D00A7A149 /* generalTemplate.tiff in Resources */,
 				F86D17101A62E92700B9A69B /* AscFileTypeASC.icns in Resources */,
-				F8C731581A7D670E00FA2B67 /* modify.tiff in Resources */,
 				F85C66201A6B2D69002A7D31 /* aboutclaner.tiff in Resources */,
-				F83EAB3A15D7382A00A78B56 /* Customize.tiff in Resources */,
 				F8C7315A1A7D670E00FA2B67 /* twitter.tiff in Resources */,
 				F849E7CE1A73A2E800C509AA /* PetMe642Y.ttf in Resources */,
 				F83EAB3B15D7382A00A78B56 /* Divider.tiff in Resources */,
@@ -562,7 +554,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 107;
+				CURRENT_PROJECT_VERSION = 108;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -591,7 +583,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CURRENT_PROJECT_VERSION = 107;
+				CURRENT_PROJECT_VERSION = 108;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -625,7 +617,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 107;
+				CURRENT_PROJECT_VERSION = 108;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = unsupported;
@@ -655,7 +647,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 107;
+				CURRENT_PROJECT_VERSION = 108;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = unsupported;
