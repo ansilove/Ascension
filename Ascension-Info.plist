@@ -232,7 +232,7 @@
 	<key>CFBundleVersion</key>
 	<string>107</string>
 	<key>BlockZone version</key>
-	<string>1.003</string>
+	<string>1.004</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.graphics-design</string>
 	<key>LSMinimumSystemVersion</key>
