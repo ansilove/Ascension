@@ -505,6 +505,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="postOnFacebook:" target="-2" id="1iK-Wv-2o8"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="100061"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="100060"/>
