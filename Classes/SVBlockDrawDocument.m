@@ -406,9 +406,12 @@
         }
     }
     
-    // Also wipe Twitter image cache files.
+    // Also wipe social image cache files.
     if ([fileManager fileExistsAtPath:self.twitterCacheFile]) {
         [fileManager removeItemAtPath:self.twitterCacheFile error:nil];
+    }
+    if ([fileManager fileExistsAtPath:self.facebookCacheFile]) {
+        [fileManager removeItemAtPath:self.facebookCacheFile error:nil];
     }
     
     // Finally nuke export cache files
