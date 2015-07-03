@@ -657,7 +657,7 @@
             break;
         }
     }
-    // Don't use the DOS font either for ASCII nor text files.
+    // Don't use the AnsiLove font either for ASCII nor text files.
     if (self.isUsingAnsiLove == NO) {
         self.alFont = @"80x25";
     }
