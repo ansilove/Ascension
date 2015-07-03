@@ -908,6 +908,201 @@
     [service performWithItems:[NSArray arrayWithObjects:pureFileName,self.renderedTwitterImage, nil]];
 }
 
+- (IBAction)postOnFacebook:(id)sender
+{
+    if (self.isNewFile == YES)
+    {
+        // The user should know why we can't post a new document.
+        NSAlert *fbCanceledAlert =
+        [NSAlert alertWithMessageText:@"Facebook post canceled"
+                        defaultButton:@"OK"
+                      alternateButton:nil
+                          otherButton:nil
+            informativeTextWithFormat:@"You need to save your current changes before the "
+         @"built-in parser is able to add this document as "
+         @"PNG image attachment to your Facebook post."];
+        
+        [fbCanceledAlert setAlertStyle:NSInformationalAlertStyle];
+        [fbCanceledAlert beginSheetModalForWindow:self.mainWindow
+                                       modalDelegate:self
+                                      didEndSelector:NULL
+                                         contextInfo:NULL];
+        // Now get outta here.
+        return;
+    }
+    
+    // Get the current file URL and convert it to an UNIX path.
+    NSURL *currentURL = [self fileURL];
+    self.alURLString = [currentURL path];
+    
+    // Get the currrent file name without any path informations.
+    NSString *pureFileName = [self.alURLString lastPathComponent];
+    
+    // Generate cache file name and path.
+    self.facebookCacheFile = [NSString stringWithFormat:
+                             @"~/Library/Application Support/Ascension/%@.png", pureFileName];
+    
+    // Expand tilde in cache file path.
+    self.facebookCacheFile = [self.facebookCacheFile stringByExpandingTildeInPath];
+    
+    // Create string we can pass as outputfile flag.
+    self.alOutputString = [NSString stringWithFormat:
+                           @"~/Library/Application Support/Ascension/%@", pureFileName];
+    
+    self.alOutputString = [self.alOutputString stringByExpandingTildeInPath];
+    
+    // Once again, we mess around with encoding overrides.
+    // The selected font and encoding could differ from preferences.
+    switch (self.encButtonIndex)
+    {
+        case xDosCP437: {
+            // Lets find out if that is the case.
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if ([defaults integerForKey:@"ansiLoveFont"] == al80x25) {
+                self.alFont = @"80x25";
+            }
+            else if ([defaults integerForKey:@"ansiLoveFont"] == alTerminus) {
+                self.alFont = @"terminus";
+            }
+            else if ([defaults integerForKey:@"ansiLoveFont"] == al80x50) {
+                self.alFont = @"80x50";
+            }
+            else {
+                // No CP437 font selected in preferences, work with defaults.
+                self.alFont = @"80x25";
+            }
+            break;
+        }
+        case xDosCP775: {
+            // Baltic Rim
+            self.alFont = @"baltic";
+            break;
+        }
+        case xDosCP855: {
+            // Cyrillic (Slavic)
+            self.alFont = @"cyrillic";
+            break;
+        }
+        case xDosCP863: {
+            // French-Canadian
+            self.alFont = @"french-canadian";
+            break;
+        }
+        case xDosCP737: {
+            // Greek
+            self.alFont = @"greek";
+            break;
+        }
+        case xDosCP869: {
+            // Greek 2
+            self.alFont = @"greek-869";
+            break;
+        }
+        case xDosCP862: {
+            // Hebrew
+            self.alFont = @"hebrew";
+            break;
+        }
+        case xDosCP861: {
+            // Icelandic
+            self.alFont = @"icelandic";
+            break;
+        }
+        case xDosCP850: {
+            // Latin 1
+            self.alFont = @"latin1";
+            break;
+        }
+        case xDosCP852: {
+            // Latin 2
+            self.alFont = @"latin2";
+            break;
+        }
+        case xDosCP865: {
+            // Nordic
+            self.alFont = @"nordic";
+            break;
+        }
+        case xDosCP860: {
+            // Portuguese
+            self.alFont = @"portuguese";
+            break;
+        }
+        case xDosCP866: {
+            // Cyrillic (Russian)
+            self.alFont = @"russian";
+            break;
+        }
+        case xDosCP857: {
+            // Turkish
+            self.alFont = @"turkish";
+            break;
+        }
+        case xAmiga: {
+            // Amiga Latin 1 fonts also come in many flavors the user possibly selected.
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if ([defaults integerForKey:@"ansiLoveFont"] == alTopaz) {
+                self.alFont = @"topaz";
+            }
+            else if ([defaults integerForKey:@"ansiLoveFont"] == alTopazPlus) {
+                self.alFont = @"topaz+";
+            }
+            else if ([defaults integerForKey:@"ansiLoveFont"] == alTopaz500) {
+                self.alFont = @"topaz500";
+            }
+            else if ([defaults integerForKey:@"ansiLoveFont"] == alTopaz500Plus) {
+                self.alFont = @"topaz500+";
+            }
+            else if ([defaults integerForKey:@"ansiLoveFont"] == alMoSoul) {
+                self.alFont = @"mosoul";
+            }
+            else if ([defaults integerForKey:@"ansiLoveFont"] == alPotNoodle) {
+                self.alFont = @"pot-noodle";
+            }
+            else if ([defaults integerForKey:@"ansiLoveFont"] == alMicroKnight) {
+                self.alFont = @"microknight";
+            }
+            else if ([defaults integerForKey:@"ansiLoveFont"] == alMicroKnightPlus) {
+                self.alFont = @"microknight+";
+            }
+            else {
+                // No Amiga font defined in prefs? Fine. Lets render with Topaz then.
+                self.alFont = @"topaz";
+            }
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    // Don't use the DOS font either for ASCII nor text files.
+    if (self.isUsingAnsiLove == NO) {
+        self.alFont = @"80x25";
+    }
+    
+    // Call AnsiLove and generate the rendered image.
+    [self.ansiGen renderAnsiFile:self.alURLString
+                      outputFile:self.alOutputString
+                            font:self.alFont
+                            bits:self.alBits
+                       iceColors:self.alIceColors
+                         columns:self.alColumns
+                          retina:NO];
+    
+    // Wait for AnsiLove.framework to finish rendering.
+    while (self.isRendered == NO) {
+        [NSThread sleepForTimeInterval:0.1];
+    }
+    
+    // Grab the rendered image and init an NSImage instance for it.
+    self.renderedFacebookImage = [[NSImage alloc] initWithContentsOfFile:self.facebookCacheFile];
+    
+    // Finally post image on Facebook, use file name as post text.
+    NSSharingService *service = [NSSharingService sharingServiceNamed:NSSharingServiceNamePostOnFacebook];
+    [service performWithItems:[NSArray arrayWithObjects:pureFileName,self.renderedFacebookImage, nil]];
+}
+
+
 # pragma mark -
 # pragma mark content appearance
 
