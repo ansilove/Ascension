@@ -350,7 +350,7 @@
                         </scroller>
                     </scrollView>
                     <popUpButton id="Bg4-eT-IjF" userLabel="Encoding button">
-                        <rect key="frame" x="491" y="1" width="152" height="22"/>
+                        <rect key="frame" x="493" y="1" width="150" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <string key="toolTip">Modify the current encoding by selecting it here (live preview). The new encoding won't be applied until you hit Save or Save as.</string>
                         <popUpButtonCell key="cell" type="bevel" title="CP437 | US" bezelStyle="rounded" alignment="right" controlSize="small" lineBreakMode="truncatingTail" state="on" inset="2" selectedItem="nsk-OZ-tfL" id="blh-nk-IS9">
@@ -423,6 +423,13 @@
                             <binding destination="-2" name="selectedIndex" keyPath="encButtonIndex" id="6EI-e1-Zm7"/>
                         </connections>
                     </popUpButton>
+                    <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="ueI-bV-1VX">
+                        <rect key="frame" x="437" y="4" width="5" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
                 </subviews>
             </view>
             <toolbar key="toolbar" implicitIdentifier="D5BF2268-30C1-4EAF-BF29-17E8A26A934F" displayMode="iconOnly" sizeMode="regular" id="100055">
@@ -532,7 +539,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="17"/>
             </connections>
-            <point key="canvasLocation" x="384" y="419.5"/>
+            <point key="canvasLocation" x="406" y="409.5"/>
         </window>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="100432" customClass="SVFileInfoStrings"/>
