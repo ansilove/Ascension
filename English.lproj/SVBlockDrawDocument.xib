@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C106a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SVBlockDrawDocument">
@@ -479,18 +479,6 @@
                             <action selector="showSauceRecord:" target="-2" id="100696"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="24AE050A-23B6-4B70-B6C0-E7EE68301035" label="Modify" paletteLabel="Modify" toolTip="investigate SAUCE record" image="modify" id="xaa-mH-x42">
-                        <size key="minSize" width="26" height="25"/>
-                        <size key="maxSize" width="34" height="25"/>
-                        <button key="view" verticalHuggingPriority="750" id="Dpx-dK-Yc8">
-                            <rect key="frame" x="28" y="14" width="34" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="modify" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S4D-s0-0Nm">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                        </button>
-                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="C605DA77-60CA-4A70-9E57-D86F48449E11" label="Twitter" paletteLabel="Twitter" toolTip="share on Twitter" image="twitter" id="100677">
                         <size key="minSize" width="26" height="25"/>
                         <size key="maxSize" width="34" height="25"/>
@@ -520,16 +508,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="100061"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="100060"/>
-                    <toolbarItem implicitItemIdentifier="7B6C737F-8B70-4677-BF26-10AA0AC22805" label="" paletteLabel="Customize" tag="-1" image="Customize" id="100254">
-                        <connections>
-                            <action selector="runToolbarCustomizationPalette:" target="-1" id="100255"/>
-                        </connections>
-                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="100626"/>
                     <toolbarItem reference="100681"/>
-                    <toolbarItem reference="xaa-mH-x42"/>
                     <toolbarItem reference="100673"/>
                     <toolbarItem reference="100061"/>
                     <toolbarItem reference="100677"/>
@@ -941,11 +923,9 @@
         </popover>
     </objects>
     <resources>
-        <image name="Customize" width="32" height="32"/>
         <image name="export" width="16" height="16"/>
         <image name="facebook" width="16" height="16"/>
         <image name="info" width="16" height="16"/>
-        <image name="modify" width="16" height="16"/>
         <image name="sauce" width="16" height="16"/>
         <image name="twitter" width="16" height="16"/>
     </resources>
