@@ -338,11 +338,11 @@
     // Configure some behaviors of the file information popover.
     self.fileInfoPopover.behavior = NSPopoverBehaviorTransient;
     self.fileInfoPopover.animates = YES;
-    self.fileInfoPopover.appearance = NSPopoverAppearanceHUD;
+    //self.fileInfoPopover.appearance = NSPopoverAppearanceHUD;
     
     self.saucePopover.behavior = NSPopoverBehaviorTransient;
     self.saucePopover.animates = YES;
-    self.saucePopover.appearance = NSPopoverAppearanceHUD;
+    //self.saucePopover.appearance = NSPopoverAppearanceHUD;
 }
 
 
