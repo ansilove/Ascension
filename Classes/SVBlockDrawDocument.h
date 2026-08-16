@@ -10,8 +10,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <AutoHyperlinks/AutoHyperlinks.h>
-#import <AnsiLove/AnsiLove.h>
+#import "ALAnsiGenerator.h"
+#import "ALSauceMachine.h"
 
 @class SVRetroTextView;
 @class RFOverlayScrollView;
@@ -109,8 +109,6 @@ typedef enum {
 @property (nonatomic, strong) NSMutableAttributedString *rawAnsiString;
 @property (nonatomic, strong) NSString                  *ansiCacheFile;
 @property (nonatomic, strong) NSString                  *retinaCacheFile;
-@property (nonatomic, strong) NSString                  *twitterCacheFile;
-@property (nonatomic, strong) NSString                  *facebookCacheFile;
 @property (nonatomic, strong) NSString                  *exportCacheFile;
 @property (nonatomic, strong) NSString                  *exportURLString;
 @property (nonatomic, strong) NSString                  *alURLString;
@@ -137,8 +135,6 @@ typedef enum {
 
 // images
 @property (nonatomic, strong) NSImage *renderedAnsiImage;
-@property (nonatomic, strong) NSImage *renderedTwitterImage;
-@property (nonatomic, strong) NSImage *renderedFacebookImage;
 
 // integer and float values
 @property (nonatomic, assign) CGFloat   fontSize;
@@ -240,7 +236,6 @@ typedef enum {
 - (IBAction)showFileInfoPopover:(id)sender;
 - (IBAction)exportAsImage:(id)sender;
 - (IBAction)showSauceRecord:(id)sender;
-- (IBAction)postOnTwitter:(id)sender;
-- (IBAction)postOnFacebook:(id)sender;
+- (IBAction)shareDocument:(id)sender;
 
 @end

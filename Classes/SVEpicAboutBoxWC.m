@@ -107,18 +107,18 @@
             // Now our NSTextView instance will read the Acknowledgements.rtf file.
             NSBundle *myMainBundle = [NSBundle mainBundle];
             NSString *ackFilePath = [myMainBundle pathForResource:@"Acknowledgements" ofType:@"rtf"];
-            [self.licenseTextView readRTFDFromFile:ackFilePath];
-            
+            NSURL *ackURL = [NSURL fileURLWithPath:ackFilePath];
+            NSAttributedString *ackContent = [[NSAttributedString alloc] initWithURL:ackURL options:@{} documentAttributes:nil error:nil];
+            if (ackContent) {
+                [[self.licenseTextView textStorage] setAttributedString:ackContent];
+            }
+
             // Opens our license textview scrolled to top.
             NSRange zeroRange = { 0, 0 };
             [self.licenseTextView scrollRangeToVisible: zeroRange];
-            
+
             // Show up the license / acknowledgements sheet.
-            [NSApp beginSheet:self.licenseSheet
-               modalForWindow:self.window 
-                modalDelegate:self 
-               didEndSelector:NULL 
-                  contextInfo:NULL];
+            [self.window beginSheet:self.licenseSheet completionHandler:nil];
 			break;
 		}
 		case LicTag: {
@@ -128,18 +128,18 @@
             // Make our NSTextView instance load the License.rtf file.
             NSBundle *myMainBundle = [NSBundle mainBundle];
             NSString *licenseFilePath = [myMainBundle pathForResource:@"License" ofType:@"rtf"];
-            [self.licenseTextView readRTFDFromFile:licenseFilePath];
-            
+            NSURL *licenseURL = [NSURL fileURLWithPath:licenseFilePath];
+            NSAttributedString *licenseContent = [[NSAttributedString alloc] initWithURL:licenseURL options:@{} documentAttributes:nil error:nil];
+            if (licenseContent) {
+                [[self.licenseTextView textStorage] setAttributedString:licenseContent];
+            }
+
             // Opens our license textview scrolled to top.
             NSRange zeroRange = { 0, 0 };
             [self.licenseTextView scrollRangeToVisible: zeroRange];
-            
+
             // Show up the license / acknowledgements sheet.
-            [NSApp beginSheet:self.licenseSheet
-               modalForWindow:self.window 
-                modalDelegate:self 
-               didEndSelector:NULL 
-                  contextInfo:NULL];
+            [self.window beginSheet:self.licenseSheet completionHandler:nil];
 			break;
 		}
 		default: {
@@ -154,8 +154,7 @@
     [self.window setTitle:@""];
     
     // Remove the license / acknowledgements sheet.
-    [NSApp endSheet:self.licenseSheet]; 
-    [self.licenseSheet orderOut:nil];
+    [self.window endSheet:self.licenseSheet];
 }
 
 @end

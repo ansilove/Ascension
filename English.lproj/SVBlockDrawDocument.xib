@@ -479,34 +479,19 @@
                             <action selector="showSauceRecord:" target="-2" id="100696"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="C605DA77-60CA-4A70-9E57-D86F48449E11" label="Twitter" paletteLabel="Twitter" toolTip="share on Twitter" image="twitter" id="100677">
+                    <toolbarItem implicitItemIdentifier="C605DA77-60CA-4A70-9E57-D86F48449E11" label="Share" paletteLabel="Share" toolTip="share document" id="100677">
                         <size key="minSize" width="26" height="25"/>
                         <size key="maxSize" width="34" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="100678">
                             <rect key="frame" x="31" y="14" width="34" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="twitter" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100679">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100679">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
                         <connections>
-                            <action selector="postOnTwitter:" target="-2" id="100697"/>
-                        </connections>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="77AF457E-DFED-4A46-8718-C1BA73362162" label="Facebook" paletteLabel="Facebook" toolTip="share on Facebook" image="facebook" id="pbY-qe-QcY">
-                        <size key="minSize" width="26" height="25"/>
-                        <size key="maxSize" width="34" height="25"/>
-                        <button key="view" verticalHuggingPriority="750" id="ceW-aU-8g0">
-                            <rect key="frame" x="31" y="14" width="34" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="facebook" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9vP-di-iPC">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                        </button>
-                        <connections>
-                            <action selector="postOnFacebook:" target="-2" id="1iK-Wv-2o8"/>
+                            <action selector="shareDocument:" target="-2" id="100697"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="100061"/>
@@ -518,7 +503,6 @@
                     <toolbarItem reference="100673"/>
                     <toolbarItem reference="100061"/>
                     <toolbarItem reference="100677"/>
-                    <toolbarItem reference="pbY-qe-QcY"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
@@ -927,9 +911,7 @@
     </objects>
     <resources>
         <image name="export" width="16" height="16"/>
-        <image name="facebook" width="16" height="16"/>
         <image name="info" width="16" height="16"/>
         <image name="sauce" width="16" height="16"/>
-        <image name="twitter" width="16" height="16"/>
     </resources>
 </document>

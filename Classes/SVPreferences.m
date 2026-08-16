@@ -174,27 +174,26 @@
         [defaults setBool:NO forKey:@"blockZoneInstalled"];
     }
 	if (![defaults dataForKey:@"fontColor"]) {
-		NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]];
+		NSData *fontColorData = [NSKeyedArchiver archivedDataWithRootObject:[NSColor whiteColor] requiringSecureCoding:YES error:nil];
 		[defaults setObject:fontColorData forKey:@"fontColor"];
 	}
 	if (![defaults dataForKey:@"backgroundColor"]) {
-		NSData *backgroundColorData = [NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
+		NSData *backgroundColorData = [NSKeyedArchiver archivedDataWithRootObject:[NSColor blackColor] requiringSecureCoding:YES error:nil];
 		[defaults setObject:backgroundColorData forKey:@"backgroundColor"];
 	}
 	if (![defaults dataForKey:@"cursorColor"]) {
-		NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]];
+		NSData *cursorColorData = [NSKeyedArchiver archivedDataWithRootObject:[NSColor whiteColor] requiringSecureCoding:YES error:nil];
 		[defaults setObject:cursorColorData forKey:@"cursorColor"];
 	}
 	if (![defaults dataForKey:@"linkColor"]) {
-		NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[NSColor greenColor]];
+		NSData *linkColorData = [NSKeyedArchiver archivedDataWithRootObject:[NSColor greenColor] requiringSecureCoding:YES error:nil];
 		[defaults setObject:linkColorData forKey:@"linkColor"];
 	}
 	if (![defaults dataForKey:@"selectionColor"]) {
-		NSColor *customGrayScale = [NSColor colorWithDeviceWhite:0.2 alpha:1.0];
-		NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:customGrayScale];
+		NSColor *customGrayScale = [NSColor colorWithWhite:0.2 alpha:1.0];
+		NSData *selectionColorData = [NSKeyedArchiver archivedDataWithRootObject:customGrayScale requiringSecureCoding:YES error:nil];
 		[defaults setObject:selectionColorData forKey:@"selectionColor"];
 	}
-	[defaults synchronize];
 }
 
 - (IBAction)restoreUserDefaults:(id)sender
@@ -237,16 +236,16 @@
     }
 	
 	// Store initial colors as data to user defaults.
-	NSData *fontColorData = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]];
+	NSData *fontColorData = [NSKeyedArchiver archivedDataWithRootObject:[NSColor whiteColor] requiringSecureCoding:YES error:nil];
 	[defaults setObject:fontColorData forKey:@"fontColor"];
-	NSData *backgroundColorData = [NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
+	NSData *backgroundColorData = [NSKeyedArchiver archivedDataWithRootObject:[NSColor blackColor] requiringSecureCoding:YES error:nil];
 	[defaults setObject:backgroundColorData forKey:@"backgroundColor"];
-	NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]];
+	NSData *cursorColorData = [NSKeyedArchiver archivedDataWithRootObject:[NSColor whiteColor] requiringSecureCoding:YES error:nil];
 	[defaults setObject:cursorColorData forKey:@"cursorColor"];
-	NSData *linkColorData = [NSArchiver archivedDataWithRootObject:[NSColor greenColor]];
+	NSData *linkColorData = [NSKeyedArchiver archivedDataWithRootObject:[NSColor greenColor] requiringSecureCoding:YES error:nil];
 	[defaults setObject:linkColorData forKey:@"linkColor"];
-	NSColor *customGrayScale = [NSColor colorWithDeviceWhite:0.2 alpha:1.0];
-	NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:customGrayScale];
+	NSColor *customGrayScale = [NSColor colorWithWhite:0.2 alpha:1.0];
+	NSData *selectionColorData = [NSKeyedArchiver archivedDataWithRootObject:customGrayScale requiringSecureCoding:YES error:nil];
 	[defaults setObject:selectionColorData forKey:@"selectionColor"];
 	
 	// Reset the themes array.
@@ -273,15 +272,11 @@
     
     // Reset font info label to font size value that's restored now.
     [self.fontInfoTextField setStringValue:@"font size: 16.0pt"];
-    
-    [defaults synchronize];
 }
 
 - (IBAction)synchronizeDefaults:(id)sender
 {
-	// Force Shared User Defaults Controller to synchronize immediately.
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults synchronize];
+	// No-op: modern macOS auto-synchronizes user defaults.
 }
 
 - (IBAction)changeResumeState:(id)sender
@@ -344,7 +339,7 @@
          @"is only necessary in case you want the newest font version available for other "
          @"applications. Optionally, you can choose to uninstall the font.",
          self.blockZoneVersionString]];
-        [fontUpdateConfirmation setAlertStyle:NSWarningAlertStyle];
+        [fontUpdateConfirmation setAlertStyle:NSAlertStyleWarning];
         
         NSInteger modalReturn = [fontUpdateConfirmation runModal];
         
@@ -373,7 +368,7 @@
          @"BlockZone is a faithful, pixel-perfect recreation of the original DOS font, bundled "
          @"with Ascension. This step is not necessary unless you want the font available for "
          @"other applications on your system. Ascension will always use the bundled variant."];
-        [fontInstallConfirmation setAlertStyle:NSWarningAlertStyle];
+        [fontInstallConfirmation setAlertStyle:NSAlertStyleWarning];
         
         // Provided the user hit 'install', perform Terminus installation.
         if ([fontInstallConfirmation runModal] == NSAlertFirstButtonReturn) {
@@ -450,8 +445,7 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:@"blockZoneInstalled"];
-    [defaults synchronize];
-    
+
     [fontInstallSuccess runModal];
     
     self.fontSystemButton.title = @"Update / Remove BlockZone.ttf";
@@ -468,8 +462,7 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:NO forKey:@"blockZoneInstalled"];
-    [defaults synchronize];
-    
+
     [fontUninstallSuccess runModal];
     
     self.fontSystemButton.title = @"Install BlockZone.ttf";
@@ -547,14 +540,13 @@
 {
 	// Save the new font color value to user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *fontColorData = [NSArchiver archivedDataWithRootObject:self.fontColorWell.color];
+	NSData *fontColorData = [NSKeyedArchiver archivedDataWithRootObject:self.fontColorWell.color requiringSecureCoding:YES error:nil];
 	[defaults setObject:fontColorData forKey:@"fontColor"];
 	
 	if (sender == self.fontColorWell) {
 		[self applyColorValueToTheme];
 	}
-	
-	[defaults synchronize];
+
 	[self sendFontColorChangeNote];
 }
 
@@ -562,13 +554,12 @@
 {
 	// Save our new backround color value to user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *bgrndColorData = [NSArchiver archivedDataWithRootObject:self.bgrndColorWell.color];
+	NSData *bgrndColorData = [NSKeyedArchiver archivedDataWithRootObject:self.bgrndColorWell.color requiringSecureCoding:YES error:nil];
 	[defaults setObject:bgrndColorData forKey:@"backgroundColor"];
 	
 	if (sender == self.bgrndColorWell) {
 		[self applyColorValueToTheme];
-	}	
-	[defaults synchronize];
+	}
 	[self sendBgrndColorChangeNote];
 }
 
@@ -576,13 +567,12 @@
 {
 	// Store the new cursor color value to user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *cursorColorData = [NSArchiver archivedDataWithRootObject:self.cursorColorWell.color];
+	NSData *cursorColorData = [NSKeyedArchiver archivedDataWithRootObject:self.cursorColorWell.color requiringSecureCoding:YES error:nil];
 	[defaults setObject:cursorColorData forKey:@"cursorColor"];
 	
 	if (sender == self.cursorColorWell) {
 		[self applyColorValueToTheme];
-	}	
-	[defaults synchronize];
+	}
 	[self sendCursorColorChangeNote];
 }
 
@@ -590,14 +580,13 @@
 {
 	// Save the new color for hyperlinks to user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *linkColorData = [NSArchiver archivedDataWithRootObject:self.linkColorWell.color];
+	NSData *linkColorData = [NSKeyedArchiver archivedDataWithRootObject:self.linkColorWell.color requiringSecureCoding:YES error:nil];
 	[defaults setObject:linkColorData forKey:@"linkColor"];
 	
 	if (sender == self.linkColorWell) {
 		[self applyColorValueToTheme];
 	}
-	
-	[defaults synchronize];
+
 	[self sendLinkColorChangeNote];
 }
 
@@ -605,23 +594,18 @@
 {
 	// Save the new color for selected text to user defaults.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *selectionColorData = [NSArchiver archivedDataWithRootObject:self.selectionColorWell.color];
+	NSData *selectionColorData = [NSKeyedArchiver archivedDataWithRootObject:self.selectionColorWell.color requiringSecureCoding:YES error:nil];
 	[defaults setObject:selectionColorData forKey:@"selectionColor"];
 	
 	if (sender == self.selectionColorWell) {
 		[self applyColorValueToTheme];
 	}
-	
-	[defaults synchronize];
+
 	[self sendSelectionColorChangeNote];
 }
 
 - (IBAction)changeHyperLinkAttributes:(id)sender
 {
-    // First, synchronize defaults.
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults synchronize];
-    
     // Post note to toggle hyperlink attributes in already opened documents.
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc postNotificationName:@"HyperLinkAttributeChange" object:self];
@@ -692,7 +676,7 @@
 	themeAscension.atBackgroundColor = [NSColor blackColor];
 	themeAscension.atLinkColor = [NSColor greenColor];
 	themeAscension.atCursorColor = [NSColor whiteColor];
-	themeAscension.atSelectionColor = [NSColor colorWithDeviceWhite:0.2 alpha:1.0];
+	themeAscension.atSelectionColor = [NSColor colorWithWhite:0.2 alpha:1.0];
 	[[self mutableArrayValueForKey:@"themesArray"] addObject:themeAscension];
 	
 	// Inversion
@@ -709,88 +693,88 @@
 	SVThemeObject *themeDOSBox = [[SVThemeObject alloc] init];
 	themeDOSBox.atName = @"DOSBox";
 	themeDOSBox.atFontColor = 
-	[NSColor colorWithCalibratedRed:170/255.l green:170/255.l blue:170/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:170/255.l green:170/255.l blue:170/255.l alpha:1.0];
 	themeDOSBox.atBackgroundColor = [NSColor blackColor];
 	themeDOSBox.atLinkColor = 
-	[NSColor colorWithCalibratedRed:170/255.l green:170/255.l blue:170/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:170/255.l green:170/255.l blue:170/255.l alpha:1.0];
 	themeDOSBox.atCursorColor = 
-	[NSColor colorWithCalibratedRed:170/255.l green:170/255.l blue:170/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:170/255.l green:170/255.l blue:170/255.l alpha:1.0];
 	themeDOSBox.atSelectionColor = 
-	[NSColor colorWithCalibratedRed:170/255.l green:170/255.l blue:170/255.l alpha:0.2];
+	[NSColor colorWithSRGBRed:170/255.l green:170/255.l blue:170/255.l alpha:0.2];
 	[[self mutableArrayValueForKey:@"themesArray"] addObject:themeDOSBox];
 	
 	// Africa
 	SVThemeObject *themeAfrica = [[SVThemeObject alloc] init];
 	themeAfrica.atName = @"Africa";
 	themeAfrica.atFontColor = 
-	[NSColor colorWithCalibratedRed:75/255.l green:47/255.l blue:46/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:75/255.l green:47/255.l blue:46/255.l alpha:1.0];
 	themeAfrica.atBackgroundColor = 
-	[NSColor colorWithCalibratedRed:223/255.l green:219/255.l blue:195/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:223/255.l green:219/255.l blue:195/255.l alpha:1.0];
 	themeAfrica.atLinkColor = 
-	[NSColor colorWithCalibratedRed:149/255.l green:150/255.l blue:7/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:149/255.l green:150/255.l blue:7/255.l alpha:1.0];
 	themeAfrica.atCursorColor = 
-	[NSColor colorWithCalibratedRed:75/255.l green:47/255.l blue:46/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:75/255.l green:47/255.l blue:46/255.l alpha:1.0];
 	themeAfrica.atSelectionColor = 
-	[NSColor colorWithCalibratedRed:243/255.l green:241/255.l blue:220/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:243/255.l green:241/255.l blue:220/255.l alpha:1.0];
 	[[self mutableArrayValueForKey:@"themesArray"] addObject:themeAfrica];
 	
 	// Blood Legacy
 	SVThemeObject *themeBloodLegacy = [[SVThemeObject alloc] init];
 	themeBloodLegacy.atName = @"Blood Legacy";
 	themeBloodLegacy.atFontColor = 
-	[NSColor colorWithCalibratedRed:199/255.l green:22/255.l blue:41/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:199/255.l green:22/255.l blue:41/255.l alpha:1.0];
 	themeBloodLegacy.atBackgroundColor = [NSColor blackColor];
 	themeBloodLegacy.atLinkColor = 
-	[NSColor colorWithCalibratedRed:248/255.l green:65/255.l blue:48/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:248/255.l green:65/255.l blue:48/255.l alpha:1.0];
 	themeBloodLegacy.atCursorColor = 
-	[NSColor colorWithCalibratedRed:199/255.l green:22/255.l blue:41/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:199/255.l green:22/255.l blue:41/255.l alpha:1.0];
 	themeBloodLegacy.atSelectionColor = 
-	[NSColor colorWithCalibratedRed:199/255.l green:22/255.l blue:41/255.l alpha:0.2];
+	[NSColor colorWithSRGBRed:199/255.l green:22/255.l blue:41/255.l alpha:0.2];
 	[[self mutableArrayValueForKey:@"themesArray"] addObject:themeBloodLegacy];
 	
 	// Commodore64
 	SVThemeObject *themeCommodore64 = [[SVThemeObject alloc] init];
 	themeCommodore64.atName = @"Commodore 64";
 	themeCommodore64.atFontColor = 
-	[NSColor colorWithCalibratedRed:124/255.l green:112/255.l blue:218/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:124/255.l green:112/255.l blue:218/255.l alpha:1.0];
 	themeCommodore64.atBackgroundColor = 
-	[NSColor colorWithCalibratedRed:62/255.l green:49/255.l blue:162/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:62/255.l green:49/255.l blue:162/255.l alpha:1.0];
 	themeCommodore64.atLinkColor = 
-	[NSColor colorWithCalibratedRed:124/255.l green:112/255.l blue:218/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:124/255.l green:112/255.l blue:218/255.l alpha:1.0];
 	themeCommodore64.atCursorColor = 
-	[NSColor colorWithCalibratedRed:124/255.l green:112/255.l blue:218/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:124/255.l green:112/255.l blue:218/255.l alpha:1.0];
 	themeCommodore64.atSelectionColor = 
-	[NSColor colorWithCalibratedRed:124/255.l green:112/255.l blue:218/255.l alpha:0.2];
+	[NSColor colorWithSRGBRed:124/255.l green:112/255.l blue:218/255.l alpha:0.2];
 	[[self mutableArrayValueForKey:@"themesArray"] addObject:themeCommodore64];
 	
 	// Toxicity
 	SVThemeObject *themeToxicity = [[SVThemeObject alloc] init];
 	themeToxicity.atName = @"Toxicity";
 	themeToxicity.atFontColor = 
-	[NSColor colorWithCalibratedRed:154/255.l green:254/255.l blue:92/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:154/255.l green:254/255.l blue:92/255.l alpha:1.0];
 	themeToxicity.atBackgroundColor = 
-	[NSColor colorWithCalibratedRed:4/255.l green:68/255.l blue:12/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:4/255.l green:68/255.l blue:12/255.l alpha:1.0];
 	themeToxicity.atLinkColor = 
-	[NSColor colorWithCalibratedRed:222/255.l green:223/255.l blue:8/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:222/255.l green:223/255.l blue:8/255.l alpha:1.0];
 	themeToxicity.atCursorColor = 
-	[NSColor colorWithCalibratedRed:154/255.l green:254/255.l blue:92/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:154/255.l green:254/255.l blue:92/255.l alpha:1.0];
 	themeToxicity.atSelectionColor = 
-	[NSColor colorWithCalibratedRed:154/255.l green:254/255.l blue:92/255.l alpha:0.2];
+	[NSColor colorWithSRGBRed:154/255.l green:254/255.l blue:92/255.l alpha:0.2];
 	[[self mutableArrayValueForKey:@"themesArray"] addObject:themeToxicity];
 	
 	// Purple Haze
 	SVThemeObject *themePurpleHaze = [[SVThemeObject alloc] init];
 	themePurpleHaze.atName = @"Purple Haze";
 	themePurpleHaze.atFontColor = 
-	[NSColor colorWithCalibratedRed:197/255.l green:81/255.l blue:255/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:197/255.l green:81/255.l blue:255/255.l alpha:1.0];
 	themePurpleHaze.atBackgroundColor = 
-	[NSColor colorWithCalibratedRed:43/255.l green:1/255.l blue:70/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:43/255.l green:1/255.l blue:70/255.l alpha:1.0];
 	themePurpleHaze.atLinkColor = 
-	[NSColor colorWithCalibratedRed:252/255.l green:36/255.l blue:230/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:252/255.l green:36/255.l blue:230/255.l alpha:1.0];
 	themePurpleHaze.atCursorColor = 
-	[NSColor colorWithCalibratedRed:197/255.l green:81/255.l blue:255/255.l alpha:1.0];
+	[NSColor colorWithSRGBRed:197/255.l green:81/255.l blue:255/255.l alpha:1.0];
 	themePurpleHaze.atSelectionColor = 
-	[NSColor colorWithCalibratedRed:197/255.l green:81/255.l blue:255/255.l alpha:0.2];
+	[NSColor colorWithSRGBRed:197/255.l green:81/255.l blue:255/255.l alpha:0.2];
 	[[self mutableArrayValueForKey:@"themesArray"] addObject:themePurpleHaze];
 }
 
@@ -803,7 +787,7 @@
 	themeCustom.atBackgroundColor = [NSColor blackColor];
 	themeCustom.atLinkColor = [NSColor whiteColor];
 	themeCustom.atCursorColor = [NSColor whiteColor];
-	themeCustom.atSelectionColor = [NSColor colorWithDeviceWhite:0.2 alpha:1.0];
+	themeCustom.atSelectionColor = [NSColor colorWithWhite:0.2 alpha:1.0];
 	[[self mutableArrayValueForKey:@"themesArray"] addObject:themeCustom];
 }
 
@@ -861,8 +845,6 @@
 	// Write the index of our selected theme to user defaults. 
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setInteger:self.themeIndex forKey:@"themeIndex"];
-	
-	[defaults synchronize];
 }
 
 - (void)clearThemesArray
@@ -898,7 +880,8 @@
 	rootObject = [NSMutableDictionary dictionary];
 	[rootObject setValue:self.themesArray forKey:@"themesArray"];
 	
-	[NSKeyedArchiver archiveRootObject:rootObject toFile:path];
+	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rootObject requiringSecureCoding:NO error:nil];
+	[data writeToFile:path atomically:YES];
 }
 
 - (void)loadThemeLibraryFromDisk
@@ -906,10 +889,13 @@
 	NSString *path = self.pathForThemeLibraryFile;
 	
 	NSDictionary *rootObject;
-    rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];    
-	if ([rootObject valueForKey:@"themesArray"] != nil) 
+	NSData *data = [NSData dataWithContentsOfFile:path];
+	if (data) {
+		rootObject = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[NSDictionary class], [NSMutableDictionary class], [NSMutableArray class], [NSArray class], [SVThemeObject class], [NSString class], [NSColor class], nil] fromData:data error:nil];
+	}
+	if ([rootObject valueForKey:@"themesArray"] != nil)
 	{
-		self.themesArray = [rootObject valueForKey:@"themesArray"];	
+		self.themesArray = [rootObject valueForKey:@"themesArray"];
 	}
 	else {
 		[self generateStandardThemes];

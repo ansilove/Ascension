@@ -61,10 +61,10 @@
 
 -(void)drawRect:(NSRect)rect
 {      
-    NSColor* darkGreen = [NSColor colorWithDeviceRed:0.431 green:0.639 blue:0.118 alpha:1.0];
-    NSColor* lightGreen = [NSColor colorWithDeviceRed:0.647 green:0.835 blue:0.247 alpha:1.0];    
-    NSColor* darkGray = [NSColor colorWithDeviceRed:0.7 green:0.7 blue:0.7 alpha:1.0];
-    NSColor* lightGray = [NSColor colorWithDeviceRed:0.8 green:0.8 blue:0.8 alpha:1.0];    
+    NSColor* darkGreen = [NSColor colorWithSRGBRed:0.431 green:0.639 blue:0.118 alpha:1.0];
+    NSColor* lightGreen = [NSColor colorWithSRGBRed:0.647 green:0.835 blue:0.247 alpha:1.0];    
+    NSColor* darkGray = [NSColor colorWithSRGBRed:0.7 green:0.7 blue:0.7 alpha:1.0];
+    NSColor* lightGray = [NSColor colorWithSRGBRed:0.8 green:0.8 blue:0.8 alpha:1.0];    
     
     NSGradient* green_gradient = [[NSGradient alloc] initWithStartingColor:darkGreen endingColor:lightGreen];
     NSGradient* gray_gradient = [[NSGradient alloc] initWithStartingColor:darkGray endingColor:lightGray];
@@ -74,7 +74,7 @@
     NSString* s = @"ON";
     NSMutableDictionary* attr = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  [NSFont boldSystemFontOfSize:13.0], NSFontAttributeName, 
-                                 [NSColor colorWithDeviceRed:0.2 green:0.333 blue:0.027 alpha:1.0], NSForegroundColorAttributeName, 
+                                 [NSColor colorWithSRGBRed:0.2 green:0.333 blue:0.027 alpha:1.0], NSForegroundColorAttributeName, 
                                  nil];
     
     NSSize sz = [s sizeWithAttributes:attr];
@@ -87,17 +87,17 @@
     [gray_gradient drawInRect:NSMakeRect(x, location.y, WIDTH-x, HEIGHT) angle:270];
     
     s = @"OFF";
-    [attr setObject:[NSColor colorWithDeviceWhite:0.2 alpha:0.66] forKey:NSForegroundColorAttributeName];
+    [attr setObject:[NSColor colorWithWhite:0.2 alpha:0.66] forKey:NSForegroundColorAttributeName];
     sz = [s sizeWithAttributes:attr];
     pt.x = location.x+KNOB_WIDTH+(KNOB_MAX_X-sz.width)/2;
     [s drawAtPoint:pt withAttributes:attr];
     
     [surround drawAtPoint:NSMakePoint(0,0) fromRect:NSZeroRect 
-                operation:NSCompositeSourceOver
+                operation:NSCompositingOperationSourceOver
                  fraction:1.0];
     pt = location;
     pt.x -= 2;
-    [knob drawAtPoint:pt fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    [knob drawAtPoint:pt fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
 }
 
 -(BOOL)isOpaque
@@ -192,11 +192,11 @@
         while (loop) {
             // get the next event that is a mouse-up or mouse-dragged event
             NSEvent *localEvent;
-            localEvent= [[self window] nextEventMatchingMask:NSLeftMouseUpMask | NSLeftMouseDraggedMask];
+            localEvent= [[self window] nextEventMatchingMask:NSEventMaskLeftMouseUp | NSEventMaskLeftMouseDragged];
             
             
             switch ([localEvent type]) {
-                case NSLeftMouseDragged:
+                case NSEventTypeLeftMouseDragged:
                     
                     // convert the new drag location into the view coords
                     newDragLocation = [self convertPoint:[localEvent locationInWindow]
@@ -214,7 +214,7 @@
                     [self autoscroll:localEvent];
                     
                     break;
-                case NSLeftMouseUp:
+                case NSEventTypeLeftMouseUp:
                     // mouse up has been detected, 
                     // we can exit the loop
                     loop = NO;

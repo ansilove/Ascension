@@ -406,14 +406,6 @@
         }
     }
     
-    // Also wipe social image cache files.
-    if ([fileManager fileExistsAtPath:self.twitterCacheFile]) {
-        [fileManager removeItemAtPath:self.twitterCacheFile error:nil];
-    }
-    if ([fileManager fileExistsAtPath:self.facebookCacheFile]) {
-        [fileManager removeItemAtPath:self.facebookCacheFile error:nil];
-    }
-    
     // Finally nuke export cache files
     if ([fileManager fileExistsAtPath:self.exportCacheFile]) {
         [fileManager removeItemAtPath:self.exportCacheFile error:nil];
@@ -498,20 +490,14 @@
     if (self.isNewFile == YES)
     {
         // Run informal sheet so we know why PNG export is not possible right now.
-        NSAlert *exportCanceledAlert =
-		[NSAlert alertWithMessageText:@"PNG image export canceled"
-						defaultButton:@"OK"
-					  alternateButton:nil
-						  otherButton:nil
-		    informativeTextWithFormat:@"You need to save your current changes before the "
-                                      @"built-in parser is able to export this document as "
-                                      @"PNG image."];
-		
-		[exportCanceledAlert setAlertStyle:NSInformationalAlertStyle];
-		[exportCanceledAlert beginSheetModalForWindow:self.mainWindow
-                                      modalDelegate:self
-                                     didEndSelector:NULL
-                                        contextInfo:NULL];
+        NSAlert *exportCanceledAlert = [[NSAlert alloc] init];
+        [exportCanceledAlert setMessageText:@"PNG image export canceled"];
+        [exportCanceledAlert setInformativeText:@"You need to save your current changes before the "
+                                                @"built-in parser is able to export this document as "
+                                                @"PNG image."];
+        [exportCanceledAlert addButtonWithTitle:@"OK"];
+        [exportCanceledAlert setAlertStyle:NSAlertStyleInformational];
+        [exportCanceledAlert beginSheetModalForWindow:self.mainWindow completionHandler:nil];
         // Now get outta here.
         return;
     }
@@ -697,7 +683,7 @@
     [self.exportPanel setCanSelectHiddenExtension:YES];
 
     [self.exportPanel beginSheetModalForWindow:self.mainWindow completionHandler:^(NSInteger result){
-        if (result == NSFileHandlingPanelOKButton)
+        if (result == NSModalResponseOK)
         {
             // Get the exportPanel's URL as path.
             self.exportURLString = [[self.exportPanel URL] path];
@@ -717,25 +703,19 @@
     [self.saucePopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
 }
 
-- (IBAction)postOnTwitter:(id)sender
+- (IBAction)shareDocument:(id)sender
 {
     if (self.isNewFile == YES)
     {
-        // The user should know why we can't tweet a new document.
-        NSAlert *tweetCanceledAlert =
-		[NSAlert alertWithMessageText:@"Tweet canceled"
-						defaultButton:@"OK"
-					  alternateButton:nil
-						  otherButton:nil
-		    informativeTextWithFormat:@"You need to save your current changes before the "
-                                      @"built-in parser is able to add this document as "
-                                      @"PNG image attachment to your tweet."];
-
-		[tweetCanceledAlert setAlertStyle:NSInformationalAlertStyle];
-		[tweetCanceledAlert beginSheetModalForWindow:self.mainWindow
-                                        modalDelegate:self
-                                       didEndSelector:NULL
-                                          contextInfo:NULL];
+        // The user should know why we can't share a new document.
+        NSAlert *shareCanceledAlert = [[NSAlert alloc] init];
+        [shareCanceledAlert setMessageText:@"Share canceled"];
+        [shareCanceledAlert setInformativeText:@"You need to save your current changes before the "
+                                               @"built-in parser is able to share this document as "
+                                               @"PNG image."];
+        [shareCanceledAlert addButtonWithTitle:@"OK"];
+        [shareCanceledAlert setAlertStyle:NSAlertStyleInformational];
+        [shareCanceledAlert beginSheetModalForWindow:self.mainWindow completionHandler:nil];
         // Now get outta here.
         return;
     }
@@ -748,11 +728,11 @@
     NSString *pureFileName = [self.alURLString lastPathComponent];
 
     // Generate cache file name and path.
-    self.twitterCacheFile = [NSString stringWithFormat:
-                             @"~/Library/Application Support/Ascension/%@.png", pureFileName];
+    NSString *shareCacheFile = [NSString stringWithFormat:
+                                @"~/Library/Application Support/Ascension/%@.png", pureFileName];
 
     // Expand tilde in cache file path.
-    self.twitterCacheFile = [self.twitterCacheFile stringByExpandingTildeInPath];
+    shareCacheFile = [shareCacheFile stringByExpandingTildeInPath];
 
     // Create string we can pass as outputfile flag.
     self.alOutputString = [NSString stringWithFormat:
@@ -760,131 +740,10 @@
 
     self.alOutputString = [self.alOutputString stringByExpandingTildeInPath];
 
-    // Once again, we mess around with encoding overrides.
     // The selected font and encoding could differ from preferences.
-    switch (self.encButtonIndex)
-	{
-		case xDosCP437: {
-            // Lets find out if that is the case.
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if ([defaults integerForKey:@"ansiLoveFont"] == al80x25) {
-                self.alFont = @"80x25";
-			}
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alTerminus) {
-                self.alFont = @"terminus";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == al80x50) {
-                self.alFont = @"80x50";
-            }
-            else {
-                // No CP437 font selected in preferences, work with defaults.
-                self.alFont = @"80x25";
-            }
-			break;
-		}
-        case xDosCP775: {
-            // Baltic Rim
-			self.alFont = @"baltic";
-			break;
-		}
-        case xDosCP855: {
-            // Cyrillic (Slavic)
-			self.alFont = @"cyrillic";
-			break;
-		}
-        case xDosCP863: {
-            // French-Canadian
-			self.alFont = @"french-canadian";
-			break;
-		}
-        case xDosCP737: {
-            // Greek
-			self.alFont = @"greek";
-			break;
-		}
-        case xDosCP869: {
-            // Greek 2
-			self.alFont = @"greek-869";
-			break;
-		}
-        case xDosCP862: {
-            // Hebrew
-			self.alFont = @"hebrew";
-			break;
-		}
-        case xDosCP861: {
-            // Icelandic
-            self.alFont = @"icelandic";
-			break;
-		}
-        case xDosCP850: {
-            // Latin 1
-			self.alFont = @"latin1";
-			break;
-		}
-        case xDosCP852: {
-            // Latin 2
-			self.alFont = @"latin2";
-			break;
-		}
-        case xDosCP865: {
-            // Nordic
-			self.alFont = @"nordic";
-			break;
-		}
-        case xDosCP860: {
-            // Portuguese
-			self.alFont = @"portuguese";
-			break;
-		}
-		case xDosCP866: {
-            // Cyrillic (Russian)
-			self.alFont = @"russian";
-			break;
-		}
-        case xDosCP857: {
-            // Turkish
-			self.alFont = @"turkish";
-			break;
-		}
-        case xAmiga: {
-            // Amiga Latin 1 fonts also come in many flavors the user possibly selected.
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if ([defaults integerForKey:@"ansiLoveFont"] == alTopaz) {
-                self.alFont = @"topaz";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alTopazPlus) {
-                self.alFont = @"topaz+";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alTopaz500) {
-                self.alFont = @"topaz500";
-            }
-			else if ([defaults integerForKey:@"ansiLoveFont"] == alTopaz500Plus) {
-                self.alFont = @"topaz500+";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alMoSoul) {
-                self.alFont = @"mosoul";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alPotNoodle) {
-                self.alFont = @"pot-noodle";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alMicroKnight) {
-                self.alFont = @"microknight";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alMicroKnightPlus) {
-                self.alFont = @"microknight+";
-            }
-            else {
-                // No Amiga font defined in prefs? Fine. Lets render with Topaz then.
-                self.alFont = @"topaz";
-            }
-			break;
-		}
-		default: {
-			break;
-		}
-	}
-    // Don't use the DOS font either for ASCII nor text files.
+    [self setAnsiLoveFontAndEncoding];
+
+    // Don't use the AnsiLove font either for ASCII nor text files.
     if (self.isUsingAnsiLove == NO) {
         self.alFont = @"80x25";
     }
@@ -904,205 +763,12 @@
     }
 
     // Grab the rendered image and init an NSImage instance for it.
-    self.renderedTwitterImage = [[NSImage alloc] initWithContentsOfFile:self.twitterCacheFile];
+    NSImage *renderedImage = [[NSImage alloc] initWithContentsOfFile:shareCacheFile];
 
-    // Finally post image on Twitter, use file name as Tweet text.
-    NSSharingService *service = [NSSharingService sharingServiceNamed:NSSharingServiceNamePostOnTwitter];
-    [service performWithItems:[NSArray arrayWithObjects:pureFileName,self.renderedTwitterImage, nil]];
-}
-
-- (IBAction)postOnFacebook:(id)sender
-{
-    if (self.isNewFile == YES)
-    {
-        // The user should know why we can't post a new document.
-        NSAlert *fbCanceledAlert =
-        [NSAlert alertWithMessageText:@"Facebook post canceled"
-                        defaultButton:@"OK"
-                      alternateButton:nil
-                          otherButton:nil
-            informativeTextWithFormat:@"You need to save your current changes before the "
-         @"built-in parser is able to add this document as "
-         @"PNG image attachment to your Facebook post."];
-        
-        [fbCanceledAlert setAlertStyle:NSInformationalAlertStyle];
-        [fbCanceledAlert beginSheetModalForWindow:self.mainWindow
-                                       modalDelegate:self
-                                      didEndSelector:NULL
-                                         contextInfo:NULL];
-        // Now get outta here.
-        return;
-    }
-    
-    // Get the current file URL and convert it to an UNIX path.
-    NSURL *currentURL = [self fileURL];
-    self.alURLString = [currentURL path];
-    
-    // Get the currrent file name without any path informations.
-    NSString *pureFileName = [self.alURLString lastPathComponent];
-    
-    // Generate cache file name and path.
-    self.facebookCacheFile = [NSString stringWithFormat:
-                             @"~/Library/Application Support/Ascension/%@.png", pureFileName];
-    
-    // Expand tilde in cache file path.
-    self.facebookCacheFile = [self.facebookCacheFile stringByExpandingTildeInPath];
-    
-    // Create string we can pass as outputfile flag.
-    self.alOutputString = [NSString stringWithFormat:
-                           @"~/Library/Application Support/Ascension/%@", pureFileName];
-    
-    self.alOutputString = [self.alOutputString stringByExpandingTildeInPath];
-    
-    // Once again, we mess around with encoding overrides.
-    // The selected font and encoding could differ from preferences.
-    switch (self.encButtonIndex)
-    {
-        case xDosCP437: {
-            // Lets find out if that is the case.
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if ([defaults integerForKey:@"ansiLoveFont"] == al80x25) {
-                self.alFont = @"80x25";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alTerminus) {
-                self.alFont = @"terminus";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == al80x50) {
-                self.alFont = @"80x50";
-            }
-            else {
-                // No CP437 font selected in preferences, work with defaults.
-                self.alFont = @"80x25";
-            }
-            break;
-        }
-        case xDosCP775: {
-            // Baltic Rim
-            self.alFont = @"baltic";
-            break;
-        }
-        case xDosCP855: {
-            // Cyrillic (Slavic)
-            self.alFont = @"cyrillic";
-            break;
-        }
-        case xDosCP863: {
-            // French-Canadian
-            self.alFont = @"french-canadian";
-            break;
-        }
-        case xDosCP737: {
-            // Greek
-            self.alFont = @"greek";
-            break;
-        }
-        case xDosCP869: {
-            // Greek 2
-            self.alFont = @"greek-869";
-            break;
-        }
-        case xDosCP862: {
-            // Hebrew
-            self.alFont = @"hebrew";
-            break;
-        }
-        case xDosCP861: {
-            // Icelandic
-            self.alFont = @"icelandic";
-            break;
-        }
-        case xDosCP850: {
-            // Latin 1
-            self.alFont = @"latin1";
-            break;
-        }
-        case xDosCP852: {
-            // Latin 2
-            self.alFont = @"latin2";
-            break;
-        }
-        case xDosCP865: {
-            // Nordic
-            self.alFont = @"nordic";
-            break;
-        }
-        case xDosCP860: {
-            // Portuguese
-            self.alFont = @"portuguese";
-            break;
-        }
-        case xDosCP866: {
-            // Cyrillic (Russian)
-            self.alFont = @"russian";
-            break;
-        }
-        case xDosCP857: {
-            // Turkish
-            self.alFont = @"turkish";
-            break;
-        }
-        case xAmiga: {
-            // Amiga Latin 1 fonts also come in many flavors the user possibly selected.
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if ([defaults integerForKey:@"ansiLoveFont"] == alTopaz) {
-                self.alFont = @"topaz";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alTopazPlus) {
-                self.alFont = @"topaz+";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alTopaz500) {
-                self.alFont = @"topaz500";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alTopaz500Plus) {
-                self.alFont = @"topaz500+";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alMoSoul) {
-                self.alFont = @"mosoul";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alPotNoodle) {
-                self.alFont = @"pot-noodle";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alMicroKnight) {
-                self.alFont = @"microknight";
-            }
-            else if ([defaults integerForKey:@"ansiLoveFont"] == alMicroKnightPlus) {
-                self.alFont = @"microknight+";
-            }
-            else {
-                // No Amiga font defined in prefs? Fine. Lets render with Topaz then.
-                self.alFont = @"topaz";
-            }
-            break;
-        }
-        default: {
-            break;
-        }
-    }
-    // Don't use the DOS font either for ASCII nor text files.
-    if (self.isUsingAnsiLove == NO) {
-        self.alFont = @"80x25";
-    }
-    
-    // Call AnsiLove and generate the rendered image.
-    [self.ansiGen renderAnsiFile:self.alURLString
-                      outputFile:self.alOutputString
-                            font:self.alFont
-                            bits:self.alBits
-                       iceColors:self.alIceColors
-                         columns:self.alColumns
-                          retina:NO];
-    
-    // Wait for AnsiLove.framework to finish rendering.
-    while (self.isRendered == NO) {
-        [NSThread sleepForTimeInterval:0.1];
-    }
-    
-    // Grab the rendered image and init an NSImage instance for it.
-    self.renderedFacebookImage = [[NSImage alloc] initWithContentsOfFile:self.facebookCacheFile];
-    
-    // Finally post image on Facebook, use file name as post text.
-    NSSharingService *service = [NSSharingService sharingServiceNamed:NSSharingServiceNamePostOnFacebook];
-    [service performWithItems:[NSArray arrayWithObjects:pureFileName,self.renderedFacebookImage, nil]];
+    // Show the system sharing picker anchored to the sender view.
+    NSArray *shareItems = @[pureFileName, renderedImage];
+    NSSharingServicePicker *picker = [[NSSharingServicePicker alloc] initWithItems:shareItems];
+    [picker showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinYEdge];
 }
 
 
@@ -1215,23 +881,28 @@
 
 	// Read font color data from user defaults.
 	NSData *fontColorData = [defaults objectForKey:@"fontColor"];
-	self.fontColor = [NSUnarchiver unarchiveObjectWithData:fontColorData];
+	self.fontColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSColor class] fromData:fontColorData error:nil];
+	if (!self.fontColor) self.fontColor = [NSColor whiteColor];
 
 	// Restore background color data from user defaults.
 	NSData *bgrndColorData = [defaults objectForKey:@"backgroundColor"];
-	self.backgroundColor = [NSUnarchiver unarchiveObjectWithData:bgrndColorData];
+	self.backgroundColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSColor class] fromData:bgrndColorData error:nil];
+	if (!self.backgroundColor) self.backgroundColor = [NSColor blackColor];
 
 	// Load cursor color data from the user defaults.
 	NSData *cursorColorData = [defaults objectForKey:@"cursorColor"];
-	self.cursorColor = [NSUnarchiver unarchiveObjectWithData:cursorColorData];
+	self.cursorColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSColor class] fromData:cursorColorData error:nil];
+	if (!self.cursorColor) self.cursorColor = [NSColor whiteColor];
 
 	// Get the link color data from user defaults.
 	NSData *linkColorData = [defaults objectForKey:@"linkColor"];
-	self.linkColor = [NSUnarchiver unarchiveObjectWithData:linkColorData];
+	self.linkColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSColor class] fromData:linkColorData error:nil];
+	if (!self.linkColor) self.linkColor = [NSColor greenColor];
 
 	// Restore color data for selected text from user defaults.
 	NSData *selectionColorData = [defaults objectForKey:@"selectionColor"];
-	self.selectionColor = [NSUnarchiver unarchiveObjectWithData:selectionColorData];
+	self.selectionColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSColor class] fromData:selectionColorData error:nil];
+	if (!self.selectionColor) self.selectionColor = [NSColor colorWithWhite:0.2 alpha:1.0];
 }
 
 - (void)applyParagraphStyle
@@ -1317,10 +988,18 @@
     // Save insertion point / cursor position.
     NSInteger insertionPoint = [[self.ansiTextView.selectedRanges objectAtIndex:0] rangeValue].location;
 
-	// Analyze the text storage and return a linkified string.
-	AHHyperlinkScanner *scanner =
-	[AHHyperlinkScanner hyperlinkScannerWithAttributedString:self.ansiTextView.textStorage];
-	[self.ansiTextView.textStorage setAttributedString:[scanner linkifiedString]];
+	// Use NSDataDetector to find and linkify URLs.
+	NSError *error = nil;
+	NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:&error];
+	if (detector) {
+	    NSString *plainText = self.ansiTextView.textStorage.string;
+	    [detector enumerateMatchesInString:plainText options:0 range:NSMakeRange(0, plainText.length)
+	                            usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+	        [self.ansiTextView.textStorage addAttribute:NSLinkAttributeName
+	                                              value:result.URL
+	                                              range:result.range];
+	    }];
+	}
 
     // Reapply the cursor position we stored before.
     self.ansiTextView.selectedRange = NSMakeRange(insertionPoint, 0);
@@ -1360,7 +1039,7 @@
 
     NSRect contentRect;
     contentRect = [NSWindow contentRectForFrameRect: frame
-										  styleMask: NSTitledWindowMask];
+										  styleMask: NSWindowStyleMaskTitled];
 
     return (frame.size.height - contentRect.size.height);
 }
@@ -2071,20 +1750,14 @@
         if (self.exportEncoding == UnicodeUTF8 || self.exportEncoding == UnicodeUTF16)
         {
             // Inform the user and revert encoding changes.
-            NSAlert *exportFailureAlert =
-            [NSAlert alertWithMessageText:@"Encoding not applicable"
-                            defaultButton:@"OK"
-                          alternateButton:nil
-                              otherButton:nil
-                informativeTextWithFormat:@"The current file is not intended to be rendered in "
-                                          @"the selected encoding and thus conversion is not "
-                                          @"possible. Operation has been reverted."];
-
-            [exportFailureAlert setAlertStyle:NSInformationalAlertStyle];
-            [exportFailureAlert beginSheetModalForWindow:self.mainWindow
-                                           modalDelegate:self
-                                          didEndSelector:NULL
-                                             contextInfo:NULL];
+            NSAlert *exportFailureAlert = [[NSAlert alloc] init];
+            [exportFailureAlert setMessageText:@"Encoding not applicable"];
+            [exportFailureAlert setInformativeText:@"The current file is not intended to be rendered in "
+                                                   @"the selected encoding and thus conversion is not "
+                                                   @"possible. Operation has been reverted."];
+            [exportFailureAlert addButtonWithTitle:@"OK"];
+            [exportFailureAlert setAlertStyle:NSAlertStyleInformational];
+            [exportFailureAlert beginSheetModalForWindow:self.mainWindow completionHandler:nil];
             // Revert and get out.
             self.exportEncoding = self.nfoDizEncoding;
             self.encButtonIndex = self.previousEncIndex;

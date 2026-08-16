@@ -17,8 +17,8 @@
 		F80F27791297504600209618 /* SVFileInfoStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F27781297504600209618 /* SVFileInfoStrings.m */; };
 		F8123D6311C7763000EABFE2 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8123D6211C7763000EABFE2 /* Preferences.xib */; };
 		F828086617CD447C00FA530F /* NSImage+SVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F828086517CD447C00FA530F /* NSImage+SVExtensions.m */; };
-		F829F6891A65F4CD00F021BD /* AnsiLove.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F829F6841A65F33D00F021BD /* AnsiLove.framework */; };
-		F829F68A1A65F4CD00F021BD /* AnsiLove.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = F829F6841A65F33D00F021BD /* AnsiLove.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AA000001AAAAAA0000000001 /* ALAnsiGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AA000001AAAAAA0000000003 /* ALAnsiGenerator.m */; };
+		AA000001AAAAAA0000000002 /* ALSauceMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = AA000001AAAAAA0000000005 /* ALSauceMachine.m */; };
 		F83E7D7517DFB3C400EB11CE /* RFOverlayScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F83E7D7217DFB3C400EB11CE /* RFOverlayScroller.m */; };
 		F83E7D7617DFB3C400EB11CE /* RFOverlayScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F83E7D7417DFB3C400EB11CE /* RFOverlayScrollView.m */; };
 		F83EAB3B15D7382A00A78B56 /* Divider.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F83EAB2B15D7382900A78B56 /* Divider.tiff */; };
@@ -44,11 +44,8 @@
 		F8835768120F24ED00D18794 /* SVBlockDrawDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835764120F24ED00D18794 /* SVBlockDrawDocument.m */; };
 		F8835769120F24ED00D18794 /* SVPreferencesWC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8835765120F24ED00D18794 /* SVPreferencesWC.m */; };
 		F8835778120F251F00D18794 /* Ascension.icns in Resources */ = {isa = PBXBuildFile; fileRef = F8835773120F251F00D18794 /* Ascension.icns */; };
-		F88397BA1A65F18B003832D5 /* AutoHyperlinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; };
-		F88397BC1A65F1ED003832D5 /* AutoHyperlinks.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = F8A894941208D34300871F98 /* AutoHyperlinks.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F889371215C3EB880084C077 /* SVAscensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F889371115C3EB880084C077 /* SVAscensionDelegate.m */; };
 		F898A66114633ED30008E3CD /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F898A65F14633ED30008E3CD /* License.rtf */; };
-		F89DB9D61593642A0009F5AA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89DB9D51593642A0009F5AA /* Social.framework */; };
 		F8B8454C15436EFB00784F17 /* SVToggleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B8454B15436EFB00784F17 /* SVToggleSlider.m */; };
 		F8C559521A78291D00A7A149 /* ansiTemplate.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F8C5594D1A78291D00A7A149 /* ansiTemplate.tiff */; };
 		F8C559531A78291D00A7A149 /* asciiTemplate.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F8C5594E1A78291D00A7A149 /* asciiTemplate.tiff */; };
@@ -74,8 +71,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F88397BC1A65F1ED003832D5 /* AutoHyperlinks.framework in Copy Files */,
-				F829F68A1A65F4CD00F021BD /* AnsiLove.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,7 +108,10 @@
 		F80F27781297504600209618 /* SVFileInfoStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SVFileInfoStrings.m; path = Classes/SVFileInfoStrings.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F828086417CD447C00FA530F /* NSImage+SVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+SVExtensions.h"; path = "Classes/NSImage+SVExtensions.h"; sourceTree = "<group>"; };
 		F828086517CD447C00FA530F /* NSImage+SVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+SVExtensions.m"; path = "Classes/NSImage+SVExtensions.m"; sourceTree = "<group>"; };
-		F829F6841A65F33D00F021BD /* AnsiLove.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AnsiLove.framework; path = Frameworks/AnsiLove.framework; sourceTree = "<group>"; };
+		AA000001AAAAAA0000000003 /* ALAnsiGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALAnsiGenerator.m; path = Classes/ALAnsiGenerator.m; sourceTree = "<group>"; };
+		AA000001AAAAAA0000000004 /* ALAnsiGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALAnsiGenerator.h; path = Classes/ALAnsiGenerator.h; sourceTree = "<group>"; };
+		AA000001AAAAAA0000000005 /* ALSauceMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALSauceMachine.m; path = Classes/ALSauceMachine.m; sourceTree = "<group>"; };
+		AA000001AAAAAA0000000006 /* ALSauceMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALSauceMachine.h; path = Classes/ALSauceMachine.h; sourceTree = "<group>"; };
 		F83E7D7117DFB3C400EB11CE /* RFOverlayScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOverlayScroller.h; path = Classes/RFOverlayScroller.h; sourceTree = "<group>"; };
 		F83E7D7217DFB3C400EB11CE /* RFOverlayScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOverlayScroller.m; path = Classes/RFOverlayScroller.m; sourceTree = "<group>"; };
 		F83E7D7317DFB3C400EB11CE /* RFOverlayScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOverlayScrollView.h; path = Classes/RFOverlayScrollView.h; sourceTree = "<group>"; };
@@ -148,8 +146,6 @@
 		F889371015C3EB880084C077 /* SVAscensionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SVAscensionDelegate.h; path = Classes/SVAscensionDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F889371115C3EB880084C077 /* SVAscensionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SVAscensionDelegate.m; path = Classes/SVAscensionDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F898A66014633ED30008E3CD /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/License.rtf; sourceTree = "<group>"; };
-		F89DB9D51593642A0009F5AA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		F8A894941208D34300871F98 /* AutoHyperlinks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoHyperlinks.framework; path = Frameworks/AutoHyperlinks.framework; sourceTree = "<group>"; };
 		F8B8454A15436EFB00784F17 /* SVToggleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SVToggleSlider.h; path = Classes/SVToggleSlider.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F8B8454B15436EFB00784F17 /* SVToggleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SVToggleSlider.m; path = Classes/SVToggleSlider.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F8C5594D1A78291D00A7A149 /* ansiTemplate.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ansiTemplate.tiff; path = Images/ansiTemplate.tiff; sourceTree = "<group>"; };
@@ -176,10 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F829F6891A65F4CD00F021BD /* AnsiLove.framework in Frameworks */,
-				F88397BA1A65F18B003832D5 /* AutoHyperlinks.framework in Frameworks */,
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
-				F89DB9D61593642A0009F5AA /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,10 +182,7 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F829F6841A65F33D00F021BD /* AnsiLove.framework */,
-				F8A894941208D34300871F98 /* AutoHyperlinks.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
-				F89DB9D51593642A0009F5AA /* Social.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -233,6 +223,10 @@
 		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AA000001AAAAAA0000000004 /* ALAnsiGenerator.h */,
+				AA000001AAAAAA0000000003 /* ALAnsiGenerator.m */,
+				AA000001AAAAAA0000000006 /* ALSauceMachine.h */,
+				AA000001AAAAAA0000000005 /* ALSauceMachine.m */,
 				F8835763120F24ED00D18794 /* SVBlockDrawDocument.h */,
 				F8835764120F24ED00D18794 /* SVBlockDrawDocument.m */,
 				F80F27771297504600209618 /* SVFileInfoStrings.h */,
@@ -483,6 +477,8 @@
 				F828086617CD447C00FA530F /* NSImage+SVExtensions.m in Sources */,
 				F8B8454C15436EFB00784F17 /* SVToggleSlider.m in Sources */,
 				F889371215C3EB880084C077 /* SVAscensionDelegate.m in Sources */,
+				AA000001AAAAAA0000000001 /* ALAnsiGenerator.m in Sources */,
+				AA000001AAAAAA0000000002 /* ALSauceMachine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,30 +550,33 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 108;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-					"$(PROJECT_DIR)/Frameworks",
-				);
+				CURRENT_PROJECT_VERSION = 200;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_GC = unsupported;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Ascension_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/homebrew/include,
+				);
 				INFOPLIST_FILE = "Ascension-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/homebrew/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lansilove",
+				);
 				PRODUCT_NAME = Ascension;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -586,29 +585,32 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CURRENT_PROJECT_VERSION = 108;
+				CURRENT_PROJECT_VERSION = 200;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-					"$(PROJECT_DIR)/Frameworks",
-				);
-				GCC_ENABLE_OBJC_GC = unsupported;
-				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Ascension_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/homebrew/include,
+				);
 				INFOPLIST_FILE = "Ascension-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/homebrew/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lansilove",
+				);
 				PRODUCT_NAME = Ascension;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
 		};
@@ -623,10 +625,9 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 108;
+				CURRENT_PROJECT_VERSION = 200;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -636,8 +637,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
-				VALID_ARCHS = "i386 x86_64";
+				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -653,10 +653,9 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 108;
+				CURRENT_PROJECT_VERSION = 200;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -665,8 +664,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
-				VALID_ARCHS = "i386 x86_64";
+				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

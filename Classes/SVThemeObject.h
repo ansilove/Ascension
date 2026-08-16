@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SVThemeObject : NSObject <NSCoding>
+@interface SVThemeObject : NSObject <NSSecureCoding>
 
 // strings
 @property (nonatomic, strong) NSString *atName;

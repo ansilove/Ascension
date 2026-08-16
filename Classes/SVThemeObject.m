@@ -13,6 +13,10 @@
 
 @implementation SVThemeObject
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
 # pragma mark -
 # pragma mark initialization
 
@@ -29,12 +33,12 @@
 {
 	if (self == [super init])
 	{
-		self.atName	= [decoder decodeObjectForKey:@"atName"];
-		self.atFontColor = [decoder decodeObjectForKey:@"atFontColor"];
-		self.atBackgroundColor = [decoder decodeObjectForKey:@"atBackgroundColor"];
-		self.atLinkColor = [decoder decodeObjectForKey:@"atLinkColor"];
-		self.atCursorColor = [decoder decodeObjectForKey:@"atCursorColor"];
-		self.atSelectionColor = [decoder decodeObjectForKey:@"atSelectionColor"];
+		self.atName = [decoder decodeObjectOfClass:[NSString class] forKey:@"atName"];
+		self.atFontColor = [decoder decodeObjectOfClass:[NSColor class] forKey:@"atFontColor"];
+		self.atBackgroundColor = [decoder decodeObjectOfClass:[NSColor class] forKey:@"atBackgroundColor"];
+		self.atLinkColor = [decoder decodeObjectOfClass:[NSColor class] forKey:@"atLinkColor"];
+		self.atCursorColor = [decoder decodeObjectOfClass:[NSColor class] forKey:@"atCursorColor"];
+		self.atSelectionColor = [decoder decodeObjectOfClass:[NSColor class] forKey:@"atSelectionColor"];
 	}
 	return self;
 }
